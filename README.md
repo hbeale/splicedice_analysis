@@ -1,0 +1,1 @@
+This repo contains code I've used for various splicedice analysis. See also [my splicedice notes file](https://docs.google.com/document/d/1S-wtJOGz6WFgrnD3RHJ8vfHDPhi4oOpVTF3b_iS1cZ0/edit?tab=t.0#heading=h.rf6uubb04ru) (protected; access provided on request). 
