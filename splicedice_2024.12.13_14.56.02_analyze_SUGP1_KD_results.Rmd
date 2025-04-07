@@ -1,0 +1,69 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "`r Sys.getenv('USER')`"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+---
+  
+
+
+```{r setup, include = FALSE}
+
+library(tidyverse)
+library(kableExtra)
+
+```
+
+```{r}
+data_dir <- "/mnt/output/splicedice_2024.12.13_14.56.02/"
+```
+
+```{r}
+manifest <- read_tsv(file.path(data_dir, "_manifest.txt"),
+col_names = c("ID", "bam_path", "phenotype", "sthg"))
+
+manifest %>% 
+  kbl() %>%
+  kable_styling(full_width = F)
+```
+
+
+```{r}
+
+pairwise_results <- read_tsv(file.path(data_dir, "pairwise.tsv"))
+
+head(pairwise_results) %>% 
+  kbl() %>%
+  kable_styling(full_width = F)
+```
+
+```{r}
+
+long_pairwise_results <- pairwise_results %>%
+               select(clusterID, A19_A20, A23_A24) %>%
+  pivot_longer(-clusterID) %>%
+  separate(name, into = c("S1", "S2")) %>%
+  left_join(manifest %>%
+              select(ID, S1_phenotype = phenotype),
+            by=c("S1"="ID")) %>%
+  left_join(manifest %>%
+              select(ID, S2_phenotype = phenotype),
+            by=c("S2"="ID")) %>%
+  mutate(pair = ifelse(str_detect(S1, "A19"), "Pair 1", "Pair 2")) 
+
+long_pairwise_results %>% 
+  head %>%
+  kbl() %>%
+  kable_styling(full_width = F)
+
+
+  
+
+```
+
+```{r}
+summary(long_pairwise_results$value)
+```
+

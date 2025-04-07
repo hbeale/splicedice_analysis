@@ -1,0 +1,125 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "`r Sys.getenv('USER')`"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+---
+  
+
+
+```{r setup, include = FALSE}
+
+library(tidyverse)
+library(kableExtra)
+library(janitor)
+```
+
+```{r}
+data_dir <- "/mnt/output/splicedice_2024.12.19_23.40.49/"
+```
+
+```{r}
+manifest <- read_tsv(file.path(data_dir, "_manifest.txt"),
+col_names = c("ID", "bam_path", "phenotype", "sthg"))
+
+manifest %>% 
+  kbl() %>%
+  kable_styling(full_width = F)
+```
+
+
+```{r}
+
+pairwise_results <- read_tsv(file.path(data_dir, "pairwise.tsv"))
+
+head(pairwise_results) %>% 
+  kbl() %>%
+  kable_styling(full_width = F)
+```
+
+```{r}
+
+
+
+# long_pairwise_results <- pairwise_results %>%
+#                select(clusterID, A19_A20, A23_A24) %>%
+#   pivot_longer(-clusterID) %>%
+#   separate(name, into = c("S1", "S2")) %>%
+#   left_join(manifest %>%
+#               select(ID, S1_phenotype = phenotype),
+#             by=c("S1"="ID")) %>%
+#   left_join(manifest %>%
+#               select(ID, S2_phenotype = phenotype),
+#             by=c("S2"="ID")) %>%
+#   mutate(pair = ifelse(str_detect(S1, "A19"), "Pair 1", "Pair 2")) 
+
+long_pairwise_results <- pairwise_results %>%
+               select(clusterID, A19_A20, A23_A24) %>%
+  pivot_longer(-clusterID) %>%
+  separate(name, into = c("S1", "S2")) %>%
+  left_join(manifest %>%
+              select(ID, S1_phenotype = sthg),
+            by=c("S1"="ID")) %>%
+  left_join(manifest %>%
+              select(ID, S2_phenotype = sthg),
+            by=c("S2"="ID")) %>%
+  mutate(pair = ifelse(str_detect(S1, "A19"), "Pair 1", "Pair 2")) 
+
+long_pairwise_results %>% 
+  head %>%
+  kbl() %>%
+  kable_styling(full_width = F)
+
+long_pairwise_results %>% 
+  filter(str_detect(clusterID, ",")) %>%
+  head %>%
+  kbl() %>%
+  kable_styling(full_width = F)
+
+
+```
+
+```{r}
+
+summary(long_pairwise_results$value)
+  
+```
+
+
+```{r}
+
+n_distinct(long_pairwise_results$S1_phenotype)
+n_distinct(long_pairwise_results$S2_phenotype)
+
+sig_threshold <- 0.05
+n_comparisons <- n_distinct(long_pairwise_results$clusterID)
+adjusted_sig_threshold <- sig_threshold/n_comparisons
+
+sig_long_pairwise_results <- long_pairwise_results %>% 
+  select(clusterID, pair, value) %>%
+  group_by(clusterID) %>%
+  filter(all(value < sig_threshold)) %>%
+  mutate(unadjusted_sig = all(value < sig_threshold),
+         adjusted_sig = all(value < adjusted_sig_threshold))
+         
+tabyl(sig_long_pairwise_results, adjusted_sig) %>%
+  adorn_totals() %>%
+  adorn_pct_formatting()
+
+ sig_long_pairwise_results %>%
+   filter(adjusted_sig) %>%
+   head %>%
+   kbl() %>%
+  kable_styling(full_width = F)
+
+```
+
+what's up with having both of these
+
+ see both 
+ 1:45602365-45604916:
+ 1:45602365-45604935:
+ 
+ 

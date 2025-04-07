@@ -1,0 +1,110 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "`r Sys.getenv('USER')`"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+---
+  
+
+
+```{r}
+
+library(tidyverse)
+
+```
+
+
+```{r}
+
+intronopolis_PS_file <- "/mnt/data/2020.11.16.intropolis_PS.tsv"
+luad_PS_file <- "/mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv"
+
+```
+
+
+```{r}
+
+intronopolis_PS <- read_tsv(intronopolis_PS_file,
+                            col_types = cols_only(cluster = col_character()))
+
+#                            n_max = 50)
+
+```
+
+```{r}
+
+luad_PS <- read_tsv(luad_PS_file)
+
+```
+```{r}
+main_chr <- paste0("chr", c(1:22, "X", "Y", "M"))
+```
+
+
+```{r}
+
+# plus 1 in the start pos
+
+
+luad_PS_cluster_ids <- luad_PS %>%
+  select(cluster) %>%
+  separate(cluster, 
+           into = c("chr", "start", "stop", "strand"),
+           convert = TRUE,
+           remove = FALSE) %>%
+  mutate(strand = str_sub(cluster, -1))
+
+luad_PS_cluster_ids_filtered <- luad_PS_cluster_ids %>%
+  filter(! stop == "random",
+         ! chr == "chrUn") %>%
+  mutate(stop_num = as.numeric(stop),
+         start_num = as.numeric(start))
+  
+# checking I still have any messy chromosomes
+
+# Warning: Expected 4 pieces. Additional pieces discarded in 28653 rows [177719, 177720, 177721, 177722, 177723, 177724, 177725, 177726, 177727, 177728, 177729, 177730, 177731, 177732, 177733, 177734, 177735, 177736, 177737, 177738, ...].
+
+# luad_PS_cluster_ids[177726,]
+
+# table(luad_PS_cluster_ids$chr)
+
+# luad_PS_cluster_ids_filtered %>%
+#   filter(!stop == stop_num)
+# luad_PS_cluster_ids_filtered %>%
+#   filter(!start == start_num)
+
+tail(luad_PS_cluster_ids_filtered)
+```
+
+```{r}
+
+
+luad_and_intronopolis_PS_cluster_ids <- luad_PS_cluster_ids_filtered %>%
+  rename(luad_cluster_id = cluster) %>%
+  mutate(intronopolis_start = start_num + 1,
+        intronopolis_cluster_id  = paste0(chr, ":", intronopolis_start, "-", stop_num)) 
+
+```
+
+
+```{r}
+
+luad_and_intronopolis_PS_cluster_ids_min <- luad_and_intronopolis_PS_cluster_ids %>%
+  select(luad_cluster_id, intronopolis_cluster_id)
+
+```
+
+
+```{r}
+write_tsv(luad_and_intronopolis_PS_cluster_ids_min, 
+          "luad_and_corresponding_intronopolis_PS_cluster_ids.tsv.gz")
+
+luad_and_intronopolis_PS_cluster_ids_min %>% 
+            pull(intronopolis_cluster_id) %>%
+            cat(file = "intronopolis_cluster_ids_present_in_luad.tsv.gz",
+                sep = "\n")
+
+```
+
