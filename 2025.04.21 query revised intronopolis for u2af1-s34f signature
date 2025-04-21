@@ -1,0 +1,9 @@
+# 2025.04.21 query revised intronopolis for u2af1-s34f signature
+
+We originally tried to query intropolis to identify any samples containing the u2af1-s34f signature, but all output was nan. 
+I believe this is because the allPS coordinate method and junction definition IDs have changed. Details below. 
+
+I have [modified](https://github.com/hbeale/splicedice_analysis/blob/main/2025_04_02-2025_04_07.md) the coordinates in intronopolis to match luad. 
+Here I will requery intropolis to identify any samples containing the u2af1-s34f signature
+
+
