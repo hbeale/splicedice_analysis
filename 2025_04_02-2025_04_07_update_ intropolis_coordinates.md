@@ -1,4 +1,6 @@
-adjust intronopolis junction definitions to make it compatible with later PS values, including TCGA luad values
+Ajust intronopolis junction definitions to make it compatible with later PS values, including TCGA luad values. 
+
+Limitation: I only used junctions that were present in the LUAD dataset. 
 
 ### View contents of files
 ```
