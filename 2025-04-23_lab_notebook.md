@@ -193,6 +193,98 @@ chr1:16765-16857:+ is in the output but not input
 
 ok, i ran out of free claude time
 
-# change of strategy: run original on chr1
+# change of strategy: run R markdown notebook on chr1
+
+create chr1-only inputs
+
+```
+base_dir=/mnt/data/intropolis_chr1/
+mkdir -p ${base_dir}/dennisrm/tcga/luad/
+
+zcat /mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz | grep -E '(^cluster|^chr1:)' | pigz > ${base_dir}/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz; ~/alertme.sh
+
+zcat /mnt/data/2020.11.16.intropolis_PS.tsv.gz  | grep -E '(^cluster|^chr1:)' | pigz > ${base_dir}/2020.11.16.intropolis_PS.tsv.gz; ~/alertme.sh
+
+```
+
+started a new branch: run_only_chr1
+
+rendering update_intropolis_coordinates_chr1.qmd
+
+error
+```
+  |.......................                            |  44% [unnamed-chunk-10]Error in `open.connection()`:
+! cannot open the connection
+Backtrace:
+  1. global .main()
+  2. execute(...)
+  3. rmarkdown::render(...)
+  4. knitr::knit(knit_input, knit_output, envir = envir, quiet = quiet)
+  5. knitr:::process_file(text, output)
+     ...
+ 16. base::withRestarts(...)
+ 17. base (local) withRestartList(expr, restarts)
+ 18. base (local) withOneRestart(withRestartList(expr, restarts[-nr]), restarts[[nr]])
+ 19. base (local) docall(restart$handler, restartArgs)
+ 21. evaluate (local) fun(base::quote(`<smplErrr>`))
+
+
+
+Quitting from lines 200-210 [unnamed-chunk-10] (update_intropolis_coordinates_chr1.qmd)
+                                                                                                             
+Execution halted
+```
+
+
+next, freshen /mnt/data_tiny and try it there.
+
+also name chunks
+
+# retry r script with tiny_data
+
+
+refresh data
+```
+rm -fr /mnt/tiny_data/
+cp -R /mnt/tiny_data_template /mnt/tiny_data
+```
+
+needed chmod -R 777 /mnt/tiny_data
+
+# run original R markdown notebook on chr1 - v2 SUCCESS
+
+```
+chmod -R 777 /mnt/data/intropolis_chr1/
+```
+
+arguments in 
+```
+base_dir <- "/mnt/data/intropolis_chr1/"
+# base_dir <- "/mnt/tiny_data/"
+
+send_alerts <- TRUE
+```
+
+SUCCESS!
+
+review numbers
+
+the following are for chr1 alone
+```
+intropolis PS gz: 2.7G, 405,119 junctions
+luad PS gz: 19M, 79,845 junctions
+
+luad cluster IDs in intropolis gz 
+506k, 51,597 junctions
+
+intropolis PS in luad gz
+560M 38,934 junctions
+
+intropolis junctions in luad gz
+234k, 38,934 junctions
+
+intropolis_PS with updated_cluster_ids gz
+560M, 38,934 junctions
+```
 
 
