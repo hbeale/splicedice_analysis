@@ -8,13 +8,13 @@ format:
 ---
 
 
-```{r}
+```{r load_libraries}
 library(tidyverse)
 ```
 
 
 # change settings for test run
-```{r}
+```{r run_settings}
 
 # base_dir <- "/mnt/data/"
 base_dir <- "/mnt/data/intropolis_chr1/"
@@ -51,7 +51,7 @@ zcat /mnt/data/2020.11.16.intropolis_PS.tsv.gz  | grep -E '(^cluster|^chr1:)' | 
 
 
 define files name variables in R
-```{r}
+```{r r_variable_definitions}
 
 # inputs
 original_intropolis_PS_file <- paste0(base_dir, "2020.11.16.intropolis_PS.tsv.gz")
@@ -74,7 +74,7 @@ intropolis_PS_updated_cluster_ids_file  <- paste0(base_dir, "2020.11.16.intropol
 ```
 
 set  variables in the bash environment
-```{r}
+```{r bash_variable_definitions}
 
 Sys.setenv(original_intropolis_PS_file = original_intropolis_PS_file)
 Sys.setenv(luad_PS_file = luad_PS_file)
@@ -93,7 +93,7 @@ Sys.setenv(intropolis_PS_updated_cluster_ids_file = intropolis_PS_updated_cluste
 ```
 
  confirm input variables in the bash environment
-```{bash}
+```{bash check_input_variables}
 
 echo $original_intropolis_PS_file
 echo $luad_PS_file
@@ -102,7 +102,7 @@ echo $luad_PS_file
 
 
 # characterize input files
-```{bash}
+```{bash describe_inputs}
 
 date
 ls -lh $original_intropolis_PS_file
@@ -122,14 +122,14 @@ date
 # convert luad cluster IDs to intropolis format
 
 ## load data
-```{r}
+```{r load_LUAD}
 
 luad_PS <- read_tsv(luad_PS_file)
 
 ```
 
 ## make cluster IDs like the ones in intropolis
-```{r}
+```{r redefine_LUAD_cluster_ids}
 
 # break cluster IDs into parts
 # warning message "Expected 4 pieces." is acceptable
@@ -165,7 +165,7 @@ luad_cluster_ids_with_intropolis_format_min <- luad_cluster_ids_with_intropolis_
 in tiny data with 1000 samples, 276 entries had cluster ids that differ only depending on whether the positive or negative strand
 
 in all these cases, i excluded one; usually the negative strand cluster id
-```{r}
+```{r deduplicate_LUAD_cluster_ids}
 
 dupes_just_1 <- luad_cluster_ids_with_intropolis_format_min %>%
     filter(duplicated(intropolis_cluster_id))
@@ -196,7 +196,7 @@ luad_cluster_ids_with_intropolis_format_min_no_dupes <- luad_cluster_ids_with_in
 ```
 
 ## write output
-```{r}
+```{r write_redefined_LUAD_cluster_ids}
 
 write_tsv(luad_cluster_ids_with_intropolis_format_min_no_dupes, 
           luad_and_corresponding_intropolis_cluster_ids_file)
@@ -210,7 +210,7 @@ luad_cluster_ids_with_intropolis_format_min_no_dupes %>%
 ```
 
 check output
-```{bash}
+```{bash check_luad_and_corresponding_intropolis_cluster_ids_file}
 date
 ls -lh $luad_and_corresponding_intropolis_cluster_ids_file
 zcat $luad_and_corresponding_intropolis_cluster_ids_file | head 
@@ -219,9 +219,9 @@ zcat $luad_and_corresponding_intropolis_cluster_ids_file |  wc -l
 ```
 
 
-# make subset of reduces intropolis data
+# make subset intropolis data
 
-```{bash}
+```{bash subset_intropolis}
 date
 rm  ${luad_cluster_ids_in_intropolis_format_file/.gz}
 gzip -d --keep $luad_cluster_ids_in_intropolis_format_file
@@ -232,7 +232,7 @@ date
 
 ```
 
-```{r}
+```{r send_alert_for_subset_intropolis}
 
 if(send_alerts) system("~/alert_msg.sh 'limited intropolis data to luad'")
 
@@ -240,7 +240,7 @@ if(send_alerts) system("~/alert_msg.sh 'limited intropolis data to luad'")
 
 
 check output
-```{bash}
+```{bash check_intropolis_PS_present_in_luad_file}
 date
 ls -lh $intropolis_PS_present_in_luad_file
 zcat $intropolis_PS_present_in_luad_file | head | cut -f1-6
@@ -248,7 +248,7 @@ zcat $intropolis_PS_present_in_luad_file | wc -l
 
 ```
 # get list of IDs in reduced intropolis data
-```{bash}
+```{bash get_intropolis_cluster_ids_present_in_luad_file}
 
 date
 zcat $intropolis_PS_present_in_luad_file | awk '{print $1}' | grep -v cluster | pigz > $intropolis_cluster_ids_present_in_luad_file
@@ -258,7 +258,7 @@ date
 ```
 
 
-```{r}
+```{r alert_for_intropolis_cluster_ids_present_in_luad_file}
 
 if(send_alerts) system("~/alert_msg.sh 'got list of IDs in reduced intropolis data'")
 
@@ -269,7 +269,7 @@ if(send_alerts) system("~/alert_msg.sh 'got list of IDs in reduced intropolis da
 # reorder the luad cluster IDs 
 goal: they should be in the same order as  intropolis cluster IDs from the reduced intropolis data (exclude any luad cluster IDs not in intropolis)
 
-```{r}
+```{r eorder_the_luad_cluster_IDs}
 
 luad_and_corresponding_intropolis_cluster_ids <- read_tsv(luad_and_corresponding_intropolis_cluster_ids_file)
 
@@ -293,7 +293,7 @@ intropolis_cluster_ids_two_formats %>%
 
 
 check output
-```{bash}
+```{bash check_new_intropolis_cluster_ids_in_order_file}
 date
 ls -lh $new_intropolis_cluster_ids_in_order_file
 zcat $new_intropolis_cluster_ids_in_order_file | head | cut -f1-6
@@ -304,7 +304,7 @@ zcat $new_intropolis_cluster_ids_in_order_file | wc -l
 ## replace cluster ID in intropolis PS file
 
 
-```{bash}
+```{bash replace_cluster_ID_in_intropolis_PS_file}
 date
 # remove cluster ids from column 1 
 zcat $intropolis_PS_present_in_luad_file | cut -f2- | pigz  > $intropolis_no_cluster_id_file 
@@ -316,12 +316,9 @@ date
 
 ```
 
-```{bash}
-
-```
 
 
-```{r}
+```{r alert_for_replace_cluster_ID_in_intropolis_PS_file}
 
 if(send_alerts) system("~/alert_msg.sh 'replaced cluster ID in intropolis PS file'")
 
@@ -330,7 +327,7 @@ if(send_alerts) system("~/alert_msg.sh 'replaced cluster ID in intropolis PS fil
 
 check output
 
-```{bash}
+```{bash check_intropolis_PS_updated_cluster_ids_file}
 
 date
 
