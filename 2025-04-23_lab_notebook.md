@@ -195,4 +195,18 @@ ok, i ran out of free claude time
 
 # change of strategy: run original on chr1
 
+create chr1-only inputs
 
+```
+base_dir=/mnt/data/intropolis_chr1/
+mkdir -p ${base_dir}/dennisrm/tcga/luad/
+
+zcat /mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz | grep -E '(^cluster|^chr1:)' | pigz > ${base_dir}/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz; ~/alertme.sh
+
+zcat /mnt/data/2020.11.16.intropolis_PS.tsv.gz  | grep -E '(^cluster|^chr1:)' | pigz > ${base_dir}/2020.11.16.intropolis_PS.tsv.gz; ~/alertme.sh
+
+```
+
+started a new branch: run_only_chr1
+
+rendering update_intropolis_coordinates_chr1.qmd
