@@ -287,4 +287,18 @@ intropolis_PS with updated_cluster_ids gz
 560M, 38,934 junctions
 ```
 
+## next steps
+look for u2af1 signature in revised intropolis
+
+# run R markdown notebook on all chr1 
+file: /mnt/gitCode/splicedice_analysis/update_intropolis_coordinates_v2.qmd
+
+logged in to Rstudio, with box checked to keep me connected if browser closes
+
+prep file premissions
+
+```
+sudo chmod -R 777 /mnt/data
+```
+
 
