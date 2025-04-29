@@ -1,0 +1,346 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+
+```{r load_libraries}
+
+library(tidyverse)
+```
+
+
+# change settings for test run
+```{r run_settings}
+
+base_dir <- "/mnt/data/"
+# base_dir <- "/mnt/data/intropolis_chr1/"
+# base_dir <- "/mnt/tiny_data/"
+
+send_alerts <- TRUE
+
+
+```
+
+# setup for /mnt/tiny_data/ 
+(previously run; do not re-run)
+
+```
+mkdir /mnt/tiny_data/
+zcat /mnt/data/2020.11.16.intropolis_PS.tsv.gz | head -1000 | gzip > /mnt/tiny_data/2020.11.16.intropolis_PS.tsv.gz
+mkdir -p /mnt/tiny_data/dennisrm/tcga/luad
+zcat /mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz | head -1000 | gzip > /mnt/tiny_data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz
+chmod 777 -R /mnt/tiny_data/
+
+```
+
+# setup for chr1-only inputs
+(previously run; do not re-run)
+```
+base_dir=/mnt/data/intropolis_chr1/
+mkdir -p ${base_dir}/dennisrm/tcga/luad/
+
+zcat /mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz | grep -E '(^cluster|^chr1:)' | pigz > ${base_dir}/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz; ~/alertme.sh
+
+zcat /mnt/data/2020.11.16.intropolis_PS.tsv.gz  | grep -E '(^cluster|^chr1:)' | pigz > ${base_dir}/2020.11.16.intropolis_PS.tsv.gz; ~/alertme.sh
+
+```
+
+
+define files name variables in R
+```{r r_variable_definitions}
+
+# inputs
+original_intropolis_PS_file <- paste0(base_dir, "2020.11.16.intropolis_PS.tsv.gz")
+luad_PS_file <- paste0(base_dir, "dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv.gz")
+
+# outputs
+original_intropolis_cluster_ids_file <- paste0(base_dir, "2020.11.16.intropolis_PS.cluster_id_only.awk.tsv.gz")
+luad_and_corresponding_intropolis_cluster_ids_file <- paste0(base_dir, "luad_and_corresponding_intropolis_cluster_ids.tsv.gz")
+luad_cluster_ids_in_intropolis_format_file <- paste0(base_dir, "luad_cluster_ids_in_intropolis_format.tsv.gz")
+
+intropolis_PS_present_in_luad_file <- paste0(base_dir, "2020.11.16.intropolis_PS.in_luad.tsv.gz")
+
+intropolis_cluster_ids_present_in_luad_file <- paste0(base_dir, "intropolis_cluster_ids_present_in_luad.gz")
+new_intropolis_cluster_ids_in_order_file <- paste0(base_dir, "new_intropolis_cluster_ids_in_order.tsv.gz")
+
+intropolis_no_cluster_id_file <- paste0(base_dir, "2020.11.16.intropolis_PS.in_luad.no_cluster_id.tsv.gz")
+intropolis_PS_updated_cluster_ids_file  <- paste0(base_dir, "2020.11.16.intropolis_PS.in_luad.updated_cluster_id.tsv.gz")
+
+
+```
+
+set  variables in the bash environment
+```{r bash_variable_definitions}
+
+Sys.setenv(original_intropolis_PS_file = original_intropolis_PS_file)
+Sys.setenv(luad_PS_file = luad_PS_file)
+
+Sys.setenv(original_intropolis_cluster_ids_file = original_intropolis_cluster_ids_file)
+Sys.setenv(luad_and_corresponding_intropolis_cluster_ids_file = luad_and_corresponding_intropolis_cluster_ids_file)
+Sys.setenv(luad_cluster_ids_in_intropolis_format_file = luad_cluster_ids_in_intropolis_format_file)
+Sys.setenv(intropolis_PS_present_in_luad_file = intropolis_PS_present_in_luad_file)
+
+Sys.setenv(intropolis_cluster_ids_present_in_luad_file = intropolis_cluster_ids_present_in_luad_file)
+Sys.setenv(new_intropolis_cluster_ids_in_order_file = new_intropolis_cluster_ids_in_order_file)
+Sys.setenv(intropolis_no_cluster_id_file = intropolis_no_cluster_id_file)
+
+Sys.setenv(intropolis_PS_updated_cluster_ids_file = intropolis_PS_updated_cluster_ids_file)
+
+```
+
+ confirm input variables in the bash environment
+```{bash check_input_variables}
+
+echo $original_intropolis_PS_file
+echo $luad_PS_file
+
+```
+
+
+# characterize input files
+```{bash describe_inputs}
+
+date
+ls -lh $original_intropolis_PS_file
+zcat $original_intropolis_PS_file | head | cut -f1-6 
+zcat $original_intropolis_PS_file | wc -l
+date
+
+echo
+ls -lh $luad_PS_file
+zcat $luad_PS_file  | head | cut -f1-6
+zcat $luad_PS_file | wc -l
+date
+
+```
+
+
+# convert luad cluster IDs to intropolis format
+
+## load data
+```{r load_LUAD}
+
+luad_PS <- read_tsv(luad_PS_file)
+
+```
+
+## make cluster IDs like the ones in intropolis
+```{r redefine_LUAD_cluster_ids}
+
+# break cluster IDs into parts
+# warning message "Expected 4 pieces." is acceptable
+luad_PS_cluster_ids <- luad_PS %>%
+  select(cluster) %>%
+  separate(cluster, 
+           into = c("chr", "start", "stop", "strand"),
+           convert = TRUE,
+           remove = FALSE) %>%
+  mutate(strand = str_sub(cluster, -1))
+
+# exclude chromosomes with "random" and "chrUn" in the name"
+luad_PS_cluster_ids_in_main_chr <- luad_PS_cluster_ids %>%
+  filter(! stop == "random",
+         ! chr == "chrUn") %>%
+  mutate(stop_num = as.numeric(stop),
+         start_num = as.numeric(start))
+
+# add 1 in the start pos
+luad_cluster_ids_with_intropolis_format <- luad_PS_cluster_ids_in_main_chr %>%
+  rename(luad_cluster_id = cluster) %>%
+  mutate(intropolis_start = start_num + 1,
+        intropolis_cluster_id  = paste0(chr, ":", intropolis_start, "-", stop_num)) 
+
+head (luad_cluster_ids_with_intropolis_format)
+
+luad_cluster_ids_with_intropolis_format_min <- luad_cluster_ids_with_intropolis_format %>%
+  select(luad_cluster_id, intropolis_cluster_id)
+
+
+```
+# de-duplicate
+in tiny data with 1000 samples, 276 entries had cluster ids that differ only depending on whether the positive or negative strand
+
+in all these cases, i excluded one; usually the negative strand cluster id
+```{r deduplicate_LUAD_cluster_ids}
+
+dupes_just_1 <- luad_cluster_ids_with_intropolis_format_min %>%
+    filter(duplicated(intropolis_cluster_id))
+
+
+if (base_dir == "/mnt/tiny_data/"){ # show what the data looks like 
+  
+  dupes_both <- luad_cluster_ids_with_intropolis_format_min %>%
+    filter(intropolis_cluster_id %in% dupes_just_1$intropolis_cluster_id)
+  
+  luad_PS %>%
+    filter(str_detect(cluster, "chr1:16027-16606")) %>%
+    mutate(mean_PS = rowSums(pick(where(is.numeric)), na.rm = TRUE)/(ncol(luad_PS)-1)) %>%
+    select(cluster, mean_PS)
+  
+  luad_PS %>%
+    filter(cluster %in%  dupes_both$luad_cluster_id) %>%
+    arrange(cluster) %>%
+    mutate(mean_PS = rowSums(pick(where(is.numeric)), na.rm = TRUE)/(ncol(luad_PS)-1)) %>%
+    select(cluster, mean_PS) %>%
+    head
+}
+
+luad_cluster_ids_with_intropolis_format_min_no_dupes <- luad_cluster_ids_with_intropolis_format_min %>%
+  filter(! intropolis_cluster_id %in% dupes_just_1$intropolis_cluster_id)
+
+
+```
+
+## write output
+```{r write_redefined_LUAD_cluster_ids}
+
+write_tsv(luad_cluster_ids_with_intropolis_format_min_no_dupes, 
+          luad_and_corresponding_intropolis_cluster_ids_file)
+
+
+luad_cluster_ids_with_intropolis_format_min_no_dupes %>% 
+            select(cluster = intropolis_cluster_id) %>%
+            write_tsv(luad_cluster_ids_in_intropolis_format_file)
+
+
+```
+
+check output
+```{bash check_luad_and_corresponding_intropolis_cluster_ids_file}
+date
+ls -lh $luad_and_corresponding_intropolis_cluster_ids_file
+zcat $luad_and_corresponding_intropolis_cluster_ids_file | head 
+zcat $luad_and_corresponding_intropolis_cluster_ids_file |  wc -l 
+
+```
+
+
+# make subset intropolis data
+
+```{bash subset_intropolis}
+date
+rm  ${luad_cluster_ids_in_intropolis_format_file/.gz}
+gzip -d --keep $luad_cluster_ids_in_intropolis_format_file
+zcat $original_intropolis_PS_file | grep -f ${luad_cluster_ids_in_intropolis_format_file/.gz} | pigz > $intropolis_PS_present_in_luad_file
+
+date
+
+
+```
+
+```{r send_alert_for_subset_intropolis}
+
+if(send_alerts) system("~/alert_msg.sh 'limited intropolis data to luad'")
+
+```
+
+
+check output
+```{bash check_intropolis_PS_present_in_luad_file}
+date
+ls -lh $intropolis_PS_present_in_luad_file
+zcat $intropolis_PS_present_in_luad_file | head | cut -f1-6
+zcat $intropolis_PS_present_in_luad_file | wc -l 
+
+```
+# get list of IDs in reduced intropolis data
+```{bash get_intropolis_cluster_ids_present_in_luad_file}
+
+date
+zcat $intropolis_PS_present_in_luad_file | awk '{print $1}' | grep -v cluster | pigz > $intropolis_cluster_ids_present_in_luad_file
+date
+
+
+```
+
+
+```{r alert_for_intropolis_cluster_ids_present_in_luad_file}
+
+if(send_alerts) system("~/alert_msg.sh 'got list of IDs in reduced intropolis data'")
+
+```
+
+
+
+# reorder the luad cluster IDs 
+goal: they should be in the same order as  intropolis cluster IDs from the reduced intropolis data (exclude any luad cluster IDs not in intropolis)
+
+```{r eorder_the_luad_cluster_IDs}
+
+luad_and_corresponding_intropolis_cluster_ids <- read_tsv(luad_and_corresponding_intropolis_cluster_ids_file)
+
+intropolis_cluster_ids <- read_tsv(intropolis_cluster_ids_present_in_luad_file,
+                                   col_names = "original_intropolis_cluster_id")
+
+intropolis_cluster_ids_two_formats_raw <- left_join(intropolis_cluster_ids,
+                                                    luad_and_corresponding_intropolis_cluster_ids,
+                                                    by=c("original_intropolis_cluster_id"="intropolis_cluster_id") )
+
+intropolis_cluster_ids_two_formats <- intropolis_cluster_ids_two_formats_raw %>%
+  rename(updated_intropolis_cluster_id = luad_cluster_id)
+
+
+intropolis_cluster_ids_two_formats %>% 
+  select(cluster = updated_intropolis_cluster_id) %>%
+  write_tsv(new_intropolis_cluster_ids_in_order_file)
+
+```
+
+
+
+check output
+```{bash check_new_intropolis_cluster_ids_in_order_file}
+date
+ls -lh $new_intropolis_cluster_ids_in_order_file
+zcat $new_intropolis_cluster_ids_in_order_file | head | cut -f1-6
+zcat $new_intropolis_cluster_ids_in_order_file | wc -l 
+
+```
+
+## replace cluster ID in intropolis PS file
+
+
+```{bash replace_cluster_ID_in_intropolis_PS_file}
+date
+# remove cluster ids from column 1 
+zcat $intropolis_PS_present_in_luad_file | cut -f2- | pigz  > $intropolis_no_cluster_id_file 
+date
+
+# add new cluster ids in column 1
+paste <(zcat $new_intropolis_cluster_ids_in_order_file) <(zcat $intropolis_no_cluster_id_file) | pigz > $intropolis_PS_updated_cluster_ids_file
+date
+
+```
+
+
+
+```{r alert_for_replace_cluster_ID_in_intropolis_PS_file}
+
+if(send_alerts) system("~/alert_msg.sh 'replaced cluster ID in intropolis PS file'")
+
+```
+
+
+check output
+
+```{bash check_intropolis_PS_updated_cluster_ids_file}
+
+date
+
+ls -lh $intropolis_PS_updated_cluster_ids_file
+
+zcat $intropolis_PS_updated_cluster_ids_file | head | cut -f1-6
+
+zcat $intropolis_PS_updated_cluster_ids_file | wc -l 
+
+date
+
+```
+
+
+
