@@ -4,7 +4,8 @@
 # Script based on original R markdown workflow
 
 # Set base directory
-base_dir="/mnt/data/"
+base_dir=$1
+# base_dir="/mnt/data/"
 # Uncomment one of these if needed:
 # base_dir="/mnt/data/intropolis_chr1/"
 # base_dir="/mnt/tiny_data/"

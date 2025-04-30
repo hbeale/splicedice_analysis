@@ -1,0 +1,159 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+#load_libraries
+
+```{r setup}
+
+library(tidyverse)
+library(janitor)
+```
+# Previous findings for comparison
+from splicedice manuscript draft:
+Of the 48,837 samples that we tested, only 22 were significant matches to the U2AF1-S34F signature.
+
+# Load data
+```{r}
+results_file <- "/mnt/output/splicedice_U2AF1_sig_in_intropolis_2025.04.29_23.43.54//U2AF1_sig_in_intropolis.pvals.tsv"
+
+results <- read_tsv(results_file)
+```
+
+data features
+```{r}
+
+system(paste("md5sum", results_file), intern = TRUE)
+
+dim(results)
+
+
+```
+
+The number of samples in this results file:
+`r prettyNum(ncol(results)-1, big.mark=",",scientific=FALSE)`
+
+# pivot for managability
+```{r}
+
+results_long <- results %>%
+  pivot_longer (-query, names_to = "SRA_dataset", values_to = "p_value") %>%
+  mutate(neglog10p = -log10(p_value),
+         basic_significance = p_value < 0.05,
+         bonf_significance = p_value/(ncol(results)-1) < -0.05)
+
+```
+# Exclude NA data
+```{r}
+results_long_NA_annotated <- results_long %>%
+  group_by(SRA_dataset) %>%
+  mutate(two_NAs = all(is.na(p_value))) 
+
+results_long_NA_annotated %>%
+  filter(two_NAs) %>%
+  arrange(SRA_dataset) %>%
+  head
+
+results_long_NA_excluded <- results_long_NA_annotated %>%
+  filter(!two_NAs)
+
+
+```
+
+
+
+
+# survey of results
+```{r}
+summary(results_long_NA_excluded$p_value)
+```
+
+
+```{r}
+tabyl(results_long_NA_excluded,
+      query,
+      basic_significance)
+```
+
+
+```{r}
+tabyl(results_long_NA_excluded,
+      query,
+      basic_significance) %>%
+  adorn_percentages() %>%
+  adorn_pct_formatting(digits = 2)
+```
+
+## bonf_significance
+I calculated bonf_significance in case the p values were not already adjusted for multiple testing; no values exceed it
+```{r}
+tabyl(results_long_NA_excluded,
+                 bonf_significance)
+```
+
+# Show the significant results
+```{r}
+
+results_long_NA_excluded %>%
+  filter(query == "u2af1-s34f_over_u2af1-wt",
+         basic_significance)
+
+```
+
+All significant results have the same p-value. Weird. Look at all samples with that p-value
+26 additional samples have that p-value. Those are wt/mutant, not mutant/wt
+
+```{r}
+
+results_long_NA_excluded %>%
+  filter(p_value > 0.02476730,
+         p_value < 0.02476732)
+
+```
+
+
+# visualize distribution of p values
+histogram
+
+```{r}
+
+ggplot(results_long_NA_excluded) + 
+  geom_histogram(aes(x=p_value, fill = basic_significance)) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~query, ncol = 1)
+
+```
+
+```{r}
+
+ggplot(results_long_NA_excluded) + 
+  geom_boxplot(aes(x=p_value))  +
+  facet_wrap(~query, ncol = 1)
+
+```
+# Review -log10(p value) 
+boxplot
+```{r}
+ggplot(results_long_NA_excluded) + 
+  geom_boxplot(aes(x=neglog10p)) +
+  scale_fill_brewer(palette = "Set1")
+```
+
+histogram
+```{r}
+ggplot(results_long_NA_excluded) + 
+  geom_histogram(aes(x=neglog10p, fill = basic_significance)) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~query, ncol = 1)
+
+```
+
+Conclusion
+Here we find 10 significant matches to the u2af1 signature (assuming a p-value < 0.05 in the u2af1-s34f_over_u2af1-wt query means the same thing Dennis means when he says "significant matches to the U2AF1-S34F signature"). 
+
+If we want to pursue this, if we can find the key to connect intropolis IDs (e.g. 1-48000) to SRA IDs, we could check if we see what Dennis saw, the u2af1-s34f mutation in the SRA data.

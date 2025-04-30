@@ -1,0 +1,71 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r load_libraries}
+
+library(tidyverse)
+```
+
+```{r}
+results_file <- "/mnt/output/splicedice_U2AF1_sig_in_intropolis_2025.04.29_23.43.54//U2AF1_sig_in_intropolis.pvals.tsv"
+system(paste("md5sum", results_file), intern = TRUE)
+results <- read_tsv(results_file)
+
+```
+
+
+# pivot for managability
+
+
+```{r}
+
+results_long <- results %>%
+  pivot_longer (-query, names_to = "SRA_dataset", values_to = "p_value") %>%
+  mutate(neglog10p = -log10(p_value),
+         basic_significance = p_value < 0.05,
+         bonf_significance = p_value/(ncol(results)-1) < -0.05)
+
+```
+
+```{r}
+
+summary(results_long$p_value)
+
+janitor::tabyl(results_long,
+                 basic_significance)
+
+janitor::tabyl(results_long,
+                 bonf_significance)
+
+ggplot(results_long) + 
+  geom_histogram(aes(x=p_value))
+
+
+
+```
+
+```{r}
+ggplot(results_long) + 
+  geom_boxplot(aes(x=p_value))
+
+```
+
+```{r}
+
+
+
+ggplot(results_long) + 
+  geom_boxplot(aes(x=neglog10p))
+
+ggplot(results_long) + 
+  geom_histogram(aes(x=neglog10p, fill = basic_significance)) +
+  scale_fill_brewer(palette = "Set1")
+
+```
+
