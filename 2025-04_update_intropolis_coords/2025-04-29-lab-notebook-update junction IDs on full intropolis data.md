@@ -180,11 +180,11 @@ Process completed at Tue Apr 29 21:29:25 UTC 2025
 review counts
 
 ```
-4,498,066 rows in original intropolis input
-886,248 rows in original luad input
+4,498,066 rows in original intropolis input (29G, gzipped)
+886,248 rows in original luad input (190M, gzipped)
 576,045 rows in luad after excluding chromosomes with "random" and "chrUn" in the name (0% of tiny data because of the way I selected it) and cluster ids that differ only depending on whether the positive or negative strand (25% of tiny data). This represents 65% of luad data.
-394,419 rows in intropolis subset also in luad (5.4G) (9% of original intropolis, 68% of post-exclusions luad)
-394,419 rows in final intropolis output with revised cluster IDs (5.4G)
+394,419 rows in intropolis subset also in luad (5.4G, gzipped) (9% of original intropolis, 68% of post-exclusions luad)
+394,419 rows in final intropolis output with revised cluster IDs (5.4G, gzipped)
 
 ```
 
