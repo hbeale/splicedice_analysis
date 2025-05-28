@@ -363,3 +363,96 @@ File  /mnt/data/tcga/d1945e55-eaa9-41f3-8017-380ccd112dfc/59a0b90e-8b8b-41b8-95f
 44a3eb8c-135f-44f4-82bd-86fb6104a4e8 f3d482bb-14e8-4569-bee4-22d7d2a027ea.rna_seq.genomic.gdc_realn.bam
 File  /mnt/data/tcga/44a3eb8c-135f-44f4-82bd-86fb6104a4e8/f3d482bb-14e8-4569-bee4-22d7d2a027ea.rna_seq.genomic.gdc_realn.bam  does not exist. Downloading
 ```
+
+review downloads
+
+```
+
+
+```
+
+output
+```
+ubuntu@hbeale-mesa:/mnt/data/tcga$ du -sh 
+314G    .
+```
+
+next
+
+## junc
+
+which TCGA samples have u2af1 mutations?
+
+### make bam manifest
+example contents
+
+```
+ubuntu@hbeale-mesa:/mnt/data/tcga$ cat ../manifests/bam_manifest.txt
+A       /mnt/data/bams/A_U2AF1-KRAS.chr21.bam   WT      LacZ
+G       /mnt/data/bams/G_U2AF1-KRAS.chr21.bam   WT      LacZ
+M       /mnt/data/bams/M_U2AF1-KRAS.chr21.bam   WT      LacZ
+B       /mnt/data/bams/B_U2AF1-KRAS.chr21.bam   MUT     LacZ
+H       /mnt/data/bams/H_U2AF1-KRAS.chr21.bam   MUT     LacZ
+N       /mnt/data/bams/N_U2AF1-KRAS.chr21.bam   MUT     LacZ
+ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+```
+
+create manifest containing all samples in gdc manifest
+
+see "analyze manifest downloaded from gdc.md"
+
+output name: bam_manifest.tcga.541_bam_files.tsv
+
+copied to open stack server in /mnt/data/manifests
+
+
+### select from manifest
+
+```
+
+primary_bam_manifest=/mnt/data/manifests/bam_manifest.tcga.541_bam_files.tsv
+this_manifest=/mnt/data/manifests/tcga_1_bams.`date "+%Y.%m.%d_%H.%M.%S"`.txt
+echo $this_manifest
+
+```
+
+/mnt/data/manifests/tcga_1_bams.2025.05.28_16.22.21.txt
+
+```
+rm -f $this_manifest
+cd /mnt/data/tcga
+for i in *; do 
+expected_file=`cat $primary_bam_manifest | grep $i | cut -f2`
+echo $expected_file
+if [ -e $expected_file ]; then 
+echo file exists
+cat $primary_bam_manifest | grep $i >> $this_manifest
+fi
+done
+
+```
+
+```
+
+source /mnt/scratch_2024.12.09_21.02.52/splicedice/splicedice_env8/bin/activate
+
+this_bam_manifest=/mnt/data/manifests/tcga_1_bams.2025.05.28_16.22.21.txt
+genome=/mnt/ref/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+genes=/mnt/ref/gencode.v47.primary_assembly.annotation.gtf
+
+new_timestamp=`~/d`
+echo $new_timestamp
+splicedice_out=/mnt/output/splicedice_${new_timestamp}/ 
+mkdir -p $splicedice_out
+echo $splicedice_out
+
+time splicedice bam_to_junc_bed -m $this_bam_manifest -o $splicedice_out --genome $genome --annotation $genes --number_threads 4
+ls -alth $splicedice_out
+bash ~/alertme.sh
+
+```
+
+output
+```
+/mnt/output/splicedice_2025.05.28_16.35.55/
+```

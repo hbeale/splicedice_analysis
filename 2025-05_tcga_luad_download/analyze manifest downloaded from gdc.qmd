@@ -1,0 +1,121 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+library(here)
+
+
+```
+
+
+```{r}
+gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_download/gdc_sample_sheet.2025-05-22.tsv"))
+gdc_manifest <- read_tsv(here("2025-05_tcga_luad_download/gdc_manifest.2025-05-22.132704.txt"))
+```
+
+# Compare manifest and sample sheet contents
+
+```{r}
+
+identical(gdc_sample_sheet$`File ID`, gdc_manifest$id)
+
+
+```
+They are the same
+
+
+# review sample features
+```{r}
+
+n_unique <- function(x) length(unique(x))
+
+unique_sample_vals <- gdc_sample_sheet %>%
+  summarize(across(everything(),  n_unique)) %>%
+  pivot_longer(everything())
+
+unique_sample_vals
+  
+```
+
+## What are multi-value columns?
+Notes:
+anything with "1" or 541 is uninteresting
+
+
+```{r}
+
+table(gdc_sample_sheet$`Tumor Descriptor`)
+table(gdc_sample_sheet$`Specimen Type`)
+table(gdc_sample_sheet$`Preservation Method`)
+
+```
+
+# fix column names
+```{r}
+
+lc_no_space <- function(x) str_replace_all(x, " ", "_") %>% tolower()
+  
+
+gdc_sample_sheet_renamed <- gdc_sample_sheet %>% rename_with(lc_no_space)
+```
+
+# review duplicate sample IDs
+
+```{r}
+
+dupe_sample_ids <- gdc_sample_sheet_renamed$sample_id[duplicated(gdc_sample_sheet_renamed$sample_id)]
+
+
+gdc_sample_sheet_renamed %>%
+  filter(sample_id %in% dupe_sample_ids)
+```
+
+# review duplicate case IDs
+
+```{r}
+
+dupe_case_ids <- gdc_sample_sheet_renamed$case_id[duplicated(gdc_sample_sheet_renamed$case_id)]
+
+
+
+gdc_sample_sheet_renamed %>%
+  filter(case_id %in% dupe_case_ids,
+         #! sample_id %in% dupe_sample_ids
+         ) %>%
+  arrange(case_id)
+
+
+
+```
+
+ 
+Create bam manifest 
+```{r}
+
+gdc_sample_sheet_renamed_for_bam_manifest <- gdc_sample_sheet_renamed %>%
+  mutate(tcga_id = paste(sample_id, file_id),
+         file_location = paste0("/mnt/data/tcga/", file_id, "/", file_name),
+         feature1 = lc_no_space(preservation_method),
+         feature2 = lc_no_space(specimen_type))
+  
+gdc_sample_sheet_renamed_for_bam_manifest %>%
+  select(tcga_id,
+         file_location,
+         feature1,
+         feature2) %>%
+  write_tsv(paste0("bam_manifest.tcga.", 
+                   nrow(gdc_sample_sheet_renamed_for_bam_manifest), 
+                   "_bam_files.tsv"),
+            col_names = FALSE)
+
+```
+ 
+ 

@@ -155,3 +155,5 @@ see "review results of U2AF1_sig_in_intropolis 2025.04.29_23.43.54.md"
 Here we find 10 significant matches to the u2af1 signature (assuming a p-value < 0.05 in the u2af1-s34f_over_u2af1-wt query means the same thing Dennis means when he says "significant matches to the U2AF1-S34F signature". 
 
 If we want to pursue this, if we can find the key to connect intropolis IDs (e.g. 1-48000) to SRA IDs, we could check if we see what Dennis saw, the u2af1-s34f mutation in the SRA data.
+
+
