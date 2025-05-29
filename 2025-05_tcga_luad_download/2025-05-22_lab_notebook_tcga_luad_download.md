@@ -716,7 +716,7 @@ TCGA-86-8075-01A 0c633b9e-3303-4625-b59d-02102d8bf981   /mnt/data/tcga/0c633b9e-
 
 ## bam_to_junc_bed
 
-```
+```shell
 
 source /mnt/scratch_2024.12.09_21.02.52/splicedice/splicedice_env8/bin/activate
 
@@ -738,9 +738,31 @@ bash ~/alertme.sh
 
 output
 
-```
+```shell
 /mnt/output/splicedice_2025.05.29_17.33.38/
 ...
+Finding junctions from 46 BAM files...
+...
+new manifest written to: /mnt/output/splicedice_2025.05.29_17.33.38/_manifest.txt
+
+real    163m0.892s
+user    546m59.897s
+sys     7m5.628s
+total 28K
+drwxrwxr-x  3 ubuntu ubuntu   49 May 29 20:16 .
+-rw-rw-r--  1 ubuntu ubuntu 9.2K May 29 20:16 _manifest.txt
+drwxrwxr-x  2 ubuntu ubuntu 8.0K May 29 20:16 _junction_beds
+drwxrwxrwx 17 ubuntu ubuntu 4.0K May 29 17:33 ..
+{"status":"OK","nsent":2,"apilimit":"0\/1000"}
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+
+```
+
+
+
+previous output
+
+```
 new manifest written to: /mnt/output/splicedice_2025.05.28_16.35.55/_manifest.txt
 
 real    166m20.200s
@@ -753,5 +775,30 @@ drwxrwxr-x  2 ubuntu ubuntu 8.0K May 28 19:22 _junction_beds
 drwxrwxrwx 16 ubuntu ubuntu 4.0K May 28 16:35 ..
 {"status":"OK","nsent":2,"apilimit":"1\/1000"}
 (splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
-
 ```
+
+
+
+# Combine batches
+
+```{shell}
+
+batch1_manifest=/mnt/output/splicedice_2025.05.28_16.35.55/_manifest.txt
+batch2_manifest=/mnt/output/splicedice_2025.05.29_17.33.38/_manifest.txt
+batches_1_and_2_bed_manifest=/mnt/data/manifests/batches_1_and_2_bed_manifest.2025.05.29_22.26.44.txt
+
+cat $batch1_manifest $batch2_manifest > $batches_1_and_2_bed_manifest
+```
+
+
+
+updated manifest with "update_manifests_with_genotype.qmd" to generate "batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44.tsv"
+
+
+
+copied to /mnt/data/manifests
+
+
+
+# continue splicedice
+

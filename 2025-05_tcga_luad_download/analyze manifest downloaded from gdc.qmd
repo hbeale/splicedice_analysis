@@ -142,12 +142,7 @@ gdc_sample_sheet_renamed_with_mutations %>%
   filter(is.na(mutation))
 ```
 
- # Exclude samples without mutation info
- randomly select duplicates 
- include all u2af1-s34f samples
- check if u2af1 mutation status disagrees in publication
- 
- 
+ # select all u2af1-s34f samples
 ```{r}
 
 
@@ -159,8 +154,61 @@ nrow(u2af1_s34f_sample_sheet)
 
 length(unique(u2af1_s34f_sample_sheet$case_id))
 
+cat (u2af1_s34f_sample_sheet$file_id)
 
+```
+ 
+ 
+ new manifest
+ 
+ # Exclude samples without mutation info
+ randomly select duplicates 
+ include all u2af1-s34f samples
+ check if u2af1 mutation status disagrees in publication
+ 
+```{r}
+
+set.seed(124343)
+u2af1_wt_samples_one_per_case <- gdc_sample_sheet_renamed_with_mutations %>%
+  filter(! is.na(mutation)) %>%
+  filter(preservation_method == "Unknown",
+         tumor_descriptor == "Primary",
+         mutation != "u2af1-s34f") %>%
+  group_by(case_id) %>%
+   slice_sample(n=1)
+
+
+
+```
+ 
+```{r}
+
+gdc_manifest_50_samples <- read_tsv(here("2025-05_tcga_luad_download/gdc_manifest.50_samples.2025-05-22.132704.txt"))
+
+new_u2af1_wt_samples_one_per_case <- u2af1_wt_samples_one_per_case %>%
+  filter(! file_id %in% gdc_manifest_50_samples$id)
+
+set.seed(124343)
+u2af1_wt_samples_for_batch2 <- new_u2af1_wt_samples_one_per_case %>%
+  ungroup %>%
+  slice_sample(n=(50-12))
+
+
+```
+ 
+next 50 
+```{r}
+
+
+batch2_manifest <- gdc_manifest %>%
+  filter(id %in% 
+           c(u2af1_s34f_sample_sheet$file_id,
+             u2af1_wt_samples_for_batch2$file_id))
+
+batch2_manifest %>%
+  write_tsv(here("2025-05_tcga_luad_download/gdc_manifest.50_samples.batch2.2025-05-28.txt"))
   
+
 ```
  
  
