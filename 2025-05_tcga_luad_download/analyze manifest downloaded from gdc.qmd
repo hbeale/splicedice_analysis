@@ -11,7 +11,7 @@ format:
 
 library(tidyverse)
 library(here)
-
+library(janitor)
 
 ```
 
@@ -116,6 +116,51 @@ gdc_sample_sheet_renamed_for_bam_manifest %>%
                    "_bam_files.tsv"),
             col_names = FALSE)
 
+```
+ 
+ 
+sync with luad_s34f_wt_manifest.tsv
+
+```{r}
+luad_u2af1_s34f_wt_manifest <- read_tsv(here("2025-05_tcga_luad_download/luad_u2af1_s34f_wt_manifest.tsv"),
+                                        col_names = c("id", "mutation"))
+
+gdc_sample_sheet_renamed_with_mutations <- 
+  gdc_sample_sheet_renamed %>%
+  mutate(mutation_match_code = str_remove(file_name, ".rna_seq.genomic.gdc_realn.bam")) %>%
+  left_join(luad_u2af1_s34f_wt_manifest,
+            by=c("mutation_match_code" = "id")) 
+
+gdc_sample_sheet_renamed_with_mutations %>%
+  tabyl(mutation)
+
+```
+
+
+```{r}
+gdc_sample_sheet_renamed_with_mutations %>%
+  filter(is.na(mutation))
+```
+
+ # Exclude samples without mutation info
+ randomly select duplicates 
+ include all u2af1-s34f samples
+ check if u2af1 mutation status disagrees in publication
+ 
+ 
+```{r}
+
+
+u2af1_s34f_sample_sheet <- gdc_sample_sheet_renamed_with_mutations %>%
+  filter(! is.na(mutation)) %>%
+  filter(mutation == "u2af1-s34f")
+
+nrow(u2af1_s34f_sample_sheet)
+
+length(unique(u2af1_s34f_sample_sheet$case_id))
+
+
+  
 ```
  
  

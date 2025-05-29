@@ -379,7 +379,7 @@ ubuntu@hbeale-mesa:/mnt/data/tcga$ du -sh
 
 next
 
-## junc
+## bam_to_junc_bed
 
 which TCGA samples have u2af1 mutations?
 
@@ -432,6 +432,8 @@ done
 
 ```
 
+### run bam_to_junc_bed
+
 ```
 
 source /mnt/scratch_2024.12.09_21.02.52/splicedice/splicedice_env8/bin/activate
@@ -453,6 +455,303 @@ bash ~/alertme.sh
 ```
 
 output
+
 ```
 /mnt/output/splicedice_2025.05.28_16.35.55/
+...
+new manifest written to: /mnt/output/splicedice_2025.05.28_16.35.55/_manifest.txt
+
+real    166m20.200s
+user    591m1.270s
+sys     7m33.580s
+total 28K
+drwxrwxr-x  3 ubuntu ubuntu   49 May 28 19:22 .
+-rw-rw-r--  1 ubuntu ubuntu 9.8K May 28 19:22 _manifest.txt
+drwxrwxr-x  2 ubuntu ubuntu 8.0K May 28 19:22 _junction_beds
+drwxrwxrwx 16 ubuntu ubuntu 4.0K May 28 16:35 ..
+{"status":"OK","nsent":2,"apilimit":"1\/1000"}
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+
+```
+
+clear disk space
+
+```
+cd /mnt/data/tcga
+rm -fr *
+```
+
+
+# Batch 2
+## download 50 samples
+
+gdc_manifest.50_samples.batch2.2025-05-28.txt created with "analyze manifest downloaded from gdc.qmd" and copied to /mnt/gitCode/gdc_manifests
+
+
+
+```
+manifest_dir=/mnt/gitCode/gdc_manifests
+this_manifest=${manifest_dir}/gdc_manifest.50_samples.batch2.2025-05-28.txt
+
+cat $this_manifest | grep -v filename | while read id filename other; do 
+
+f=/mnt/data/tcga/$id/$filename
+
+echo
+echo $id $filename
+
+# ls $f  
+
+if ! [ -f   $f  ]; then
+echo "File  $f  does not exist. Downloading"
+
+/mnt/scratch/gdc-client download --dir  /mnt/data/tcga --token-file /mnt/gitCode/gdc-user-token.2025-05-22T20_42_24.827Z.txt $id
+
+else
+echo "File  $f is already present. Moving along"
+
+fi
+
+done
+
+```
+
+## check file size and available space
+
+
+```
+du -sh /mnt/data/tcga
+df -h | grep "/mnt"
+
+
+```
+
+
+output
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$  du -sh /mnt/data/tcga
+293G    /mnt/data/tcga
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$  df -h | grep "/mnt"
+/dev/vdb1       2.0T 1014G  1.1T  50% /mnt
+
+
+```
+
+
+
+
+### check if the mutant bams were downloaded
+
+```
+mutant_ids="33c16d35-96da-4400-9f48-1fc7567e30a4 16b44441-90d4-4289-8248-d31251f49f2b 9eeae6b9-2031-47fa-80db-e04d53f0bfbd 3dbc67a1-c49d-407c-867b-dc453f3aebc0 99c213ba-55b9-42b6-9546-62b8d3f6c284 6f343aec-65e1-44ad-b4db-339d4ed62373 63da5a36-0ec0-4d89-be9d-7319f0eae8ed 0ebf5cc5-f242-45ef-821a-939b51dc95a2 eae099b8-7486-42dc-9565-c875662eb729 e161311b-eb34-42fd-b906-d0b4cfb7c15a aa7245fd-7073-4ff9-88cc-648a2c9f1f60 86c05b02-68d0-473d-8aea-ab501cb40d29"
+```
+
+survey
+
+```
+for m in $mutant_ids; do echo $m;
+
+if [ -e   /mnt/data/tcga/$m  ]; then
+echo "Directory exists. Listing files..."
+ls /mnt/data/tcga/$m
+
+else
+echo "Directory  $m does not exist"
+
+fi
+
+done
+
+```
+
+
+short survey
+
+```
+for m in $mutant_ids; do 
+# echo $m;
+
+if ! [ -e   /mnt/data/tcga/$m  ]; then
+echo "Directory  $m does not exist"
+
+fi
+
+done
+
+```
+
+output
+```
+Directory  e161311b-eb34-42fd-b906-d0b4cfb7c15a does not exist
+```
+
+
+note
+
+```
+cat 63da5a36-0ec0-4d89-be9d-7319f0eae8ed/annotations.txt
+id      submitter_id    entity_type     entity_id       category        classification  created_datetime        status  notes
+2a7c8d73-5b1b-5741-a54a-07224a4b7d05    11951   case    d31aeefc-b59b-42e9-9919-750b17a70a3d    History of acceptable prior treatment related to a prior/other malignancy      Notification    2012-11-10T00:00:00     Approved        Prior malignancy of R breast cancer treated with locoregional radiation. (TCGA tumor from L lung.)
+348b0f04-2759-5bb9-985f-bc13df75b529    662     case    d31aeefc-b59b-42e9-9919-750b17a70a3d    Prior malignancy        Notification  2010-09-15T00:00:00      Approved        [intgen.org]: Prior Malignancy(splicedice_env8)
+```
+
+### try redownloading failed mutant sample
+```
+
+manifest_dir=/mnt/gitCode/gdc_manifests
+this_manifest=${manifest_dir}/gdc_manifest.50_samples.batch2.2025-05-28.txt
+
+cat $this_manifest | grep e161311b-eb34-42fd-b906-d0b4cfb7c15a | while read id filename other; do 
+
+f=/mnt/data/tcga/$id/$filename
+
+echo
+echo $id $filename
+
+# ls $f  
+
+if ! [ -f   $f  ]; then
+echo "File  $f  does not exist. Downloading"
+
+/mnt/scratch/gdc-client download --dir  /mnt/data/tcga --token-file /mnt/gitCode/gdc-user-token.2025-05-22T20_42_24.827Z.txt $id
+
+else
+echo "File  $f is already present. Moving along"
+
+fi
+
+done
+
+
+```
+
+### nope, it still failed
+
+output
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+manifest_dir=/mnt/gitCode/gdc_manifests
+this_manifest=${manifest_dir}/gdc_manifest.50_samples.batch2.2025-05-28.txt
+
+cat $this_manifest | grep e161311b-eb34-42fd-b906-d0b4cfb7c15a | while read id filename other; do 
+
+f=/mnt/data/tcga/$id/$filename
+
+echo
+echo $id $filename
+
+# ls $f  
+
+if ! [ -f   $f  ]; then
+echo "File  $f  does not exist. Downloading"
+
+/mnt/scratch/gdc-client download --dir  /mnt/data/tcga --token-file /mnt/gitCode/gdc-user-token.2025-05-22T20_42_24.827Z.txt $id
+
+else
+done "File  $f is already present. Moving along"
+
+e161311b-eb34-42fd-b906-d0b4cfb7c15a bae79640-8273-42a2-913e-3d29e00ccc4f.rna_seq.genomic.gdc_realn.bam
+File  /mnt/data/tcga/e161311b-eb34-42fd-b906-d0b4cfb7c15a/bae79640-8273-42a2-913e-3d29e00ccc4f.rna_seq.genomic.gdc_realn.bam  does not exist. Downloading
+ERROR: e161311b-eb34-42fd-b906-d0b4cfb7c15a: Unable to connect to API: (('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))). Is this url correct: 'https://api.gdc.cancer.gov/data/e161311b-eb34-42fd-b906-d0b4cfb7c15a'? Is there a connection to the API? Is the server running?
+ERROR: e161311b-eb34-42fd-b906-d0b4cfb7c15a: Unable to connect to API: (('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))). Is this url correct: 'https://api.gdc.cancer.gov/data/e161311b-eb34-42fd-b906-d0b4cfb7c15a'? Is there a connection to the API? Is the server running?
+ERROR: Unable to download file https://api.gdc.cancer.gov/data/e161311b-eb34-42fd-b906-d0b4cfb7c15a
+Successfully downloaded: 0
+Failed downloads: 1
+
+```
+
+
+
+
+
+## create bam manifest from gdc manifest
+
+```
+manifest_dir=/mnt/gitCode/gdc_manifests
+this_gdc_manifest=${manifest_dir}/gdc_manifest.50_samples.batch2.2025-05-28.txt
+
+```
+
+
+```
+
+primary_bam_manifest=/mnt/data/manifests/bam_manifest.tcga.541_bam_files.tsv
+this_manifest=/mnt/data/manifests/tcga_bams.50_samples.batch2.`date "+%Y.%m.%d_%H.%M.%S"`.txt
+echo $this_manifest
+this_manifest=/mnt/data/manifests/tcga_bams.50_samples.batch2.2025.05.29_16.01.35.txt
+```
+
+/mnt/data/manifests/tcga_bams.50_samples.batch2.2025.05.29_16.01.35.txt
+
+```
+wc -l $this_manifest
+rm -f $this_manifest
+wc -l $this_manifest
+cd /mnt/data/tcga
+for i in *; do 
+expected_file=`cat $primary_bam_manifest | grep $i | cut -f2`
+echo $expected_file
+if [ -e $expected_file ]; then 
+echo file exists
+cat $primary_bam_manifest | grep $i >> $this_manifest
+fi
+done
+wc -l $this_manifest
+head -2 $this_manifest
+```
+
+some output
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ wc -l $this_manifest
+head -2 $this_manifest
+46 /mnt/data/manifests/tcga_bams.50_samples.batch2.2025.05.29_16.01.35.txt
+TCGA-67-6215-01A 0a26152a-462f-4895-8fe8-15fcdcc56e16   /mnt/data/tcga/0a26152a-462f-4895-8fe8-15fcdcc56e16/7a7440bf-1ca1-4c6b-80f8-7151a38e5d18.rna_seq.genomic.gdc_realn.bam unknown solid_tissue
+TCGA-86-8075-01A 0c633b9e-3303-4625-b59d-02102d8bf981   /mnt/data/tcga/0c633b9e-3303-4625-b59d-02102d8bf981/5158a031-b856-4423-9418-031b3107e88f.rna_seq.genomic.gdc_realn.bam unknown solid_tissue
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+
+```
+
+
+## bam_to_junc_bed
+
+```
+
+source /mnt/scratch_2024.12.09_21.02.52/splicedice/splicedice_env8/bin/activate
+
+this_bam_manifest=/mnt/data/manifests/tcga_bams.50_samples.batch2.2025.05.29_16.01.35.txt
+genome=/mnt/ref/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+genes=/mnt/ref/gencode.v47.primary_assembly.annotation.gtf
+
+new_timestamp=`~/d`
+echo $new_timestamp
+splicedice_out=/mnt/output/splicedice_${new_timestamp}/ 
+mkdir -p $splicedice_out
+echo $splicedice_out
+
+time splicedice bam_to_junc_bed -m $this_bam_manifest -o $splicedice_out --genome $genome --annotation $genes --number_threads 4
+ls -alth $splicedice_out
+bash ~/alertme.sh
+
+```
+
+output
+
+```
+/mnt/output/splicedice_2025.05.29_17.33.38/
+...
+new manifest written to: /mnt/output/splicedice_2025.05.28_16.35.55/_manifest.txt
+
+real    166m20.200s
+user    591m1.270s
+sys     7m33.580s
+total 28K
+drwxrwxr-x  3 ubuntu ubuntu   49 May 28 19:22 .
+-rw-rw-r--  1 ubuntu ubuntu 9.8K May 28 19:22 _manifest.txt
+drwxrwxr-x  2 ubuntu ubuntu 8.0K May 28 19:22 _junction_beds
+drwxrwxrwx 16 ubuntu ubuntu 4.0K May 28 16:35 ..
+{"status":"OK","nsent":2,"apilimit":"1\/1000"}
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+
 ```
