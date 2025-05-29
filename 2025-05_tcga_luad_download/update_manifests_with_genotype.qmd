@@ -51,7 +51,7 @@ nrow(batches_1_and_2_bed_manifest_with_gt_distinct)
 
 ```{r}
 
-batches_1_and_2_bed_manifest_with_gt_distinct
+head(batches_1_and_2_bed_manifest_with_gt_distinct)
 
 ```
 
@@ -61,7 +61,7 @@ gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_download/gdc_sample_sheet.2
 lc_no_space <- function(x) str_replace_all(x, " ", "_") %>% tolower()
 gdc_sample_sheet_renamed <- gdc_sample_sheet %>% rename_with(lc_no_space)
 
-gdc_sample_sheet_renamed
+head(gdc_sample_sheet_renamed)
 ```
 
 ```{r}
