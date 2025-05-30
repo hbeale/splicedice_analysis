@@ -72,7 +72,7 @@ then select the following
 
 not selected:
 
-* tumor descriptor includes primary (539) and recurrnace (2)
+* tumor descriptor includes primary (539) and recurrance (2)
 * preservation method (12 FFPE, 83 oct, 446 unknown)
 * specimen type includes 389 solid tissue, 152 unknown
 
@@ -486,6 +486,11 @@ rm -fr *
 ## download 50 samples
 
 gdc_manifest.50_samples.batch2.2025-05-28.txt created with "analyze manifest downloaded from gdc.qmd" and copied to /mnt/gitCode/gdc_manifests
+
+
+
+- one u2af1-s34f was preserved in OCT (remaining "unknown", presumably frozen), so I included 3 u2af1-wt preserved in OCT
+- All 93 succesfully downloaded were 1) tumor (not normal), 2) primary (not a recurrance), and 3) aligned with STAR 2-pass Genome.
 
 
 
@@ -1178,3 +1183,6 @@ done
 
 ```
 
+
+
+See "splicedice analysis of 100 TCGA-LUAD samples by U2AF1 S34F mutation status.pdf" for summary in slide form
