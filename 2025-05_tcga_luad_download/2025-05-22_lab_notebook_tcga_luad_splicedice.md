@@ -1,4 +1,4 @@
-
+# Set up to download data from TCGA
 
 install gdc-client
 
@@ -225,13 +225,13 @@ UNC10-SN254:310:C06BYACXX:7:1108:19446:116662   163     chr1    10282   255     
 UNC10-SN254:310:C06BYACXX:7:2104:6409:32452     89      chr1    10562   1       48M     *       0       0       ACGCAGCTCCGCCCTCGCGGTGCTCTCCGGGTCTGTGCTGAGGAGAAC       DDDDDDD@DHJJJJJJIJJJJJJIJJIJIJJIJJJHHHHHFFFFFCCC        NH:i:3  HI:i:1  AS:i:47 nM:i:0  NM:i:0  RG:Z:111130_UNC10-SN254_0310_BC06BYACXX_GATCAG_L007
 ```
 
-## what happens if you try to re-download a file
+### what happens if you try to re-download a file
 hopefully it ignores it,
 no, it takes a minute to check it
 
 
 
-## download 10 more samples as tests
+### download 10 more samples as tests
 
 move manifests around
 ```
@@ -313,7 +313,7 @@ done
 
 ```
 
-## download 50 samples
+# Batch 1: download 50 samples and run bam_to_junc_bed
 
 commands
 
@@ -482,7 +482,7 @@ rm -fr *
 ```
 
 
-# Batch 2
+# Batch 2: download 50 samples and run bam_to_junc_bed
 ## download 50 samples
 
 gdc_manifest.50_samples.batch2.2025-05-28.txt created with "analyze manifest downloaded from gdc.qmd" and copied to /mnt/gitCode/gdc_manifests
@@ -800,5 +800,100 @@ copied to /mnt/data/manifests
 
 
 
-# continue splicedice
+# Quantify splice junction usage
+
+```{shell}
+
+batches_1_and_2_bed_manifest_with_gt=/mnt/data/manifests/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44.tsv
+out_prefix=/mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44
+time splicedice quant -m ${batches_1_and_2_bed_manifest_with_gt} -o ${out_prefix}
+ls -alth ${out_prefix}*
+bash ~/alertme.sh
+
+```
+
+
+
+output
+
+```
+Parsing manifest...
+        Done [0:00:0.99]
+Getting all junctions from 93 files...
+        Done [0:02:29.56]
+Finding clusters from 642714 junctions...
+        Done [0:00:33.02]
+Writing cluster file...
+        Done [0:01:1.46]
+Writing junction bed file...
+        Done [0:00:3.38]
+Gathering junction counts...
+        Done [0:01:43.59]
+Writing inclusion counts...
+        Done [0:00:51.99]
+Calculating PS values...
+/mnt/scratch_2024.12.09_21.02.52/splicedice/splicedice_env8/lib/python3.12/site-packages/splicedice/SPLICEDICE.py:306: RuntimeWarning: invalid value encountered in divide
+  psi[self.junctionIndex[junction],:] = inclusions / (inclusions + exclusions)
+        Done [0:05:3.88]
+Writing PS values...
+        Done [0:00:56.05]
+All done [0:12:43.92]
+
+real    12m46.334s
+user    12m38.134s
+sys     0m7.516s
+-rw-rw-r-- 1 ubuntu ubuntu 331M May 29 23:39 /mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44_allPS.tsv
+-rw-rw-r-- 1 ubuntu ubuntu 147M May 29 23:33 /mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44_inclusionCounts.tsv
+-rw-rw-r-- 1 ubuntu ubuntu  34M May 29 23:31 /mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44_junctions.bed
+-rw-rw-r-- 1 ubuntu ubuntu 2.2G May 29 23:31 /mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44_allClusters.tsv
+{"status":"OK","nsent":2,"apilimit":"2\/1000"}
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+[ hbeale-mesa ][help: <ESC> to copy/scroll][                 (0*$bash)  1-$ bash  2$ bash  3$ bash                 ][2025-05-30 16:55 ]
+
+
+
+```
+
+
+
+
+
+# Compare wt to u2af1 s34f
+
+## make sig manifest
+
+```{bash}
+input_manifest=/mnt/data/manifests/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44.tsv
+sig_manifest=${input_manifest/bed/sig}
+echo $sig_manifest
+cat $input_manifest | cut -f1,3 > $sig_manifest
+head -2 $sig_manifest
+```
+
+output
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head -2 $sig_manifest
+TCGA-55-A4DF-01A_4a5e9e8a-8c48-48cf-8bf0-eb564611d382   u2af1-wt
+TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   u2af1-wt
+
+```
+
+## generate sig
+
+```{bash}
+
+sig_script=/mnt/code/dennisrm_splicedice/splicedice/code/signature.py
+
+base_dir=/mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/
+allPS_file=${base_dir}/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44_allPS.tsv 
+out_dir=${base_dir}
+
+python3 $sig_script compare \
+-p $allPS_file \
+-m $sig_manfiest \
+-o $out_dir
+
+
+```
 
