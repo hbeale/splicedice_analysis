@@ -860,7 +860,9 @@ sys     0m7.516s
 
 # Compare wt to u2af1 s34f
 
-## make sig manifest
+## Signature
+
+### make sig manifest
 
 ```{bash}
 input_manifest=/mnt/data/manifests/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44.tsv
@@ -879,7 +881,7 @@ TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   u2af1-wt
 
 ```
 
-## generate sig
+### generate sig
 
 ```{bash}
 
@@ -894,6 +896,285 @@ python3 $sig_script compare \
 -m $sig_manfiest \
 -o $out_dir
 
+
+```
+
+output
+
+```
+Testing for differential splicing...
+Groups:
+Writing...
+
+```
+
+
+
+result:
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ cat !$
+
+cat /mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/.sig.tsv
+
+splice_interval
+```
+
+
+
+### failed: no output
+
+are there unacceptable characgters?
+
+
+
+compare all PS files
+
+````
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head /mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv | cut -f1-3
+cluster 00d461ae-a1d8-42f2-abd8-5e159363d857    00fabec9-d311-4994-a7e5-eb91178d14f2
+chr1:11211-12009:+      nan     nan
+chr1:11844-12009:+      nan     nan
+chr1:12227-12612:+      nan     nan
+chr1:12721-13220:+      0.000   0.000
+chr1:13052-13220:+      1.000   1.000
+chr1:13374-13452:+      nan     nan
+chr1:14784-14977:-      nan     0.000
+chr1:14829-14929:-      nan     1.000
+chr1:14829-14969:-      nan     0.000
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head $allPS_file | cut -f1-4
+cluster TCGA-55-A4DF-01A_4a5e9e8a-8c48-48cf-8bf0-eb564611d382   TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   TCGA-62-A471-01A_ae528992-720c-4818-ac5e-8e1b0509f9d9
+chr1:11211-12009:+      nan     nan     nan
+chr1:11844-12009:+      nan     nan     nan
+chr1:12227-12612:+      nan     nan     nan
+chr1:12697-13402:+      nan     0.000   0.000
+chr1:12721-13220:+      nan     0.500   0.333
+chr1:12721-13452:+      nan     0.000   0.000
+chr1:12721-13482:+      nan     0.000   0.667
+chr1:13052-13220:+      nan     0.500   0.000
+chr1:14784-14977:-      0.000   0.000   0.000
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+```
+````
+
+
+
+compare manifests
+
+
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head -2 /mnt/data/manifests/luad_s34f_wt_manifest.tsv
+330845b9-1d53-47af-8cb7-30ce5d30625d    u2af1-s34f
+39807893-979e-44c6-ada9-444c68b863c3    u2af1-s34f
+
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head $sig_manifest
+TCGA-55-A4DF-01A_4a5e9e8a-8c48-48cf-8bf0-eb564611d382   u2af1-wt
+TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   u2af1-wt
+TCGA-62-A471-01A_ae528992-720c-4818-ac5e-8e1b0509f9d9   u2af1-wt
+
+```
+
+
+
+My ids are longer and contain an underscore. Try changing underscore to dash
+
+
+
+### remake input files without underscores (all dashes)
+
+```{bash}
+sig_manifest=/mnt/data/manifests/batches_1_and_2_sig_manifest.with_genotypes.2025.05.29_22.26.44.tsv
+sig_manifest_all_dashes=${sig_manifest/sig_manifest/sig_manifest.all_dashes}
+echo $sig_manifest_all_dashes
+
+cat $sig_manifest | sed 's/_/-/g' > $sig_manifest_all_dashes
+
+head -2 $sig_manifest_all_dashes
+
+base_dir=/mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/
+allPS_file=${base_dir}/batches_1_and_2_bed_manifest.with_genotypes.2025.05.29_22.26.44_allPS.tsv 
+allPS_file_all_dashes=${allPS_file/_bed_manifest.with_genotypes/.all_dash_ids}
+echo $allPS_file_all_dashes
+
+cat $allPS_file | sed 's/_/-/g' > $allPS_file_all_dashes
+
+head -2 $allPS_file_all_dashes | cut -f1-4
+
+```
+
+output
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head -2 $sig_manifest
+TCGA-55-A4DF-01A_4a5e9e8a-8c48-48cf-8bf0-eb564611d382   u2af1-wt
+TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   u2af1-wt
+
+```
+
+### generate sig - round 2
+
+```{bash}
+sig_script=/mnt/code/dennisrm_splicedice/splicedice/code/signature.py
+
+base_dir=/mnt/output/splicedice/tcga_batches_1_and_2_2025.05.29/
+out_dir=${base_dir}
+
+python3 $sig_script compare \
+-p $allPS_file_all_dashes \
+-m $sig_manifest_all_dashes \
+-o $out_dir
+
+
+```
+
+
+
+better news already
+
+output
+
+
+
+```
+Testing for differential splicing...
+Groups: u2af1-wt (82), u2af1-s34f (11)
+Writing...
+
+```
+
+
+
+```shell
+cat ${out_dir}.sig.tsv |  grep splice_interval 
+cat ${out_dir}.sig.tsv |  grep -v splice_interval | awk '{printf "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n",$1,$2,$3,$4,$5,$6,$7,$8,$9}' | head
+```
+
+
+
+```
+splice_interval median_u2af1-wt mean_u2af1-wt   delta_u2af1-wt  pval_u2af1-wt   median_u2af1-s34f       mean_u2af1-s34f delta_u2af1-s34f       pval_u2af1-s34f
+chr1:17368-17605:+ 0.66 0.67 -0.01 0.50 0.78 0.78 0.11 0.02
+chr1:17368-17605:- 0.79 0.79 -0.01 0.50 0.89 0.88 0.08 0.02
+chr1:18366-24737:- 0.37 0.38 -0.01 0.57 0.44 0.49 0.07 0.05
+chr1:185350-185490:- 0.93 0.93 -0.01 0.56 1.00 0.97 0.06 0.04
+chr1:188584-188790:- 0.86 0.84 -0.01 0.52 0.91 0.92 0.05 0.02
+chr1:498456-498683:- 0.28 0.28 0.02 0.50 0.17 0.17 -0.09 0.02
+chr1:729955-732016:+ 0.25 0.26 -0.01 0.57 0.35 0.33 0.10 0.04
+chr1:729955-735422:+ 0.07 0.06 0.01 0.51 0.00 0.02 -0.06 0.02
+chr1:729955-735422:- 0.10 0.09 0.01 0.54 0.00 0.04 -0.10 0.03
+chr1:733364-735422:+ 0.66 0.67 -0.01 0.52 0.86 0.83 0.19 0.02
+```
+
+
+
+## Fit beta
+
+````shell
+
+time python3 $sig_script fit_beta \
+-p $allPS_file_all_dashes \
+-s ${out_dir}.sig.tsv \
+-m $sig_manifest_all_dashes \
+-o $out_dir
+~/alertme.sh
+```
+````
+
+
+
+```
+Reading...
+Fitting beta distributions...
+significant intervals: 5205
+Writing files...
+
+real    0m9.586s
+user    0m22.220s
+sys     0m4.427s
+{"status":"OK","nsent":2,"apilimit":"1\/1000"}
+```
+
+
+
+check out results
+
+```{shell}
+
+head ${out_dir}/.beta.tsv | grep splice_interval
+head ${out_dir}/.beta.tsv | grep -v splice_interval | awk '{printf "%s %.2f %.2f %.2f %.2f %.2f %.2f\n",$1,$2,$3,$4,$5,$6,$7}' | head
+```
+
+
+
+```
+splice_interval median_u2af1-wt alpha_u2af1-wt  beta_u2af1-wt   median_u2af1-s34f       alpha_u2af1-s34f        beta_u2af1-s34f
+chr1:17368-17605:+ 0.66 2.61 1.16 0.78 4.58 1.17
+chr1:17368-17605:- 0.79 4.69 1.20 0.89 7.90 1.04
+chr1:185350-185490:- 0.93 7.68 0.56 1.00 12.84 0.37
+chr1:18366-24737:- 0.37 4.30 6.94 0.44 4.88 4.96
+chr1:188584-188790:- 0.86 6.63 1.22 0.91 7.00 0.58
+chr1:498456-498683:- 0.28 1.41 3.88 0.17 1.28 6.55
+chr1:729955-732016:+ 0.25 2.06 6.14 0.35 5.80 11.61
+chr1:729955-735422:+ 0.07 0.62 9.29 0.00 0.38 14.57
+chr1:729955-735422:- 0.10 0.63 6.49 0.00 0.32 7.02
+
+```
+
+## Query
+
+
+
+### run query
+
+````shell
+
+beta_file=${base_dir}/.beta.tsv
+
+python3 $sig_script query \
+-p $allPS_file_all_dashes \
+-b $beta_file \
+-o $base_dir/find_u2af1-s34f_sig_in_luad
+
+```
+````
+
+
+
+### review results
+
+```shell
+cat $base_dir/find_u2af1-s34f_sig_in_luad.pvals.tsv  | rowsToCols stdin stdout -tab -varCol | grep -v query | awk '{printf "%s %.2f %.2f\n",$1,$2,$3}' | cut -f2,3 -d" " | sort | uniq -c
+```
+
+
+
+```
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ cat $base_dir/find_u2af1-s34f_sig_in_luad.pvals.tsv  | rowsToCols stdin stdout -tab -varCol | grep -v query | awk '{printf "%s %.2f %.2f\n",$1,$2,$3}' | cut -f2,3 -d" " | sort | uniq -c
+     82 0.00 1.00
+     11 1.00 0.00
+(splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
+```
+
+
+
+#### do all u2af1-s34f  mutants have 1/0 results? yes
+
+```shell
+cat $sig_manifest | grep u2af1-s34f | cut -f1 | sed 's/^.*_//' | while read m; do
+echo -n $m " "
+cat  $base_dir/find_u2af1-s34f_sig_in_luad.pvals.tsv  | rowsToCols stdin stdout -tab -varCol | awk '{printf "%s %.2f %.2f\n",$1,$2,$3}' | grep $m
+done
+
+```
+
+#### do all non u2af1-wt  have 0/1 results? yes
+
+```shell
+cat $sig_manifest | grep u2af1-wt | cut -f1 | sed 's/^.*_//' | while read m; do
+echo -n $m " "
+cat  $base_dir/find_u2af1-s34f_sig_in_luad.pvals.tsv  | rowsToCols stdin stdout -tab -varCol | awk '{printf "%s %.2f %.2f\n",$1,$2,$3}' | grep $m
+done
 
 ```
 
