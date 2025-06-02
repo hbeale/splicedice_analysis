@@ -1186,3 +1186,13 @@ done
 
 
 See "splicedice analysis of 100 TCGA-LUAD samples by U2AF1 S34F mutation status.pdf" for summary in slide form
+
+
+
+## Potential next steps
+
+
+
+- repeat with dividing by other mutation status or arbitrary selection of 12 samples
+- repeat on larger sample
+- run QC on bams
