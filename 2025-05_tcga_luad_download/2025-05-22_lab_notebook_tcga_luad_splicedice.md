@@ -1,3 +1,5 @@
+[summary in slide form](splicedice%20analysis%20of%20100%20TCGA-LUAD%20samples%20by%20U2AF1%20S34F%20mutation%20status.pdf)
+
 # Set up to download data from TCGA
 
 install gdc-client
@@ -1184,9 +1186,7 @@ done
 ```
 
 
-
-See "splicedice analysis of 100 TCGA-LUAD samples by U2AF1 S34F mutation status.pdf" for summary in slide form
-
+See [summary in slide form](splicedice%20analysis%20of%20100%20TCGA-LUAD%20samples%20by%20U2AF1%20S34F%20mutation%20status.pdf)
 
 
 ## Potential next steps
