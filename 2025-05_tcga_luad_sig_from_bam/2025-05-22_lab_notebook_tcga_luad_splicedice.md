@@ -294,7 +294,7 @@ ubuntu@hbeale-mesa:/mnt/gitCode/gdc_manifests$
 
 see if command is working as expected - nope, now it's fixed
 
-```
+```shell
 head -3 gdc_manifest.12_samples.2025-05-22.132704.txt | grep -v filename | while read id filename other; do 
 
 f=/mnt/data/tcga/$id/$filename
@@ -943,7 +943,7 @@ are there unacceptable characgters?
 
 compare all PS files
 
-````
+```
 (splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ head /mnt/data/dennisrm/tcga/luad/2022.07.06.luad_allPS.tsv | cut -f1-3
 cluster 00d461ae-a1d8-42f2-abd8-5e159363d857    00fabec9-d311-4994-a7e5-eb91178d14f2
 chr1:11211-12009:+      nan     nan
@@ -968,7 +968,7 @@ chr1:13052-13220:+      nan     0.500   0.000
 chr1:14784-14977:-      0.000   0.000   0.000
 (splicedice_env8) ubuntu@hbeale-mesa:/mnt/data/tcga$ 
 ```
-````
+```
 
 
 
@@ -1085,7 +1085,7 @@ chr1:733364-735422:+ 0.66 0.67 -0.01 0.52 0.86 0.83 0.19 0.02
 ## Fit beta
 The splicedice code called in these commands comes from Dennis's splicedice repo: https://github.com/dennisrm/splicedice/tree/6708e183a248809a3d28730bc466d7c1c78f3aa4
 
-````shell
+```shell
 
 time python3 $sig_script fit_beta \
 -p $allPS_file_all_dashes \
@@ -1094,7 +1094,7 @@ time python3 $sig_script fit_beta \
 -o $out_dir
 ~/alertme.sh
 ```
-````
+
 
 
 
@@ -1143,7 +1143,7 @@ chr1:729955-735422:- 0.10 0.63 6.49 0.00 0.32 7.02
 ### run query
 The splicedice code called in these commands comes from Dennis's splicedice repo: https://github.com/dennisrm/splicedice/tree/6708e183a248809a3d28730bc466d7c1c78f3aa4
 
-````shell
+```shell
 
 beta_file=${base_dir}/.beta.tsv
 
@@ -1153,7 +1153,6 @@ python3 $sig_script query \
 -o $base_dir/find_u2af1-s34f_sig_in_luad
 
 ```
-````
 
 
 
