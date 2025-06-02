@@ -434,7 +434,8 @@ done
 
 ```
 
-### run bam_to_junc_bed
+### run bam_to_junc_bed 
+the splicedice code called in these commands comes from https://github.com/BrooksLabUCSC/splicedice/releases/tag/v1.0.0
 
 ```
 
@@ -722,6 +723,8 @@ TCGA-86-8075-01A 0c633b9e-3303-4625-b59d-02102d8bf981   /mnt/data/tcga/0c633b9e-
 
 
 ## bam_to_junc_bed
+the splicedice code called in these commands comes from https://github.com/BrooksLabUCSC/splicedice/releases/tag/v1.0.0
+
 
 ```shell
 
@@ -808,6 +811,7 @@ copied to /mnt/data/manifests
 
 
 # Quantify splice junction usage
+the splicedice code called in these commands comes from https://github.com/BrooksLabUCSC/splicedice/releases/tag/v1.0.0
 
 ```{shell}
 
@@ -889,6 +893,8 @@ TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   u2af1-wt
 ```
 
 ### generate sig
+The splicedice code called in these commands comes from Dennis's splicedice repo: https://github.com/dennisrm/splicedice/tree/6708e183a248809a3d28730bc466d7c1c78f3aa4
+
 
 ```{bash}
 
@@ -1020,6 +1026,7 @@ TCGA-78-7633-01A_c916f887-6e77-4fc6-a692-30375d28650f   u2af1-wt
 ```
 
 ### generate sig - round 2
+The splicedice code called in these commands comes from Dennis's splicedice repo: https://github.com/dennisrm/splicedice/tree/6708e183a248809a3d28730bc466d7c1c78f3aa4
 
 ```{bash}
 sig_script=/mnt/code/dennisrm_splicedice/splicedice/code/signature.py
@@ -1076,6 +1083,7 @@ chr1:733364-735422:+ 0.66 0.67 -0.01 0.52 0.86 0.83 0.19 0.02
 
 
 ## Fit beta
+The splicedice code called in these commands comes from Dennis's splicedice repo: https://github.com/dennisrm/splicedice/tree/6708e183a248809a3d28730bc466d7c1c78f3aa4
 
 ````shell
 
@@ -1133,6 +1141,7 @@ chr1:729955-735422:- 0.10 0.63 6.49 0.00 0.32 7.02
 
 
 ### run query
+The splicedice code called in these commands comes from Dennis's splicedice repo: https://github.com/dennisrm/splicedice/tree/6708e183a248809a3d28730bc466d7c1c78f3aa4
 
 ````shell
 
