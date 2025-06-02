@@ -1185,4 +1185,5 @@ done
 
 
 
-See "splicedice analysis of 100 TCGA-LUAD samples by U2AF1 S34F mutation status.pdf" for summary in slide form
+See [summary in slide form](2025-05_tcga_luad_download
+/splicedice analysis of 100 TCGA-LUAD samples by U2AF1 S34F mutation status.pdf)
