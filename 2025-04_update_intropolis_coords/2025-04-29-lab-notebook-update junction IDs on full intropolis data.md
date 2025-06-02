@@ -11,7 +11,7 @@ started 10:42am 4/29
 /mnt/gitCode/splicedice_analysis/scripts/process_cluster_ids.sh /mnt/data/
 
 ```
-
+script code is (here)[scripts/process_cluster_ids.sh]
 
 std out
 
