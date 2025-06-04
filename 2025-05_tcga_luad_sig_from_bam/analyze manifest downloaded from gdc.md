@@ -1,10 +1,12 @@
 # analyze-manifest-downloaded-from-gdc.rmarkdown
 Holly Beale
-2025-05-28
+2025-06-04
 
 ``` r
 library(tidyverse)
 ```
+
+    Warning: package 'tidyr' was built under R version 4.2.3
 
     Warning: package 'readr' was built under R version 4.2.3
 
@@ -28,7 +30,18 @@ library(here)
     here() starts at /Users/hbeale/Documents/Dropbox/ucsc/projects/gitCode/splicedice_analysis
 
 ``` r
-gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_download/gdc_sample_sheet.2025-05-22.tsv"))
+library(janitor)
+```
+
+
+    Attaching package: 'janitor'
+
+    The following objects are masked from 'package:stats':
+
+        chisq.test, fisher.test
+
+``` r
+gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_sample_sheet.2025-05-22.tsv"))
 ```
 
     Rows: 541 Columns: 11
@@ -40,7 +53,7 @@ gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_download/gdc_sample_sheet.2
     ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
-gdc_manifest <- read_tsv(here("2025-05_tcga_luad_download/gdc_manifest.2025-05-22.132704.txt"))
+gdc_manifest <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_manifest.2025-05-22.132704.txt"))
 ```
 
     Rows: 541 Columns: 5
@@ -247,3 +260,169 @@ gdc_sample_sheet_renamed_for_bam_manifest %>%
                    "_bam_files.tsv"),
             col_names = FALSE)
 ```
+
+sync with luad_s34f_wt_manifest.tsv
+
+``` r
+luad_u2af1_s34f_wt_manifest <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/luad_u2af1_s34f_wt_manifest.tsv"),
+                                        col_names = c("id", "mutation"))
+```
+
+    Rows: 532 Columns: 2
+    ── Column specification ────────────────────────────────────────────────────────
+    Delimiter: "\t"
+    chr (2): id, mutation
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+gdc_sample_sheet_renamed_with_mutations <- 
+  gdc_sample_sheet_renamed %>%
+  mutate(mutation_match_code = str_remove(file_name, ".rna_seq.genomic.gdc_realn.bam")) %>%
+  left_join(luad_u2af1_s34f_wt_manifest,
+            by=c("mutation_match_code" = "id")) 
+
+gdc_sample_sheet_renamed_with_mutations %>%
+  tabyl(mutation)
+```
+
+    Warning: 'xfun::attr()' is deprecated.
+    Use 'xfun::attr2()' instead.
+    See help("Deprecated")
+
+| mutation   |   n |   percent | valid_percent |
+|:-----------|----:|----------:|--------------:|
+| u2af1-s34f |  12 | 0.0221811 |     0.0225989 |
+| u2af1-wt   | 519 | 0.9593346 |     0.9774011 |
+| NA         |  10 | 0.0184843 |            NA |
+
+``` r
+gdc_sample_sheet_renamed_with_mutations %>%
+  filter(is.na(mutation))
+```
+
+    Warning: 'xfun::attr()' is deprecated.
+    Use 'xfun::attr2()' instead.
+    See help("Deprecated")
+
+| file_id | file_name | data_category | data_type | project_id | case_id | sample_id | tissue_type | tumor_descriptor | specimen_type | preservation_method | mutation_match_code | mutation |
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| a3127d56-8b47-4fa7-954b-86929db5e982 | bd84bab3-4614-4806-bfd1-dab3fca9d6fa.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-86-8585 | TCGA-86-8585-01A | Tumor | Primary | Solid Tissue | Unknown | bd84bab3-4614-4806-bfd1-dab3fca9d6fa | NA |
+| 8ebd4c54-1436-4756-a82e-4628b53586da | cbfa6fea-3a77-4d0f-ab15-12307d08055a.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-75-7027 | TCGA-75-7027-01A | Tumor | Primary | Unknown | Unknown | cbfa6fea-3a77-4d0f-ab15-12307d08055a | NA |
+| aab35043-7ce8-4237-a732-45df7920a9a4 | 9aba4243-1817-4f5f-8e9d-66da98229246.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-44-4112 | TCGA-44-4112-01A | Tumor | Primary | Unknown | Unknown | 9aba4243-1817-4f5f-8e9d-66da98229246 | NA |
+| b0157ada-d3cb-4cf3-aceb-40e6d4beb267 | d34f0d3c-a058-4569-a8c8-380ada182e76.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-55-6978 | TCGA-55-6978-01A | Tumor | Primary | Unknown | Unknown | d34f0d3c-a058-4569-a8c8-380ada182e76 | NA |
+| 09ebf058-809e-4ebf-91e5-78f1a99a6cbb | d6662ab3-af1a-4e7e-a907-111e4241713b.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-55-8092 | TCGA-55-8092-01A | Tumor | Primary | Solid Tissue | Unknown | d6662ab3-af1a-4e7e-a907-111e4241713b | NA |
+| 4d6609e2-6ad0-43a1-9bda-fbc4710e1da0 | ebf8d429-0437-4987-9bca-89e62910f168.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-78-7158 | TCGA-78-7158-01A | Tumor | Primary | Solid Tissue | Unknown | ebf8d429-0437-4987-9bca-89e62910f168 | NA |
+| a6f82885-da83-49d5-ad43-966b9dff4ea5 | c6acc762-3909-4cc0-91c7-f66bc3f0e667.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-49-4507 | TCGA-49-4507-01A | Tumor | Primary | Unknown | Unknown | c6acc762-3909-4cc0-91c7-f66bc3f0e667 | NA |
+| e08d0c44-9834-43b8-b518-6882e36a1bb0 | 9f030a01-eef7-4885-8edc-316fe88860d7.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-78-7159 | TCGA-78-7159-01A | Tumor | Primary | Solid Tissue | Unknown | 9f030a01-eef7-4885-8edc-316fe88860d7 | NA |
+| 217e75fb-00de-4fe4-9ecb-88cf17da83a6 | 25212f64-8017-4b93-b171-10a830558566.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-55-8090 | TCGA-55-8090-01A | Tumor | Primary | Solid Tissue | Unknown | 25212f64-8017-4b93-b171-10a830558566 | NA |
+| 73c368dd-99db-4e34-a02f-fdff478a491c | af649713-fb41-496a-a94b-3691d202c1c8.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-44-2665 | TCGA-44-2665-01A | Tumor | Primary | Solid Tissue | Unknown | af649713-fb41-496a-a94b-3691d202c1c8 | NA |
+
+\# select all u2af1-s34f samples
+
+``` r
+u2af1_s34f_sample_sheet <- gdc_sample_sheet_renamed_with_mutations %>%
+  filter(! is.na(mutation)) %>%
+  filter(mutation == "u2af1-s34f")
+
+nrow(u2af1_s34f_sample_sheet)
+```
+
+    [1] 12
+
+``` r
+length(unique(u2af1_s34f_sample_sheet$case_id))
+```
+
+    [1] 12
+
+``` r
+cat (u2af1_s34f_sample_sheet$file_id)
+```
+
+    33c16d35-96da-4400-9f48-1fc7567e30a4 16b44441-90d4-4289-8248-d31251f49f2b 9eeae6b9-2031-47fa-80db-e04d53f0bfbd 3dbc67a1-c49d-407c-867b-dc453f3aebc0 99c213ba-55b9-42b6-9546-62b8d3f6c284 6f343aec-65e1-44ad-b4db-339d4ed62373 63da5a36-0ec0-4d89-be9d-7319f0eae8ed 0ebf5cc5-f242-45ef-821a-939b51dc95a2 eae099b8-7486-42dc-9565-c875662eb729 e161311b-eb34-42fd-b906-d0b4cfb7c15a aa7245fd-7073-4ff9-88cc-648a2c9f1f60 86c05b02-68d0-473d-8aea-ab501cb40d29
+
+new manifest
+
+\# Exclude samples without mutation info randomly select duplicates
+include all u2af1-s34f samples check if u2af1 mutation status disagrees
+in publication
+
+``` r
+set.seed(124343)
+u2af1_wt_samples_one_per_case <- gdc_sample_sheet_renamed_with_mutations %>%
+  filter(! is.na(mutation)) %>%
+  filter(preservation_method == "Unknown",
+         tumor_descriptor == "Primary",
+         mutation != "u2af1-s34f") %>%
+  group_by(case_id) %>%
+   slice_sample(n=1)
+```
+
+``` r
+gdc_manifest_50_samples <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_manifest.50_samples.2025-05-22.132704.txt"))
+```
+
+    Rows: 49 Columns: 5
+    ── Column specification ────────────────────────────────────────────────────────
+    Delimiter: "\t"
+    chr (4): id, filename, md5, state
+    dbl (1): size
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+new_u2af1_wt_samples_one_per_case <- u2af1_wt_samples_one_per_case %>%
+  filter(! file_id %in% gdc_manifest_50_samples$id)
+
+set.seed(124343)
+u2af1_wt_samples_for_batch2 <- new_u2af1_wt_samples_one_per_case %>%
+  ungroup %>%
+  slice_sample(n=(50-12))
+```
+
+next 50
+
+``` r
+batch2_manifest <- gdc_manifest %>%
+  filter(id %in% 
+           c(u2af1_s34f_sample_sheet$file_id,
+             u2af1_wt_samples_for_batch2$file_id))
+
+batch2_manifest %>%
+  write_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_manifest.50_samples.batch2.2025-05-28.txt"))
+```
+
+# show OCT samples
+
+``` r
+gdc_sample_sheet_renamed_with_mutations %>% 
+  filter(preservation_method == "OCT", 
+           file_id %in% batch2_manifest$id)
+```
+
+    Warning: 'xfun::attr()' is deprecated.
+    Use 'xfun::attr2()' instead.
+    See help("Deprecated")
+
+| file_id | file_name | data_category | data_type | project_id | case_id | sample_id | tissue_type | tumor_descriptor | specimen_type | preservation_method | mutation_match_code | mutation |
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| 9eeae6b9-2031-47fa-80db-e04d53f0bfbd | 39807893-979e-44c6-ada9-444c68b863c3.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-MP-A4T4 | TCGA-MP-A4T4-01A | Tumor | Primary | Solid Tissue | OCT | 39807893-979e-44c6-ada9-444c68b863c3 | u2af1-s34f |
+
+``` r
+# this is the sample that wasn't detected when i repeated the analysis with train/test datasets
+# TCGA-55-7727-01A_86c05b02-68d0-473d-8aea-ab501cb40d29
+
+gdc_sample_sheet_renamed_with_mutations %>%
+  filter(str_detect(case_id, "TCGA-55-7727"))
+```
+
+    Warning: 'xfun::attr()' is deprecated.
+    Use 'xfun::attr2()' instead.
+    See help("Deprecated")
+
+| file_id | file_name | data_category | data_type | project_id | case_id | sample_id | tissue_type | tumor_descriptor | specimen_type | preservation_method | mutation_match_code | mutation |
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| 86c05b02-68d0-473d-8aea-ab501cb40d29 | 59e8b7b7-5183-4655-aa5e-e4b5ba73eded.rna_seq.genomic.gdc_realn.bam | Sequencing Reads | Aligned Reads | TCGA-LUAD | TCGA-55-7727 | TCGA-55-7727-01A | Tumor | Primary | Solid Tissue | Unknown | 59e8b7b7-5183-4655-aa5e-e4b5ba73eded | u2af1-s34f |

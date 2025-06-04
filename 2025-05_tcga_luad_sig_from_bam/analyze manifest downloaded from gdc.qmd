@@ -17,8 +17,8 @@ library(janitor)
 
 
 ```{r}
-gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_download/gdc_sample_sheet.2025-05-22.tsv"))
-gdc_manifest <- read_tsv(here("2025-05_tcga_luad_download/gdc_manifest.2025-05-22.132704.txt"))
+gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_sample_sheet.2025-05-22.tsv"))
+gdc_manifest <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_manifest.2025-05-22.132704.txt"))
 ```
 
 # Compare manifest and sample sheet contents
@@ -122,7 +122,7 @@ gdc_sample_sheet_renamed_for_bam_manifest %>%
 sync with luad_s34f_wt_manifest.tsv
 
 ```{r}
-luad_u2af1_s34f_wt_manifest <- read_tsv(here("2025-05_tcga_luad_download/luad_u2af1_s34f_wt_manifest.tsv"),
+luad_u2af1_s34f_wt_manifest <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/luad_u2af1_s34f_wt_manifest.tsv"),
                                         col_names = c("id", "mutation"))
 
 gdc_sample_sheet_renamed_with_mutations <- 
@@ -183,7 +183,7 @@ u2af1_wt_samples_one_per_case <- gdc_sample_sheet_renamed_with_mutations %>%
  
 ```{r}
 
-gdc_manifest_50_samples <- read_tsv(here("2025-05_tcga_luad_download/gdc_manifest.50_samples.2025-05-22.132704.txt"))
+gdc_manifest_50_samples <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_manifest.50_samples.2025-05-22.132704.txt"))
 
 new_u2af1_wt_samples_one_per_case <- u2af1_wt_samples_one_per_case %>%
   filter(! file_id %in% gdc_manifest_50_samples$id)
@@ -206,8 +206,29 @@ batch2_manifest <- gdc_manifest %>%
              u2af1_wt_samples_for_batch2$file_id))
 
 batch2_manifest %>%
-  write_tsv(here("2025-05_tcga_luad_download/gdc_manifest.50_samples.batch2.2025-05-28.txt"))
+  write_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_manifest.50_samples.batch2.2025-05-28.txt"))
   
+
+```
+
+# show OCT samples
+```{r}
+
+
+gdc_sample_sheet_renamed_with_mutations %>% 
+  filter(preservation_method == "OCT", 
+           file_id %in% batch2_manifest$id)
+```
+
+```{r}
+
+
+# this is the sample that wasn't detected when i repeated the analysis with train/test datasets
+# TCGA-55-7727-01A_86c05b02-68d0-473d-8aea-ab501cb40d29
+
+gdc_sample_sheet_renamed_with_mutations %>%
+  filter(str_detect(case_id, "TCGA-55-7727"))
+
 
 ```
  
