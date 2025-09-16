@@ -1,3 +1,5 @@
+[TOC]
+
 # Steps
 
 1. Download repositories
@@ -6,21 +8,18 @@
 
 3. Run analysis
 
-   
-
-## overview
-
-1) Run bam_to_junc_bed
-2) Quantify splice junction usage
-3) Generate a signature 
-4) Fit beta
-5) Query signature against original files
+   - bam_to_junc_bed
+   - Quantify splice junction usage
+   - Generate a signature 
+   - Fit beta
+   - Query signature against original files
+   - Confirm results
 
 
 
-# Run steps
 
-## Behind-the-scenes setup for the demo
+
+# Behind-the-scenes setup for the demo
 
 Confirm example directory space is empty
 
@@ -51,7 +50,7 @@ Exit python environments if you're in one
 deactivate
 ```
 
-
+# Demo steps
 
 ## Assumptions
 
@@ -108,7 +107,7 @@ _manifest.txt
 _junction_beds/
 ```
 
-
+## Signature analysis
 
 ### Quantify splice junction usage
 
@@ -121,6 +120,8 @@ output
 ```
 _allPS.tsv
 _inclusionCounts.tsv
+_junctions.bed
+_allClusters.tsv
 ```
 
 
@@ -137,8 +138,7 @@ cat _manifest.txt | cut -f1,3 > sig_manifest.txt
 
 ```
 
-
-python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py compare \
+python3 /mnt/splicedice_example/git_code/splicedice/scripts/signature.py compare \
   -p _allPS.tsv \
   -m sig_manifest.txt \
   -o $here
@@ -156,7 +156,7 @@ output
 ## Generate beta fit of signature
 
 ```
-python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py fit_beta \
+python3 /mnt/splicedice_example/git_code/splicedice/scripts/signature.py fit_beta \
 -p _allPS.tsv \
 -s .sig.tsv \
 -m sig_manifest.txt \
@@ -176,7 +176,7 @@ output
 ## Query to find other matching samples
 
 ```
-python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py query \
+python3 /mnt/splicedice_example/git_code/splicedice/scripts/signature.py query \
 -p _allPS.tsv  \
 -b .beta.tsv \
 -o $here
