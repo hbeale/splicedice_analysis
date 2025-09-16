@@ -216,7 +216,7 @@ observed:
 
 # Cleanup and archive
 
-(failed; human error)
+
 
 ```
 cd /mnt
@@ -225,3 +225,4 @@ echo $this_archive_folder
 mv /mnt/splicedice_example $this_archive_folder
 ```
 
+/mnt/splicedice_example_archives/2025.09.16_22.59.27
