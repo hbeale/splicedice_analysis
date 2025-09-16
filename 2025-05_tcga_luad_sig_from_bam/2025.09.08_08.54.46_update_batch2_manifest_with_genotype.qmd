@@ -1,0 +1,140 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+library(janitor)
+library(here)
+
+```
+
+
+```{r}
+
+batch_2_bam_manifest_without_gt <- 
+  read_tsv(here("2025-05_tcga_luad_download/tcga_bams.50_samples.batch2.2025.05.29_16.01.35.txt"),
+           col_names = c("sample_name",
+                         "bam_file_path",
+                         "id1",
+                         "id2")) %>%
+  mutate(sample_name = str_replace_all(sample_name, " ", "_"))
+# batches_1_and_2_bed_manifest_without_gt <- read_tsv(here("2025-05_tcga_luad_download/batches_1_and_2_bed_manifest.2025.05.29_22.26.44.txt"),
+#                                                     col_names = c("sample_name",
+#                                                                   "bed_file_path",
+#                                                                   "id1",
+#                                                                   "id2")) %>%
+#   mutate(sample_name = str_replace_all(sample_name, " ", "_"))
+
+luad_u2af1_s34f_wt_manifest  <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/luad_u2af1_s34f_wt_manifest.tsv"),
+                                        col_names = c("id", "mutation"))
+
+
+```
+
+```{r}
+
+bam_manifest_with_bam_file_uuid <- batch_2_bam_manifest_without_gt %>%
+  mutate(bam_file_uuid = str_remove(bam_file_path, "^.*/") %>% str_remove(".rna_seq.*$")) 
+
+table(bam_manifest_with_bam_file_uuid$bam_file_uuid %in% luad_u2af1_s34f_wt_manifest$id)
+
+batch_2_bam_manifest_with_gt <-   left_join(
+  bam_manifest_with_bam_file_uuid,
+  luad_u2af1_s34f_wt_manifest,
+  by=c("bam_file_uuid" = "id"))
+
+# set.seed(133455566)
+# batch_2_bam_manifest_with_gt_distinct <- batch_2_bam_manifest_with_gt %>%
+#   group_by(bam_file_uuid) %>%
+#   slice_sample(n = 1)
+# 
+# 
+# 
+#   
+# 
+# nrow(batch_2_bam_manifest_with_gt) 
+# nrow(batch_2_bam_manifest_with_gt_distinct)
+```
+
+
+```{r}
+
+head(batch_2_bam_manifest_with_gt)
+
+```
+
+check features
+```{r}
+
+gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_sample_sheet.2025-05-22.tsv"))
+lc_no_space <- function(x) str_replace_all(x, " ", "_") %>% tolower()
+gdc_sample_sheet_renamed <- gdc_sample_sheet %>% rename_with(lc_no_space)
+
+head(gdc_sample_sheet_renamed)
+```
+
+```{r}
+batch_2_bam_manifest_with_gt_anno <- left_join(batch_2_bam_manifest_with_gt %>%
+                                                                  mutate(gdc_file_uuid = str_remove(sample_name, "^.*_")),
+          gdc_sample_sheet_renamed, by=c("gdc_file_uuid" = "file_id"))
+
+
+```
+
+
+# review sample features
+```{r}
+
+n_unique <- function(x) length(unique(x))
+
+unique_sample_vals <- batch_2_bam_manifest_with_gt_anno %>%
+#   mutate(across(everything(), as.character)) %>%
+  ungroup %>%
+  summarize(across(everything(),  n_unique)) %>%
+  pivot_longer(everything())
+
+unique_sample_vals
+  
+```
+
+
+```{r}
+tabyl(batch_2_bam_manifest_with_gt_anno,
+      specimen_type)
+
+tabyl(batch_2_bam_manifest_with_gt_anno,
+      preservation_method)
+```
+
+consider removing OCT
+```{r}
+
+batch_2_bam_manifest_with_gt_anno %>%
+  filter(preservation_method == "OCT")
+```
+
+no, one is mutant, so i'll keep all 4
+
+# generate bam manifest output
+
+```{r}
+batch_2_bam_manifest_with_gt_anno %>%
+  ungroup %>%
+  mutate(id1 = mutation,
+         id2 = mutation) %>% 
+  select(1:4) %>%
+write_tsv(here("2025-05_tcga_luad_download/batch_2_bam_manifest.with_genotypes.2025.09.08_09.13.28.tsv"),
+            col_names = FALSE)
+
+
+```
+
+
+

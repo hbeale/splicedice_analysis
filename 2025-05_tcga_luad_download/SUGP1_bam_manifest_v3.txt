@@ -1,0 +1,4 @@
+A19	/mnt/output/star_2.7.11b_2024.12.13/SRR12801019/SRR12801019_Aligned.sortedByCoord.out.bam	HEK	control
+A20	/mnt/output/star_2.7.11b_2024.12.13/SRR12801020/SRR12801020_Aligned.sortedByCoord.out.bam	HEK	SUGP1_knockdown
+A23	/mnt/output/star_2.7.11b_2024.12.13/SRR12801023/SRR12801023_Aligned.sortedByCoord.out.bam	HEK	control
+A24	/mnt/output/star_2.7.11b_2024.12.13/SRR12801024/SRR12801024_Aligned.sortedByCoord.out.bam	HEK	SUGP1_knockdown

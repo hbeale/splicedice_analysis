@@ -1,0 +1,6 @@
+A	/mnt/data/bams/A_U2AF1-KRAS.chr21.bam	WT	LacZ
+G	/mnt/data/bams/G_U2AF1-KRAS.chr21.bam	WT	LacZ
+M	/mnt/data/bams/M_U2AF1-KRAS.chr21.bam	WT	LacZ
+B	/mnt/data/bams/B_U2AF1-KRAS.chr21.bam	MUT	LacZ
+H	/mnt/data/bams/H_U2AF1-KRAS.chr21.bam	MUT	LacZ
+N	/mnt/data/bams/N_U2AF1-KRAS.chr21.bam	MUT	LacZ

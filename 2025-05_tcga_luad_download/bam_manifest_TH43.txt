@@ -1,0 +1,2 @@
+TH43_2352	/mnt/data/bams/TH43_2352_S01.bam	trio	parent
+TH43_2695	/mnt/data/bams/TH43_2695_S01.bam	trio	proband
