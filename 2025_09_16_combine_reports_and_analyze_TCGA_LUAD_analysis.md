@@ -20,11 +20,7 @@
 
 # Run steps
 
-
-
-## Assumptions
-
-You have bam files from the datasets you want to analyze. You have created a manifest listing the IDs, paths, and phenotypes of each file. 
+## Behind-the-scenes setup for the demo
 
 Set up example directory
 
@@ -40,6 +36,10 @@ ln -s /mnt/data/manifests/batch_2_bam_manifest.with_genotypes.2025.09.10_10.03.1
 ```
 
 
+
+## Assumptions
+
+You have bam files from the datasets you want to analyze. You have created a manifest listing the IDs, paths, and phenotypes of each file. 
 
 ## Download repos
 
@@ -84,10 +84,11 @@ cd /mnt/splicedice_example/analysis
 
 genome=/mnt/ref/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 genes=/mnt/ref/gencode.v47.primary_assembly.annotation.gtf
+here=/mnt/splicedice_example/analysis/
 
 splicedice bam_to_junc_bed \
 -m bam_manifest.txt \
--o . \
+-o $here \
 --genome $genome \
 --annotation $genes \
 --number_threads 4
@@ -98,18 +99,27 @@ splicedice bam_to_junc_bed \
 outputs
 
 ```
-_manifest.txt
-_junction_beds
+._manifest.txt
+._junction_beds/
 ```
 
 
+
+fix outputs
+
+```
+cat ._manifest.txt | sed 's/._junction_beds/_junction_beds/' > _manifest.txt
+rm ._manifest.txt
+mv ._junction_beds _junction_beds
+
+```
 
 
 
 ### Quantify splice junction usage
 
 ```
-splicedice quant -m _manifest.txt -o .
+splicedice quant -m _manifest.txt -o $here
 ```
 
 output
@@ -135,22 +145,31 @@ cat _manifest.txt | cut -f1,3 > sig_manifest.txt
 ```
 
 
-python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py compare\
+python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py compare \
   -p _allPS.tsv \
   -m sig_manifest.txt \
-  -o .
+  -o $here
+  
+```
+
+output
+
+```
+.sig.tsv
 ```
 
 
 
-## Generate signature
+## Generate beta fit of signature
 
 ```
-python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py fit_beta.py \
+python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py fit_beta \
 -p _allPS.tsv \
 -s .sig.tsv \
 -m sig_manifest.txt \
--o .
+-o $here
+
+  
 ```
 
 
@@ -161,7 +180,8 @@ python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py fit_
 python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py query \
 -p _allPS.tsv  \
 -b .beta \
--o .
+-o $here
+  
 ```
 
 
