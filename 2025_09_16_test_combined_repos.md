@@ -107,7 +107,6 @@ _manifest.txt
 _junction_beds/
 ```
 
-## Signature analysis
 
 ### Quantify splice junction usage
 
@@ -124,6 +123,7 @@ _junctions.bed
 _allClusters.tsv
 ```
 
+## Signature analysis
 
 
 ### Prepare signature manifest
