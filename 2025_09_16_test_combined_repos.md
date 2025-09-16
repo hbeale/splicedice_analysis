@@ -22,6 +22,14 @@
 
 ## Behind-the-scenes setup for the demo
 
+Confirm example directory space is empty
+
+```
+ls -alth /mnt/splicedice_example/
+```
+
+
+
 Set up example directory
 
 ```
@@ -37,37 +45,33 @@ ln -s /mnt/data/manifests/batch_2_bam_manifest.with_genotypes.2025.09.10_10.03.1
 
 
 
+Exit python environments if you're in one
+
+```
+deactivate
+```
+
+
+
 ## Assumptions
 
 You have bam files from the datasets you want to analyze. You have created a manifest listing the IDs, paths, and phenotypes of each file. 
 
-## Download repos
+## Download repo
 
 ```
 cd /mnt/splicedice_example/git_code
-mkdir -p dr; cd dr
-git clone https://github.com/dennisrm/splicedice.git
+git clone -b add_query_scripts_from_dennis https://github.com/BrooksLabUCSC/splicedice.git 
 
-cd /mnt/splicedice_example/git_code
-mkdir -p bl; cd bl
-git clone https://github.com/BrooksLabUCSC/splicedice.git
 
 ```
-
-## Combine repos
-
-```
-mv /mnt/splicedice_example/git_code/dr/splicedice/code/* /mnt/splicedice_example/git_code/bl/splicedice/scripts/
-```
-
-
 
 
 
 ## Create environment
 
 ```
-cd /mnt/splicedice_example/git_code/bl/splicedice/
+cd /mnt/splicedice_example/git_code/splicedice/
 python3 -m venv splicedice_env
 splicedice_env/bin/pip install .
 source splicedice_env/bin/activate
@@ -92,6 +96,7 @@ splicedice bam_to_junc_bed \
 --genome $genome \
 --annotation $genes \
 --number_threads 4
+
 ```
 
 
@@ -99,19 +104,8 @@ splicedice bam_to_junc_bed \
 outputs
 
 ```
-._manifest.txt
-._junction_beds/
-```
-
-
-
-fix outputs
-
-```
-cat ._manifest.txt | sed 's/._junction_beds/_junction_beds/' > _manifest.txt
-rm ._manifest.txt
-mv ._junction_beds _junction_beds
-
+_manifest.txt
+_junction_beds/
 ```
 
 
@@ -125,7 +119,6 @@ splicedice quant -m _manifest.txt -o $here
 output
 
 ```
-
 _allPS.tsv
 _inclusionCounts.tsv
 ```
@@ -172,6 +165,12 @@ python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py fit_
   
 ```
 
+output
+
+```
+.beta.tsv
+```
+
 
 
 ## Query to find other matching samples
@@ -179,7 +178,7 @@ python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py fit_
 ```
 python3 /mnt/splicedice_example/git_code/bl/splicedice/scripts/signature.py query \
 -p _allPS.tsv  \
--b .beta \
+-b .beta.tsv \
 -o $here
   
 ```
@@ -194,14 +193,35 @@ output
 
 
 
-Cleanup:
+## Confirm expected results
 
 ```
-this_archive_folder=/mnt/splicedice_example_`date "+%Y.%m.%d_%H.%M.%S"`
+cat .pvals.tsv  | rowsToCols stdin stdout -tab -varCol | grep -v query | awk '{printf "%s %.2f %.2f\n",$1,$2,$3}' | cut -f2,3 -d" " | sort | uniq -c
+```
+
+
+
+expected: 
+
+11 have one phenotype and 35 have another
+
+observed:
+
+```
+     35 0.00 1.00
+     11 1.00 0.00
+```
+
+
+
+# Cleanup and archive
+
+(failed; human error)
+
+```
+cd /mnt
+this_archive_folder=/mnt/splicedice_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`
 echo $this_archive_folder
 mv /mnt/splicedice_example $this_archive_folder
 ```
 
-
-
-mv /mnt/splicedice_example
