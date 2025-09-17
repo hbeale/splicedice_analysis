@@ -1,0 +1,126 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+
+```{r setup}
+
+library(tidyverse)
+library(janitor)
+library(here)
+
+```
+
+
+```{r}
+
+this_manifest_file <- here("2025-05_tcga_luad_download/batch_2_bam_manifest.with_genotypes.2025.09.10_10.03.13.tsv")
+
+manifest <- 
+  read_tsv(this_manifest_file,
+           col_names = c("sample_name",
+                         "bam_file_path",
+                         "id1",
+                         "id2")) %>%
+  mutate(file_name = str_remove(bam_file_path, "^.*/"))
+
+
+
+```
+
+check features
+```{r}
+
+gdc_sample_sheet <- read_tsv(here("2025-05_tcga_luad_sig_from_bam/gdc_sample_sheet.2025-05-22.tsv"))
+lc_no_space <- function(x) str_replace_all(x, " ", "_") %>% tolower()
+gdc_sample_sheet_renamed <- gdc_sample_sheet %>% rename_with(lc_no_space)
+
+```
+
+```{r}
+
+manifest_anno <- left_join(manifest,
+          gdc_sample_sheet_renamed,
+          by="file_name")
+
+# batch_2_bam_manifest_with_gt_anno <- left_join(batch_2_bam_manifest_with_gt %>%
+#                                                                   mutate(gdc_file_uuid = str_remove(sample_name, "^.*_")),
+#           gdc_sample_sheet_renamed, by=c("gdc_file_uuid" = "file_id"))
+
+
+```
+
+
+# review sample features
+```{r}
+
+n_unique <- function(x) length(unique(x))
+
+unique_sample_vals <- manifest_anno %>%
+#   mutate(across(everything(), as.character)) %>%
+  ungroup %>%
+  summarize(across(everything(),  n_unique)) %>%
+  pivot_longer(everything())
+
+unique_sample_vals
+
+
+```
+# Features shared by all samples
+```{r}
+
+manifest_anno %>%
+  select(unique_sample_vals %>%
+           filter(value == 1) %>%
+           pull(name)) %>%
+  distinct()
+  
+
+```
+
+# Features that differ
+```{r}
+
+tabyl(manifest_anno,
+      specimen_type)
+
+tabyl(manifest_anno,
+      preservation_method)
+
+```
+# Table of sample features
+```{r}
+
+manifest_anno_for_display <- 
+  manifest_anno %>%
+  rename(u2af1_status = id1) %>%         
+  arrange(u2af1_status) %>%
+  mutate(sample_id = factor(sample_id, levels = unique(sample_id))) %>%
+  select(sample_id, 
+         u2af1_status,
+         specimen_type,
+         preservation_method)
+
+manifest_anno_for_display
+         
+```
+
+# Plot of sample features
+```{r}
+
+ manifest_anno_for_display %>%
+  pivot_longer(-sample_id) %>%
+  ggplot(aes(x=sample_id, y=name, fill = value)) +
+  geom_tile() +
+  scale_fill_brewer(palette = "Set1")  +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+```
+
+
+
