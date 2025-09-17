@@ -20,7 +20,7 @@ done
 
 message:
 
-I copied 46 bam files to mustard. 11 have the U2AF1 S34F mutant files. the samples are characterized here:
+I copied 46 bam files to mustard. 11 have the U2AF1 S34F mutation. the samples are characterized here:
 
 
 
