@@ -1,5 +1,11 @@
 [TOC]
 
+# Change on next run
+
+The bam_files dir isn't necessary
+
+
+
 # Steps
 
 1. Download repository
@@ -72,7 +78,7 @@ git clone https://github.com/BrooksLabUCSC/splicedice.git
 cd /mnt/splicedice_example/git_code/splicedice/
 python3 -m venv splicedice_env
 splicedice_env/bin/pip install .
-source splicedice_env/bin/activate
+source /mnt/splicedice_example/git_code/splicedice/splicedice_env/bin/activate
 pip install pysam
 splicedice
 ```
@@ -122,6 +128,35 @@ _junctions.bed
 _allClusters.tsv
 ```
 
+std out
+
+```
+Parsing manifest...
+        Done [0:00:0.33]
+Getting all junctions from 46 files...
+        Done [0:01:16.58]
+Finding clusters from 524247 junctions...
+        Done [0:00:15.36]
+Writing cluster file...
+        Done [0:00:26.60]
+Writing junction bed file...
+        Done [0:00:2.73]
+Gathering junction counts...
+        Done [0:00:51.29]
+Writing inclusion counts...
+        Done [0:00:25.87]
+Calculating PS values...
+/mnt/splicedice_example/git_code/splicedice/splicedice_env/lib/python3.12/site-packages/splicedice/SPLICEDICE.py:306: RuntimeWarning: invalid value encountered in divide
+  psi[self.junctionIndex[junction],:] = inclusions / (inclusions + exclusions)
+        Done [0:02:6.04]
+Writing PS values...
+        Done [0:00:27.83]
+All done [0:05:52.63]
+
+```
+
+
+
 ## Signature analysis
 
 
@@ -150,6 +185,15 @@ output
 .sig.tsv
 ```
 
+std out
+
+```
+Testing for differential splicing...
+Groups: u2af1-wt (35), u2af1-s34f (11)
+Writing...
+
+```
+
 
 
 ## Generate beta fit of signature
@@ -168,6 +212,15 @@ output
 
 ```
 .beta.tsv
+```
+
+std out
+
+```
+Reading...
+Fitting beta distributions...
+significant intervals: 2693
+Writing files...
 ```
 
 
@@ -192,6 +245,17 @@ output
 
 
 
+std out
+
+```
+Reading...
+Querying...
+Writing...
+
+```
+
+
+
 ## Confirm expected results
 
 ```
@@ -202,13 +266,14 @@ cat .pvals.tsv  | rowsToCols stdin stdout -tab -varCol | grep -v query | awk '{p
 
 expected: 
 
-11 have one phenotype and 35 have another
+11 datasets have one phenotype and 35 have another
 
-observed:
+observation confirms it:
 
 ```
      35 0.00 1.00
      11 1.00 0.00
+
 ```
 
 
@@ -219,9 +284,9 @@ observed:
 
 ```
 cd /mnt
-this_archive_folder=/mnt/splicedice_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`
+this_archive_folder=/mnt/splicedice_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`/
 echo $this_archive_folder
 mv /mnt/splicedice_example $this_archive_folder
 ```
 
-/mnt/splicedice_example_archives/2025.09.16_22.59.27
+/mnt/splicedice_example_archives/2025.10.01_23.41.25/
