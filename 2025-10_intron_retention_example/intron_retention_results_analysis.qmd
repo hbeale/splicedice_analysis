@@ -1,0 +1,26 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+
+```
+
+
+
+to get data
+```
+scp ubuntu@10.50.100.135://mnt/splicedice_ir_example_archives/2025.10.03_22.17.53/analysis/_intron_retention.tsv large_data/ir_example_2025.10.03_22.17.53/
+```
+
+```{r}
+ir_table <- read_tsv("large_data/ir_example_2025.10.03_22.17.53/_intron_retention.tsv")
+```
+
