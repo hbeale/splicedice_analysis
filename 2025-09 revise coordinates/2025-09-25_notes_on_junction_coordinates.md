@@ -57,6 +57,14 @@ chr1    14829   15020   chr1:14829-15020:+      0       +
 
 ```
 
+in future we would expect to see
+
+```
+chr1    11844   12009   chr1:11845-12009:+      0       +
+```
+
+
+
 ## allPS
 
 ```
@@ -99,58 +107,51 @@ chr1:14829-14969:-      0       0       0       0       0
 
 ```
 
+# Strategy
 
+At what point should ee revise the coordinates? at write? at process? if process, should I redefine blocks?
+
+Currently i lean toward revising them at the end, which would affect fewer parts of the code
+
+
+
+# 
 
 # Relevant code
 
+### Writing bed files
 
+in function getJunctionsFromBam
 
-## line [126](https://github.com/BrooksLabUCSC/splicedice/blob/da045c486e314e6f7db253998d886a163172295b/splicedice/bam_to_junc_bed.py#L126) blocks = read.get_blocks():
+```
+with open(bedfilename,"w") as bedOut:
+            for junction in filteredJunctions:
+                chromosome,left,right,strand = junction
+                name = f"e:{leftEntropy[junction]:0.02f}:{rightEntropy[junction]:0.02f};o:{overhangs[junction]};m:{leftMotif[(chromosome,left)]}_{rightMotif[(chromosome,right)]};a:{self.annotated.get(junction,'?')}"
+                bedOut.write(f"{chromosome}\t{left}\t{right}\t{name}\t{counts[junction]}\t{strand}\n")
 
-
-
-### read.get_blocks
-
-a list of start and end positions of aligned gapless blocks.
-
-The start and end positions are in genomic coordinates.
-
-Blocks are not normalized, i.e. two blocks might be directly adjacent. This happens if the two blocks are separated by an insertion in the read.
-
-```python
-read_start = blocks[0][0]
-read_end = blocks[-1][1]
+        return filename, bedfilename, len(filteredJunctions)
+        
 ```
 
 
 
-the junction is defined as the end of one block (`blocks[i][1]`) and the start of the next (`blocks[i+1][0]`)
+prposed addition 
+
+immediately after this
 
 ```
-junction = (read.reference_name,blocks[i][1],blocks[i+1][0],strand)
-```
-
-
-
-calculating overhang
-
-left overhang = end of this block to beginning of this block (`blocks[i][1]-blocks[i][0]`)
-
-right overhang = end of next block to beginning of next block (`blocks[i+1][1]-blocks[i+1][0]`)
+chromosome,left,right,strand = junction
 
 ```
-leftOH = blocks[i][1]-blocks[i][0]
-rightOH = blocks[i+1][1]-blocks[i+1][0]
-overhang = min(leftOH,rightOH)
+
+add this
+
+```
+left = left-1 
 ```
 
 
-
-at what point should re revise the coordinates? at write? at process? if process, should I redefine blocks?
-
-
-
-currently i lean toward revising them at the end, which would affect fewer parts of the code
 
 
 
@@ -280,4 +281,43 @@ for junction in filteredJunctions:
 ```
 
 
+
+
+
+### Other places that use coordinates
+
+* read.get_blocks
+
+a list of start and end positions of aligned gapless blocks.
+
+The start and end positions are in genomic coordinates.
+
+Blocks are not normalized, i.e. two blocks might be directly adjacent. This happens if the two blocks are separated by an insertion in the read.
+
+```python
+read_start = blocks[0][0]
+read_end = blocks[-1][1]
+```
+
+
+
+the junction is defined as the end of one block (`blocks[i][1]`) and the start of the next (`blocks[i+1][0]`)
+
+```
+junction = (read.reference_name,blocks[i][1],blocks[i+1][0],strand)
+```
+
+
+
+calculating overhang
+
+left overhang = end of this block to beginning of this block (`blocks[i][1]-blocks[i][0]`)
+
+right overhang = end of next block to beginning of next block (`blocks[i+1][1]-blocks[i+1][0]`)
+
+```
+leftOH = blocks[i][1]-blocks[i][0]
+rightOH = blocks[i+1][1]-blocks[i+1][0]
+overhang = min(leftOH,rightOH)
+```
 

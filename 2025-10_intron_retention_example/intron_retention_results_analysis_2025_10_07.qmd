@@ -1,0 +1,256 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+library(here)
+library(janitor)
+
+```
+
+
+
+to get data
+```
+scp ubuntu@10.50.100.135://mnt/splicedice_ir_example_archives/2025.10.03_22.17.53/analysis/_intron_retention.tsv large_data/ir_example_2025.10.03_22.17.53/
+```
+
+```{r}
+ir_table <- read_tsv(here("large_data/ir_example_2025.10.03_22.17.53/_intron_retention.tsv"))
+javier_ir_table <- read_tsv(here("large_data/erj_data/SSA_Jurica_intron_retention.tsv"))
+```
+
+```{r}
+ir_table_long <- ir_table %>%
+  pivot_longer(-Junction,
+               names_to = "sample",
+               values_to = "IR") %>%
+  mutate(tx_group = str_replace(sample, "^.*_([A-Z]*)_.*$", "\\1"))
+
+summary(ir_table_long$IR)
+
+# What junction has the most inclusions
+ir_table_long %>%
+  group_by(Junction) %>%
+  summarize(total_junction_val = sum(IR)) %>%
+  filter(total_junction_val < 18) %>%
+  arrange(desc(total_junction_val)) %>%
+  head()
+```
+
+## What junction is the most different between two groups?
+```{r}
+ir_table_long_group_features_per_jxn <- ir_table_long %>%
+  filter(!tx_group == "DMSO") %>%
+  group_by(Junction, tx_group) %>%
+  mutate(n_group = sum(! is.na(IR)),
+         sd_group = sd(IR)) 
+
+this_jxn <- "chr5:140669690-140671268:+"
+
+
+ir_table_long_group_features_per_jxn  %>%
+         filter(Junction == this_jxn)
+
+
+ir_table_long_for_t_test <- ir_table_long_group_features_per_jxn %>%
+  group_by(Junction) %>%
+  filter(all(n_group > 5),
+         all(sd_group > 0.1)) %>%
+  na.omit()
+
+ttest_results <- ir_table_long_for_t_test %>%
+  group_by(Junction) %>%
+  summarize(p_val = 
+              (t.test(
+                IR[tx_group == "HB"],
+                IR[tx_group == "SSA"]))$p.value)
+
+ttest_results %>%
+  arrange(p_val) %>%
+  head()
+```
+
+why is this considered a junction? it looks like the 5' UTR of two genes
+maybe one is more highly expressed in different conditions
+```{r}
+this_jxn <- "chr5:140669690-140671268:+"
+
+ggplot(
+  ir_table_long %>%
+         filter(Junction == this_jxn),
+  aes(x = tx_group,
+               y = IR,
+      color = tx_group)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, height = 0) +
+  scale_color_brewer(palette = "Set1") +
+  ggtitle(this_jxn)
+
+```
+
+```{r}
+
+this_jxn <- "chr17:41793801-41793997:+" #"GL000195.1:142240-167732:+"
+
+ir_table_long_for_t_test %>%
+  filter(Junction == this_jxn)
+
+ir_table_long_group_features_per_jxn %>%
+  arrange(sd_group) %>%
+  head
+
+summary(ir_table_long_group_features_per_jxn$sd_group)
+
+
+#                       
+# ir_table_long_group_features_per_jxn %>%
+#   group_by(Junction) %>%
+#   mutate(n_HB_group = sum(tx_group == "HB"),
+#             n_SSA_group = sum(tx_group == "SSA")) %>%
+#   filter(n_HB_group > 3, 
+#          n_SSA_group > 3) %>%
+#   sum
+# 
+# (
+#             n_SSA_group = sum(tx_group == "SSA")) %>%
+#   filter(n_HB_group > 3, 
+#          n_SSA_group > 3) %>%
+#   summarize(p_val = (t.test(IR[tx_group == "HB"],
+# 
+#                             
+# ir_table_long %>%
+#   na.omit() %>%
+#   group_by(Junction) %>%
+#   mutate(n_HB_group = sum(tx_group == "HB"),
+#             n_SSA_group = sum(tx_group == "SSA")) %>%
+#   filter(n_HB_group > 3, 
+#          n_SSA_group > 3) %>%
+#   summarize(p_val = (t.test(IR[tx_group == "HB"],
+#                                IR[tx_group == "SSA"]))$p.value)
+# 
+# 
+# ir_table_long %>%
+#   filter(Junction == "chr11:12259897-12260635:+")
+# t.test(1:50, 50:100)
+```
+
+# compare to erj results
+```{r}
+
+javier_ir_table_long <- javier_ir_table %>%
+  pivot_longer(-Junction,
+               names_to = "sample",
+               values_to = "IR") %>%
+  mutate(tx_group = str_replace(sample, "^.*_([A-Z]*)_.*$", "\\1"),
+         S_number = str_remove(sample, "_.*$"))
+
+ir_table_long_for_comparison <- ir_table_long %>%
+  mutate(S_number = str_remove(sample, "_.*$"))
+
+table(ir_table_long_for_comparison$S_number)
+table(javier_ir_table_long$S_number)
+
+# my results have 45457 results; javier's have 35694 results
+
+head(ir_table_long)
+head(javier_ir_table_long)
+```
+
+# combine
+
+```{r}
+
+
+head(ir_table_long_for_comparison)
+head(javier_ir_table_long)
+
+both_IRs <- javier_ir_table_long %>%
+  select(S_number, Junction, erj_IR=IR) %>%
+  full_join(ir_table_long_for_comparison %>% rename(hcb_IR = IR),
+            by=c("Junction", "S_number")) %>%
+  mutate(chr = str_remove(Junction, ":.*$"),
+         identical_IR = hcb_IR == erj_IR)
+
+tabyl(both_IRs,
+      identical_IR) %>%
+  adorn_pct_formatting() %>%
+  mutate(n=scales::number(n, big.mark = ","))
+
+
+```
+# a bunch of tooting around
+```{r}
+ 
+tabyl(both_IRs, chr)
+
+both_IRs_anno <- both_IRs %>%
+  filter(! (is.na(erj_IR) & is.na(hcb_IR)))   %>%
+  #filter(chr== "GL000008.2") %>%
+  group_by(chr) %>%
+  mutate(only_in_HB = is.na(erj_IR),
+            only_in_ERJ = is.na(hcb_IR),
+            in_both = (! is.na(erj_IR)) &  (! is.na(hcb_IR)))
+         
+   #      n()-only_in_HB-only_in_ERJ)
+  
+ table_of_chr_usage <- both_IRs_anno %>%
+   summarize(only_in_HB = sum(only_in_HB, na.rm = TRUE),
+            only_in_ERJ = sum(only_in_ERJ, na.rm = TRUE),
+            in_both = (sum(in_both, na.rm = TRUE)))
+
+both_IRs %>%
+  filter(chr== "GL000008.2")
+
+both_IRs_anno %>%
+  filter(str_detect(chr, "chr"),
+         only_in_HB) %>%
+  head
+
+both_IRs_anno %>%
+  filter(str_detect(chr, "chr"),
+         only_in_HB,
+         hcb_IR > 0) %>%
+  head
+
+
+both_IRs_anno %>%
+  filter(str_detect(chr, "chr"),
+         ! (hcb_IR > 0 & is.na(erj_IR))) %>%
+  head
+         
+
+both_IRs_have_values_in_chr_discrepant <- both_IRs_anno %>%
+  filter(str_detect(chr, "chr"),
+         erj_IR != hcb_IR,
+         ! (hcb_IR > 0 & is.na(erj_IR)))
+
+
+
+both_IRs_anno %>%
+  filter(str_detect(chr, "chr"),
+         erj_IR == hcb_IR,
+         ! (hcb_IR > 0 & is.na(erj_IR))) %>%
+  head
+
+
+both_IRs_anno %>%
+  filter(str_detect(chr, "chr"),
+         erj_IR == hcb_IR,
+         ! (hcb_IR > 0 & is.na(erj_IR))) %>%
+  head
+
+```
+
+```{r}
+ggplot(both_IRs_have_values_in_chr_discrepant) +
+  geom_hex(aes(x=erj_IR, y=hcb_IR))
+```
+

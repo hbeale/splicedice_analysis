@@ -1,0 +1,137 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+library(here)
+library(janitor)
+library(khroma) # for scale_fill_vibrant
+```
+
+
+
+
+```{r}
+ir_table <- read_tsv(here("large_data/ir_example_2025.10.08_21.47.01/_intron_retention.tsv"))
+javier_ir_table <- read_tsv(here("large_data/erj_data/SSA_Jurica_intron_retention.tsv"))
+```
+```{r}
+
+dim(ir_table)
+dim(javier_ir_table)
+```
+
+## Were the same junctions found in both?
+```{r}
+  
+identical(ir_table$Junction, javier_ir_table$Junction)
+
+
+```
+
+# Combine data
+```{r}
+ir_table_long <- ir_table %>%
+  pivot_longer(-Junction,
+               names_to = "sample",
+               values_to = "IR") %>%
+  mutate(tx_group = str_replace(sample, "^.*_([A-Z]*)_.*$", "\\1"),
+         S_number = str_remove(sample, "_.*$"))
+
+
+javier_ir_table_long <- javier_ir_table %>%
+  pivot_longer(-Junction,
+               names_to = "sample",
+               values_to = "IR") %>%
+  mutate(S_number = str_remove(sample, "_.*$"))
+
+
+both_IRs <- javier_ir_table_long %>%
+  select(S_number, Junction, erj_IR=IR) %>%
+  full_join(ir_table_long %>% rename(hcb_IR = IR),
+            by=c("Junction", "S_number")) %>%
+  mutate(chr = str_remove(Junction, ":.*$"),
+         identical_IR = hcb_IR == erj_IR)
+
+```
+
+# did I parse samples names right?
+```{r}
+
+identical(
+table(ir_table_long$S_number),
+table(javier_ir_table_long$S_number))
+
+
+```
+
+# explore values 
+```{r}
+both_IRs_anno <- both_IRs %>%
+  mutate(match_type = case_when(
+    is.na(erj_IR) & is.na(hcb_IR) ~ "both NA",
+    is.na(erj_IR) & hcb_IR == 0 ~ "erj_NA, hb 0",
+    is.na(hcb_IR) & erj_IR == 0 ~ "erj_0, hb NA",
+    is.na(erj_IR) | is.na(hcb_IR) ~ "1 is NA, other is not 0",
+    erj_IR==0 & hcb_IR==0 ~ "both are zero",
+    erj_IR==hcb_IR ~ "identical non-zero values",
+    erj_IR!=hcb_IR ~ "different values",
+    TRUE ~ "other"))
+
+tabyl(both_IRs_anno, match_type) %>%
+  arrange(desc(n)) %>%
+  adorn_pct_formatting() %>%
+  mutate(n=scales::number(n, big.mark = ","))
+  
+ 
+both_IRs_anno %>%
+  filter(match_type == "different values") %>%
+  head
+```
+
+# Non matching values aren't chromosome specific
+```{r}
+
+both_IRs_anno %>%
+  filter(match_type %in%
+           c("different values", "identical non-zero values")) %>%
+  ggplot() +
+  geom_bar(aes(x=chr, fill = match_type)) +
+  scale_fill_vibrant(scale_name="")   +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+both_IRs_anno %>%
+  filter(match_type %in%
+           c("different values", "identical non-zero values")) %>%
+  tabyl(chr, match_type) %>%
+  adorn_percentages() %>%
+  adorn_pct_formatting()
+
+both_IRs_anno %>%
+  filter(match_type == "different values") %>%
+  tabyl(S_number)
+ 
+```
+
+
+
+# Non matching values are usually, not not always similar
+```{r}
+ggplot(both_IRs_anno %>%
+  filter(match_type == "different values")) +
+  geom_hex(aes(x=erj_IR, y=hcb_IR))
+```
+
+# Summary
+Javier and I got similar but not identical intron retention results from the same bam files. 
+Do we want to figure out why, or should I proceed with my results as a test dataset? 
+
+Specifically, our results differed in 3.6% of results. While some discrepant results are close, some are very different (e.g. 0.24 vs 1). 
+
