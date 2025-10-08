@@ -1,4 +1,4 @@
-# 2025_10_07_downloads_for_u2af1_s34f_sig_lab_notebook
+# 2025_10_07-addl_downloads_for_u2af1_s34f_sig_lab_notebook
 
 
 
@@ -28,6 +28,8 @@ chmod 600 /mnt/gitCode/gdc_manifests/gdc-user-token.2025-10-07T23_47_32.543Z.txt
 
 
 ### make manifest
+
+Note: Luad_samples_U2_wt.tsv came from Javier via slack 10/7/2025
 
 ```
 cat /mnt/data/manifests/Luad_samples_U2_wt.tsv | grep -v Column | while read id ; do 
