@@ -7,9 +7,9 @@ library(tidyverse)
 ```
 
     Warning: package 'readr' was built under R version 4.2.3
-
+    
     Warning: package 'dplyr' was built under R version 4.2.3
-
+    
     ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
     ✔ dplyr     1.1.4     ✔ readr     2.1.5
     ✔ forcats   1.0.0     ✔ stringr   1.5.0
@@ -33,9 +33,9 @@ library(janitor)
 
 
     Attaching package: 'janitor'
-
+    
     The following objects are masked from 'package:stats':
-
+    
         chisq.test, fisher.test
 
 ``` r
@@ -51,7 +51,7 @@ ir_table <- read_tsv(here("large_data/ir_example_2025.10.08_21.47.01/_intron_ret
     Delimiter: "\t"
     chr  (1): Junction
     dbl (20): S73_HB_10001, S76_DMSO_4, S65_DMSO_1, S75_DMSO_3, S74_HB_10002, S6...
-
+    
     ℹ Use `spec()` to retrieve the full column specification for this data.
     ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
@@ -64,7 +64,7 @@ javier_ir_table <- read_tsv(here("large_data/erj_data/SSA_Jurica_intron_retentio
     Delimiter: "\t"
     chr  (1): Junction
     dbl (20): S65_DMSO, S66_DMSO, S75_DMSO, S76_DMSO, S73_HB10001, S74_HB10002, ...
-
+    
     ℹ Use `spec()` to retrieve the full column specification for this data.
     ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
@@ -265,7 +265,7 @@ both_IRs_anno %>%
 | S83      | 1581 | 0.0658942 |
 | S84      | 1407 | 0.0586421 |
 
-# Non matching values are usually, not not always similar
+# Non matching values are usually, not always similar
 
 ``` r
 ggplot(both_IRs_anno %>%

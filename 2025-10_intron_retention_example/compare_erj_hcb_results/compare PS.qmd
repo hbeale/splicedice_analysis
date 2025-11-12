@@ -1,0 +1,50 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+library(here)
+library(janitor)
+library(khroma) # for scale_fill_vibrant
+```
+
+
+
+
+```{r}
+# ps_table <- read_tsv(here("large_data/ps_example_2025.10.08_21.47.01/_intron_retention.tsv"))
+# javier_ps_table <- read_tsv(here("large_data/erj_data/SSA_Jurica_intron_retention.tsv"))
+
+ps_table <- read_tsv(here("large_data/ir_example_2025.10.08_21.47.01/_allPS.tsv"))
+javier_ps_table <- read_tsv(here("large_data/erj_data/SSA_Jurica_allPS.tsv"))
+
+
+```
+
+
+```{r}
+
+dim(ps_table)
+dim(javier_ps_table)
+```
+
+
+```{r}
+
+ps_table_long <- pivot_longer(ps_table,
+             -cluster)
+jps_table_long <- pivot_longer(javier_ps_table,
+             -cluster)
+
+range(jps_table_long$value, na.rm = TRUE)
+range(ps_table_long$value, na.rm = TRUE)
+
+```
+
