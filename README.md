@@ -6,4 +6,5 @@ This repo contains code I've used for various splicedice analysis. See also [my 
 | Identify validation data for intron retention  |  Figure out which version of mesa Javier used   | [Comparison](2025-10_intron_retention_example/compare_erj_hcb_results/2025_10-09%20Comparing%20Holly%20and%20Javier's%20mesa%20code.md) |
 | Identify validation data for intron retention |  Identical results using older code     | [2025_11_07_intron_retention_replication_retry.md](2025-10_intron_retention_example/replicate_erj_results_v2/2025_11_07_intron_retention_replication_retry.md) |
 | Identify validation data for intron retention |  Identical results using slighly less old code     | [2025_11_13_intron_retention_replication_retry_with_f833a58.md](2025-10_intron_retention_example/replicate_erj_results_v2/2025_11_13_intron_retention_replication_retry_with_f833a58.md) |
+| Identify validation data for intron retention |  Identical results using the latest code and Javier's scripts  | [2025_11_18_intron_retention_replication_retry_with_da045c4.md](2025-10_intron_retention_example/replicate_erj_results_v2/2025_11_18_intron_retention_replication_retry_with_da045c4.md) |
 
