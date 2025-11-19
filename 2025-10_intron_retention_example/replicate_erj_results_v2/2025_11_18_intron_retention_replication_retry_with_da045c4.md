@@ -218,7 +218,11 @@ bash  $this_script
 std out
 
 ```
-
+bam: /mnt/mustard_scratch/erj_public/Jurica_SSA/output/STAR/SSA104_S78.filteredAligned.sortedByCoord.out.bam
+number of junctions found: 501288
+saved to bed: /mnt/splicedice_ir_example/analysis/output/splicedice/bamtobed/SSA_junction_beds/SSA104_S78.filteredAligned.sortedByCoord.out.junc.bed
+new manifest written to: /mnt/splicedice_ir_example/analysis/output/splicedice/bamtobed/SSA_manifest.txt
+{"status":"OK","nsent":2,"apilimit":"1\/1000"}
 ```
 
 # RESUME HERE
@@ -228,7 +232,7 @@ std out
 updated; run these next when bam_to_bed is done
 
 ```
-old_base=/mnt/splicedice_ir_example_archives/2025.11.12_19.34.47/analysis/output/mesa/
+old_base=/mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice/
 new_base=/mnt/splicedice_ir_example/analysis/output/splicedice/
 ```
 
@@ -253,28 +257,15 @@ done
 
 
 
-results: all bed files are identical 2025.11.13_17.04.55
+results: all bed files are identical 
 
 
 
 # QUANT 
 
-copy previous script
-
-```
-prev_commit_dir=/mnt/splicedice_ir_example_archives/2025.11.12_19.34.47/analysis/
-prev_script_dir=${prev_commit_dir}/scripts/
-new_script_base=/mnt/splicedice_ir_example/analysis/scripts/
-this_script=SSA100_splicedice_quant.sh
-cp ${prev_script_dir}/${this_script/splicedice/mesa} $new_script_base/${this_script}
-
-nano ${new_script_base}/$this_script
-
-```
 
 
-
-/mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_quant.sh
+cat /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_quant.sh
 
 ```
 #!/bin/bash
@@ -286,11 +277,12 @@ genome="/mnt/ref/GRCh38.primary_assembly.genome.fa"
 out="/mnt/splicedice_ir_example/analysis/output/splicedice/quant/SSA_Jurica"
 mkdir -p `dirname $out`
 
-splicedice quant \ 
+splicedice quant \
 -m ${BDMF} \
 -o ${out}
 
 ~/alert_msg.sh "$0 complete"
+
 
 ```
 
@@ -306,25 +298,25 @@ std out
 Parsing manifest...
         Done [0:00:0.00]
 Getting all junctions from 20 files...
-        Done [0:00:32.83]
+        Done [0:00:33.40]
 Finding clusters from 189859 junctions...
-        Done [0:00:1.40]
+        Done [0:00:1.35]
 Writing cluster file...
         Done [0:00:1.05]
 Writing junction bed file...
-        Done [0:00:0.78]
+        Done [0:00:0.75]
 Gathering junction counts...
-        Done [0:00:18.67]
+        Done [0:00:19.32]
 Writing inclusion counts...
-        Done [0:00:4.90]
+        Done [0:00:4.72]
 Calculating PS values...
 /mnt/splicedice_ir_example/git_code/splicedice/splicedice_env/lib/python3.12/site-packages/splicedice/SPLICEDICE.py:306: RuntimeWarning: invalid value encountered in divide
   psi[self.junctionIndex[junction],:] = inclusions / (inclusions + exclusions)
-        Done [0:00:4.63]
+        Done [0:00:4.73]
 Writing PS values...
-        Done [0:00:5.07]
-All done [0:01:9.33]
-{"status":"OK","nsent":2,"apilimit":"2\/1000"}
+        Done [0:00:4.91]
+All done [0:01:10.24]
+
 ```
 
 
@@ -337,7 +329,7 @@ compare output from one bam file
 
 ```
 
-old="/mnt/splicedice_ir_example_archives/2025.11.12_19.34.47/analysis/output/mesa/quant/SSA_Jurica_allPS.tsv"
+old="/mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice/quant/SSA_Jurica_allPS.tsv"
 new="/mnt/splicedice_ir_example/analysis/output/splicedice/quant/SSA_Jurica_allPS.tsv"
 diff --report-identical-files $old $new
 ```
@@ -350,7 +342,7 @@ identical
 
 ## Calculate intron_coverage for each sample
 
-nano /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_IRcoverage.sh
+cat /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_IRcoverage.sh
 
 ```
 #!/bin/bash
@@ -367,6 +359,7 @@ splicedice intron_coverage \
 
 ~/alert_msg.sh "$0 complete"
 
+
 ```
 
 
@@ -380,25 +373,19 @@ bash  /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_IRcoverage.s
 ```
 getting paths for bam files
 creating junction percentiles
+S65_DMSO starting 2.490098714828491
 ...
-S78_SSA counted 10974.943749666214
-S78_SSA done 10980.606030464172
-Your runtime was 10981.715834617615 seconds.
-Your runtime was 10995.562909603119 seconds.
+78_SSA done 11124.275036096573
+Your runtime was 11125.129986524582 seconds.
+{"status":"OK","nsent":2,"apilimit":"0\/1000"}
 ```
 
 ### compare outputs
 
 
 
-compare output from one bam file
-
-
-
-compare all
-
 ```
-old_base=/mnt/splicedice_ir_example_archives/2025.11.12_19.34.47/analysis/output/mesa//IR_coverage/SSA_Jurica/
+old_base=/mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice//IR_coverage/SSA_Jurica/
 new_base=/mnt/splicedice_ir_example/analysis/output/splicedice/IR_coverage/SSA_Jurica/
 
 
@@ -408,7 +395,7 @@ echo $id
 new=${new_base}/${id}_intron_coverage.txt
 old=${old_base}/${id}_intron_coverage.txt
 
-diff --report-identical-files $old $new #| sed 's/^.*identical/identical/'
+diff --report-identical-files $old $new | sed 's/^.*identical/identical/'
 done
 
 ```
@@ -419,7 +406,7 @@ all identical
 
 
 
-nano /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_IRtable.sh
+cat /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_IRtable.sh
 
 ```
 #!/bin/bash
@@ -448,10 +435,6 @@ bash  /mnt/splicedice_ir_example/analysis/scripts/SSA100_splicedice_IRtable.sh
 
 
 
-started at 2025.11.14_09.26.19
-
-
-
 std out
 
 ```
@@ -459,10 +442,9 @@ Gathering inclusion counts and clusters...
 Calculating IR values...
 /mnt/splicedice_ir_example/git_code/splicedice/splicedice_env/lib/python3.12/site-packages/splicedice/ir_table.py:120: RuntimeWarning: invalid value encountered in scalar divide
   RSD[sample][cluster] = np.std(covArray) / np.mean(covArray)
-  Done 168.9955370426178
+Done 180.7902810573578
 Writing output...
-{"status":"OK","nsent":2,"apilimit":"4\/1000"}
-(splicedice_env) ubuntu@hbeale-mesa:/mnt/splicedice_ir_example/git_code/splicedice$ 
+{"status":"OK","nsent":2,"apilimit":"1\/1000"}
 
 
 ```
@@ -476,7 +458,7 @@ Writing output...
 compare output from one bam file
 
 ```
-old="/mnt/splicedice_ir_example_archives/2025.11.12_19.34.47/analysis/output//mesa/IR_table/SSA_Jurica_intron_retention.tsv"
+old="/mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output//splicedice/IR_table/SSA_Jurica_intron_retention.tsv"
 new="/mnt/splicedice_ir_example/analysis/output/splicedice/IR_table/SSA_Jurica_intron_retention.tsv"
 diff --report-identical-files $old $new
 ```
@@ -484,10 +466,6 @@ diff --report-identical-files $old $new
 ```
 identical
 ```
-
-
-
-## 
 
 # Cleanup and archive
 
@@ -501,4 +479,4 @@ echo $this_archive_folder
 mv /mnt/splicedice_ir_example $this_archive_folder
 ```
 
-/mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/
+/mnt/splicedice_ir_example_archives/2025.11.19_17.21.27/
