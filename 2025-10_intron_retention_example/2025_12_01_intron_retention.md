@@ -334,10 +334,6 @@ identical
 
 
 
-## REsUME HERE
-
-
-
 
 
 ## Calculate intron_coverage
