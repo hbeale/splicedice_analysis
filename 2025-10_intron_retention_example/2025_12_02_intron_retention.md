@@ -335,3 +335,23 @@ SSA103_S77.filteredAligned.sortedByCoord.out.junc.bed
 475249 /mnt
 ```
 
+
+
+
+
+# Cleanup and archive
+
+
+
+```
+deactivate 
+cd /mnt
+this_archive_folder=/mnt/splicedice_ir_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`/
+echo $this_archive_folder
+mv /mnt/splicedice_ir_example $this_archive_folder
+```
+
+
+
+/mnt/splicedice_ir_example_archives/2025.12.03_22.25.53/
+
