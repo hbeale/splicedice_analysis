@@ -1,9 +1,5 @@
 
 
-
-
-
-
 # Versions
 
 AFAICT the only difference between my previous analysis (with results that differed from Javier's) and the ones that generated identical results are the different bam manifest (i renamed samples and used different phenotypes), and a different gene model
@@ -315,5 +311,27 @@ wc -l $old
 wc -l $new
 done
 
+```
+
+
+
+nearly all differ, e.g.
+
+```
+SSA101_S67.filteredAligned.sortedByCoord.out.junc.bed
+551156
+553475 /mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice//bamtobed/SSA_junction_beds/SSA101_S67.filteredAligned.sortedByCoord.out.junc.bed
+640469 /mnt/splicedice_ir_example/analysis//_junction_beds/SSA101_S67.filteredAligned.sortedByCoord.out.junc.bed
+
+
+SSA102_S68.filteredAligned.sortedByCoord.out.junc.bed
+451704
+452953 /mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice//bamtobed/SSA_junction_beds/SSA102_S68.filteredAligned.sortedByCoord.out.junc.bed
+527171 /mnt/splicedice_ir_example/analysis//_junction_beds/SSA102_S68.filteredAligned.sortedByCoord.out.junc.bed
+
+
+SSA103_S77.filteredAligned.sortedByCoord.out.junc.bed
+473105
+475249 /mnt
 ```
 
