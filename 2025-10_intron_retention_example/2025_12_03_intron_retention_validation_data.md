@@ -497,6 +497,7 @@ cp -R $this_archive_folder/* $ref_output_dir/
 ```
 cd $ref_output_dir/holly_analysis_repo
 git clone https://github.com/hbeale/splicedice_analysis.git
+# git pull https://github.com/hbeale/splicedice_analysis.git # (if there are updates)
 cp $ref_output_dir/holly_analysis_repo/splicedice_analysis/2025-10_intron_retention_example/2025_12_03_intron_retention_validation_data.md $ref_output_dir/README.md
 
 ```
