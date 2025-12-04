@@ -161,35 +161,18 @@ usage: splicedice [-h]
 
 
 
-## Make bam manifest
+## Copy and modify bam manifest
+
+modify javier's manifest to use current bam paths
 
 ```
-cat /mnt/splicedice_ir_example_archives/2025.10.03_22.17.53/analysis/bam_manifest.txt | sed 's/^S65_DMSO_1/S65_DMSO/' | \
-sed 's/^S66_DMSO_2/S66_DMSO/' | \
-sed 's/^S75_DMSO_3/S75_DMSO/' | \
-sed 's/^S76_DMSO_4/S76_DMSO/' | \
-sed 's/^S73_HB_10001/S73_HB10001/' | \
-sed 's/^S74_HB_10002/S74_HB10002/' | \
-sed 's/^S83_HB_10003/S83_HB10003/' | \
-sed 's/^S84_HB_10004/S84_HB10004/' | \
-sed 's/^S71_HB_1001/S71_HB1001/' | \
-sed 's/^S72_HB_1002/S72_HB1002/' | \
-sed 's/^S81_HB_1003/S81_HB1003/' | \
-sed 's/^S82_HB_1004/S82_HB1004/' | \
-sed 's/^S69_SSA_1001/S69_SSA/' | \
-sed 's/^S70_SSA_1002/S70_SSA/' | \
-sed 's/^S79_SSA_1003/S79_SSA/' | \
-sed 's/^S80_SSA_1004/S80_SSA/' | \
-sed 's/^S67_SSA_101/S67_SSA/' | \
-sed 's/^S68_SSA_102/S68_SSA/' | \
-sed 's/^S77_SSA_103/S77_SSA/' | \
-sed 's/^S78_SSA_104/S78_SSA/' > /mnt/splicedice_ir_example/analysis/bam_manifest.txt
+a=/mnt/mustard_scratch/erj_public/Jurica_SSA/scripts/Manifest_file.txt
+b=/mnt/data/bams/javier_erj_jurica_ssa/javier_erj_jurica_ssa_bam_manifest.txt
 
-diff <(cut -f1 /mnt/splicedice_ir_example/analysis/bam_manifest.txt ) <(cut -f1 /mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/scripts/Manifest_file.txt )
+paste <( cut -f1 $a) <(cut -f2 $b) <(cut -f3-4 $a) > /mnt/splicedice_ir_example/analysis/bam_manifest.txt
+
 
 ```
-
-(note column 4, tx, is still different)
 
 
 
@@ -198,7 +181,7 @@ diff <(cut -f1 /mnt/splicedice_ir_example/analysis/bam_manifest.txt ) <(cut -f1 
 ```
 cd /mnt/splicedice_ir_example/analysis
 
-genome=/mnt/ref/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+genome=/mnt/ref/GRCh38.primary_assembly.genome.fa
 genes=/mnt/ref/gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf
 here=/mnt/splicedice_ir_example/analysis/
 
@@ -246,98 +229,261 @@ _junction_beds/
 updated; run these next when bam_to_bed is done
 
 ```
-old_base=/mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice/
+old_base=/mnt/mustard_scratch/erj_public/Jurica_SSA/output/mesa/bamtobed/
 new_base=/mnt/splicedice_ir_example/analysis/
 cat /mnt/splicedice_ir_example/analysis/bam_manifest.txt | cut -f2 | while read bam; do
 echo 
 echo
 bed_file_name=`basename $bam | sed 's|.bam|.junc.bed|'`
 new=${new_base}/_junction_beds/$bed_file_name
-old=${old_base}/bamtobed/SSA_junction_beds/$bed_file_name
+old=${old_base}/SSA_junction_beds/$bed_file_name
 
 echo $bed_file_name
-# diff --report-identical-files $old $new | sed 's/^.*identical/identical/'
-diff --brief --report-identical-files $old $new  | sed 's/^.*differ/differ/'
+diff --report-identical-files $old $new | sed 's/^.*identical/identical/'
 done
 ```
 
 
 
-all different
 
-find example differences
+
+finding: results are identical
+
+duration: 34 min
+
+### Quantify splice junction usage
 
 ```
-cat /mnt/splicedice_ir_example/analysis/bam_manifest.txt | cut -f2 | while read bam; do
+splicedice quant -m _manifest.txt -o $here
+```
+
+output
+
+```
+_allPS.tsv
+_inclusionCounts.tsv
+_junctions.bed
+_allClusters.tsv
+```
+
+std out
+
+```
+Parsing manifest...
+        Done [0:00:0.00]
+Getting all junctions from 20 files...
+        Done [0:00:32.48]
+Finding clusters from 189859 junctions...
+        Done [0:00:1.61]
+Writing cluster file...
+        Done [0:00:1.07]
+Writing junction bed file...
+        Done [0:00:0.85]
+Gathering junction counts...
+        Done [0:00:18.89]
+Writing inclusion counts...
+        Done [0:00:4.79]
+Calculating PS values...
+/mnt/splicedice_ir_example/git_code/splicedice/splicedice_env/lib/python3.12/site-packages/splicedice/SPLICEDICE.py:306: RuntimeWarning: invalid value encountered in divide
+  psi[self.junctionIndex[junction],:] = inclusions / (inclusions + exclusions)
+        Done [0:00:4.66]
+Writing PS values...
+        Done [0:00:4.93]
+All done [0:01:9.29]
+
+
+```
+
+
+
+
+
+### compare outputs 
+
+updated; run these next when bam_to_bed is done
+
+```
+old=/mnt/mustard_scratch/erj_public/Jurica_SSA/output/mesa/quant/SSA_Jurica_allPS.tsv
+new=/mnt/splicedice_ir_example/analysis/_allPS.tsv
+diff --report-identical-files $old $new 
+
+```
+
+identical
+
+
+
+
+
+## Calculate intron_coverage
+
+```
+splicedice intron_coverage \
+-b bam_manifest.txt \
+-m _allPS.tsv \
+-j _junctions.bed \
+-n 6 \
+-o coverage_output
+
+```
+
+expected duration: 1 hour with 4 cores, 40 min with 6
+
+std out
+
+```
+...
+S77_SSA done 2225.3187968730927
+S78_SSA counted 2238.0456433296204
+S78_SSA done 2243.950135231018
+Your runtime was 2245.1341302394867 seconds.
+
+
+```
+
+### compare outputs
+
+
+
+```
+old_base=/mnt/mustard_scratch/erj_public/Jurica_SSA/output/mesa//IR_coverage/SSA_Jurica/
+new_base=/mnt/splicedice_ir_example/analysis/coverage_output/
+
+
+cat /mnt/splicedice_ir_example/analysis/_manifest.txt | cut -f1 | while read id; do
 echo 
-echo
-bed_file_name=`basename $bam | sed 's|.bam|.junc.bed|'`
-new=${new_base}/_junction_beds/$bed_file_name
-old=${old_base}/bamtobed/SSA_junction_beds/$bed_file_name
+echo $id
+new=${new_base}/${id}_intron_coverage.txt
+old=${old_base}/${id}_intron_coverage.txt
 
-echo $bed_file_name
-diff --report-identical-files <(head -1755 $old) <( head -1755 $new)
-done
-```
-
-```
-SSA104_S78.filteredAligned.sortedByCoord.out.junc.bed
-1752,1755c1752,1755
-< chr1  14829   14969   e:2.49:2.59;o:66;m:CT_AC;a:?    43      -
-< chr1  15038   15795   e:2.14:2.14;o:69;m:CT_AC;a:?    21      -
-< chr1  15175   72308   e:0.00:0.00;o:9;m:CC_TA;a:?     1       -
-< chr1  16577   72307   e:0.00:0.00;o:10;m:AT_CT;a:?    1       -
----
-> chr1  14829   14969   e:2.13:2.08;o:47;m:NN_NN;a:?    21      +
-> chr1  14829   14969   e:2.49:2.59;o:66;m:NN_NN;a:?    22      -
-> chr1  15038   15795   e:1.55:1.55;o:68;m:NN_NN;a:?    7       +
-> chr1  15038   15795   e:2.14:2.14;o:69;m:NN_NN;a:?    14      -
-
-```
-
-
-
-how many differ?
-
-
-
-```
-cat /mnt/splicedice_ir_example/analysis/bam_manifest.txt | cut -f2 | while read bam; do
-echo 
-echo
-bed_file_name=`basename $bam | sed 's|.bam|.junc.bed|'`
-new=${new_base}/_junction_beds/$bed_file_name
-old=${old_base}/bamtobed/SSA_junction_beds/$bed_file_name
-
-echo $bed_file_name
-# diff --report-identical-files <(head -1755 $old) <( head -1755 $new)
-# diff -U 0 $old $new | grep ^@ | head
-diff --suppress-common-lines   $old $new | grep "^<" | wc -l
-wc -l $old
-wc -l $new
+diff --report-identical-files $old $new | sed 's/^.*identical/identical/'
 done
 
 ```
 
+all identical
 
-
-nearly all differ, e.g.
+## Generate inclusion count table
 
 ```
-SSA101_S67.filteredAligned.sortedByCoord.out.junc.bed
-551156
-553475 /mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice//bamtobed/SSA_junction_beds/SSA101_S67.filteredAligned.sortedByCoord.out.junc.bed
-640469 /mnt/splicedice_ir_example/analysis//_junction_beds/SSA101_S67.filteredAligned.sortedByCoord.out.junc.bed
+splicedice ir_table \
+--makeRSDtable \
+--annotation $genes \
+-i _inclusionCounts.tsv \
+-c _allClusters.tsv \
+-d coverage_output \
+-o ${here}
+```
+
+expected duration, 5 min
+
+```
+Gathering inclusion counts and clusters...
+Calculating IR values...
+/mnt/splicedice_ir_example/git_code/splicedice/splicedice_env/lib/python3.12/site-packages/splicedice/ir_table.py:120: RuntimeWarning: invalid value encountered in scalar divide
+  RSD[sample][cluster] = np.std(covArray) / np.mean(covArray)
+Done 174.06683897972107
+Writing output...
+(splicedice_env) ubuntu@hbeale-mesa:/mnt/splicedice_ir_example/analysis$ 
 
 
-SSA102_S68.filteredAligned.sortedByCoord.out.junc.bed
-451704
-452953 /mnt/splicedice_ir_example_archives/2025.11.17_18.22.56/analysis/output/splicedice//bamtobed/SSA_junction_beds/SSA102_S68.filteredAligned.sortedByCoord.out.junc.bed
-527171 /mnt/splicedice_ir_example/analysis//_junction_beds/SSA102_S68.filteredAligned.sortedByCoord.out.junc.bed
+```
 
 
-SSA103_S77.filteredAligned.sortedByCoord.out.junc.bed
-473105
-475249 /mnt
+
+output
+
+```
+_intron_retention_RSD.tsv
+```
+
+
+
+### compare outputs
+
+
+
+```
+old="/mnt/mustard_scratch/erj_public/Jurica_SSA/output/mesa/IR_table/SSA_Jurica_intron_retention.tsv"
+new="/mnt/splicedice_ir_example/analysis/_intron_retention.tsv"
+diff --report-identical-files $old $new
+
+diff --report-identical-files <(cut $old -f1-5 | head) <( cut $new -f1-5 | head)
+
+```
+
+```
+not identical; column names are in different order
+```
+
+# 
+
+```
+R 
+library(tidyverse)
+old_ir_table <- read_tsv("/mnt/mustard_scratch/erj_public/Jurica_SSA/output/mesa/IR_table/SSA_Jurica_intron_retention.tsv")
+new_ir_table <- read_tsv("/mnt/splicedice_ir_example/analysis/_intron_retention.tsv")
+
+old_ir_table_long <- pivot_longer(old_ir_table, -Junction) %>% mutate(old = TRUE)
+new_ir_table_long <- pivot_longer(new_ir_table, -Junction) %>% mutate(new = TRUE)
+
+combined_tables <- full_join(old_ir_table_long, new_ir_table_long)
+table(combined_tables$new, useNA = "always")
+table(combined_tables$old, useNA = "always")
+head (combined_tables)
+```
+
+
+
+```
+> table(combined_tables$new, useNA = "always")
+table(combined_tables$old, useNA = "always")
+
+  TRUE   <NA> 
+713880      0 
+
+  TRUE   <NA> 
+713880      0 
+> head (combined_tables)
+# A tibble: 6 × 5
+  Junction               name        value old   new  
+  <chr>                  <chr>       <dbl> <lgl> <lgl>
+1 KI270721.1:7404-7976:+ S65_DMSO        0 TRUE  TRUE 
+2 KI270721.1:7404-7976:+ S66_DMSO        0 TRUE  TRUE 
+3 KI270721.1:7404-7976:+ S75_DMSO        0 TRUE  TRUE 
+4 KI270721.1:7404-7976:+ S76_DMSO        0 TRUE  TRUE 
+5 KI270721.1:7404-7976:+ S73_HB10001     0 TRUE  TRUE 
+6 KI270721.1:7404-7976:+ S74_HB10002     0 TRUE  TRUE 
+```
+
+identical
+
+
+
+# Cleanup and archive
+
+
+
+```
+deactivate 
+cd /mnt
+this_archive_folder=/mnt/splicedice_ir_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`/
+echo $this_archive_folder
+mv /mnt/splicedice_ir_example $this_archive_folder
+```
+
+
+
+/mnt/splicedice_ir_example_archives/2025.12.04_17.56.06/
+
+# Record as canonical output
+
+
+
+```
+ref_output_dir=/mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06
+mkdir -p $ref_output_dir
+cp -R $this_archive_folder/* $ref_output_dir/
+
 ```
 
