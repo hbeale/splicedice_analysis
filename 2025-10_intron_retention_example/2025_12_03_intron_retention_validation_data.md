@@ -2,7 +2,7 @@
 
 # Goal
 
-generate a stable example of intron retention
+generate a stable example of  running the intron retention portion of the splicedice code
 
 # Code version
 
@@ -478,16 +478,48 @@ mv /mnt/splicedice_ir_example $this_archive_folder
 
 # Record as canonical output
 
-
+## on hbeale-mesa open stack
 
 ```
 ref_output_dir=/mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06
 mkdir -p $ref_output_dir
 cp -R $this_archive_folder/* $ref_output_dir/
 
-this_file=https://raw.githubusercontent.com/hbeale/splicedice_analysis/refs/heads/main/2025-10_intron_retention_example/2025_12_03_intron_retention_validation_data.md
+```
 
-wget --output-document $ref_output_dir/2025_12_03_intron_retention_validation_data.md $this_file 
-wget --output-document $ref_output_dir/README.md $this_file 
+```
+cd $ref_output_dir/holly_analysis_repo
+git clone https://github.com/hbeale/splicedice_analysis.git
+cp $ref_output_dir/holly_analysis_repo/splicedice_analysis/2025-10_intron_retention_example/2025_12_03_intron_retention_validation_data.md $ref_output_dir/README.md
+
+```
+
+## copy to brooks lab file location on mustard
+
+(run command from mustard)
+
+note; I chose not to include bed and coverage files; may revise on angela's feedback
+
+```
+mustard_dest=/private/groups/brookslab/hbeale/splicedice_ir_reference_output/2025.12.04_17.56.06
+mkdir $mustard_dest
+scp ubuntu@10.50.100.135:/mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06/analysis/* $mustard_dest
+```
+
+
+
+```
+hcbeale@mustard:/private/groups/brookslab/hbeale$ scp ubuntu@10.50.100.135:/mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06/analysis/* $mustard_dest/
+_allClusters.tsv                                                                                                100%   23MB  17.1MB/s   00:01    
+_allPS.tsv                                                                                                      100%   25MB  17.1MB/s   00:01    
+_inclusionCounts.tsv                                                                                            100%   14MB  31.9MB/s   00:00    
+_intron_retention.tsv                                                                                           100% 4959KB  12.7MB/s   00:00    
+_intron_retention_RSD.tsv                                                                                       100% 4693KB  15.6MB/s   00:00    
+scp: /mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06/analysis/_junction_beds: not a regular file
+_junctions.bed                                                                                                  100% 9948KB  36.9MB/s   00:00    
+_manifest.txt                                                                                                   100% 2508     1.1MB/s   00:00    
+bam_manifest.txt                                                                                                100% 2372     1.1MB/s   00:00    
+scp: /mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06/analysis/coverage_output: not a regular file
+
 ```
 
