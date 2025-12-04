@@ -485,5 +485,9 @@ ref_output_dir=/mnt/splicedice_ir_reference_output/ir/2025.12.04_17.56.06
 mkdir -p $ref_output_dir
 cp -R $this_archive_folder/* $ref_output_dir/
 
+this_file=https://raw.githubusercontent.com/hbeale/splicedice_analysis/refs/heads/main/2025-10_intron_retention_example/2025_12_03_intron_retention_validation_data.md
+
+wget --output-document $ref_output_dir/2025_12_03_intron_retention_validation_data.md $this_file 
+wget --output-document $ref_output_dir/README.md $this_file 
 ```
 
