@@ -56,13 +56,20 @@ df -h | grep mnt
 
 # Reference data
 
-Genome is 
+(Currently already downloaded. Following instructions are if it needs to be re-downloaded)
+
+
+
+```
+cd /mnt/ref
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_45/gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf.gz
+gzip -d gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf.gz 
 
 wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_49/GRCh38.primary_assembly.genome.fa.gz
+gzip -d GRCh38.primary_assembly.genome.fa.gz
+```
 
 
-
-Gene model is gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf
 
 
 
