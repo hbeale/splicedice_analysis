@@ -60,7 +60,7 @@ tabyl(all_93_samples_sig_manifest,
 # decision, train on 7 u2af1-s34f (64%, 7/11), test on 4
 # correspondingly, train on 52 u2af1-wt  (63%, 52/82), test on 30
 
-
+set.seed(59566)
 train_samples <- all_93_samples_sig_manifest  %>%
   group_by(genotype) %>%
   sample_frac(0.63)
@@ -116,7 +116,7 @@ intern = TRUE)
     [4] "Testing for differential splicing..."                      
     [5] "Groups: u2af1-wt (52), u2af1-s34f (7)"                     
     [6] "Writing..."                                                
-    [7] "{\"status\":\"OK\",\"nsent\":2,\"apilimit\":\"6\\/1000\"}" 
+    [7] "{\"status\":\"OK\",\"nsent\":2,\"apilimit\":\"0\\/1000\"}" 
 
 # review sig
 
@@ -124,12 +124,7 @@ intern = TRUE)
 sig <- read_tsv("/mnt/output/splicedice/tcga_batches_1_and_2_2025.06.04_train_test/.sig.tsv")
 ```
 
-    Warning: One or more parsing issues, call `problems()` on your data frame for details,
-    e.g.:
-      dat <- vroom(...)
-      problems(dat)
-
-    Rows: 4800 Columns: 9
+    Rows: 4739 Columns: 9
     ── Column specification ────────────────────────────────────────────────────────
     Delimiter: "\t"
     chr (1): splice_interval
@@ -144,12 +139,12 @@ head(sig)
 
 | splice_interval | median_u2af1-wt | mean_u2af1-wt | delta_u2af1-wt | pval_u2af1-wt | median_u2af1-s34f | mean_u2af1-s34f | delta_u2af1-s34f | pval_u2af1-s34f |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|
-| chr1:17368-17605:+ | 0.6625 | 0.6646346 | -0.0045 | 0.5848980 | 0.782 | 0.8050000 | 0.115 | 0.0240652 |
-| chr1:17368-17605:- | 0.7965 | 0.7929038 | -0.0065 | 0.6383720 | 0.935 | 0.8965714 | 0.132 | 0.0281425 |
-| chr1:185350-185490:- | 0.9365 | 0.9360000 | 0.0015 | 0.9260954 | 1.000 | 0.9917143 | 0.065 | 0.0106709 |
-| chr1:729955-735422:- | 0.1035 | 0.0907115 | 0.0045 | 0.7060118 | 0.000 | 0.0181429 | -0.099 | 0.0108796 |
-| chr1:732207-732980:- | 0.2355 | 0.2630385 | -0.0055 | 0.6846868 | 0.325 | 0.3287143 | 0.084 | 0.0253634 |
-| chr1:733364-735422:+ | 0.6470 | 0.6547500 | -0.0150 | 0.3244762 | 0.889 | 0.8451429 | 0.227 | 0.0368684 |
+| chr1:146509-155766:- | 0.692 | 0.6433469 | -0.022 | 0.4276315 | 1.000 | 0.8844286 | 0.286 | 0.0336466 |
+| chr1:505103-514358:+ | 0.571 | 0.5864200 | -0.063 | 0.4025058 | 0.750 | 0.8200000 | 0.116 | 0.0234831 |
+| chr1:729955-732016:+ | 0.254 | 0.2649231 | -0.001 | 0.8755138 | 0.363 | 0.3815714 | 0.108 | 0.0046513 |
+| chr1:729955-735422:- | 0.106 | 0.0954808 | 0.007 | 0.4346658 | 0.000 | 0.0237143 | -0.099 | 0.0201451 |
+| chr1:1054551-1055215:- | 0.000 | 0.0216667 | 0.000 | 0.4268585 | 0.272 | 0.3128571 | 0.272 | 0.0128764 |
+| chr1:1309603-1309680:+ | 0.915 | 0.9149231 | -0.017 | 0.1769675 | 1.000 | 0.9891429 | 0.068 | 0.0171057 |
 
 # Fit beta
 
@@ -170,9 +165,9 @@ intern = TRUE)
     [3] ""                                                          
     [4] "Reading..."                                                
     [5] "Fitting beta distributions..."                             
-    [6] "significant intervals: 4794"                               
+    [6] "significant intervals: 4731"                               
     [7] "Writing files..."                                          
-    [8] "{\"status\":\"OK\",\"nsent\":2,\"apilimit\":\"7\\/1000\"}" 
+    [8] "{\"status\":\"OK\",\"nsent\":2,\"apilimit\":\"1\\/1000\"}" 
 
 # review beta
 
@@ -180,7 +175,7 @@ intern = TRUE)
 beta_result <- read_tsv("/mnt/output/splicedice/tcga_batches_1_and_2_2025.06.04_train_test/.beta.tsv")
 ```
 
-    Rows: 4794 Columns: 7
+    Rows: 4731 Columns: 7
     ── Column specification ────────────────────────────────────────────────────────
     Delimiter: "\t"
     chr (5): splice_interval, alpha_u2af1-wt, beta_u2af1-wt, alpha_u2af1-s34f, b...
@@ -195,12 +190,12 @@ head(beta_result)
 
 | splice_interval | median_u2af1-wt | alpha_u2af1-wt | beta_u2af1-wt | median_u2af1-s34f | alpha_u2af1-s34f | beta_u2af1-s34f |
 |:---|---:|:---|:---|---:|:---|:---|
-| chr1:17368-17605:- | 0.7965 | 4.590352940340863 | 1.1462647071949095 | 0.935 | 6.585018760413659 | 0.7478905349120508 |
-| chr1:17368-17605:+ | 0.6625 | 3.0280582395491717 | 1.3935642303772215 | 0.782 | 3.8144931343774404 | 0.8440088720178311 |
-| chr1:185350-185490:- | 0.9365 | 8.2175166578095 | 0.5513854032162009 | 1.000 | 41.78102922464994 | 0.39511755138086596 |
-| chr1:732207-732980:- | 0.2355 | 2.0787106363659222 | 5.637987638161149 | 0.325 | 30.508985245022096 | 62.21205072001571 |
-| chr1:729955-735422:- | 0.1035 | 0.5750087297695552 | 6.015566374595269 | 0.000 | 0.3726780757233011 | 19.196092409047296 |
-| chr1:733364-735422:+ | 0.6470 | 1.3057364994506764 | 0.6641101350726808 | 0.889 | 2.717216236612308 | 0.4566772548221096 |
+| chr1:146509-155766:- | 0.692 | 0.9170967912403953 | 0.46751953895661563 | 1.000 | 1.6946617063769505 | 0.21791191123747974 |
+| chr1:729955-732016:+ | 0.254 | 1.974712352043084 | 5.704662619005777 | 0.363 | 21.769087499518204 | 35.19994349619296 |
+| chr1:505103-514358:+ | 0.571 | 0.6989895554754314 | 0.43252446246094106 | 0.750 | 2.4568947303666753 | 0.4704397783455841 |
+| chr1:729955-735422:- | 0.106 | 0.7020316206409073 | 6.911652213373121 | 0.000 | 0.3393730509526135 | 13.451823147763394 |
+| chr1:1054551-1055215:- | 0.000 | 0.2506274782123892 | 9.776486167441364 | 0.272 | 0.3772625332677396 | 0.997991726357097 |
+| chr1:1309603-1309680:+ | 0.915 | 7.6048290817592274 | 0.6886754728173087 | 1.000 | 37.280484349289715 | 0.4466024634412238 |
 
 # Create PS file with only test samples
 
@@ -246,7 +241,7 @@ intern = TRUE)
     [3] "Reading..."                                                
     [4] "Querying..."                                               
     [5] "Writing..."                                                
-    [6] "{\"status\":\"OK\",\"nsent\":2,\"apilimit\":\"8\\/1000\"}" 
+    [6] "{\"status\":\"OK\",\"nsent\":2,\"apilimit\":\"2\\/1000\"}" 
 
 # review results
 
@@ -258,7 +253,7 @@ query_result <- read_tsv("/mnt/output/splicedice/tcga_batches_1_and_2_2025.06.04
     ── Column specification ────────────────────────────────────────────────────────
     Delimiter: "\t"
     chr  (1): query
-    dbl (34): TCGA-55-A4DF-01A_4a5e9e8a-8c48-48cf-8bf0-eb564611d382, TCGA-97-817...
+    dbl (34): TCGA-62-A471-01A_ae528992-720c-4818-ac5e-8e1b0509f9d9, TCGA-44-391...
 
     ℹ Use `spec()` to retrieve the full column specification for this data.
     ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -267,7 +262,7 @@ query_result <- read_tsv("/mnt/output/splicedice/tcga_batches_1_and_2_2025.06.04
 head(query_result)
 ```
 
-| query | TCGA-55-A4DF-01A_4a5e9e8a-8c48-48cf-8bf0-eb564611d382 | TCGA-97-8172-01A_ba6057cc-61fd-4d2f-8599-ed0a6aaf80b6 | TCGA-91-6836-01A_09c0af14-a98f-4939-a132-9efcb4c2bc57 | TCGA-67-3770-01A_f6284fb5-ab14-41a5-8d4f-63bde0394bfc | TCGA-86-6851-01A_788ecc45-ea2c-4197-9537-02016cfe14d3 | TCGA-44-2659-01A_704d42ab-3e11-4c3b-a74c-b1e6a30e27c5 | TCGA-MP-A4T4-01A_9eeae6b9-2031-47fa-80db-e04d53f0bfbd | TCGA-05-4395-01A_4d85514e-171d-46e4-b6db-43b4f8ff2eb0 | TCGA-55-6543-01A_5fa0513c-3de7-4d3b-9df0-83f2df36b947 | TCGA-97-8177-01A_39360ea0-c687-4856-bd05-bcde98012898 | TCGA-86-8075-01A_0c633b9e-3303-4625-b59d-02102d8bf981 | TCGA-78-8648-01A_9988cad6-0f42-4112-975c-814bfc3e91c3 | TCGA-05-5420-01A_216b822e-0d33-476f-ba03-18ff818f8a78 | TCGA-49-6744-01A_33c16d35-96da-4400-9f48-1fc7567e30a4 | TCGA-L9-A444-01A_b14f167e-72ec-432e-a374-6d9472eca448 | TCGA-64-1680-01A_16b44441-90d4-4289-8248-d31251f49f2b | TCGA-78-7149-01A_593cca0d-6f1f-447e-be54-24c4a6ad73c0 | TCGA-55-5899-01A_d289975b-8b9c-43be-91ec-10ebd401937f | TCGA-91-7771-01A_8459ed46-071c-42f6-ab9d-1a16424c8921 | TCGA-55-8207-01A_9e841128-e372-44dc-ada0-72be76782a2c | TCGA-55-8512-01A_f148c5ad-0710-4a88-9303-f83f6b07d5da | TCGA-97-7552-01A_810ef019-2069-46ec-903a-a47a2a8211ad | TCGA-38-A44F-01A_dd1d7a21-1235-4934-b0b2-d4d3a5bf35f8 | TCGA-55-8621-01A_2b987ab5-2a04-4046-bd60-cb219c9e74b5 | TCGA-78-8655-01A_6f343aec-65e1-44ad-b4db-339d4ed62373 | TCGA-44-5643-01A_a26c9cfc-b7cf-4157-8d75-d668602ed4ff | TCGA-55-8615-01A_b6d50fd3-1810-48d6-aab1-c97f9c29d194 | TCGA-55-A48Z-01A_f9a5ba92-d9d1-409b-91ba-2bfb209c295d | TCGA-99-8033-01A_dad25a07-fb2a-42d0-95b6-b072afbdaa7c | TCGA-44-5644-01A_0a34988b-4886-4852-9b03-7915c44a0647 | TCGA-95-7039-01A_7c1bff62-84a9-446d-b5dc-bf92cfe6c58e | TCGA-75-5146-01A_a8393e91-f334-4d1f-b13b-8008cf163fd0 | TCGA-55-7725-01A_44a3eb8c-135f-44f4-82bd-86fb6104a4e8 | TCGA-50-6590-01A_105ad832-c4e7-4622-8469-c558f5911bbf |
+| query | TCGA-62-A471-01A_ae528992-720c-4818-ac5e-8e1b0509f9d9 | TCGA-44-3917-01A_a124f52b-3a64-4642-ba61-9307ac5cb3bc | TCGA-44-3398-01A_347924ac-b049-4a8b-a298-ba3a246f58e9 | TCGA-67-3770-01A_f6284fb5-ab14-41a5-8d4f-63bde0394bfc | TCGA-62-8397-01A_b7dfe7a7-b569-4532-bc55-02665f4979e1 | TCGA-50-6592-01A_2528b21b-8145-4c2c-b946-dae173928f7c | TCGA-55-6543-01A_5fa0513c-3de7-4d3b-9df0-83f2df36b947 | TCGA-86-8075-01A_0c633b9e-3303-4625-b59d-02102d8bf981 | TCGA-05-4405-01A_35b18dab-9047-431b-b01b-1888d995d5dd | TCGA-05-4396-01A_d1945e55-eaa9-41f3-8017-380ccd112dfc | TCGA-55-7727-01A_86c05b02-68d0-473d-8aea-ab501cb40d29 | TCGA-05-5420-01A_216b822e-0d33-476f-ba03-18ff818f8a78 | TCGA-49-6744-01A_33c16d35-96da-4400-9f48-1fc7567e30a4 | TCGA-L9-A444-01A_b14f167e-72ec-432e-a374-6d9472eca448 | TCGA-64-1680-01A_16b44441-90d4-4289-8248-d31251f49f2b | TCGA-38-4625-01A_a35d80d8-8b94-4f66-b408-bbe19f3edd54 | TCGA-91-7771-01A_8459ed46-071c-42f6-ab9d-1a16424c8921 | TCGA-55-8512-01A_f148c5ad-0710-4a88-9303-f83f6b07d5da | TCGA-55-8206-01A_e87e6c78-12aa-4bda-8c7e-0c9c7b2cb774 | TCGA-38-A44F-01A_dd1d7a21-1235-4934-b0b2-d4d3a5bf35f8 | TCGA-55-6968-01A_40708d9c-1c51-4e7c-9ce2-185ea1480eb2 | TCGA-64-5775-01A_039e9a74-2e83-4962-ae9b-23f11d5c5fba | TCGA-55-8621-01A_2b987ab5-2a04-4046-bd60-cb219c9e74b5 | TCGA-05-4410-01A_243e1ddf-9b74-42c0-b357-13b302b039f9 | TCGA-80-5611-01A_c116d279-6f22-40c9-9521-d5e36af646e5 | TCGA-50-8460-01A_3dbc67a1-c49d-407c-867b-dc453f3aebc0 | TCGA-55-A48Z-01A_f9a5ba92-d9d1-409b-91ba-2bfb209c295d | TCGA-99-8033-01A_dad25a07-fb2a-42d0-95b6-b072afbdaa7c | TCGA-95-7039-01A_7c1bff62-84a9-446d-b5dc-bf92cfe6c58e | TCGA-75-5146-01A_a8393e91-f334-4d1f-b13b-8008cf163fd0 | TCGA-55-7725-01A_44a3eb8c-135f-44f4-82bd-86fb6104a4e8 | TCGA-50-6590-01A_105ad832-c4e7-4622-8469-c558f5911bbf | TCGA-50-5932-01A_98754b25-9c39-4830-b260-2d92b28f2e7a | TCGA-55-7573-01A_9b179934-f54d-4256-84bd-3e516685a119 |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | u2af1-wt_over_u2af1-s34f | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | u2af1-s34f_over_u2af1-wt | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
@@ -306,7 +301,7 @@ query_result_longer_with_genotypes %>%
 
 | query | id | pvalue_for_u2af1_s34f_match | pvalue_rounded | genotype |
 |:---|:---|---:|---:|:---|
-| u2af1-s34f_over_u2af1-wt | TCGA-MP-A4T4-01A_9eeae6b9-2031-47fa-80db-e04d53f0bfbd | 1 | 1 | u2af1-s34f |
+| u2af1-s34f_over_u2af1-wt | TCGA-55-7727-01A_86c05b02-68d0-473d-8aea-ab501cb40d29 | 1 | 1 | u2af1-s34f |
 | u2af1-s34f_over_u2af1-wt | TCGA-49-6744-01A_33c16d35-96da-4400-9f48-1fc7567e30a4 | 1 | 1 | u2af1-s34f |
 | u2af1-s34f_over_u2af1-wt | TCGA-64-1680-01A_16b44441-90d4-4289-8248-d31251f49f2b | 1 | 1 | u2af1-s34f |
-| u2af1-s34f_over_u2af1-wt | TCGA-78-8655-01A_6f343aec-65e1-44ad-b4db-339d4ed62373 | 1 | 1 | u2af1-s34f |
+| u2af1-s34f_over_u2af1-wt | TCGA-50-8460-01A_3dbc67a1-c49d-407c-867b-dc453f3aebc0 | 1 | 1 | u2af1-s34f |
