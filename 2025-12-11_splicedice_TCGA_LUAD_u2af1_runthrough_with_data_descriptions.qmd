@@ -1,0 +1,77 @@
+
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+
+```
+
+
+```{r}
+setwd("/mnt/splicedice_example/analysis")
+
+```
+# after splicedice quant
+```{r}
+list.files()
+```
+
+## show output
+```{r}
+allPS <- read_tsv("_allPS.tsv")
+inclusionCounts <- read_tsv("_inclusionCounts.tsv")
+junctions <- read_tsv("_junctions.bed", 
+                      col_names = c("chr", "start", "end", "name", "score", "strand"))
+allClusters <- read_tsv("_allClusters.tsv")
+```
+### allPS
+allPS contains one splicing cluster per row (named in the cluster column), and has a column for each analyzed RNA-Seq dataset (e.g. "TCGA-67-6215-01A0a26152a-462f-4895-8fe8-15fcdcc56e16"). The dataset columns contain the percent spliced of that cluster. The values can be NaN or 0-1
+```{r}
+allPS[1:6,1:6]
+
+long_allPS <- allPS %>%
+  pivot_longer(-cluster) 
+
+summary(long_allPS$value)
+  
+```
+
+### inclusionCounts
+inclusionCounts has the same format as allPS but contains ... inclusion counts? (To be confirmed) The values can be NaN or 0-1
+```{r}
+inclusionCounts[1:6,1:6]
+
+long_inclusionCounts <- inclusionCounts %>%
+  pivot_longer(-cluster) 
+
+summary(long_inclusionCounts$value)
+  
+```
+
+### junctions.bed
+a bed file describing reach identified junction. Score is not reported (e.g.is always 0). Strand is reported. Some junctions are reported on both the + and 1 strand
+```{r}
+
+
+junctions[1:6,1:6]
+# Score is not reported (e.g.is always 0).
+summary(junctions$score)
+
+# Strand is reported.
+table(junctions$strand)
+  
+junctions %>%
+  get_dupes(chr, start, end) %>%
+  head()
+
+
+```
+
