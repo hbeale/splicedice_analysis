@@ -439,17 +439,18 @@ dim(pvals)
 
 pvals[1:2,1:6]
 
-p_vals_transposed <- pvals %>%
-  pivot_longer(-query) %>%
+pvals_longer <- pvals %>%
+  pivot_longer(-query) 
+
+p_vals_transposed <- pvals_longer %>%
   pivot_wider(names_from = query)
   
-pvals %>%
-  pivot_longer(-query) %>%
+pvals_longer %>%
   pull(value) %>%
   range()
 
+summary(pvals_longer$value)
 
-apply(pvals[,-1], 2, summary)
 ```
 
 #### pval results

@@ -1,4 +1,3 @@
-
 ---
 title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
 author: "Holly Beale"
@@ -8,32 +7,114 @@ format:
     df-print: kable
 ---
 
+
+
+# Set up splicedice
+
+Note: this code runs on a computer that has had the following set up. 
+The "set up" commands are not run as part of the notebook
+
+## Reset from any previous runs
+
+Confirm example directory space is empty
+
+```         
+ls -alth /mnt/splicedice_example/
+```
+
+delete if it's not
+
+```         
+rm -r /mnt/splicedice_example/
+```
+
+Exit python environments if one is active
+
+```         
+deactivate
+```
+
+## Check reference files
+
+```         
+ls /mnt/ref/GRCh38.primary_assembly.genome.fa
+ls /mnt/ref/gencode.v47.primary_assembly.annotation.gtf
+```
+
+if they are not present, obtain them as described in https://github.com/hbeale/splicedice_analysis/blob/main/misc/reference_file_sources.md
+
+## Download repo
+
+this uses the latest splicedice code as of this run; I reset to this commit for reproducibility
+
+uses commit da045c4 from 9/16/2025
+
+url: https://github.com/BrooksLabUCSC/splicedice/commit/da045c486e314e6f7db253998d886a163172295b
+
+SHA1=da045c486e314e6f7db253998d886a163172295b
+
+```         
+mkdir -p /mnt/splicedice_example/git_code /mnt/splicedice_example/analysis
+cd /mnt/splicedice_example/git_code
+git clone https://github.com/BrooksLabUCSC/splicedice.git 
+
+SHA1=da045c486e314e6f7db253998d886a163172295b
+cd /mnt/splicedice_ir_example/git_code/splicedice
+git reset --hard $SHA1
+```
+
+## Create environment
+
+```         
+cd /mnt/splicedice_example/git_code/splicedice/
+python3 -m venv splicedice_env
+splicedice_env/bin/pip install .
+source /mnt/splicedice_example/git_code/splicedice/splicedice_env/bin/activate
+pip install pysam
+splicedice
+```
+
+## Get manifest
+
+```         
+wget https://raw.githubusercontent.com/hbeale/splicedice_analysis/refs/heads/main/2025-12_tcga_luad_reproducible_example/bam_manifest_of_46_TCGA_LUAD_with_11_U2AF1_S34F.tsv -P  /mnt/splicedice_example/analysis/
+```
+
+# Run splicedice
+
 ```{r setup}
 
 library(tidyverse)
 
 ```
 
-
 ```{r}
-setwd("/mnt/splicedice_example/analysis")
+base_dir <- "/mnt/splicedice_example/analysis"
+
 
 ```
+
 # after splicedice quant
+
 ```{r}
-list.files()
+list.files(base_dir)
 ```
 
 ## show output
+
 ```{r}
 allPS <- read_tsv("_allPS.tsv")
 inclusionCounts <- read_tsv("_inclusionCounts.tsv")
 junctions <- read_tsv("_junctions.bed", 
                       col_names = c("chr", "start", "end", "name", "score", "strand"))
-allClusters <- read_tsv("_allClusters.tsv")
+allClusters <- read_tsv("_allClusters.tsv", 
+                        col_names = c("cluster_id", ""))
 ```
+
 ### allPS
+
 allPS contains one splicing cluster per row (named in the cluster column), and has a column for each analyzed RNA-Seq dataset (e.g. "TCGA-67-6215-01A0a26152a-462f-4895-8fe8-15fcdcc56e16"). The dataset columns contain the percent spliced of that cluster. The values can be NaN or 0-1
+
 ```{r}
 allPS[1:6,1:6]
 
@@ -45,7 +126,9 @@ summary(long_allPS$value)
 ```
 
 ### inclusionCounts
+
 inclusionCounts has the same format as allPS but contains ... inclusion counts? (To be confirmed) The values can be NaN or 0-1
+
 ```{r}
 inclusionCounts[1:6,1:6]
 
@@ -57,7 +140,9 @@ summary(long_inclusionCounts$value)
 ```
 
 ### junctions.bed
+
 a bed file describing reach identified junction. Score is not reported (e.g.is always 0). Strand is reported. Some junctions are reported on both the + and 1 strand
+
 ```{r}
 
 
@@ -74,4 +159,196 @@ junctions %>%
 
 
 ```
+
+```{r}
+
+```
+
+### allClusters
+
+I'm not sure what this is. I assume it's any splice junctions are included in the cluster of splice junctions included in the cluster ID.
+
+The cluster (first column) isn't necessarily listed in part of the second column. It isn't necessarily the outermost span (e.g. chr1:12697-13402:+ is exceeded at the higher end by chr1:12721-13452:+)
+
+```{r}
+allClusters[1:6, 1:2]
+
+  
+```
+
+# Signature analysis
+
+## Prepare signature manifest
+
+```{r}
+system(paste0("cat ", base_dir, "/_manifest.txt | cut -f1,3 > ", base_dir, "/sig_manifest.txt"), intern = TRUE)
+```
+
+## Compare two conditions
+
+```{r}
+command_to_Compare_two_conditions <- paste("cd", base_dir, ";",
+"here=/mnt/splicedice_example/analysis/;",
+"python3 /mnt/splicedice_example/git_code/splicedice/scripts/signature.py compare",
+  "-p _allPS.tsv ", 
+  "-m sig_manifest.txt ", 
+  "-o $here"
+)
+
+command_to_Compare_two_conditions
+
+system(command_to_Compare_two_conditions, 
+       intern = TRUE)
+command_to_Compare_two_conditions
+```
+
+### sig
+
+.sig.tsv contains one splicing cluster per row (here called splice_intervals), and has four columns for each of the two conditions defined in the sig manifest (here u2af1-wt and u2af1-s34f). The columns contain summary statistics for samples in the condition (median, mean, delta and pval). Median, mean, and pval range from 0-1, delta's range is -1 to 1.
+
+```{r}
+
+sig <- read_tsv(file.path(base_dir, ".sig.tsv"))
+
+dim(sig)
+
+sig[1:6,1:6]
+
+long_allPS <- allPS %>%
+  pivot_longer(-cluster) 
+
+apply(sig[,-1], 2, summary)
+
+  
+```
+
+# Generate beta fit of signature
+
+```{r}
+command_to_generate_beta_fit_of_signature <- 
+  paste("cd", base_dir, ";",
+        "here=/mnt/splicedice_example/analysis/;",
+        "python3 /mnt/splicedice_example/git_code/splicedice/scripts/signature.py fit_beta",
+        "-p _allPS.tsv ", 
+        "-s .sig.tsv",
+        "-m sig_manifest.txt ", 
+        "-o $here"
+  )
+command_to_generate_beta_fit_of_signature
+
+system(command_to_generate_beta_fit_of_signature, 
+       intern = TRUE)
+
+```
+
+### beta
+
+.beta.tsv contains one splicing cluster per row (here called splice_intervals), and has three columns for each of the two conditions defined in the sig manifest (here u2af1-wt and u2af1-s34f). The columns contain summary statistics for samples in the condition (median, alpha and beta). Some alpha and bet values are "None"; maybe we should change those to NA.
+
+```{r}
+
+beta <- read_tsv(file.path(base_dir, ".beta.tsv"))
+
+dim(beta)
+
+beta[1:6,1:6]
+
+colnames(beta)
+
+longer_beta <- beta %>%
+  pivot_longer(-splice_interval,
+               values_transform = list(value = as.character)) 
+
+longer_beta %>%
+  group_by(name) %>%
+  filter(value == "None") %>%
+  summarize(n_none = n())
+
+
+longer_beta_numeric <- longer_beta %>%
+  filter(value != "None") %>%
+  type_convert()
+
+longer_beta_numeric %>% 
+  group_by(name) %>%
+  summarize(max = max(value),
+            min = min(value))
+
+  
+```
+
+# Query to find other matching samples
+
+```{r}
+
+command_to_find_matching_samples <- 
+  paste("cd", base_dir, ";",
+        "here=/mnt/splicedice_example/analysis/;",
+        "python3 /mnt/splicedice_example/git_code/splicedice/scripts/signature.py query",
+        "-p _allPS.tsv ", 
+        "-b .beta.tsv",
+        "-o $here"
+  )
+command_to_find_matching_samples
+
+system(command_to_find_matching_samples, 
+       intern = TRUE)
+
+
+```
+
+### pvals
+
+.pvals.tsv contains one condition per row and a column for each sample. The values of sample columns are p-values indicating whether the samples significantly matches the beta signature it was compared to.
+
+```{r}
+
+pvals <- read_tsv(file.path(base_dir, ".pvals.tsv"))
+
+dim(pvals)
+
+pvals[1:2,1:6]
+
+p_vals_transposed <- pvals %>%
+  pivot_longer(-query) %>%
+  pivot_wider(names_from = query)
+  
+pvals %>%
+  pivot_longer(-query) %>%
+  pull(value) %>%
+  range()
+
+
+apply(pvals[,-1], 2, summary)
+```
+
+#### pval results
+
+expected result: the 11 u2af1-s34f samples will match the signature results
+
+```{r}
+sig_manifest <- read_tsv(file.path(base_dir, "sig_manifest.txt"),
+                         col_names = c("library", "genotype"))
+
+tabyl(sig_manifest, genotype)
+
+p_vals_transposed %>%
+  mutate(significant = `u2af1-s34f_over_u2af1-wt` < 0.05) %>%
+  tabyl(significant)
+
+```
+
+# Move results
+```{r}
+
+
+cd /mnt
+this_archive_folder=/mnt/splicedice_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`/
+echo $this_archive_folder
+mv /mnt/splicedice_example $this_archive_folder
+```
+
+/mnt/splicedice_example_archives/2025.10.01_23.41.25/
+
+
 
