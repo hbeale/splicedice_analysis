@@ -1,4 +1,110 @@
-adjusting coordinates for splicedice
+# adjusting coordinates for splicedice
+
+
+
+GUIDE
+
+coordinates should define the intron (not exon)
+
+bed files should follow bed file definition ()
+
+
+
+
+
+# Example junctions IDs
+
+In both cases, we add one to the lower number
+
+## test case 1:
+
+currently
+
+```
+chr1:1477350-1478643
+```
+
+
+
+should be 
+
+```
+chr1:1477351-1478643
+```
+
+
+
+notes
+
+### ATAD3B
+
+ATAD3B, plus strand, exons 1 and 2
+
+exon ENSE00003467707
+
+coordinates in GTF chr1:1477274-1477350 
+
+exon ENSE00003569130 
+
+coordinates in GTF chr1:1478644 1478745
+
+junction in splicedice output
+
+chr1:1477350-1478643:+ 0.893  0.818  0.967  0.829  0.485
+
+desired junction in splicedice output:
+
+chr1:1477351-1478643:+ 0.893  0.818  0.967  0.829  0.485
+
+
+
+look in splice junction out
+
+```
+cd /mnt/output/star_fusion_1.12.0_2024.09.30/SRR12801019
+cat SJ.out.tab | grep chr1 | grep 1477351
+```
+
+```
+chr1    1477351 1478643 1       1       1       17      58      49
+```
+
+chr1:1477351-1478643 is one based.  It is correct for cluster ID, but when it's in the start or end column of a bed file, it should be zero based half open, e.g. 1477350-1478643. 
+
+now do it for a minus strand gene
+
+
+
+## test case 2
+
+currently in splicedice:
+
+```
+chr1:17055-17232:-
+```
+
+should be 
+
+```
+chr1:17056-17232:-
+```
+
+
+
+as seen in star output
+
+```
+f=/mnt/output/star_fusion_1.12.0_2024.09.30/SRR12801019/SJ.out.tab
+chr1    17056   17232   2       2       1       24      173     49
+chr1    17056   17605   2       2       0       3       10      49
+
+```
+
+
+
+https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A16877%2D17410&hgsid=3190340678_2MrEN0eAGh6Ta1cyDnn91N6tVtBz
+
+gene: Wash 7p
 
 
 
@@ -121,6 +227,10 @@ Currently i lean toward revising them at the end, which would affect fewer parts
 
 ### Writing bed files
 
+BED FILES SHOULD REMAIN THE SAME
+
+
+
 in function getJunctionsFromBam
 
 ```
@@ -154,102 +264,6 @@ left = left-1
 
 
 
-
-# Example junctions
-
-In both cases, we add one to the lower number
-
-## test case 1:
-
-currently
-
-```
-chr1:1477350-1478643
-```
-
-
-
-should be 
-
-```
-chr1:1477351-1478643
-```
-
-
-
-notes
-
-### ATAD3B
-
-ATAD3B, plus strand, exons 1 and 2
-
-exon ENSE00003467707
-
-coordinates in GTF chr1:1477274-1477350 
-
-exon ENSE00003569130 
-
-coordinates in GTF chr1:1478644 1478745
-
-junction in splicedice output
-
-chr1:1477350-1478643:+ 0.893  0.818  0.967  0.829  0.485
-
-desired junction in splicedice output:
-
-chr1:1477351-1478643:+ 0.893  0.818  0.967  0.829  0.485
-
-
-
-look in splice junction out
-
-```
-cd /mnt/output/star_fusion_1.12.0_2024.09.30/SRR12801019
-cat SJ.out.tab | grep chr1 | grep 1477351
-```
-
-```
-chr1    1477351 1478643 1       1       1       17      58      49
-```
-
-
-
-now do it for a minus strand gene
-
-
-
-## test case 2
-
-currently in splicedice:
-
-```
-chr1:17055-17232:-
-```
-
-
-
-should be 
-
-```
-chr1:17056-17232:-
-```
-
-
-
-as seen in star output
-
-```
-f=/mnt/output/star_fusion_1.12.0_2024.09.30/SRR12801019/SJ.out.tab
-chr1    17056   17232   2       2       1       24      173     49
-chr1    17056   17605   2       2       0       3       10      49
-
-```
-
-
-
-https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A16877%2D17410&hgsid=3190340678_2MrEN0eAGh6Ta1cyDnn91N6tVtBz
-
-gene: Wash 7p
 
 
 
