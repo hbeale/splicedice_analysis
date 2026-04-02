@@ -236,19 +236,6 @@ dim(example_bed_file)
     [1] 376181      6
 
 ``` r
-head(example_bed_file)
-```
-
-| chr  | start |   end | name                         | score | strand |
-|:-----|------:|------:|:-----------------------------|------:|:-------|
-| chr1 | 14737 | 14969 | e:0.00:0.00;o:1;m:NN_NN;a:?  |     4 | \+     |
-| chr1 | 14737 | 14969 | e:0.64:0.64;o:12;m:NN_NN;a:? |     3 | \-     |
-| chr1 | 14829 | 15020 | e:2.02:2.02;o:20;m:NN_NN;a:? |    12 | \+     |
-| chr1 | 14829 | 15020 | e:1.11:1.11;o:18;m:NN_NN;a:? |    21 | \-     |
-| chr1 | 14829 | 15795 | e:0.00:0.00;o:6;m:NN_NN;a:?  |     2 | \+     |
-| chr1 | 14829 | 15795 | e:1.18:1.04;o:17;m:NN_NN;a:? |    22 | \-     |
-
-``` r
 example_bed_file[1:6,1:6]
 ```
 
@@ -388,7 +375,7 @@ allPS contains one splicing cluster per row (named in the cluster
 column), and has a column for each analyzed RNA-Seq dataset
 (e.g. “TCGA-67-6215-01A0a26152a-462f-4895-8fe8-15fcdcc56e16”). The
 dataset columns contain the percent spliced of that cluster. The values
-can be NaN or 0-1
+can be NaN or 0-1. Of the ~24M values in the matrix, ~5M are non-NaN.
 
 ``` r
 allPS[1:6,1:6]
@@ -429,8 +416,9 @@ dim(long_allPS)
 
 ### inclusionCounts
 
-inclusionCounts has the same format as allPS but contains … inclusion
-counts? (To be confirmed) The values can be NaN or 0-1
+inclusionCounts has the same format as allPS but contains the number of
+reads supporting an inclusion (?to be confirmed). The values can be 0 to
+a high number, e.g. 368,791
 
 ``` r
 dim(inclusionCounts)
@@ -668,7 +656,7 @@ apply(sig[,-1], 2, summary)
 splice_intervals), and has three columns for each of the two conditions
 defined in the sig manifest (here u2af1-wt and u2af1-s34f). The columns
 contain summary statistics for samples in the condition (median, alpha
-and beta). Some alpha and bet values are “None”; maybe we should change
+and beta). Some alpha and beta values are “None”; maybe we should change
 those to NA.
 
 ``` r
@@ -781,7 +769,8 @@ longer_beta_numeric %>%
 
 .pvals.tsv contains one condition per row and a column for each sample.
 The values of sample columns are p-values indicating whether the samples
-significantly matches the beta signature it was compared to.
+significantly matches the beta signature it was compared to. p value
+scores range from 0-1.
 
 ``` r
 pvals <- read_tsv(file.path(base_dir, ".pvals.tsv"))

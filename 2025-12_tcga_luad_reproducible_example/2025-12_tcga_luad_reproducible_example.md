@@ -1,8 +1,8 @@
 [TOC]
 
-# MISTAKE
+# Note for next replication:
 
-I used Homo_sapiens.GRCh38.dna.primary_assembly.fa instead of GRCh38.primary_assembly.genome.fa
+I mistakenly used Homo_sapiens.GRCh38.dna.primary_assembly.fa instead of GRCh38.primary_assembly.genome.fa
 
 update it for the next one that I run as a quarto notebook, for now, finish running as quarto notebook from after quant
 
