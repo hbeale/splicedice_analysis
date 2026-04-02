@@ -1,6 +1,9 @@
 [TOC]
 
+# Summary
+This code and output shows that using the intron prospector implementation generates the same results as what we previously saw with bam_to_junc_bed.py in splicedice. 
 
+Specifically, building a signature based on the u2af1 genotype (35 wt, 11 s34f) creates a signature that then correctly re-identifies each of the samples used to generate it. 
 
 # Server
 
