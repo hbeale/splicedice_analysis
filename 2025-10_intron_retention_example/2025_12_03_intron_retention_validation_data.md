@@ -1,8 +1,10 @@
 
 
-# Goal
+# Goals
 
-generate a stable example of  running the intron retention portion of the splicedice code
+* generate a stable example of  running the intron retention portion of the splicedice code
+
+* confirm that the results are identical to those obtained by Javier
 
 # Code version
 
