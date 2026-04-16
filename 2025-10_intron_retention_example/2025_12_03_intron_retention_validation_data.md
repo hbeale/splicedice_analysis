@@ -6,6 +6,10 @@
 
 * confirm that the results are identical to those obtained by Javier
 
+# Results
+
+The results are the same as Javier's from an earlier splicedice version, confirming that the commit adding Dennis' splicedice query scripts (da045c486e314e6f7db253998d886a163172295b) does not change outputs 
+
 # Code version
 
 uses commit  da045c4; the latest version
