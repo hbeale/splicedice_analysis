@@ -404,6 +404,7 @@ output
 
 ```
 _intron_retention_RSD.tsv
+_intron_retention.tsv
 ```
 
 
