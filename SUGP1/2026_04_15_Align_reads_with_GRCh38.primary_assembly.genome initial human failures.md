@@ -250,6 +250,223 @@ fastq_dir=/mnt/data/fastq/
 bam_output_dir=/mnt/output/${version}/$id/
 mkdir -p $bam_output_dir
 fq1=${fastq_dir}${id}/${id}_*1.fastq.gz
+fq2=${fq1/pass_1/pass_2}
+ls $fq1
+ls $fq2
+$STAR --runThreadN 8 \
+     --genomeDir /mnt/ref/STAR_GRCh38_gencode_45 \
+     --readFilesIn  $fq1 $fq2 \
+     --outFileNamePrefix ${bam_output_dir}${id} \
+     --outSAMtype BAM SortedByCoordinate \
+     --outSAMattributes Standard \
+     --quantMode GeneCounts \
+     --twopassMode Basic \
+     --readFilesCommand zcat
+done 
+/home/ubuntu/alert_msg.sh alignments_complete
+
+for id in $ids; do
+mv /mnt/output/${version}/$id/${id}Aligned.sortedByCoord.out.bam /mnt/output/${version}/$id/${id}.bam
+done
+
+```
+
+something weird happened; the output files are really small, like 50MB
+
+
+
+```
+for i in `find . -iname Log.final.out`; do  echo $i; cat $i | grep "reads unmapped: too short" ; echo;  done
+```
+
+
+
+
+
+```
+./SRR12801019/SRR12801019_STARpass1/Log.final.out
+            Number of reads unmapped: too short |       34041211
+                 % of reads unmapped: too short |       99.09%
+
+./SRR12801020/SRR12801020_STARpass1/Log.final.out
+            Number of reads unmapped: too short |       46359594
+                 % of reads unmapped: too short |       99.12%
+
+./SRR12801023/SRR12801023_STARpass1/Log.final.out
+            Number of reads unmapped: too short |       36057547
+                 % of reads unmapped: too short |       99.07%
+
+./SRR12801024/SRR12801024_STARpass1/Log.final.out
+            Number of reads unmapped: too short |       43768151
+                 % of reads unmapped: too short |       99.17%
+
+./SRR12801027/SRR12801027_STARpass1/Log.final.out
+            Number of reads unmapped: too short |       43329512
+                 % of reads unmapped: too short |       99.05%
+
+./SRR12801028/SRR12801028_STARpass1/Log.final.out
+            Number of reads unmapped: too short |       45649537
+                 % of reads unmapped: too short |       99.15%
+```
+
+
+
+per https://github.com/alexdobin/STAR/issues/169, check that reads are in correct order 
+
+
+
+```
+id=SRR12801027
+fq1=/mnt/data/fastq/${id}/${id}*_1.fastq.gz
+fq2=${fq1/_1/_2}
+ls $fq2
+
+zcat  $fq1  | head
+zcat  $fq2 | head
+
+
+
+```
+
+
+
+blat
+
+```
+GNCTGCTTTTCCCCTATGATTTAAAAATTCCAATGACTTTCGCCCTTGGGAGAAATTTCCAAGGAAATCTCTCTCGCTCGCTCTCTCCGTTTTCCTTTGTG
+```
+
+```
+   ACTIONS                  QUERY   SCORE START   END QSIZE IDENTITY  CHROM                STRAND  START       END   SPAN
+--------------------------------------------------------------------------------------------------------------------------
+browser new tab details YourSeq   100     1   101   101   100.0%  chr20                +    47657970  47658070    101
+```
+
+
+
+```
+   ACTIONS                  QUERY   SCORE START   END QSIZE IDENTITY  CHROM                STRAND  START       END   SPAN
+--------------------------------------------------------------------------------------------------------------------------
+browser new tab details YourSeq    99     2   100   100   100.0%  chr20                -    47658027  47658125     99
+```
+
+
+
+# Align it to the old indices to see if that's any better
+
+STAR_Homo_sapiens_GRCh38_gencode_47
+
+
+
+```
+this_ref=STAR_Homo_sapiens_GRCh38_gencode_47
+ids="SRR12801019 SRR12801020 SRR12801023 SRR12801024 SRR12801027 SRR12801028"
+STAR=/mnt/bin/STAR-2.7.11b/source/STAR
+version=star_2.7.11b_2026.04.20_09.27.43
+
+
+for id in $ids; do
+fastq_dir=/mnt/data/fastq/
+bam_output_dir=/mnt/output/${version}/$id/
+mkdir -p $bam_output_dir
+fq1=${fastq_dir}${id}/${id}_*1.fastq.gz
+fq2=${fq1/pass_1/pass_2}
+ls $fq1
+ls $fq2
+$STAR --runThreadN 8 \
+     --genomeDir /mnt/ref/$this_ref \
+     --readFilesIn  $fq1 $fq2 \
+     --outFileNamePrefix ${bam_output_dir}${id}_ \
+     --outSAMtype BAM SortedByCoordinate \
+     --outSAMattributes Standard \
+     --quantMode GeneCounts \
+     --twopassMode Basic \
+     --readFilesCommand zcat
+done 
+/home/ubuntu/alert_msg.sh alignments_complete
+
+
+
+
+```
+
+
+
+Nope; still very few reads aligned
+
+read length is 100 bases
+
+```
+(splicedice_env) ubuntu@hbeale-mesa:/mnt/data/fastq$ ls -aRlth /mnt/output/star_2.7.11b_2026.04.20_09.27.43/ | grep out.bam
+-rw-rw-r-- 1 ubuntu ubuntu  46M Apr 20 18:32 SRR12801028_Aligned.sortedByCoord.out.bam
+-rw-rw-r-- 1 ubuntu ubuntu  49M Apr 20 18:10 SRR12801027_Aligned.sortedByCoord.out.bam
+-rw-rw-r-- 1 ubuntu ubuntu  43M Apr 20 17:50 SRR12801024_Aligned.sortedByCoord.out.bam
+-rw-rw-r-- 1 ubuntu ubuntu  41M Apr 20 17:29 SRR12801023_Aligned.sortedByCoord.out.bam
+-rw-rw-r-- 1 ubuntu ubuntu  49M Apr 20 17:10 SRR12801020_Aligned.sortedByCoord.out.bam
+-rw-rw-r-- 1 ubuntu ubuntu  38M Apr 20 16:48 SRR12801019_Aligned.sortedByCoord.out.bam
+(splicedice_env) ubuntu@hbeale-mesa:/mnt/data/fastq$ 
+
+```
+
+
+
+# try aligning different data
+
+
+
+```
+id=ERR2178362
+STAR=/mnt/bin/STAR-2.7.11b/source/STAR
+version=star_2.7.11b_2026.04.16
+
+
+#for id in $ids; do
+fastq_dir=/mnt/data/fastq/
+bam_output_dir=/mnt/output/${version}/$id/
+mkdir -p $bam_output_dir
+fq1=${fastq_dir}${id}/${id}_*1.fastq.gz
+fq2=${fq1/_1/_sdfdsf2}
+ls $fq1
+ls $fq2
+
+
+if [[ -f "$fq1" && -f "$fq2" ]]; then
+    echo "Both files exist"
+    $STAR --runThreadN 8 \
+     --genomeDir /mnt/ref/STAR_GRCh38_gencode_45 \
+     --readFilesIn  $fq1 $fq2 \
+     --outFileNamePrefix ${bam_output_dir}${id}_ \
+     --outSAMtype BAM SortedByCoordinate \
+     --outSAMattributes Standard \
+     --quantMode GeneCounts \
+     --twopassMode Basic \
+     --readFilesCommand zcat
+else
+    echo "fastq files do not exist"
+fi
+#done 
+/home/ubuntu/alert_msg.sh alignments_complete
+
+
+
+
+```
+
+# OK, i think i understand now
+
+
+
+```
+ids="SRR12801019 SRR12801020 SRR12801023 SRR12801024 SRR12801027 SRR12801028"
+STAR=/mnt/bin/STAR-2.7.11b/source/STAR
+version=star_2.7.11b_2026.04.16
+
+
+for id in $ids; do
+fastq_dir=/mnt/data/fastq/
+bam_output_dir=/mnt/output/${version}/$id/
+mkdir -p $bam_output_dir
+fq1=${fastq_dir}${id}/${id}_*1.fastq.gz
 fq2=${fq1/1.fastq.gz/2.fastq.gz}
 ls $fq1
 ls $fq2
@@ -266,52 +483,6 @@ done
 /home/ubuntu/alert_msg.sh alignments_complete
 
 
-
 ```
 
-```
-...
-Apr 21 03:17:40 ..... finished mapping
-Apr 21 03:17:44 ..... started sorting BAM
-Apr 21 03:20:32 ..... finished successfully
-{"status":"OK","nsent":2,"apilimit":"0\/1000"}
-(splicedice_env) ubuntu@hbeale-mesa:/mnt/data/fastq$ 
-```
-
-
-
-## check file sizes
-
-```
-
-ids="SRR12801019 SRR12801020 SRR12801023 SRR12801024 SRR12801027 SRR12801028"
-for id in $ids; do 
-ls -aRlth /mnt/output/star_2.7.11b_2026.04.16/${id}/*.bam
-done
-
-
-
-```
-
-```
-(splicedice_env) ubuntu@hbeale-mesa:/mnt/scratch$ for id in $ids; do 
-ls -aRlth /mnt/output/star_2.7.11b_2026.04.16/${id}/*.bam
-done
--rw-rw-r-- 1 ubuntu ubuntu 2.6G Apr 21 00:02 /mnt/output/star_2.7.11b_2026.04.16/SRR12801019/SRR12801019_Aligned.sortedByCoord.out.bam
--rw-rw-r-- 1 ubuntu ubuntu 3.4G Apr 21 00:44 /mnt/output/star_2.7.11b_2026.04.16/SRR12801020/SRR12801020_Aligned.sortedByCoord.out.bam
--rw-rw-r-- 1 ubuntu ubuntu 2.8G Apr 21 01:18 /mnt/output/star_2.7.11b_2026.04.16/SRR12801023/SRR12801023_Aligned.sortedByCoord.out.bam
--rw-rw-r-- 1 ubuntu ubuntu 3.2G Apr 21 01:59 /mnt/output/star_2.7.11b_2026.04.16/SRR12801024/SRR12801024_Aligned.sortedByCoord.out.bam
--rw-rw-r-- 1 ubuntu ubuntu 3.1G Apr 21 02:37 /mnt/output/star_2.7.11b_2026.04.16/SRR12801027/SRR12801027_Aligned.sortedByCoord.out.bam
--rw-rw-r-- 1 ubuntu ubuntu 3.3G Apr 21 03:19 /mnt/output/star_2.7.11b_2026.04.16/SRR12801028/SRR12801028_Aligned.sortedByCoord.out.bam
-(splicedice_env) ubuntu@hbeale-mesa:/mnt/scratch$ 
-
-```
-
-
-
-```
-for i in `find /mnt/output/star_2.7.11b_2026.04.16/ -iname Log.final.out`; do  echo $i; cat $i | grep "reads unmapped: too short" ; echo;  done
-```
-
-
-
+something weird happened; the output files are really small, like 50MB
