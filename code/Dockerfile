@@ -15,6 +15,7 @@ RUN git clone --depth 2 https://github.com/BrooksLabUCSC/splicedice.git splicedi
  && cd /opt
 
 ARG SHA1_intronProspector="ba9a26fe752175136562b75abc1d293cc7384fd6"
+
 RUN git clone --depth 2 \
       https://github.com/diekhans/intronProspector.git \
  && cd intronProspector \
