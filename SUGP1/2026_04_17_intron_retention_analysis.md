@@ -593,6 +593,14 @@ All done [0:00:28.46]
 
 contains data, and looks right 
 
+## attempt 5: use splicedice branch that allows unstranded data
+
+
+
+
+
+
+
 # RESUME TROUBLESHOOTING HERE
 
 ### 
