@@ -315,3 +315,61 @@ for i in `find /mnt/output/star_2.7.11b_2026.04.16/ -iname Log.final.out`; do  e
 
 
 
+
+
+# rename bam files, index them and put them on public
+
+```
+cat $bam_manifest | cut -f1,2 | while read id bam_file; do
+echo $id
+#ls -alth /mnt/output/star_2.7.11b_2026.04.16/$id/${id}.*bam*
+new_bam_name=/mnt/output/star_2.7.11b_2026.04.16/$id/${id}.bam
+if [ -e  $bam_file ];
+then
+echo gotta move the file
+mv $bam_file  /mnt/output/star_2.7.11b_2026.04.16/$id/${id}.bam
+fi
+if [ ! -e  ${new_bam_name}.bai ]
+then
+echo no index yet
+samtools index $new_bam_name
+fi
+done
+
+
+```
+
+## tar up bam files
+
+```
+cat $bam_manifest | cut -f1,2 | while read id bam_file; do
+echo -n /mnt/output/star_2.7.11b_2026.04.16/$id/${id}.bam.bai /mnt/output/star_2.7.11b_2026.04.16/$id/${id}.bam " "
+done
+
+```
+
+/mnt/output/star_2.7.11b_2026.04.16/SRR12801019/SRR12801019.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801020/SRR12801020.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801023/SRR12801023.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801024/SRR12801024.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801027/SRR12801027.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801028/SRR12801028.bam
+
+```
+cd /mnt/scratch 
+tar -cvzf SRP286876_bams.tgz  /mnt/output/star_2.7.11b_2026.04.16/SRR12801019/SRR12801019.bam.bai /mnt/output/star_2.7.11b_2026.04.16/SRR12801019/SRR12801019.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801020/SRR12801020.bam.bai /mnt/output/star_2.7.11b_2026.04.16/SRR12801020/SRR12801020.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801023/SRR12801023.bam.bai /mnt/output/star_2.7.11b_2026.04.16/SRR12801023/SRR12801023.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801024/SRR12801024.bam.bai /mnt/output/star_2.7.11b_2026.04.16/SRR12801024/SRR12801024.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801027/SRR12801027.bam.bai /mnt/output/star_2.7.11b_2026.04.16/SRR12801027/SRR12801027.bam /mnt/output/star_2.7.11b_2026.04.16/SRR12801028/SRR12801028.bam.bai /mnt/output/star_2.7.11b_2026.04.16/SRR12801028/SRR12801028.bam 
+```
+
+## transfer
+
+```
+scp /mnt/scratch/SRP286876_bams.tgz hcbeale@courtyard.gi.ucsc.edu:/public/groups/treehouse/public_html/SRP286876/
+```
+
+
+
+## untar
+
+```
+tar -tf SRP286876_bams.tgz
+tar -tf SRP286876_bams.tgz --strip-components 4 --show-transformed
+tar -t --strip-components 4 -xf SRP286876_bams.tgz
+
+```
+
+ # 
