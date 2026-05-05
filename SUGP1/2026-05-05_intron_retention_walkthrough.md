@@ -495,7 +495,7 @@ cd /mnt
 this_archive_folder=/mnt/splicedice_ir_example_archives/`date "+%Y.%m.%d_%H.%M.%S"`/
 echo $this_archive_folder
 
-mv /mnt/splicedice_ir_example $this_archive_folder
+cp -R /mnt/splicedice_ir_example $this_archive_folder
 ```
 
 /mnt/splicedice_ir_example_archives/2026.05.05_20.12.55/
