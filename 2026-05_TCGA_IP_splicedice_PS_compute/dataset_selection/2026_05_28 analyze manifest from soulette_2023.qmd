@@ -174,3 +174,22 @@ write_tsv(soulette_equivalent_manifest, "soulette_equivalent_manifest.2026.05.28
 
 ```
 
+
+
+```{r}
+
+intron_prospector_manifest <- left_join(soulette_equivalent_manifest, 
+          data_for_new_manifest %>% select(file_name, sample_id_key),
+          by=c("filename" = "file_name")) %>%
+  select(id, filename, sample_id_key)
+
+# check that sample_id_key is unique in this list
+n_distinct(intron_prospector_manifest$sample_id_key)
+nrow(intron_prospector_manifest)
+
+# save the file
+
+write_tsv(intron_prospector_manifest, "soulette_equivalent_intron_prospector_manifest.2026.05.28.tsv")
+
+```
+

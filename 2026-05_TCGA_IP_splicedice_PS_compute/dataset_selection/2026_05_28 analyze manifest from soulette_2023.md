@@ -291,11 +291,7 @@ joined_data %>%
 | TCGA-44-6775-01A-11R-A278-07 | 7c606f64-69a1-465c-9f4e-2eb1ebeda5d7 |
 | TCGA-44-6775-01A-11R-A278-07 | 7c606f64-69a1-465c-9f4e-2eb1ebeda5d7 |
 
-# format
-
-colnames in manifest should be id filename md5 size state
-
-Find differences in gdc data between samples with the same barcode
+# Find differences in gdc data between samples with the same barcode
 
 ``` r
 all_data_for_one_barcode <- joined_data %>%
@@ -393,7 +389,9 @@ nrow(data_for_new_manifest)
 
     [1] 495
 
-propogate to manifest
+# propagate selection to manifest
+
+colnames in manifest should be id filename md5 size state
 
 ``` r
 soulette_equivalent_manifest <- gdc_manifest %>%
@@ -402,4 +400,32 @@ soulette_equivalent_manifest <- gdc_manifest %>%
 
 ``` r
 write_tsv(soulette_equivalent_manifest, "soulette_equivalent_manifest.2026.05.28.tsv")
+```
+
+``` r
+intron_prospector_manifest <- left_join(soulette_equivalent_manifest, 
+          data_for_new_manifest %>% select(file_name, sample_id_key),
+          by=c("filename" = "file_name")) %>%
+  select(id, filename, sample_id_key)
+```
+
+    Adding missing grouping variables: `barcode`
+
+``` r
+# check that sample_id_key is unique in this list
+n_distinct(intron_prospector_manifest$sample_id_key)
+```
+
+    [1] 495
+
+``` r
+nrow(intron_prospector_manifest)
+```
+
+    [1] 495
+
+``` r
+# save the file
+
+write_tsv(intron_prospector_manifest, "soulette_equivalent_intron_prospector_manifest.2026.05.28.tsv")
 ```
