@@ -1,0 +1,176 @@
+---
+title: "`r gsub('.Rmd', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+library(here)
+library(janitor)
+
+```
+
+```{r}
+LUAD_soulette <- read_tsv("LUAD_601_RNA_summary_Final495SamplesForAnalysis.tsv")  %>%
+  mutate(sample_id_key = str_extract(barcode, "^TCGA-\\w+-\\w+-\\w+"))
+```
+```{r}
+head(LUAD_soulette)
+nrow(LUAD_soulette)
+```
+
+
+```{r}
+gdc_sample_sheet <- read_tsv("gdc_sample_sheet.2026-05-28.tsv")
+gdc_manifest <- read_tsv("gdc_manifest.2026-05-28.131615.txt")
+
+nrow(gdc_sample_sheet)
+nrow(gdc_manifest)
+
+gdc_sample_sheet_renamed <- gdc_sample_sheet %>% clean_names() 
+
+```
+
+# Compare manifest and sample sheet contents
+
+```{r}
+
+identical(gdc_sample_sheet_renamed$file_id, gdc_manifest$id)
+
+n_distinct(gdc_sample_sheet_renamed$file_id)
+
+
+```
+They are the same
+
+
+# review sample features
+```{r}
+
+n_unique <- function(x) length(unique(x))
+
+unique_sample_vals <- LUAD_soulette %>%
+  summarize(across(everything(),  n_unique)) %>%
+  pivot_longer(everything())
+
+unique_sample_vals %>%
+  filter(! value == 1,
+         ! value == nrow(LUAD_soulette))
+  
+```
+
+## What are multi-value columns?
+Notes:
+anything with "1" or 541 is uninteresting
+
+
+```{r}
+
+LUAD_soulette %>%
+  select(unique_sample_vals %>% 
+           filter(value > min(value),
+                  value < max(value)) %>%
+           pull(name)) %>%
+  apply(2, table)
+  
+
+# head(LUAD_soulette$reason)
+# head(LUAD_soulette$state)
+```
+
+
+```{r}
+
+# Count occurrences of each sample_id_key
+LUAD_soulette %>%
+  count(sample_id_key, name = "n_rows") %>%
+  filter(n_rows > 1) %>%
+  arrange(desc(n_rows))
+
+joined_data <- left_join(LUAD_soulette, gdc_sample_sheet_renamed,
+          by=c("sample_id_key"="sample_id")) 
+
+# are any LUAD_soulette samples missing from the sample sheet?
+# if no, there will be 0 rows in the following
+joined_data %>% filter(is.na(file_id))
+
+dupe_ids <- joined_data %>%
+  filter(duplicated(sample_id_key)) %>%
+  pull(sample_id_key)
+
+joined_data %>%
+  filter(sample_id_key %in% dupe_ids ) %>%
+  select(LUAD_soulette_barcode=barcode,
+         gdc_sample_id = sample_id) %>%
+ # distinct() %>%
+  arrange(LUAD_soulette_barcode)
+         
+  
+```
+
+# Find differences in gdc data between samples with the same barcode
+```{r}
+
+
+all_data_for_one_barcode <- joined_data %>%
+  filter(barcode == "TCGA-44-2656-01A-02R-A278-07") %>%
+  mutate(across(everything(), as.character)) %>%
+  pivot_longer(-file_id) %>%
+  pivot_wider (names_from = "file_id") 
+
+all_data_for_one_barcode
+
+all_data_for_one_barcode %>%
+  filter(`b2cf0b26-1f46-478d-b2e1-73115384ed57` != `b5310007-7004-4306-8629-4c5a61219971`)
+# 
+# joined_data %>%
+#   select(id, filename, md5, size, state)
+# 
+# joined_data %>%
+#   filter(barcode == "TCGA-44-2656-01A-02R-A278-07") %>%
+#   distinct()
+
+```
+there is no apparent difference besides file_id and file_name. the file sizes are identical
+
+decision: pick at random
+
+
+
+# pick at random
+```{r}
+  
+
+set.seed(1)
+
+data_for_new_manifest <- joined_data %>%
+  group_by(barcode) %>%
+  slice_sample(n=1)
+  
+nrow(data_for_new_manifest)
+
+```
+
+# propagate selection to manifest
+
+colnames in manifest should be id      filename        md5     size    state
+
+
+```{r}
+
+soulette_equivalent_manifest <- gdc_manifest %>%
+  filter(filename %in% data_for_new_manifest$file_name)
+
+```
+
+```{r}
+
+write_tsv(soulette_equivalent_manifest, "soulette_equivalent_manifest.2026.05.28.tsv")
+
+```
+
