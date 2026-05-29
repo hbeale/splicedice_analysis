@@ -2,7 +2,10 @@
 set -euo pipefail
 
 ip_manifest=/mnt/splicedice_ir_example/git_code/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_intron_prospector_manifest.2026.05.28.tsv 
+
 genome=/mnt/ref/GRCh38.primary_assembly.genome.fa
+
+token_file=/mnt/gitCode/gdc-user-token.2026-05-28T20_33_35.481Z.txt
 
 ip_run_dir=/mnt/data/intron_prospector_runs/common/
 bam_base=/mnt/data/tcga
