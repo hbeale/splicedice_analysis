@@ -1,0 +1,97 @@
+skipping TCGA-86-8074-01A (output already exists)
+
+=== 494 samples still need intron_coverage ===
+
+========================================================
+BATCH 1: 8 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-62-8402-01A: downloading cae0680e-f7bf-4742-aeca-8fac6d4f4934 -> /mnt/data/tcga/cae0680e-f7bf-4742-aeca-8fac6d4f4934/2a48ffd2-9212-48f4-a836-7572eb2feffe.rna_seq.genomic.gdc_realn.bam
+TCGA-86-8358-01A: downloading e5976aee-2a56-457c-80e5-00824254f6f8 -> /mnt/data/tcga/e5976aee-2a56-457c-80e5-00824254f6f8/461cd8f2-fe53-448d-b6a9-0a95792464c7.rna_seq.genomic.gdc_realn.bam
+TCGA-86-8056-01A: downloading 6dee9448-b65a-498e-9490-7c282fb3b07d -> /mnt/data/tcga/6dee9448-b65a-498e-9490-7c282fb3b07d/593623b6-0f7d-4089-8697-518c573c86c6.rna_seq.genomic.gdc_realn.bam
+TCGA-78-7158-01A: downloading 4d6609e2-6ad0-43a1-9bda-fbc4710e1da0 -> /mnt/data/tcga/4d6609e2-6ad0-43a1-9bda-fbc4710e1da0/ebf8d429-0437-4987-9bca-89e62910f168.rna_seq.genomic.gdc_realn.bam
+TCGA-49-4507-01A: downloading a6f82885-da83-49d5-ad43-966b9dff4ea5 -> /mnt/data/tcga/a6f82885-da83-49d5-ad43-966b9dff4ea5/c6acc762-3909-4cc0-91c7-f66bc3f0e667.rna_seq.genomic.gdc_realn.bam
+TCGA-49-AARO-01A: downloading 1f8160a9-4e65-4d8f-a83d-39b6e03b38f3 -> /mnt/data/tcga/1f8160a9-4e65-4d8f-a83d-39b6e03b38f3/f6108b9b-e02f-4608-bec3-bcc0112d05b4.rna_seq.genomic.gdc_realn.bam
+TCGA-91-8499-01A: downloading 073e7f71-5583-48fc-a037-4f799ec2d811 -> /mnt/data/tcga/073e7f71-5583-48fc-a037-4f799ec2d811/6200626d-556e-400d-81f4-e397ce49585f.rna_seq.genomic.gdc_realn.bam
+TCGA-55-6983-01A: downloading af2f19ca-dc08-43b6-ae40-811cb952887a -> /mnt/data/tcga/af2f19ca-dc08-43b6-ae40-811cb952887a/b573a788-d117-48b0-9cab-c4ecbde82706.rna_seq.genomic.gdc_realn.bam
+100% [############################################] Time:  0:03:16  22.4 MiB/s
+[32mSuccessfully downloaded[0m: 1
+100% [############################################] Time:  0:04:27  15.9 MiB/s
+100% [############################################] Time:  0:04:47  13.6 MiB/s
+[32mSuccessfully downloaded[0m: 1
+[32mSuccessfully downloaded[0m: 1
+100% [############################################] Time:  0:06:24  24.1 MiB/s
+100% [############################################] Time:  0:06:25  22.9 MiB/s
+100% [############################################] Time:  0:06:28  15.4 MiB/s
+100% [############################################] Time:  0:06:42  20.5 MiB/s
+100% [############################################] Time:  0:06:49  25.8 MiB/s
+[32mSuccessfully downloaded[0m: 1
+[32mSuccessfully downloaded[0m: 1
+[32mSuccessfully downloaded[0m: 1
+[32mSuccessfully downloaded[0m: 1
+[32mSuccessfully downloaded[0m: 1
+all downloads complete for batch 1
+Thu Jun  4 20:06:11 UTC 2026
+
+--- running intron_coverage on 8 samples (batch 1) ---
+Thu Jun  4 20:06:12 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-86-8358-01A starting 13.945466995239258
+TCGA-86-8358-01A collected 770.6448228359222
+TCGA-86-8358-01A counted 1779.523238658905
+TCGA-86-8358-01A done 1814.4230329990387
+TCGA-91-8499-01A starting 21.901792287826538
+TCGA-91-8499-01A collected 902.2250971794128
+TCGA-91-8499-01A counted 1832.7833058834076
+TCGA-91-8499-01A done 1871.2605497837067
+TCGA-49-AARO-01A starting 20.16384530067444
+TCGA-49-AARO-01A collected 985.2315149307251
+TCGA-49-AARO-01A counted 2064.803208589554
+TCGA-49-AARO-01A done 2099.2249348163605
+TCGA-62-8402-01A starting 12.345949411392212
+TCGA-62-8402-01A collected 1181.8575711250305
+TCGA-62-8402-01A counted 2353.455451488495
+TCGA-62-8402-01A done 2387.4916186332703
+TCGA-78-7158-01A starting 16.92915964126587
+TCGA-78-7158-01A collected 1428.0761482715607
+TCGA-78-7158-01A counted 2806.721391916275
+TCGA-78-7158-01A done 2840.089762210846
+TCGA-49-4507-01A starting 18.50738763809204
+TCGA-49-4507-01A collected 1980.2674791812897
+TCGA-49-4507-01A counted 2924.7599401474
+TCGA-49-4507-01A done 2957.948167324066
+TCGA-55-6983-01A starting 23.346104621887207
+TCGA-55-6983-01A collected 1702.9811646938324
+TCGA-55-6983-01A counted 3051.973043680191
+TCGA-55-6983-01A done 3084.5157175064087
+Your runtime was 3583.78155374527 seconds.
+Thu Jun  4 21:06:54 UTC 2026
+intron_coverage done for batch 1
+
+--- cleaning up BAMs ---
+TCGA-62-8402-01A: output confirmed, deleting BAM
+TCGA-86-8358-01A: output confirmed, deleting BAM
+TCGA-86-8056-01A: output confirmed, deleting BAM
+TCGA-78-7158-01A: output confirmed, deleting BAM
+TCGA-49-4507-01A: output confirmed, deleting BAM
+TCGA-49-AARO-01A: output confirmed, deleting BAM
+TCGA-91-8499-01A: output confirmed, deleting BAM
+TCGA-55-6983-01A: output confirmed, deleting BAM
+
+batch 1 complete
+
+========================================================
+BATCH 2: 8 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-62-A46Y-01A: downloading 0fd61331-8363-402b-8d87-88bb39f467d0 -> /mnt/data/tcga/0fd61331-8363-402b-8d87-88bb39f467d0/534541e5-89a2-46bc-98d3-1fed57d6e4c1.rna_seq.genomic.gdc_realn.bam
+TCGA-53-7624-01A: downloading 888e7914-72dc-46ab-b34f-84e30cf4ede8 -> /mnt/data/tcga/888e7914-72dc-46ab-b34f-84e30cf4ede8/ec99ae0d-704e-481d-bc90-7b553075a845.rna_seq.genomic.gdc_realn.bam
+TCGA-L9-A7SV-01A: downloading 0bd949c3-479b-4fec-a3e3-83a0e0f437a0 -> /mnt/data/tcga/0bd949c3-479b-4fec-a3e3-83a0e0f437a0/6804af50-1b4f-4872-83b8-bae24d398cb4.rna_seq.genomic.gdc_realn.bam
+TCGA-62-8395-01A: downloading 7bd81e9a-6853-4c8e-ba87-849957a8f015 -> /mnt/data/tcga/7bd81e9a-6853-4c8e-ba87-849957a8f015/fec056a5-e860-4b68-8fa0-39cb7ad78a62.rna_seq.genomic.gdc_realn.bam
+TCGA-73-4662-01A: downloading 1c0c1b78-5622-4da2-a6ce-d00c37c51915 -> /mnt/data/tcga/1c0c1b78-5622-4da2-a6ce-d00c37c51915/68f5d95d-e7ae-46d3-b836-e741fde98f23.rna_seq.genomic.gdc_realn.bam
+TCGA-97-7547-01A: downloading 93c69bd1-3426-4475-a59a-b5f6c25222b1 -> /mnt/data/tcga/93c69bd1-3426-4475-a59a-b5f6c25222b1/20cddb4c-1ad4-4f0e-bd5e-3071f573b2d0.rna_seq.genomic.gdc_realn.bam
+TCGA-35-5375-01A: downloading a5b878f4-5fe7-4f53-a61f-d653d435b24c -> /mnt/data/tcga/a5b878f4-5fe7-4f53-a61f-d653d435b24c/a6a6b9c6-9db7-42b3-a09f-770b7e126fbb.rna_seq.genomic.gdc_realn.bam
+TCGA-78-8660-01A: downloading 4ee7ff21-a0ae-4885-92d2-a088d6f87cf0 -> /mnt/data/tcga/4ee7ff21-a0ae-4885-92d2-a088d6f87cf0/2f8abb88-ae9f-4315-bcad-4263862bd11b.rna_seq.genomic.gdc_realn.bam
