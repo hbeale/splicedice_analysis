@@ -1,0 +1,3729 @@
+skipping TCGA-86-8074-01A (output already exists)
+skipping TCGA-62-8402-01A (output already exists)
+skipping TCGA-86-8358-01A (output already exists)
+skipping TCGA-86-8056-01A (output already exists)
+skipping TCGA-78-7158-01A (output already exists)
+skipping TCGA-49-4507-01A (output already exists)
+skipping TCGA-49-AARO-01A (output already exists)
+skipping TCGA-91-8499-01A (output already exists)
+skipping TCGA-55-6983-01A (output already exists)
+skipping TCGA-62-A46Y-01A (output already exists)
+skipping TCGA-53-7624-01A (output already exists)
+skipping TCGA-L9-A7SV-01A (output already exists)
+skipping TCGA-62-8395-01A (output already exists)
+skipping TCGA-73-4662-01A (output already exists)
+skipping TCGA-97-7547-01A (output already exists)
+skipping TCGA-35-5375-01A (output already exists)
+skipping TCGA-78-8660-01A (output already exists)
+skipping TCGA-49-4486-01A (output already exists)
+skipping TCGA-91-8497-01A (output already exists)
+skipping TCGA-44-6778-01A (output already exists)
+skipping TCGA-05-4249-01A (output already exists)
+skipping TCGA-86-8281-01A (output already exists)
+skipping TCGA-91-8496-01A (output already exists)
+skipping TCGA-55-7281-01A (output already exists)
+skipping TCGA-44-4112-01A (output already exists)
+
+=== 470 samples still need intron_coverage ===
+
+========================================================
+BATCH 1: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-49-6767-01A: queuing e42d956e-d8fc-489f-adc7-de9dd6e069c3 for download
+TCGA-95-8494-01A: queuing d1969524-4d30-4a50-ba38-3ce50303b6e3 for download
+TCGA-MP-A4T9-01A: queuing 995183b8-de28-4e1b-a06e-d5e0e448d851 for download
+TCGA-67-3772-01A: queuing 674b9bdd-c5e2-4539-802c-734f69b58097 for download
+TCGA-55-8208-01A: queuing 58602df8-a37a-4fe4-9c80-7b79ac0c3e18 for download
+TCGA-50-5942-01A: queuing 83e3257c-bc18-488a-8a49-867c9c939cec for download
+TCGA-53-A4EZ-01A: queuing b2926c07-53fd-43ca-a2e3-70c4d6f62bb0 for download
+TCGA-69-7761-01A: BAM already present, skipping download
+TCGA-78-7156-01A: queuing 54839351-9668-45b4-baf5-6497550f35a1 for download
+TCGA-44-A47A-01A: queuing dcde3fba-f8c6-4c0b-8540-5abd036db6c8 for download
+TCGA-MP-A4TJ-01A: queuing 65e3ebf4-fd52-4b03-8c00-6b4ff514f135 for download
+TCGA-78-7161-01A: BAM already present, skipping download
+TCGA-38-4632-01A: queuing 55acf78f-4a64-44c0-a276-510c279cf861 for download
+TCGA-55-6971-01A: queuing 02ad5c84-dbd7-4b21-bcae-2a0ad84edf66 for download
+TCGA-L9-A8F4-01A: queuing 73898db7-1015-4a90-a6b8-3fb68d9a9287 for download
+TCGA-99-8033-01A: queuing dad25a07-fb2a-42d0-95b6-b072afbdaa7c for download
+downloading 14 BAMs...
+Fri Jun  5 15:55:56 UTC 2026
+100% [############################################] Time:  0:02:46  39.4 MiB/s
+100% [############################################] Time:  0:01:15  59.1 MiB/s
+100% [############################################] Time:  0:02:32  37.0 MiB/s
+100% [############################################] Time:  0:00:39 225.2 MiB/s
+100% [############################################] Time:  0:01:12  58.4 MiB/s
+100% [############################################] Time:  0:00:55  57.1 MiB/s
+100% [############################################] Time:  0:01:36  60.1 MiB/s
+100% [############################################] Time:  0:01:13  59.5 MiB/s
+100% [############################################] Time:  0:01:05  58.2 MiB/s
+100% [############################################] Time:  0:02:09  59.9 MiB/s
+100% [############################################] Time:  0:00:41 142.4 MiB/s
+100% [############################################] Time:  0:00:28 410.3 MiB/s
+100% [############################################] Time:  0:00:24 211.1 MiB/s
+100% [############################################] Time:  0:02:04  59.1 MiB/s
+[32mSuccessfully downloaded[0m: 14
+all downloads complete for batch 1
+Fri Jun  5 16:26:36 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 1) ---
+Fri Jun  5 16:26:36 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-67-3772-01A starting 17.226233959197998
+TCGA-67-3772-01A collected 1371.5743350982666
+TCGA-67-3772-01A counted 2303.694309234619
+TCGA-67-3772-01A done 2341.29053401947
+TCGA-38-4632-01A starting 2344.7242166996
+TCGA-38-4632-01A collected 3080.6009573936462
+TCGA-38-4632-01A counted 3795.09361076355
+TCGA-38-4632-01A done 3830.909723520279
+TCGA-49-6767-01A starting 12.414713621139526
+TCGA-49-6767-01A collected 896.8458964824677
+TCGA-49-6767-01A counted 1764.2563886642456
+TCGA-49-6767-01A done 1798.5463683605194
+TCGA-78-7156-01A starting 1801.7320823669434
+TCGA-78-7156-01A collected 2790.687999725342
+TCGA-78-7156-01A counted 3861.803424835205
+TCGA-78-7156-01A done 3900.078122138977
+TCGA-50-5942-01A starting 20.391422986984253
+TCGA-50-5942-01A collected 987.9302453994751
+TCGA-50-5942-01A counted 2007.5553064346313
+TCGA-50-5942-01A done 2043.915800333023
+TCGA-MP-A4TJ-01A starting 2047.6823902130127
+TCGA-MP-A4TJ-01A collected 2894.7496740818024
+TCGA-MP-A4TJ-01A counted 3914.6136617660522
+TCGA-MP-A4TJ-01A done 3950.5421895980835
+TCGA-69-7761-01A starting 23.59876298904419
+TCGA-69-7761-01A collected 1285.1542096138
+TCGA-69-7761-01A counted 2522.703255176544
+TCGA-69-7761-01A done 2560.180631160736
+TCGA-55-6971-01A starting 2564.579325437546
+TCGA-55-6971-01A collected 3353.125221967697
+TCGA-55-6971-01A counted 4300.23381114006
+TCGA-55-6971-01A done 4335.112314462662
+TCGA-MP-A4T9-01A starting 15.675873756408691
+TCGA-MP-A4T9-01A collected 1172.4237842559814
+TCGA-MP-A4T9-01A counted 2229.730506181717
+TCGA-MP-A4T9-01A done 2266.0326957702637
+TCGA-78-7161-01A starting 2269.953015565872
+TCGA-78-7161-01A collected 4043.982640504837
+TCGA-78-7161-01A counted 5568.762941360474
+TCGA-78-7161-01A done 5603.996426582336
+TCGA-53-A4EZ-01A starting 22.219336986541748
+TCGA-53-A4EZ-01A collected 1442.2945392131805
+TCGA-53-A4EZ-01A counted 2753.3315255641937
+TCGA-53-A4EZ-01A done 2791.6305508613586
+TCGA-L9-A8F4-01A starting 2796.1090366840363
+TCGA-L9-A8F4-01A collected 4304.593704223633
+TCGA-L9-A8F4-01A counted 5818.201970338821
+TCGA-L9-A8F4-01A done 5850.799002170563
+TCGA-95-8494-01A starting 14.130225419998169
+TCGA-95-8494-01A collected 878.8549201488495
+TCGA-95-8494-01A counted 1871.7506356239319
+TCGA-95-8494-01A done 1907.5693924427032
+TCGA-44-A47A-01A starting 1911.2405738830566
+TCGA-44-A47A-01A collected 3038.411896944046
+TCGA-44-A47A-01A counted 4275.48037147522
+TCGA-44-A47A-01A done 4308.335089206696
+Your runtime was 6490.151045799255 seconds.
+Fri Jun  5 18:15:19 UTC 2026
+intron_coverage done for batch 1
+
+--- cleaning up BAMs ---
+TCGA-49-6767-01A: output confirmed, deleting BAM
+TCGA-95-8494-01A: output confirmed, deleting BAM
+TCGA-MP-A4T9-01A: output confirmed, deleting BAM
+TCGA-67-3772-01A: output confirmed, deleting BAM
+TCGA-55-8208-01A: output confirmed, deleting BAM
+TCGA-50-5942-01A: output confirmed, deleting BAM
+TCGA-53-A4EZ-01A: output confirmed, deleting BAM
+TCGA-69-7761-01A: output confirmed, deleting BAM
+TCGA-78-7156-01A: output confirmed, deleting BAM
+TCGA-44-A47A-01A: output confirmed, deleting BAM
+TCGA-MP-A4TJ-01A: output confirmed, deleting BAM
+TCGA-78-7161-01A: output confirmed, deleting BAM
+TCGA-38-4632-01A: output confirmed, deleting BAM
+TCGA-55-6971-01A: output confirmed, deleting BAM
+TCGA-L9-A8F4-01A: output confirmed, deleting BAM
+TCGA-99-8033-01A: output confirmed, deleting BAM
+
+batch 1 complete
+
+========================================================
+BATCH 2: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-44-A47B-01A: queuing 7b270022-0fac-48e2-a638-d5c688759508 for download
+TCGA-99-7458-01A: queuing 1d32c49b-04ce-4e59-b66e-db5d3b21f8b2 for download
+TCGA-97-8552-01A: queuing 2389e098-4fc6-4368-953d-2dda462fa41d for download
+TCGA-49-4512-01A: queuing 5cc58fb9-dd2f-4b91-88b5-f659d6793eb8 for download
+TCGA-05-4417-01A: queuing 63aad27b-4497-4c1d-818d-849ba8d83c0e for download
+TCGA-78-8655-01A: queuing 6f343aec-65e1-44ad-b4db-339d4ed62373 for download
+TCGA-55-A490-01A: queuing 62a350a6-9cb3-474b-8eb2-6eec9f6e2904 for download
+TCGA-75-6203-01A: queuing 3604ecfe-9649-43c8-a36c-a29b32f7b7d7 for download
+TCGA-55-7727-01A: queuing 86c05b02-68d0-473d-8aea-ab501cb40d29 for download
+TCGA-49-4506-01A: queuing 7ff58d7a-dc47-44fc-9559-2afd969de542 for download
+TCGA-44-2668-01A: queuing b002c35d-78d6-4330-b793-98aec1591e21 for download
+TCGA-50-5055-01A: queuing c7e11339-6f22-4e72-a7ab-6d0acd68a0ab for download
+TCGA-53-7626-01A: queuing a22b6af7-1f80-4937-8513-77835b9af610 for download
+TCGA-55-6969-01A: queuing 3424991a-dbbf-4a86-839a-c714f1b51371 for download
+TCGA-MN-A4N4-01A: queuing ea4712c3-719a-49d1-9985-1a0f955beec4 for download
+TCGA-91-6831-01A: queuing 8b3d6cd4-1aef-41ea-939a-af3a2dc8d955 for download
+downloading 16 BAMs...
+Fri Jun  5 18:15:22 UTC 2026
+100% [############################################] Time:  0:01:46  60.4 MiB/s
+100% [############################################] Time:  3:50:53 352.1 KiB/s
+100% [############################################] Time:  0:03:01  60.9 MiB/s
+100% [############################################] Time:  0:01:18  59.8 MiB/s
+100% [############################################] Time:  0:00:44  56.2 MiB/s
+100% [############################################] Time:  0:04:05  61.5 MiB/s
+100% [############################################] Time:  0:02:46  61.0 MiB/s
+100% [############################################] Time:  0:00:57  58.5 MiB/s
+100% [############################################] Time:  0:01:21  58.6 MiB/s
+100% [############################################] Time:  0:01:12  59.3 MiB/s
+100% [############################################] Time:  0:01:05  57.9 MiB/s
+100% [############################################] Time:  0:01:47  60.0 MiB/s
+100% [############################################] Time:  0:02:34  60.9 MiB/s
+100% [############################################] Time:  0:02:09  59.4 MiB/s
+100% [############################################] Time:  0:01:08  58.8 MiB/s
+100% [############################################] Time:  0:01:14  59.1 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 2
+Fri Jun  5 22:40:12 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 2) ---
+Fri Jun  5 22:40:13 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-99-7458-01A starting 13.916123390197754
+TCGA-99-7458-01A collected 1545.773107767105
+TCGA-99-7458-01A counted 3092.2220978736877
+TCGA-99-7458-01A done 3128.639095544815
+TCGA-78-8655-01A starting 20.07634139060974
+TCGA-78-8655-01A collected 876.912356376648
+TCGA-78-8655-01A counted 1778.9622275829315
+TCGA-78-8655-01A done 1816.6680812835693
+TCGA-50-5055-01A starting 1820.1029379367828
+TCGA-50-5055-01A collected 2537.8634326457977
+TCGA-50-5055-01A counted 3240.419493198395
+TCGA-50-5055-01A done 3277.969259262085
+TCGA-55-A490-01A starting 21.838741064071655
+TCGA-55-A490-01A collected 1059.7428121566772
+TCGA-55-A490-01A counted 1640.9369144439697
+TCGA-55-A490-01A done 1675.8325910568237
+TCGA-55-7727-01A starting 1678.2676365375519
+TCGA-55-7727-01A collected 2274.497850418091
+TCGA-55-7727-01A counted 2958.060019493103
+TCGA-55-7727-01A done 2995.5828223228455
+TCGA-91-6831-01A starting 2998.427169561386
+TCGA-91-6831-01A collected 3881.5805542469025
+TCGA-91-6831-01A counted 4854.47009563446
+TCGA-91-6831-01A done 4889.289551496506
+TCGA-44-A47B-01A starting 12.294548988342285
+TCGA-44-A47B-01A collected 1243.6933505535126
+TCGA-44-A47B-01A counted 2657.071430206299
+TCGA-44-A47B-01A done 2695.259840965271
+TCGA-MN-A4N4-01A starting 2699.882292509079
+TCGA-MN-A4N4-01A collected 3901.5286345481873
+TCGA-MN-A4N4-01A counted 4956.007909297943
+TCGA-MN-A4N4-01A done 4990.61569237709
+TCGA-49-4512-01A starting 16.992616891860962
+TCGA-49-4512-01A collected 853.0589299201965
+TCGA-49-4512-01A counted 1708.1527552604675
+TCGA-49-4512-01A done 1744.593991279602
+TCGA-49-4506-01A starting 1747.8444561958313
+TCGA-49-4506-01A collected 4014.061708211899
+TCGA-49-4506-01A counted 5042.05219078064
+TCGA-49-4506-01A done 5074.623078584671
+TCGA-05-4417-01A starting 18.532100915908813
+TCGA-05-4417-01A collected 935.0925722122192
+TCGA-05-4417-01A counted 1832.1767995357513
+TCGA-05-4417-01A done 1869.5059633255005
+TCGA-53-7626-01A starting 1872.7392072677612
+TCGA-53-7626-01A collected 3659.484231233597
+TCGA-53-7626-01A counted 5229.9358677864075
+TCGA-53-7626-01A done 5264.324095726013
+TCGA-75-6203-01A starting 23.31526494026184
+TCGA-75-6203-01A collected 847.8376092910767
+TCGA-75-6203-01A counted 1713.4360582828522
+TCGA-75-6203-01A done 1749.7468852996826
+TCGA-44-2668-01A starting 1753.114051580429
+TCGA-44-2668-01A collected 4542.485683441162
+TCGA-44-2668-01A counted 5512.7321836948395
+TCGA-44-2668-01A done 5544.908214092255
+Your runtime was 5663.472379922867 seconds.
+Sat Jun  6 00:15:09 UTC 2026
+intron_coverage done for batch 2
+
+--- cleaning up BAMs ---
+TCGA-44-A47B-01A: output confirmed, deleting BAM
+TCGA-99-7458-01A: output confirmed, deleting BAM
+TCGA-97-8552-01A: output confirmed, deleting BAM
+TCGA-49-4512-01A: output confirmed, deleting BAM
+TCGA-05-4417-01A: output confirmed, deleting BAM
+TCGA-78-8655-01A: output confirmed, deleting BAM
+TCGA-55-A490-01A: output confirmed, deleting BAM
+TCGA-75-6203-01A: output confirmed, deleting BAM
+TCGA-55-7727-01A: output confirmed, deleting BAM
+TCGA-49-4506-01A: output confirmed, deleting BAM
+TCGA-44-2668-01A: output confirmed, deleting BAM
+TCGA-50-5055-01A: output confirmed, deleting BAM
+TCGA-53-7626-01A: output confirmed, deleting BAM
+TCGA-55-6969-01A: output confirmed, deleting BAM
+TCGA-MN-A4N4-01A: output confirmed, deleting BAM
+TCGA-91-6831-01A: output confirmed, deleting BAM
+
+batch 2 complete
+
+========================================================
+BATCH 3: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-7728-01A: queuing 36ef2609-d721-4db5-a9d5-8928c7a67ac6 for download
+TCGA-55-7726-01A: queuing 6390912d-9333-4be5-bbf8-bb875ce1f539 for download
+TCGA-50-5932-01A: queuing 98754b25-9c39-4830-b260-2d92b28f2e7a for download
+TCGA-55-1596-01A: queuing 80188ed0-954f-44d9-a212-fe88b8927b62 for download
+TCGA-44-6147-01A: queuing 8863b8af-1ec2-4b06-ad68-b918a4c477c5 for download
+TCGA-50-6597-01A: queuing e07910d4-2c76-45e4-9792-d129cffb8ae4 for download
+TCGA-44-7661-01A: queuing 09fae186-f274-486a-bb36-48c6dc310f90 for download
+TCGA-05-4384-01A: queuing 2048318d-3a7c-45a7-a7a7-680076d76b6f for download
+TCGA-44-2659-01A: queuing 704d42ab-3e11-4c3b-a74c-b1e6a30e27c5 for download
+TCGA-55-8511-01A: queuing 20769457-c733-425b-b8bd-45c044f4ebe6 for download
+TCGA-44-6776-01A: queuing 47d9b806-84c4-4b60-8b5a-10453f11c4fc for download
+TCGA-80-5607-01A: queuing f581a769-6ef2-4d00-985c-3f0d140132aa for download
+TCGA-50-5072-01A: queuing fe6ef453-e5bb-4929-838e-bb0cd2670211 for download
+TCGA-05-4396-01A: queuing d1945e55-eaa9-41f3-8017-380ccd112dfc for download
+TCGA-95-7948-01A: queuing 3498e816-9bf1-41ab-a662-206a78a32e2b for download
+TCGA-95-7562-01A: queuing 2ae21172-d280-47c0-99c4-e859d3094ddb for download
+downloading 16 BAMs...
+Sat Jun  6 00:15:12 UTC 2026
+100% [############################################] Time:  0:01:03  57.5 MiB/s
+100% [############################################] Time:  0:02:19  60.8 MiB/s
+100% [############################################] Time:  0:01:00  59.4 MiB/s
+100% [############################################] Time:  0:00:49  57.2 MiB/s
+100% [############################################] Time:  0:02:35  60.5 MiB/s
+100% [############################################] Time:  0:01:30  58.1 MiB/s
+100% [############################################] Time:  0:02:22  60.0 MiB/s
+100% [############################################] Time:  0:01:10  58.7 MiB/s
+100% [############################################] Time:  0:02:41  60.0 MiB/s
+100% [############################################] Time:  0:01:04  57.5 MiB/s
+100% [############################################] Time:  0:02:22  59.9 MiB/s
+100% [############################################] Time:  0:01:17  58.6 MiB/s
+100% [############################################] Time:  0:01:39  58.8 MiB/s
+100% [############################################] Time:  0:00:55  57.2 MiB/s
+100% [############################################] Time:  0:01:34  58.2 MiB/s
+100% [############################################] Time:  0:01:48  59.3 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 3
+Sat Jun  6 00:47:45 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 3) ---
+Sat Jun  6 00:47:46 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-55-1596-01A starting 18.723989248275757
+TCGA-55-1596-01A collected 950.5347533226013
+TCGA-55-1596-01A counted 1994.7142825126648
+TCGA-55-1596-01A done 2031.5765945911407
+TCGA-44-6776-01A starting 2035.141201019287
+TCGA-44-6776-01A collected 2833.130270957947
+TCGA-44-6776-01A counted 3704.878305912018
+TCGA-44-6776-01A done 3742.024293422699
+TCGA-55-7726-01A starting 15.58897352218628
+TCGA-55-7726-01A collected 694.0609893798828
+TCGA-55-7726-01A counted 1404.0892732143402
+TCGA-55-7726-01A done 1441.0054032802582
+TCGA-55-8511-01A starting 1443.7749321460724
+TCGA-55-8511-01A collected 2551.585905790329
+TCGA-55-8511-01A counted 3709.887273311615
+TCGA-55-8511-01A done 3747.7740325927734
+TCGA-50-5932-01A starting 17.049210786819458
+TCGA-50-5932-01A collected 1291.1500625610352
+TCGA-50-5932-01A counted 2521.386153459549
+TCGA-50-5932-01A done 2559.306641817093
+TCGA-05-4396-01A starting 2563.452187538147
+TCGA-05-4396-01A collected 3295.061585664749
+TCGA-05-4396-01A counted 4213.090879440308
+TCGA-05-4396-01A done 4248.158432722092
+TCGA-50-6597-01A starting 21.692066431045532
+TCGA-50-6597-01A collected 778.3512234687805
+TCGA-50-6597-01A counted 1370.8890297412872
+TCGA-50-6597-01A done 1407.5428647994995
+TCGA-44-2659-01A starting 1409.9992537498474
+TCGA-44-2659-01A collected 3272.874228954315
+TCGA-44-2659-01A counted 4781.868152141571
+TCGA-44-2659-01A done 4817.711112976074
+TCGA-44-6147-01A starting 20.165543794631958
+TCGA-44-6147-01A collected 1127.944082736969
+TCGA-44-6147-01A counted 2446.9406049251556
+TCGA-44-6147-01A done 2485.132913351059
+TCGA-50-5072-01A starting 2489.540343284607
+TCGA-50-5072-01A collected 3733.2887160778046
+TCGA-50-5072-01A counted 4925.8640396595
+TCGA-50-5072-01A done 4960.962412118912
+TCGA-05-4384-01A starting 24.69499135017395
+TCGA-05-4384-01A collected 1012.7285068035126
+TCGA-05-4384-01A counted 2141.322857618332
+TCGA-05-4384-01A done 2178.4548699855804
+TCGA-80-5607-01A starting 2182.2860362529755
+TCGA-80-5607-01A collected 2894.60254573822
+TCGA-80-5607-01A counted 3755.307028532028
+TCGA-80-5607-01A done 3792.2821366786957
+TCGA-44-7661-01A starting 23.152891397476196
+TCGA-44-7661-01A collected 1682.9520163536072
+TCGA-44-7661-01A counted 3315.0097773075104
+TCGA-44-7661-01A done 3351.4464950561523
+TCGA-95-7562-01A starting 3356.7118515968323
+TCGA-95-7562-01A collected 4962.460475683212
+TCGA-95-7562-01A counted 6128.534440279007
+TCGA-95-7562-01A done 6163.232001781464
+Your runtime was 6400.244304656982 seconds.
+Sat Jun  6 02:34:47 UTC 2026
+intron_coverage done for batch 3
+
+--- cleaning up BAMs ---
+TCGA-55-7728-01A: output confirmed, deleting BAM
+TCGA-55-7726-01A: output confirmed, deleting BAM
+TCGA-50-5932-01A: output confirmed, deleting BAM
+TCGA-55-1596-01A: output confirmed, deleting BAM
+TCGA-44-6147-01A: output confirmed, deleting BAM
+TCGA-50-6597-01A: output confirmed, deleting BAM
+TCGA-44-7661-01A: output confirmed, deleting BAM
+TCGA-05-4384-01A: output confirmed, deleting BAM
+TCGA-44-2659-01A: output confirmed, deleting BAM
+TCGA-55-8511-01A: output confirmed, deleting BAM
+TCGA-44-6776-01A: output confirmed, deleting BAM
+TCGA-80-5607-01A: output confirmed, deleting BAM
+TCGA-50-5072-01A: output confirmed, deleting BAM
+TCGA-05-4396-01A: output confirmed, deleting BAM
+TCGA-95-7948-01A: output confirmed, deleting BAM
+TCGA-95-7562-01A: output confirmed, deleting BAM
+
+batch 3 complete
+
+========================================================
+BATCH 4: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-8090-01A: queuing 217e75fb-00de-4fe4-9ecb-88cf17da83a6 for download
+TCGA-73-7498-01A: queuing 0e1446f0-8bd5-4839-8f89-e332a0d1a02f for download
+TCGA-55-7725-01A: queuing 44a3eb8c-135f-44f4-82bd-86fb6104a4e8 for download
+TCGA-05-5420-01A: queuing 216b822e-0d33-476f-ba03-18ff818f8a78 for download
+TCGA-38-4629-01A: queuing 45600709-c917-42ef-bc2f-229e6f3c71af for download
+TCGA-67-3770-01A: queuing f6284fb5-ab14-41a5-8d4f-63bde0394bfc for download
+TCGA-73-4676-01A: queuing bc6ebfd0-e972-46e1-9627-6b16a420a5ee for download
+TCGA-55-1595-01A: queuing 63da5a36-0ec0-4d89-be9d-7319f0eae8ed for download
+TCGA-55-1592-01A: queuing 30b73dff-6c83-45f4-935b-0f844ff9fdd7 for download
+TCGA-05-4410-01A: queuing 243e1ddf-9b74-42c0-b357-13b302b039f9 for download
+TCGA-95-7043-01A: queuing bb3bf0cd-d755-42b2-b9bc-0d09bf7490ca for download
+TCGA-55-6979-01A: queuing a94f8de8-2203-4fe0-b007-6437973f1aaf for download
+TCGA-05-4382-01A: queuing ce46ac67-6a51-4a71-9b5c-3412c8576c8c for download
+TCGA-78-7633-01A: queuing c916f887-6e77-4fc6-a692-30375d28650f for download
+TCGA-05-4434-01A: queuing 6c52a80e-6d42-47d2-8002-f29d22f2ad33 for download
+TCGA-50-5935-01A: queuing 66a70381-99bc-4e27-a767-58a86923df1c for download
+downloading 16 BAMs...
+Sat Jun  6 02:34:50 UTC 2026
+100% [############################################] Time:  0:00:47  55.9 MiB/s
+100% [############################################] Time:  0:01:08  54.9 MiB/s
+100% [############################################] Time:  0:01:03  56.6 MiB/s
+100% [############################################] Time:  0:03:19  59.8 MiB/s
+100% [############################################] Time:  0:00:57  56.8 MiB/s
+100% [############################################] Time:  0:02:56  59.4 MiB/s
+100% [############################################] Time:  0:01:07  56.8 MiB/s
+100% [############################################] Time:  0:02:40  59.4 MiB/s
+100% [############################################] Time:  0:02:56  59.0 MiB/s
+100% [############################################] Time:  0:01:22  54.7 MiB/s
+100% [############################################] Time:  0:03:27  42.7 MiB/s
+100% [############################################] Time:  0:02:53  60.4 MiB/s
+100% [############################################] Time:  0:01:27  58.1 MiB/s
+100% [############################################] Time:  0:03:41  59.9 MiB/s
+100% [############################################] Time:  0:02:42  59.4 MiB/s
+100% [############################################] Time:  0:01:11  54.2 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 4
+Sat Jun  6 03:16:55 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 4) ---
+Sat Jun  6 03:16:55 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-55-8090-01A starting 12.065304040908813
+TCGA-55-8090-01A collected 2014.8677961826324
+TCGA-55-8090-01A counted 3673.599641561508
+TCGA-55-8090-01A done 3709.966131925583
+TCGA-73-7498-01A starting 13.60778546333313
+TCGA-73-7498-01A collected 1978.9015724658966
+TCGA-73-7498-01A counted 3841.9216792583466
+TCGA-73-7498-01A done 3879.7620537281036
+TCGA-73-4676-01A starting 21.70769214630127
+TCGA-73-4676-01A collected 1039.7564947605133
+TCGA-73-4676-01A counted 1946.8246006965637
+TCGA-73-4676-01A done 1984.4367411136627
+TCGA-55-6979-01A starting 1987.9523441791534
+TCGA-55-6979-01A collected 3058.576555967331
+TCGA-55-6979-01A counted 4019.604820251465
+TCGA-55-6979-01A done 4055.929666996002
+TCGA-55-7725-01A starting 15.364173889160156
+TCGA-55-7725-01A collected 659.2605664730072
+TCGA-55-7725-01A counted 1313.7410998344421
+TCGA-55-7725-01A done 1349.0645687580109
+TCGA-55-1592-01A starting 1351.8579993247986
+TCGA-55-1592-01A collected 3271.4469430446625
+TCGA-55-1592-01A counted 4993.112446784973
+TCGA-55-1592-01A done 5026.946545124054
+TCGA-55-1595-01A starting 23.26297664642334
+TCGA-55-1595-01A collected 1898.6126430034637
+TCGA-55-1595-01A counted 3614.867501974106
+TCGA-55-1595-01A done 3651.9389951229095
+TCGA-50-5935-01A starting 3657.4329829216003
+TCGA-50-5935-01A collected 4460.814191102982
+TCGA-50-5935-01A counted 5386.277105808258
+TCGA-50-5935-01A done 5420.625174283981
+TCGA-05-5420-01A starting 16.90409231185913
+TCGA-05-5420-01A collected 969.0459060668945
+TCGA-05-5420-01A counted 1663.4196691513062
+TCGA-05-5420-01A done 1700.397243976593
+TCGA-95-7043-01A starting 1703.298859834671
+TCGA-95-7043-01A collected 2414.6766974925995
+TCGA-95-7043-01A counted 3222.420222043991
+TCGA-95-7043-01A done 3258.5287096500397
+TCGA-05-4434-01A starting 3261.875399827957
+TCGA-05-4434-01A collected 5497.078917503357
+TCGA-05-4434-01A counted 7152.124609947205
+TCGA-05-4434-01A done 7184.747682571411
+TCGA-67-3770-01A starting 20.11822199821472
+TCGA-67-3770-01A collected 738.4988896846771
+TCGA-67-3770-01A counted 1432.3707466125488
+TCGA-67-3770-01A done 1469.9908084869385
+TCGA-05-4410-01A starting 1472.8965828418732
+TCGA-05-4410-01A collected 2229.2678139209747
+TCGA-05-4410-01A counted 3110.2633335590363
+TCGA-05-4410-01A done 3146.2583618164062
+TCGA-78-7633-01A starting 3149.6086893081665
+TCGA-78-7633-01A collected 4970.288165807724
+TCGA-78-7633-01A counted 6309.921568632126
+TCGA-78-7633-01A done 6342.147264480591
+Your runtime was 7214.155982732773 seconds.
+Sat Jun  6 05:17:35 UTC 2026
+intron_coverage done for batch 4
+
+--- cleaning up BAMs ---
+TCGA-55-8090-01A: output confirmed, deleting BAM
+TCGA-73-7498-01A: output confirmed, deleting BAM
+TCGA-55-7725-01A: output confirmed, deleting BAM
+TCGA-05-5420-01A: output confirmed, deleting BAM
+TCGA-38-4629-01A: output confirmed, deleting BAM
+TCGA-67-3770-01A: output confirmed, deleting BAM
+TCGA-73-4676-01A: output confirmed, deleting BAM
+TCGA-55-1595-01A: output confirmed, deleting BAM
+TCGA-55-1592-01A: output confirmed, deleting BAM
+TCGA-05-4410-01A: output confirmed, deleting BAM
+TCGA-95-7043-01A: output confirmed, deleting BAM
+TCGA-55-6979-01A: output confirmed, deleting BAM
+TCGA-05-4382-01A: output confirmed, deleting BAM
+TCGA-78-7633-01A: output confirmed, deleting BAM
+TCGA-05-4434-01A: output confirmed, deleting BAM
+TCGA-50-5935-01A: output confirmed, deleting BAM
+
+batch 4 complete
+
+========================================================
+BATCH 5: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-49-4501-01A: queuing e51d5093-8639-43e3-9866-1480083f4232 for download
+TCGA-55-8207-01A: queuing 9e841128-e372-44dc-ada0-72be76782a2c for download
+TCGA-55-8203-01A: queuing 7edd3c0d-516d-4b81-bdc1-8ca8997a8bff for download
+TCGA-55-8621-01A: queuing 2b987ab5-2a04-4046-bd60-cb219c9e74b5 for download
+TCGA-86-6851-01A: queuing 788ecc45-ea2c-4197-9537-02016cfe14d3 for download
+TCGA-NJ-A7XG-01A: queuing 061e1a72-d225-46b3-ae7b-8233a4f3bb20 for download
+TCGA-55-6986-01A: queuing dfa64001-556a-47a9-9306-85bb2cd3a6d7 for download
+TCGA-J2-A4AD-01A: queuing 86ecbd9c-8ec7-4f1e-8b42-7877d740e45e for download
+TCGA-55-8615-01A: queuing b6d50fd3-1810-48d6-aab1-c97f9c29d194 for download
+TCGA-86-7954-01A: queuing eaf48a69-792e-41e4-9b44-09e440e5d6d6 for download
+TCGA-91-A4BD-01A: queuing ebc9dad8-ac5c-42bd-8db0-5ef8fea67d41 for download
+TCGA-73-4670-01A: queuing e8f2cdea-1430-43ad-8359-ead8b4c5fd6e for download
+TCGA-38-4625-01A: queuing a35d80d8-8b94-4f66-b408-bbe19f3edd54 for download
+TCGA-78-7162-01A: queuing 3c2ce652-b88f-42d4-862b-ad4e610ae8eb for download
+TCGA-55-8089-01A: queuing 1336795f-b302-4d41-83f0-ce7a26a0d6c9 for download
+TCGA-91-6829-01A: queuing f3968b44-8997-4be0-ad22-4bd460e5b9d1 for download
+downloading 16 BAMs...
+Sat Jun  6 05:17:38 UTC 2026
+100% [############################################] Time:  0:02:50  60.0 MiB/s
+100% [############################################] Time:  0:01:11  58.1 MiB/s
+100% [############################################] Time:  0:03:11  59.6 MiB/s
+100% [############################################] Time:  0:03:40  59.8 MiB/s
+100% [############################################] Time:  0:02:31  59.5 MiB/s
+100% [############################################] Time:  0:03:35  59.8 MiB/s
+100% [############################################] Time:  0:01:43  58.7 MiB/s
+100% [############################################] Time:  0:03:13  60.0 MiB/s
+100% [############################################] Time:  0:02:50  60.4 MiB/s
+100% [############################################] Time:  0:01:47  59.6 MiB/s
+100% [############################################] Time:  0:02:32  60.3 MiB/s
+100% [############################################] Time:  0:02:02  58.6 MiB/s
+100% [############################################] Time:  0:01:34  58.6 MiB/s
+100% [############################################] Time:  0:00:55  57.5 MiB/s
+100% [############################################] Time:  0:01:50  58.5 MiB/s
+100% [############################################] Time:  0:01:28  60.1 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 5
+Sat Jun  6 06:02:59 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 5) ---
+Sat Jun  6 06:02:59 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-86-6851-01A starting 18.519150972366333
+TCGA-86-6851-01A collected 2566.944965362549
+TCGA-86-6851-01A counted 4511.368496656418
+TCGA-86-6851-01A done 4549.142283201218
+TCGA-55-8621-01A starting 16.968589305877686
+TCGA-55-8621-01A collected 1173.4146978855133
+TCGA-55-8621-01A counted 2406.727229118347
+TCGA-55-8621-01A done 2442.677496433258
+TCGA-86-7954-01A starting 2446.812871694565
+TCGA-86-7954-01A collected 4308.900092601776
+TCGA-86-7954-01A counted 6042.645948410034
+TCGA-86-7954-01A done 6075.538138628006
+TCGA-NJ-A7XG-01A starting 20.013747215270996
+TCGA-NJ-A7XG-01A collected 1278.4133808612823
+TCGA-NJ-A7XG-01A counted 2682.6167583465576
+TCGA-NJ-A7XG-01A done 2718.8150641918182
+TCGA-91-A4BD-01A starting 2723.360630273819
+TCGA-91-A4BD-01A collected 3419.6757764816284
+TCGA-91-A4BD-01A counted 4016.6144621372223
+TCGA-91-A4BD-01A done 4054.7318408489227
+TCGA-91-6829-01A starting 4057.384155511856
+TCGA-91-6829-01A collected 5067.644150972366
+TCGA-91-6829-01A counted 6156.53397154808
+TCGA-91-6829-01A done 6190.785966157913
+TCGA-49-4501-01A starting 12.232646703720093
+TCGA-49-4501-01A collected 2161.787792444229
+TCGA-49-4501-01A counted 3607.663946866989
+TCGA-49-4501-01A done 3644.6085364818573
+TCGA-78-7162-01A starting 3649.505575656891
+TCGA-78-7162-01A collected 5099.62544298172
+TCGA-78-7162-01A counted 6170.009427547455
+TCGA-78-7162-01A done 6203.529680252075
+TCGA-J2-A4AD-01A starting 23.23826265335083
+TCGA-J2-A4AD-01A collected 1393.5917336940765
+TCGA-J2-A4AD-01A counted 2841.1028594970703
+TCGA-J2-A4AD-01A done 2878.6772077083588
+TCGA-73-4670-01A starting 2883.454495191574
+TCGA-73-4670-01A collected 5270.991992712021
+TCGA-73-4670-01A counted 6675.3851091861725
+TCGA-73-4670-01A done 6709.473664522171
+TCGA-55-8203-01A starting 15.369914531707764
+TCGA-55-8203-01A collected 2084.1279771327972
+TCGA-55-8203-01A counted 3739.430634498596
+TCGA-55-8203-01A done 3777.684539794922
+TCGA-55-8089-01A starting 3782.9720022678375
+TCGA-55-8089-01A collected 5552.570921182632
+TCGA-55-8089-01A counted 7015.944051504135
+TCGA-55-8089-01A done 7049.968475818634
+Your runtime was 7562.46062374115 seconds.
+Sat Jun  6 08:09:30 UTC 2026
+intron_coverage done for batch 5
+
+--- cleaning up BAMs ---
+TCGA-49-4501-01A: output confirmed, deleting BAM
+TCGA-55-8207-01A: output confirmed, deleting BAM
+TCGA-55-8203-01A: output confirmed, deleting BAM
+TCGA-55-8621-01A: output confirmed, deleting BAM
+TCGA-86-6851-01A: output confirmed, deleting BAM
+TCGA-NJ-A7XG-01A: output confirmed, deleting BAM
+TCGA-55-6986-01A: output confirmed, deleting BAM
+TCGA-J2-A4AD-01A: output confirmed, deleting BAM
+TCGA-55-8615-01A: output confirmed, deleting BAM
+TCGA-86-7954-01A: output confirmed, deleting BAM
+TCGA-91-A4BD-01A: output confirmed, deleting BAM
+TCGA-73-4670-01A: output confirmed, deleting BAM
+TCGA-38-4625-01A: output confirmed, deleting BAM
+TCGA-78-7162-01A: output confirmed, deleting BAM
+TCGA-55-8089-01A: output confirmed, deleting BAM
+TCGA-91-6829-01A: output confirmed, deleting BAM
+
+batch 5 complete
+
+========================================================
+BATCH 6: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-64-5779-01A: queuing 46acba46-d33c-458b-b3cf-a9ba60ea32fb for download
+TCGA-78-8640-01A: queuing 0a50c26b-ee2c-4953-aacc-668589736fa6 for download
+TCGA-64-1680-01A: queuing 16b44441-90d4-4289-8248-d31251f49f2b for download
+TCGA-MP-A4SW-01A: queuing fea8014a-be97-4a25-b588-d5e39e007c30 for download
+TCGA-75-5146-01A: queuing a8393e91-f334-4d1f-b13b-8008cf163fd0 for download
+TCGA-38-4626-01A: queuing 6c30992d-b469-4e80-965e-d7643b176f81 for download
+TCGA-44-5644-01A: queuing 0a34988b-4886-4852-9b03-7915c44a0647 for download
+TCGA-44-5643-01A: queuing a26c9cfc-b7cf-4157-8d75-d668602ed4ff for download
+TCGA-55-8512-01A: queuing f148c5ad-0710-4a88-9303-f83f6b07d5da for download
+TCGA-86-8279-01A: queuing 3bdeddcd-846f-4807-b5a4-ed24e3a64eb3 for download
+TCGA-83-5908-01A: queuing 2e9d95a7-fdbd-4efb-8691-a34ede74c136 for download
+TCGA-44-6774-01A: queuing cc28cd2a-e26a-4a4d-b4a3-c063cf1d76c0 for download
+TCGA-67-3774-01A: queuing ac5c764d-d1e5-4865-b7d0-35572959a973 for download
+TCGA-05-4430-01A: queuing 6920f7d3-5755-41f5-8227-16327de30ca0 for download
+TCGA-49-6745-01A: queuing ab62a7c8-6ed3-4996-836f-580c0b4dc71f for download
+TCGA-55-A57B-01A: queuing d1cbb649-f240-4429-b23d-726788bb425f for download
+downloading 16 BAMs...
+Sat Jun  6 08:09:33 UTC 2026
+100% [############################################] Time:  0:01:23  59.4 MiB/s
+100% [############################################] Time:  0:01:19  59.5 MiB/s
+100% [############################################] Time:  0:00:52  55.0 MiB/s
+100% [############################################] Time:  0:01:22  59.6 MiB/s
+100% [############################################] Time:  0:01:20  58.7 MiB/s
+100% [############################################] Time:  0:01:11  57.7 MiB/s
+100% [############################################] Time:  0:02:42  61.2 MiB/s
+100% [############################################] Time:  0:02:08  59.9 MiB/s
+100% [############################################] Time:  0:01:34  58.0 MiB/s
+100% [############################################] Time:  0:01:24  59.1 MiB/s
+100% [############################################] Time:  0:03:19  60.6 MiB/s
+100% [############################################] Time:  0:01:04  57.6 MiB/s
+100% [############################################] Time:  0:01:57  60.0 MiB/s
+100% [############################################] Time:  0:03:13  47.9 MiB/s
+100% [############################################] Time:  0:02:06  60.5 MiB/s
+100% [############################################] Time:  0:01:09  58.6 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 6
+Sat Jun  6 08:44:16 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 6) ---
+Sat Jun  6 08:44:17 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-75-5146-01A starting 18.94971251487732
+TCGA-75-5146-01A collected 815.3550298213959
+TCGA-75-5146-01A counted 1600.2911267280579
+TCGA-75-5146-01A done 1638.334097146988
+TCGA-55-8512-01A starting 1641.45196890831
+TCGA-55-8512-01A collected 2729.9692285060883
+TCGA-55-8512-01A counted 4110.55547618866
+TCGA-55-8512-01A done 4146.4252552986145
+TCGA-78-8640-01A starting 14.168154001235962
+TCGA-78-8640-01A collected 1033.5885345935822
+TCGA-78-8640-01A counted 2112.8612763881683
+TCGA-78-8640-01A done 2151.153666496277
+TCGA-67-3774-01A starting 2155.1502573490143
+TCGA-67-3774-01A collected 3138.4469046592712
+TCGA-67-3774-01A counted 4152.988737344742
+TCGA-67-3774-01A done 4187.7489721775055
+TCGA-44-5643-01A starting 23.6664457321167
+TCGA-44-5643-01A collected 952.203262090683
+TCGA-44-5643-01A counted 1936.8222563266754
+TCGA-44-5643-01A done 1973.498280286789
+TCGA-83-5908-01A starting 1977.1984202861786
+TCGA-83-5908-01A collected 3422.466557264328
+TCGA-83-5908-01A counted 4902.013121128082
+TCGA-83-5908-01A done 4939.120850324631
+TCGA-MP-A4SW-01A starting 17.35038161277771
+TCGA-MP-A4SW-01A collected 1338.362271308899
+TCGA-MP-A4SW-01A counted 2709.0858087539673
+TCGA-MP-A4SW-01A done 2748.451982021332
+TCGA-49-6745-01A starting 2753.3644070625305
+TCGA-49-6745-01A collected 3759.2346470355988
+TCGA-49-6745-01A counted 4699.602159738541
+TCGA-49-6745-01A done 4734.537818431854
+TCGA-64-1680-01A starting 15.704699993133545
+TCGA-64-1680-01A collected 894.8349192142487
+TCGA-64-1680-01A counted 1669.5715968608856
+TCGA-64-1680-01A done 1705.1823732852936
+TCGA-86-8279-01A starting 1708.117137670517
+TCGA-86-8279-01A collected 3521.755351305008
+TCGA-86-8279-01A counted 5142.395279407501
+TCGA-86-8279-01A done 5175.642053365707
+TCGA-38-4626-01A starting 20.515851974487305
+TCGA-38-4626-01A collected 2465.594507932663
+TCGA-38-4626-01A counted 4243.7108545303345
+TCGA-38-4626-01A done 4279.452355623245
+TCGA-64-5779-01A starting 12.579492330551147
+TCGA-64-5779-01A collected 1065.9026520252228
+TCGA-64-5779-01A counted 2182.0352923870087
+TCGA-64-5779-01A done 2220.7551283836365
+TCGA-05-4430-01A starting 2224.807739496231
+TCGA-05-4430-01A collected 3921.2282333374023
+TCGA-05-4430-01A counted 5155.287579536438
+TCGA-05-4430-01A done 5187.599839687347
+Your runtime was 6580.128143787384 seconds.
+Sat Jun  6 10:34:28 UTC 2026
+intron_coverage done for batch 6
+
+--- cleaning up BAMs ---
+TCGA-64-5779-01A: output confirmed, deleting BAM
+TCGA-78-8640-01A: output confirmed, deleting BAM
+TCGA-64-1680-01A: output confirmed, deleting BAM
+TCGA-MP-A4SW-01A: output confirmed, deleting BAM
+TCGA-75-5146-01A: output confirmed, deleting BAM
+TCGA-38-4626-01A: output confirmed, deleting BAM
+TCGA-44-5644-01A: output confirmed, deleting BAM
+TCGA-44-5643-01A: output confirmed, deleting BAM
+TCGA-55-8512-01A: output confirmed, deleting BAM
+TCGA-86-8279-01A: output confirmed, deleting BAM
+TCGA-83-5908-01A: output confirmed, deleting BAM
+TCGA-44-6774-01A: output confirmed, deleting BAM
+TCGA-67-3774-01A: output confirmed, deleting BAM
+TCGA-05-4430-01A: output confirmed, deleting BAM
+TCGA-49-6745-01A: output confirmed, deleting BAM
+TCGA-55-A57B-01A: output confirmed, deleting BAM
+
+batch 6 complete
+
+========================================================
+BATCH 7: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-38-7271-01A: queuing b71478d5-00d8-4a78-93f6-c3db55299251 for download
+TCGA-75-7027-01A: queuing 8ebd4c54-1436-4756-a82e-4628b53586da for download
+TCGA-MP-A4T7-01A: queuing 80fbde52-30a2-478b-a3e6-b5cc2a295d28 for download
+TCGA-55-6642-01A: queuing f4ed8b5d-a5c3-46c0-aaa6-a29003cc750d for download
+TCGA-NJ-A4YQ-01A: queuing 9c10aab6-e991-4d55-852b-e136d2469d1d for download
+TCGA-73-4666-01A: queuing a3d162a0-925c-461d-b9d7-54d8798660c4 for download
+TCGA-86-7714-01A: queuing 489d6328-0678-4c85-9837-4f476c9afee9 for download
+TCGA-86-7953-01A: queuing 755e3d1a-38f8-4ae3-91b2-1da34dc5c404 for download
+TCGA-75-7031-01A: queuing 9aefd391-6b46-40aa-96a3-b81b96b68bd9 for download
+TCGA-97-A4M3-01A: queuing ef45b46e-0902-4641-9d21-1a98c401f6ba for download
+TCGA-49-AAR3-01A: queuing b3cb85eb-5102-4af1-9633-d16b75fd80ad for download
+TCGA-55-8620-01A: queuing 75fe49d9-5526-43dd-8e6b-9929d72bf761 for download
+TCGA-75-6207-01A: queuing 5ef1801d-6587-4782-ba2e-5d13d23dca3a for download
+TCGA-69-8255-01A: queuing a35d36a1-fcba-4f4a-9c6d-a9af1d881026 for download
+TCGA-50-5068-01A: queuing 32d57c36-8bf3-4134-8dd4-4cd17bc8ae7f for download
+TCGA-97-A4M5-01A: queuing a5280c09-2f78-4fd5-9ec3-8888fac58178 for download
+downloading 16 BAMs...
+Sat Jun  6 10:34:30 UTC 2026
+100% [############################################] Time:  0:01:41  60.8 MiB/s
+100% [############################################] Time:  0:01:48  60.5 MiB/s
+100% [############################################] Time:  0:00:56  59.0 MiB/s
+100% [############################################] Time:  0:03:39  61.6 MiB/s
+100% [############################################] Time:  0:00:51  57.4 MiB/s
+100% [############################################] Time:  0:00:55  58.0 MiB/s
+100% [############################################] Time:  0:01:56  60.4 MiB/s
+100% [############################################] Time:  0:01:25  59.8 MiB/s
+100% [############################################] Time:  0:05:52  29.4 MiB/s
+100% [############################################] Time:  0:02:36  60.8 MiB/s
+100% [############################################] Time:  0:02:10  60.7 MiB/s
+100% [############################################] Time:  0:01:03  58.0 MiB/s
+100% [############################################] Time:  0:00:55  57.6 MiB/s
+100% [############################################] Time:  0:01:33  59.4 MiB/s
+100% [############################################] Time:  0:01:18  59.4 MiB/s
+100% [############################################] Time:  0:01:23  59.6 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 7
+Sat Jun  6 11:11:03 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 7) ---
+Sat Jun  6 11:11:03 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-75-7027-01A starting 13.945343732833862
+TCGA-75-7027-01A collected 2041.7333672046661
+TCGA-75-7027-01A counted 3973.7148792743683
+TCGA-75-7027-01A done 4014.960530757904
+TCGA-55-6642-01A starting 17.047954320907593
+TCGA-55-6642-01A collected 1193.1265678405762
+TCGA-55-6642-01A counted 2256.119515657425
+TCGA-55-6642-01A done 2295.6710243225098
+TCGA-49-AAR3-01A starting 2299.1748723983765
+TCGA-49-AAR3-01A collected 2973.3891479969025
+TCGA-49-AAR3-01A counted 3843.0331914424896
+TCGA-49-AAR3-01A done 3884.8929040431976
+TCGA-NJ-A4YQ-01A starting 18.679592609405518
+TCGA-NJ-A4YQ-01A collected 1071.2917437553406
+TCGA-NJ-A4YQ-01A counted 2283.3089542388916
+TCGA-NJ-A4YQ-01A done 2323.3049681186676
+TCGA-55-8620-01A starting 2327.0248844623566
+TCGA-55-8620-01A collected 3322.8407776355743
+TCGA-55-8620-01A counted 4615.771742343903
+TCGA-55-8620-01A done 4654.647705316544
+TCGA-86-7953-01A starting 23.365183353424072
+TCGA-86-7953-01A collected 1648.701592206955
+TCGA-86-7953-01A counted 3370.470409154892
+TCGA-86-7953-01A done 3410.729383468628
+TCGA-50-5068-01A starting 3416.0135741233826
+TCGA-50-5068-01A collected 4176.166614770889
+TCGA-50-5068-01A counted 4840.377010345459
+TCGA-50-5068-01A done 4876.462780237198
+TCGA-38-7271-01A starting 12.402275085449219
+TCGA-38-7271-01A collected 801.7613067626953
+TCGA-38-7271-01A counted 1716.6698141098022
+TCGA-38-7271-01A done 1756.1865210533142
+TCGA-97-A4M3-01A starting 1759.4468669891357
+TCGA-97-A4M3-01A collected 2920.827283859253
+TCGA-97-A4M3-01A counted 4179.63565659523
+TCGA-97-A4M3-01A done 4220.339865922928
+TCGA-MP-A4T7-01A starting 15.430323839187622
+TCGA-MP-A4T7-01A collected 1286.9004983901978
+TCGA-MP-A4T7-01A counted 2676.175423145294
+TCGA-MP-A4T7-01A done 2715.7615835666656
+TCGA-75-6207-01A starting 2720.040141582489
+TCGA-75-6207-01A collected 3726.92964220047
+TCGA-75-6207-01A counted 4942.013462305069
+TCGA-75-6207-01A done 4978.946511268616
+TCGA-73-4666-01A starting 20.22611427307129
+TCGA-73-4666-01A collected 2028.036477804184
+TCGA-73-4666-01A counted 3690.8460874557495
+TCGA-73-4666-01A done 3730.8509650230408
+TCGA-97-A4M5-01A starting 3735.73717212677
+TCGA-97-A4M5-01A collected 4994.633267879486
+TCGA-97-A4M5-01A counted 6430.540588378906
+TCGA-97-A4M5-01A done 6466.225041151047
+Your runtime was 7287.283119916916 seconds.
+Sat Jun  6 13:12:57 UTC 2026
+intron_coverage done for batch 7
+
+--- cleaning up BAMs ---
+TCGA-38-7271-01A: output confirmed, deleting BAM
+TCGA-75-7027-01A: output confirmed, deleting BAM
+TCGA-MP-A4T7-01A: output confirmed, deleting BAM
+TCGA-55-6642-01A: output confirmed, deleting BAM
+TCGA-NJ-A4YQ-01A: output confirmed, deleting BAM
+TCGA-73-4666-01A: output confirmed, deleting BAM
+TCGA-86-7714-01A: output confirmed, deleting BAM
+TCGA-86-7953-01A: output confirmed, deleting BAM
+TCGA-75-7031-01A: output confirmed, deleting BAM
+TCGA-97-A4M3-01A: output confirmed, deleting BAM
+TCGA-49-AAR3-01A: output confirmed, deleting BAM
+TCGA-55-8620-01A: output confirmed, deleting BAM
+TCGA-75-6207-01A: output confirmed, deleting BAM
+TCGA-69-8255-01A: output confirmed, deleting BAM
+TCGA-50-5068-01A: output confirmed, deleting BAM
+TCGA-97-A4M5-01A: output confirmed, deleting BAM
+
+batch 7 complete
+
+========================================================
+BATCH 8: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-44-7671-01A: queuing a3c065c5-3267-424d-8d22-6985365d8a36 for download
+TCGA-44-6145-01A: queuing 6f00af19-888a-4b18-bafc-571ce343fae5 for download
+TCGA-55-6978-01A: queuing b0157ada-d3cb-4cf3-aceb-40e6d4beb267 for download
+TCGA-62-8399-01A: queuing 8c6e36e9-04a8-4fc2-b91b-7d145ff18fc2 for download
+TCGA-05-5429-01A: queuing 03007464-6f43-4863-80e0-83726921d841 for download
+TCGA-44-7669-01A: queuing b3c414f8-454c-4a45-8d72-69ed5aafcc11 for download
+TCGA-69-A59K-01A: queuing abb26459-9ffa-4343-beae-c6e329b416aa for download
+TCGA-MP-A4T6-01A: queuing 3746aa6c-d1bf-47da-9f41-503be7406c24 for download
+TCGA-75-7025-01A: queuing f6c015e7-77ce-4f83-bcaa-ae7e2446bb75 for download
+TCGA-55-8094-01A: queuing a1da795d-51ef-43db-a947-7331f81c16e5 for download
+TCGA-55-8085-01A: queuing 18741ab4-90ba-4d43-aa69-8a86840399af for download
+TCGA-93-A4JQ-01A: queuing ad648348-65df-4bca-934f-766d69132241 for download
+TCGA-MP-A4T8-01A: queuing ef132c02-88be-48c4-acda-0544662379de for download
+TCGA-55-7903-01A: queuing 99c213ba-55b9-42b6-9546-62b8d3f6c284 for download
+TCGA-86-8669-01A: queuing 80783fc2-e479-4889-9e55-69b4dc45541e for download
+TCGA-50-6594-01A: queuing 5105f8b3-f462-411a-8908-520c896dee9f for download
+downloading 16 BAMs...
+Sat Jun  6 13:13:00 UTC 2026
+100% [############################################] Time:  0:02:19  59.7 MiB/s
+100% [############################################] Time:  0:02:05  59.5 MiB/s
+100% [############################################] Time:  0:02:24  59.4 MiB/s
+100% [############################################] Time:  0:02:15  58.8 MiB/s
+100% [############################################] Time:  0:02:03  58.9 MiB/s
+100% [############################################] Time:  0:01:41  58.9 MiB/s
+100% [############################################] Time:  0:01:10  57.9 MiB/s
+100% [############################################] Time:  0:01:09  58.6 MiB/s
+100% [############################################] Time:  0:01:12  57.7 MiB/s
+100% [############################################] Time:  0:01:03  58.3 MiB/s
+100% [############################################] Time:  0:02:36  60.2 MiB/s
+100% [############################################] Time:  0:01:46  59.5 MiB/s
+100% [############################################] Time:  0:02:20  60.4 MiB/s
+100% [############################################] Time:  0:03:03  49.8 MiB/s
+100% [############################################] Time:  0:01:59  60.3 MiB/s
+[31mERROR: [0m8c6e36e9-04a8-4fc2-b91b-7d145ff18fc2: Unable to connect to API: (HTTPSConnectionPool(host='api.gdc.cancer.gov', port=443): Read timed out. (read timeout=60)). Is this url correct: 'https://api.gdc.cancer.gov/data/8c6e36e9-04a8-4fc2-b91b-7d145ff18fc2'? Is there a connection to the API? Is the server running?
+100% [############################################] Time:  0:02:00  59.0 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 8
+Sat Jun  6 13:52:28 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 8) ---
+Sat Jun  6 13:52:28 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-44-6145-01A starting 13.860720157623291
+TCGA-44-6145-01A collected 924.9551219940186
+TCGA-44-6145-01A counted 2024.045266866684
+TCGA-44-6145-01A done 2063.542451620102
+TCGA-55-8094-01A starting 2066.9740319252014
+TCGA-55-8094-01A collected 3214.5712118148804
+TCGA-55-8094-01A counted 4399.929689407349
+TCGA-55-8094-01A done 4440.88126039505
+TCGA-05-5429-01A starting 18.56558585166931
+TCGA-05-5429-01A collected 769.6397161483765
+TCGA-05-5429-01A counted 1637.987087726593
+TCGA-05-5429-01A done 1678.66317820549
+TCGA-75-7025-01A starting 1681.5938653945923
+TCGA-75-7025-01A collected 3314.243250608444
+TCGA-75-7025-01A counted 5264.639223098755
+TCGA-75-7025-01A done 5302.230921030045
+TCGA-MP-A4T6-01A starting 23.373193502426147
+TCGA-MP-A4T6-01A collected 1634.472335577011
+TCGA-MP-A4T6-01A counted 3821.1970047950745
+TCGA-MP-A4T6-01A done 3862.893534421921
+TCGA-50-6594-01A starting 3868.853324651718
+TCGA-50-6594-01A collected 4636.1409339904785
+TCGA-50-6594-01A counted 5594.875472545624
+TCGA-50-6594-01A done 5632.370107889175
+TCGA-44-7669-01A starting 20.14103364944458
+TCGA-44-7669-01A collected 1663.4902031421661
+TCGA-44-7669-01A counted 3677.0809140205383
+TCGA-44-7669-01A done 3718.4057898521423
+TCGA-86-8669-01A starting 3724.2131023406982
+TCGA-86-8669-01A collected 4571.52268910408
+TCGA-86-8669-01A counted 5633.106258153915
+TCGA-86-8669-01A done 5670.5625
+TCGA-55-6978-01A starting 15.439794778823853
+TCGA-55-6978-01A collected 1516.5623366832733
+TCGA-55-6978-01A counted 3151.4469952583313
+TCGA-55-6978-01A done 3191.9979240894318
+TCGA-MP-A4T8-01A starting 3196.904051542282
+TCGA-MP-A4T8-01A collected 4463.834265470505
+TCGA-MP-A4T8-01A counted 5814.301247358322
+TCGA-MP-A4T8-01A done 5851.656887769699
+TCGA-69-A59K-01A starting 21.92759346961975
+TCGA-69-A59K-01A collected 1511.4320209026337
+TCGA-69-A59K-01A counted 3206.5209941864014
+TCGA-69-A59K-01A done 3246.800675868988
+TCGA-55-7903-01A starting 3251.615921497345
+TCGA-55-7903-01A collected 4532.609895706177
+TCGA-55-7903-01A counted 6061.519530534744
+TCGA-55-7903-01A done 6098.198602676392
+TCGA-44-7671-01A starting 12.198129892349243
+TCGA-44-7671-01A collected 1702.422311782837
+TCGA-44-7671-01A counted 3115.232487678528
+TCGA-44-7671-01A done 3153.9945809841156
+TCGA-93-A4JQ-01A starting 3158.1256909370422
+TCGA-93-A4JQ-01A collected 4548.897316932678
+TCGA-93-A4JQ-01A counted 6223.536423206329
+TCGA-93-A4JQ-01A done 6259.645285129547
+Your runtime was 6569.760570764542 seconds.
+Sat Jun  6 15:42:12 UTC 2026
+intron_coverage done for batch 8
+
+--- cleaning up BAMs ---
+TCGA-44-7671-01A: output confirmed, deleting BAM
+TCGA-44-6145-01A: output confirmed, deleting BAM
+TCGA-55-6978-01A: output confirmed, deleting BAM
+TCGA-62-8399-01A: output confirmed, deleting BAM
+TCGA-05-5429-01A: output confirmed, deleting BAM
+TCGA-44-7669-01A: output confirmed, deleting BAM
+TCGA-69-A59K-01A: output confirmed, deleting BAM
+TCGA-MP-A4T6-01A: output confirmed, deleting BAM
+TCGA-75-7025-01A: output confirmed, deleting BAM
+TCGA-55-8094-01A: output confirmed, deleting BAM
+TCGA-55-8085-01A: output confirmed, deleting BAM
+TCGA-93-A4JQ-01A: output confirmed, deleting BAM
+TCGA-MP-A4T8-01A: output confirmed, deleting BAM
+TCGA-55-7903-01A: output confirmed, deleting BAM
+TCGA-86-8669-01A: output confirmed, deleting BAM
+TCGA-50-6594-01A: output confirmed, deleting BAM
+
+batch 8 complete
+
+========================================================
+BATCH 9: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-MP-A4TF-01A: queuing 8ded18c5-1cc7-448d-9dbf-03af338540be for download
+TCGA-NJ-A55O-01A: queuing 2301334d-e0fb-4d39-b742-fb29943767b1 for download
+TCGA-97-8174-01A: queuing 05b548c6-9761-4f5f-8600-2ead980ec8dc for download
+TCGA-62-8397-01A: queuing b7dfe7a7-b569-4532-bc55-02665f4979e1 for download
+TCGA-95-8039-01A: queuing 209d979f-fc32-4fe6-bc09-181bdc36943d for download
+TCGA-86-8075-01A: queuing 0c633b9e-3303-4625-b59d-02102d8bf981 for download
+TCGA-MP-A5C7-01A: queuing c01b08f7-3a6d-48ea-a482-796220e5f56b for download
+TCGA-86-A4P7-01A: queuing 088e8c85-c0dd-4bdb-b405-3406ce8b5602 for download
+TCGA-49-AAQV-01A: queuing 4736a74a-6e21-423f-878f-a2b149cb6f60 for download
+TCGA-91-6847-01A: queuing d08541a3-3815-48c5-b428-8e4423f3f531 for download
+TCGA-MP-A4TC-01A: queuing 96894d18-665d-46f9-bb50-4289df746688 for download
+TCGA-55-6975-01A: queuing c646dd49-a4b1-4cea-8a0d-6cb3d1ba1ccc for download
+TCGA-49-AARQ-01A: queuing f5d661f9-d7dd-43db-be6b-82abd42360fa for download
+TCGA-69-7979-01A: queuing 0c8f7bc3-8eea-4db8-9b8f-aa4785f73819 for download
+TCGA-55-8513-01A: queuing 4cf282a6-9b40-4483-a826-275abc4b7155 for download
+TCGA-55-8614-01A: queuing ac1e305e-e387-4010-9169-026a7faa05bf for download
+downloading 16 BAMs...
+Sat Jun  6 15:42:15 UTC 2026
+100% [############################################] Time:  0:01:50  61.0 MiB/s
+100% [############################################] Time:  0:00:58  53.4 MiB/s
+100% [############################################] Time:  0:02:06  60.4 MiB/s
+100% [############################################] Time:  0:01:12  59.9 MiB/s
+100% [############################################] Time:  0:03:20  61.9 MiB/s
+100% [############################################] Time:  0:01:33  60.6 MiB/s
+100% [############################################] Time:  0:03:07  56.6 MiB/s
+100% [############################################] Time:  0:02:37  60.6 MiB/s
+100% [############################################] Time:  0:01:38  60.3 MiB/s
+100% [############################################] Time:  0:00:56  58.1 MiB/s
+100% [############################################] Time:  0:01:22  59.8 MiB/s
+100% [############################################] Time:  0:01:06  59.2 MiB/s
+100% [############################################] Time:  0:02:20  61.5 MiB/s
+100% [############################################] Time:  0:01:22  58.5 MiB/s
+100% [############################################] Time:  0:02:13  61.1 MiB/s
+[31mERROR: [0m0c633b9e-3303-4625-b59d-02102d8bf981: 500 Server Error: Internal Server Error for url: https://api.gdc.cancer.gov/data/0c633b9e-3303-4625-b59d-02102d8bf981: internal server error
+100% [############################################] Time:  0:02:48  61.7 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 9
+Sat Jun  6 16:20:09 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 9) ---
+Sat Jun  6 16:20:09 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-86-A4P7-01A starting 24.069822788238525
+TCGA-86-A4P7-01A collected 1356.3823311328888
+TCGA-86-A4P7-01A counted 2954.9399466514587
+TCGA-86-A4P7-01A done 2994.1449885368347
+TCGA-55-6975-01A starting 2998.845648288727
+TCGA-55-6975-01A collected 3636.683925628662
+TCGA-55-6975-01A counted 4491.332779407501
+TCGA-55-6975-01A done 4533.87593960762
+TCGA-NJ-A55O-01A starting 14.239234447479248
+TCGA-NJ-A55O-01A collected 1078.4646122455597
+TCGA-NJ-A55O-01A counted 2288.1641397476196
+TCGA-NJ-A55O-01A done 2328.75518989563
+TCGA-MP-A4TC-01A starting 2332.584473133087
+TCGA-MP-A4TC-01A collected 3449.9129061698914
+TCGA-MP-A4TC-01A counted 4636.542919158936
+TCGA-MP-A4TC-01A done 4678.812956571579
+TCGA-62-8397-01A starting 17.46064829826355
+TCGA-62-8397-01A collected 662.9610676765442
+TCGA-62-8397-01A counted 1294.9531309604645
+TCGA-62-8397-01A done 1335.4174699783325
+TCGA-49-AAQV-01A starting 1337.9901671409607
+TCGA-49-AAQV-01A collected 2983.7510797977448
+TCGA-49-AAQV-01A counted 4749.597011089325
+TCGA-49-AAQV-01A done 4790.1002361774445
+TCGA-MP-A4TF-01A starting 12.666547298431396
+TCGA-MP-A4TF-01A collected 839.6666741371155
+TCGA-MP-A4TF-01A counted 2062.413828611374
+TCGA-MP-A4TF-01A done 2104.662606239319
+TCGA-91-6847-01A starting 2108.627750635147
+TCGA-91-6847-01A collected 3571.1878316402435
+TCGA-91-6847-01A counted 5168.258308172226
+TCGA-91-6847-01A done 5208.030285835266
+TCGA-86-8075-01A starting 20.71683692932129
+TCGA-86-8075-01A collected 2063.9555315971375
+TCGA-86-8075-01A counted 3960.8846509456635
+TCGA-86-8075-01A done 4001.3568766117096
+TCGA-55-8513-01A starting 4006.811714410782
+TCGA-55-8513-01A collected 4784.22819185257
+TCGA-55-8513-01A counted 5888.484971523285
+TCGA-55-8513-01A done 5926.932900905609
+TCGA-97-8174-01A starting 15.90753960609436
+TCGA-97-8174-01A collected 2254.0596139431
+TCGA-97-8174-01A counted 4380.02247428894
+TCGA-97-8174-01A done 4422.386522531509
+TCGA-55-8614-01A starting 4428.532256603241
+TCGA-55-8614-01A collected 5267.093394041061
+TCGA-55-8614-01A counted 6354.01748585701
+TCGA-55-8614-01A done 6392.372742652893
+Your runtime was 7098.997157335281 seconds.
+Sat Jun  6 18:18:38 UTC 2026
+intron_coverage done for batch 9
+
+--- cleaning up BAMs ---
+TCGA-MP-A4TF-01A: output confirmed, deleting BAM
+TCGA-NJ-A55O-01A: output confirmed, deleting BAM
+TCGA-97-8174-01A: output confirmed, deleting BAM
+TCGA-62-8397-01A: output confirmed, deleting BAM
+TCGA-95-8039-01A: output confirmed, deleting BAM
+TCGA-86-8075-01A: output confirmed, deleting BAM
+TCGA-MP-A5C7-01A: output confirmed, deleting BAM
+TCGA-86-A4P7-01A: output confirmed, deleting BAM
+TCGA-49-AAQV-01A: output confirmed, deleting BAM
+TCGA-91-6847-01A: output confirmed, deleting BAM
+TCGA-MP-A4TC-01A: output confirmed, deleting BAM
+TCGA-55-6975-01A: output confirmed, deleting BAM
+TCGA-49-AARQ-01A: output confirmed, deleting BAM
+TCGA-69-7979-01A: output confirmed, deleting BAM
+TCGA-55-8513-01A: output confirmed, deleting BAM
+TCGA-55-8614-01A: output confirmed, deleting BAM
+
+batch 9 complete
+
+========================================================
+BATCH 10: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-7574-01A: queuing 587373d5-453d-46d9-91c9-134c31c2724d for download
+TCGA-97-7554-01A: queuing 36726bf4-51b0-4c53-8f48-b91ad91d68d7 for download
+TCGA-50-6673-01A: queuing a73cd583-7bfc-4abd-8ae4-da22875d621a for download
+TCGA-44-7662-01A: queuing 781ed88b-41a0-441f-8ab4-ed24928e0189 for download
+TCGA-49-4487-01A: queuing 19692110-bda4-44e4-9cfd-402ea0e0f495 for download
+TCGA-97-8547-01A: queuing 9f9b1a22-8bf8-4a2b-8d5d-dcc84271519d for download
+TCGA-73-4668-01A: queuing 0630a12c-428e-4dac-bb7c-d7bdff288d30 for download
+TCGA-64-1681-01A: queuing 8f82532e-91ca-469b-a1a5-9bca66844679 for download
+TCGA-91-6840-01A: queuing abac4b21-6420-4324-95be-869ffaadc4d9 for download
+TCGA-86-8073-01A: queuing da1c76bb-76e2-4b80-ac1d-5cd7b5e23dc5 for download
+TCGA-99-AA5R-01A: queuing e2c57b01-796f-4e28-9ad4-a8aa8239944a for download
+TCGA-53-7813-01A: queuing 6c10ffdb-f4a1-4e02-8f4e-7e09286308a7 for download
+TCGA-55-7914-01A: queuing 7528d4c5-25d1-4200-90b8-177e3874f2c4 for download
+TCGA-55-8092-01A: queuing 09ebf058-809e-4ebf-91e5-78f1a99a6cbb for download
+TCGA-49-6761-01A: queuing 163fe4e0-202d-4ca9-aeb5-0043042e760f for download
+TCGA-78-7159-01A: queuing e08d0c44-9834-43b8-b518-6882e36a1bb0 for download
+downloading 16 BAMs...
+Sat Jun  6 18:18:42 UTC 2026
+100% [############################################] Time:  0:02:04  59.9 MiB/s
+100% [############################################] Time:  0:01:58  60.4 MiB/s
+100% [############################################] Time:  0:01:08  58.5 MiB/s
+100% [############################################] Time:  0:01:52  59.5 MiB/s
+100% [############################################] Time:  0:01:19  58.9 MiB/s
+100% [############################################] Time:  0:00:50  56.6 MiB/s
+100% [############################################] Time:  0:01:57  58.9 MiB/s
+100% [############################################] Time:  0:03:16  59.8 MiB/s
+100% [############################################] Time:  0:01:03  56.6 MiB/s
+100% [############################################] Time:  0:02:23  60.0 MiB/s
+100% [############################################] Time:  0:01:11  58.5 MiB/s
+100% [############################################] Time:  0:01:03  57.9 MiB/s
+100% [############################################] Time:  0:03:06  59.7 MiB/s
+100% [############################################] Time:  0:03:21  60.2 MiB/s
+100% [############################################] Time:  0:02:36  60.8 MiB/s
+100% [############################################] Time:  0:00:53  57.7 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 10
+Sat Jun  6 18:55:46 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 10) ---
+Sat Jun  6 18:55:46 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-73-4668-01A starting 21.996930837631226
+TCGA-73-4668-01A collected 2356.2027378082275
+TCGA-73-4668-01A counted 4279.124005079269
+TCGA-73-4668-01A done 4319.7542107105255
+TCGA-55-7574-01A starting 12.345878601074219
+TCGA-55-7574-01A collected 807.0572311878204
+TCGA-55-7574-01A counted 1998.6906523704529
+TCGA-55-7574-01A done 2040.741161108017
+TCGA-99-AA5R-01A starting 2044.285935640335
+TCGA-99-AA5R-01A collected 3336.1227502822876
+TCGA-99-AA5R-01A counted 4815.309495925903
+TCGA-99-AA5R-01A done 4855.650533914566
+TCGA-49-4487-01A starting 18.930394649505615
+TCGA-49-4487-01A collected 827.8376519680023
+TCGA-49-4487-01A counted 1721.4088706970215
+TCGA-49-4487-01A done 1762.925666809082
+TCGA-91-6840-01A starting 1765.990118265152
+TCGA-91-6840-01A collected 2475.6362538337708
+TCGA-91-6840-01A counted 3585.691034078598
+TCGA-91-6840-01A done 3626.779453277588
+TCGA-49-6761-01A starting 3630.4632489681244
+TCGA-49-6761-01A collected 4403.200525999069
+TCGA-49-6761-01A counted 5342.951991558075
+TCGA-49-6761-01A done 5381.529277086258
+TCGA-97-7554-01A starting 13.974444150924683
+TCGA-97-7554-01A collected 1447.5272846221924
+TCGA-97-7554-01A counted 2863.8542098999023
+TCGA-97-7554-01A done 2904.8972322940826
+TCGA-55-7914-01A starting 2909.04980802536
+TCGA-55-7914-01A collected 4156.770967245102
+TCGA-55-7914-01A counted 5516.800918102264
+TCGA-55-7914-01A done 5553.412462949753
+TCGA-97-8547-01A starting 20.532346725463867
+TCGA-97-8547-01A collected 800.1948781013489
+TCGA-97-8547-01A counted 1883.4866306781769
+TCGA-97-8547-01A done 1924.1373183727264
+TCGA-86-8073-01A starting 1927.4680972099304
+TCGA-86-8073-01A collected 3862.584807872772
+TCGA-86-8073-01A counted 5896.778067111969
+TCGA-86-8073-01A done 5932.380927562714
+TCGA-44-7662-01A starting 17.294679403305054
+TCGA-44-7662-01A collected 1872.4319150447845
+TCGA-44-7662-01A counted 3644.393092393875
+TCGA-44-7662-01A done 3684.2391517162323
+TCGA-78-7159-01A starting 3689.48087477684
+TCGA-78-7159-01A collected 4891.607668161392
+TCGA-78-7159-01A counted 6137.525265216827
+TCGA-78-7159-01A done 6172.922381639481
+TCGA-50-6673-01A starting 15.642673015594482
+TCGA-50-6673-01A collected 1026.952541589737
+TCGA-50-6673-01A counted 2194.211217880249
+TCGA-50-6673-01A done 2235.9548885822296
+TCGA-53-7813-01A starting 2239.577439069748
+TCGA-53-7813-01A collected 2922.5914390087128
+TCGA-53-7813-01A counted 3711.953628063202
+TCGA-53-7813-01A done 3753.452228307724
+Your runtime was 6914.186611413956 seconds.
+Sat Jun  6 20:51:23 UTC 2026
+intron_coverage done for batch 10
+
+--- cleaning up BAMs ---
+TCGA-55-7574-01A: output confirmed, deleting BAM
+TCGA-97-7554-01A: output confirmed, deleting BAM
+TCGA-50-6673-01A: output confirmed, deleting BAM
+TCGA-44-7662-01A: output confirmed, deleting BAM
+TCGA-49-4487-01A: output confirmed, deleting BAM
+TCGA-97-8547-01A: output confirmed, deleting BAM
+TCGA-73-4668-01A: output confirmed, deleting BAM
+TCGA-64-1681-01A: output confirmed, deleting BAM
+TCGA-91-6840-01A: output confirmed, deleting BAM
+TCGA-86-8073-01A: output confirmed, deleting BAM
+TCGA-99-AA5R-01A: output confirmed, deleting BAM
+TCGA-53-7813-01A: output confirmed, deleting BAM
+TCGA-55-7914-01A: output confirmed, deleting BAM
+TCGA-55-8092-01A: output confirmed, deleting BAM
+TCGA-49-6761-01A: output confirmed, deleting BAM
+TCGA-78-7159-01A: output confirmed, deleting BAM
+
+batch 10 complete
+
+========================================================
+BATCH 11: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-7227-01A: queuing c508b0d9-0d3c-4737-b19b-34752dfe3cbc for download
+TCGA-78-7145-01A: queuing eae099b8-7486-42dc-9565-c875662eb729 for download
+TCGA-80-5608-01A: queuing b5ec48f2-021b-439d-95f0-5b467727b469 for download
+TCGA-NJ-A4YF-01A: queuing 3ab155d8-7f47-473e-a2f3-721169590879 for download
+TCGA-91-6830-01A: queuing 98491bfe-757d-4255-9d4e-3ab4473b92ef for download
+TCGA-78-7163-01A: queuing 07fc11a1-2413-4894-bea0-65ed5f4b4981 for download
+TCGA-78-8648-01A: queuing 9988cad6-0f42-4112-975c-814bfc3e91c3 for download
+TCGA-50-8460-01A: queuing 3dbc67a1-c49d-407c-867b-dc453f3aebc0 for download
+TCGA-L9-A444-01A: queuing b14f167e-72ec-432e-a374-6d9472eca448 for download
+TCGA-80-5611-01A: queuing c116d279-6f22-40c9-9521-d5e36af646e5 for download
+TCGA-55-7994-01A: queuing 99fbeafe-88d9-4c88-8df1-e7acef0696b3 for download
+TCGA-05-4424-01A: queuing 83d2711f-fb21-449f-9d96-352db089e643 for download
+TCGA-44-3918-01A: queuing b66b7858-7464-47fd-8c42-0fe2917fb6a4 for download
+TCGA-49-4490-01A: queuing 55f3d950-45c3-432b-97bf-2d5be83902d4 for download
+TCGA-44-8117-01A: queuing 74695b53-d593-4a38-aa41-3334ded3c847 for download
+TCGA-MN-A4N1-01A: queuing 214071c5-0658-4106-9e95-0f16b29d4f9c for download
+downloading 16 BAMs...
+Sat Jun  6 20:51:26 UTC 2026
+100% [############################################] Time:  0:01:42  56.9 MiB/s
+100% [############################################] Time:  0:01:32  56.6 MiB/s
+100% [############################################] Time:  0:01:25  56.4 MiB/s
+100% [############################################] Time:  0:01:48  55.7 MiB/s
+100% [############################################] Time:  0:02:53  56.3 MiB/s
+100% [############################################] Time:  0:01:45  55.8 MiB/s
+100% [############################################] Time:  0:01:27  55.8 MiB/s
+100% [############################################] Time:  0:02:21  56.3 MiB/s
+100% [############################################] Time:  0:02:25  56.5 MiB/s
+100% [############################################] Time:  0:01:00  55.0 MiB/s
+100% [############################################] Time:  0:00:56  54.7 MiB/s
+100% [############################################] Time:  0:02:03  55.2 MiB/s
+100% [############################################] Time:  0:02:24  55.9 MiB/s
+100% [############################################] Time:  0:03:08  56.3 MiB/s
+100% [############################################] Time:  0:01:40  55.2 MiB/s
+100% [############################################] Time:  0:01:47  56.8 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 11
+Sat Jun  6 21:28:33 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 11) ---
+Sat Jun  6 21:28:33 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-50-8460-01A starting 23.769489526748657
+TCGA-50-8460-01A collected 1294.6327586174011
+TCGA-50-8460-01A counted 2303.3894534111023
+TCGA-50-8460-01A done 2340.4346947669983
+TCGA-49-4490-01A starting 2344.0681710243225
+TCGA-49-4490-01A collected 3057.9012553691864
+TCGA-49-4490-01A counted 3883.051747560501
+TCGA-49-4490-01A done 3918.6836779117584
+TCGA-91-6830-01A starting 18.936279773712158
+TCGA-91-6830-01A collected 739.3660292625427
+TCGA-91-6830-01A counted 1701.091187953949
+TCGA-91-6830-01A done 1735.6300637722015
+TCGA-L9-A444-01A starting 1738.9209485054016
+TCGA-L9-A444-01A collected 2753.0893857479095
+TCGA-L9-A444-01A counted 3893.396098613739
+TCGA-L9-A444-01A done 3930.013035774231
+TCGA-78-8648-01A starting 22.249897718429565
+TCGA-78-8648-01A collected 1084.6095054149628
+TCGA-78-8648-01A counted 1998.945601940155
+TCGA-78-8648-01A done 2035.6756823062897
+TCGA-80-5611-01A starting 2039.1522371768951
+TCGA-80-5611-01A collected 2968.9890279769897
+TCGA-80-5611-01A counted 3909.501179933548
+TCGA-80-5611-01A done 3946.5759069919586
+TCGA-NJ-A4YF-01A starting 17.29359197616577
+TCGA-NJ-A4YF-01A collected 1123.4095294475555
+TCGA-NJ-A4YF-01A counted 2078.968540430069
+TCGA-NJ-A4YF-01A done 2116.058193922043
+TCGA-05-4424-01A starting 2119.509217739105
+TCGA-05-4424-01A collected 3232.8603134155273
+TCGA-05-4424-01A counted 4318.479343652725
+TCGA-05-4424-01A done 4352.612528324127
+TCGA-55-7227-01A starting 12.412510871887207
+TCGA-55-7227-01A collected 997.7279844284058
+TCGA-55-7227-01A counted 2094.474620819092
+TCGA-55-7227-01A done 2129.9929056167603
+TCGA-44-3918-01A starting 2133.9042360782623
+TCGA-44-3918-01A collected 3786.3360726833344
+TCGA-44-3918-01A counted 5014.300367355347
+TCGA-44-3918-01A done 5049.106186389923
+TCGA-78-7145-01A starting 14.05614972114563
+TCGA-78-7145-01A collected 1031.7137641906738
+TCGA-78-7145-01A counted 2004.7444005012512
+TCGA-78-7145-01A done 2039.9848222732544
+TCGA-55-7994-01A starting 2043.5272834300995
+TCGA-55-7994-01A collected 3689.1848294734955
+TCGA-55-7994-01A counted 5275.65362405777
+TCGA-55-7994-01A done 5308.340148448944
+TCGA-80-5608-01A starting 15.746288299560547
+TCGA-80-5608-01A collected 1791.5456552505493
+TCGA-80-5608-01A counted 3143.3675622940063
+TCGA-80-5608-01A done 3180.5527296066284
+TCGA-MN-A4N1-01A starting 3184.953694820404
+TCGA-MN-A4N1-01A collected 4445.015871524811
+TCGA-MN-A4N1-01A counted 5485.842947483063
+TCGA-MN-A4N1-01A done 5519.5962562561035
+Your runtime was 6287.78507566452 seconds.
+Sat Jun  6 23:13:47 UTC 2026
+intron_coverage done for batch 11
+
+--- cleaning up BAMs ---
+TCGA-55-7227-01A: output confirmed, deleting BAM
+TCGA-78-7145-01A: output confirmed, deleting BAM
+TCGA-80-5608-01A: output confirmed, deleting BAM
+TCGA-NJ-A4YF-01A: output confirmed, deleting BAM
+TCGA-91-6830-01A: output confirmed, deleting BAM
+TCGA-78-7163-01A: output confirmed, deleting BAM
+TCGA-78-8648-01A: output confirmed, deleting BAM
+TCGA-50-8460-01A: output confirmed, deleting BAM
+TCGA-L9-A444-01A: output confirmed, deleting BAM
+TCGA-80-5611-01A: output confirmed, deleting BAM
+TCGA-55-7994-01A: output confirmed, deleting BAM
+TCGA-05-4424-01A: output confirmed, deleting BAM
+TCGA-44-3918-01A: output confirmed, deleting BAM
+TCGA-49-4490-01A: output confirmed, deleting BAM
+TCGA-44-8117-01A: output confirmed, deleting BAM
+TCGA-MN-A4N1-01A: output confirmed, deleting BAM
+
+batch 11 complete
+
+========================================================
+BATCH 12: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-05-4397-01A: queuing 384ffb41-7d1f-4125-8c6b-670e5163ff65 for download
+TCGA-75-5122-01A: queuing 6d2d8cc2-4e19-4e74-97dc-45e6eeec5e1c for download
+TCGA-62-A46U-01A: queuing c0d51597-3fdd-48b9-a1db-0a247c1ca843 for download
+TCGA-44-7667-01A: queuing c9a5da35-0249-4422-aafa-65f8264c37d2 for download
+TCGA-NJ-A55R-01A: queuing 11edcc88-7bd2-4974-87e8-2c66d4037b0e for download
+TCGA-49-AAR4-01A: queuing 149c7f86-d383-4a93-9666-1a6b78250b89 for download
+TCGA-50-5933-01A: queuing 741e0a4b-b92d-4ca7-8335-3bf245c30cfd for download
+TCGA-NJ-A4YG-01A: queuing 84da8889-9467-4e84-83d2-6083fe380c72 for download
+TCGA-MP-A4TH-01A: queuing 519ed340-50d9-4077-a069-90d21bd1c4e2 for download
+TCGA-86-8359-01A: queuing 75798ad4-64b3-420e-a08b-9ea3a3422bae for download
+TCGA-64-1679-01A: queuing a7041b7e-b570-4530-870b-dad544233e6f for download
+TCGA-99-8032-01A: queuing c915194a-3127-4879-8605-8abfa260c1f9 for download
+TCGA-50-7109-01A: queuing 2ae7be19-5b29-40e7-a29a-2628baabbbec for download
+TCGA-64-5778-01A: queuing c570f09a-bc8f-4919-bc59-491ab3501bdf for download
+TCGA-44-8120-01A: queuing 98a3ce8c-390c-4b97-ad78-75df8ba027ad for download
+TCGA-99-8025-01A: queuing ef081522-83fe-4588-8060-4d096f839ab7 for download
+downloading 16 BAMs...
+Sat Jun  6 23:13:51 UTC 2026
+100% [############################################] Time:  0:01:43  45.4 MiB/s
+100% [############################################] Time:  0:03:19  45.1 MiB/s
+100% [############################################] Time:  0:03:26  46.0 MiB/s
+100% [############################################] Time:  0:03:22  45.5 MiB/s
+100% [############################################] Time:  0:01:51  43.4 MiB/s
+100% [############################################] Time:  0:01:58  44.1 MiB/s
+100% [############################################] Time:  0:01:57  43.9 MiB/s
+100% [############################################] Time:  0:02:35  45.8 MiB/s
+100% [############################################] Time:  0:02:43  45.5 MiB/s
+100% [############################################] Time:  0:02:16  46.3 MiB/s
+100% [############################################] Time:  0:01:40  45.7 MiB/s
+100% [############################################] Time:  0:01:33  49.3 MiB/s
+100% [############################################] Time:  0:02:51  55.9 MiB/s
+100% [############################################] Time:  0:04:20  56.6 MiB/s
+100% [############################################] Time:  0:03:25  55.8 MiB/s
+100% [############################################] Time:  0:02:07  53.3 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 12
+Sun Jun  7 00:02:41 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 12) ---
+Sun Jun  7 00:02:42 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-44-7667-01A starting 20.95568299293518
+TCGA-44-7667-01A collected 1583.3293142318726
+TCGA-44-7667-01A counted 2757.6099724769592
+TCGA-44-7667-01A done 2796.1391117572784
+TCGA-64-5778-01A starting 2800.1159451007843
+TCGA-64-5778-01A collected 3940.1482989788055
+TCGA-64-5778-01A counted 4830.85031580925
+TCGA-64-5778-01A done 4865.81671333313
+TCGA-62-A46U-01A starting 19.247774600982666
+TCGA-62-A46U-01A collected 1292.3162429332733
+TCGA-62-A46U-01A counted 2549.359261035919
+TCGA-62-A46U-01A done 2586.4380400180817
+TCGA-50-7109-01A starting 2590.8978106975555
+TCGA-50-7109-01A collected 3788.302530527115
+TCGA-50-7109-01A counted 4898.393774986267
+TCGA-50-7109-01A done 4934.156522989273
+TCGA-NJ-A55R-01A starting 22.604830265045166
+TCGA-NJ-A55R-01A collected 2791.311682701111
+TCGA-NJ-A55R-01A counted 4902.324103355408
+TCGA-NJ-A55R-01A done 4937.558078765869
+TCGA-50-5933-01A starting 25.96568274497986
+TCGA-50-5933-01A collected 990.7831995487213
+TCGA-50-5933-01A counted 1961.0124711990356
+TCGA-50-5933-01A done 1997.5761196613312
+TCGA-MP-A4TH-01A starting 2001.172921180725
+TCGA-MP-A4TH-01A collected 3340.173730611801
+TCGA-MP-A4TH-01A counted 4768.1733293533325
+TCGA-MP-A4TH-01A done 4803.888447999954
+TCGA-49-AAR4-01A starting 24.261476516723633
+TCGA-49-AAR4-01A collected 1087.575086593628
+TCGA-49-AAR4-01A counted 2179.317620754242
+TCGA-49-AAR4-01A done 2216.6417059898376
+TCGA-64-1679-01A starting 2220.343930006027
+TCGA-64-1679-01A collected 4059.9303076267242
+TCGA-64-1679-01A counted 5526.90692782402
+TCGA-64-1679-01A done 5565.030542850494
+TCGA-75-5122-01A starting 17.681354761123657
+TCGA-75-5122-01A collected 1105.3483457565308
+TCGA-75-5122-01A counted 2188.6746656894684
+TCGA-75-5122-01A done 2225.457914829254
+TCGA-99-8032-01A starting 2229.2827064990997
+TCGA-99-8032-01A collected 4034.7878947257996
+TCGA-99-8032-01A counted 5546.225691318512
+TCGA-99-8032-01A done 5584.338527679443
+TCGA-05-4397-01A starting 15.99782133102417
+TCGA-05-4397-01A collected 2387.404428243637
+TCGA-05-4397-01A counted 4245.350919723511
+TCGA-05-4397-01A done 4283.393456697464
+TCGA-99-8025-01A starting 4288.999454498291
+TCGA-99-8025-01A collected 6088.832318544388
+TCGA-99-8025-01A counted 7364.6913385391235
+TCGA-99-8025-01A done 7398.3067417144775
+Your runtime was 7473.44406247139 seconds.
+Sun Jun  7 02:07:31 UTC 2026
+intron_coverage done for batch 12
+
+--- cleaning up BAMs ---
+TCGA-05-4397-01A: output confirmed, deleting BAM
+TCGA-75-5122-01A: output confirmed, deleting BAM
+TCGA-62-A46U-01A: output confirmed, deleting BAM
+TCGA-44-7667-01A: output confirmed, deleting BAM
+TCGA-NJ-A55R-01A: output confirmed, deleting BAM
+TCGA-49-AAR4-01A: output confirmed, deleting BAM
+TCGA-50-5933-01A: output confirmed, deleting BAM
+TCGA-NJ-A4YG-01A: output confirmed, deleting BAM
+TCGA-MP-A4TH-01A: output confirmed, deleting BAM
+TCGA-86-8359-01A: output confirmed, deleting BAM
+TCGA-64-1679-01A: output confirmed, deleting BAM
+TCGA-99-8032-01A: output confirmed, deleting BAM
+TCGA-50-7109-01A: output confirmed, deleting BAM
+TCGA-64-5778-01A: output confirmed, deleting BAM
+TCGA-44-8120-01A: output confirmed, deleting BAM
+TCGA-99-8025-01A: output confirmed, deleting BAM
+
+batch 12 complete
+
+========================================================
+BATCH 13: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-8205-01A: queuing 17d076ca-6d38-4ba4-9b69-63bc02297268 for download
+TCGA-35-4122-01A: queuing 3f503411-5805-4889-a879-7f9b57fa77bf for download
+TCGA-69-7760-01A: queuing 6af364e8-9ee5-4df5-81b8-fd857fa3a8b8 for download
+TCGA-91-6828-01A: queuing d5ce0725-ad99-4ce2-b57e-1953e5f73caa for download
+TCGA-55-8510-01A: queuing 3960a3cc-6466-449c-b3fe-1b7899396e01 for download
+TCGA-50-5049-01A: queuing 98da3398-7003-4d3c-b715-2df3715cdfc3 for download
+TCGA-50-5045-01A: queuing cae43e2f-9cfa-4438-8061-1c0aa2727404 for download
+TCGA-99-8028-01A: queuing 7daf316a-d528-4b2d-a798-9cc0964e1efb for download
+TCGA-78-7150-01A: queuing 2386dafe-f396-4fb9-a45f-c2981974be26 for download
+TCGA-75-6205-01A: queuing 32faaebd-7733-4c3f-91ea-fd3c333480e9 for download
+TCGA-93-A4JN-01A: queuing 890f9eb9-79f1-4d34-a9c7-4381107138b3 for download
+TCGA-95-A4VP-01A: queuing cacdc356-2f4f-4ff5-a508-4666c8081291 for download
+TCGA-55-7910-01A: queuing be2e8ac7-ff13-47aa-8eea-0a25af9628ce for download
+TCGA-NJ-A55A-01A: queuing 6e5d3cd8-236c-490c-a567-db41dbe1ca3c for download
+TCGA-05-4433-01A: queuing 2eb79be5-f3db-4fd4-b6be-28989d87e4da for download
+TCGA-78-7153-01A: queuing a7d80776-4d9a-4a9e-98da-1470623559fa for download
+downloading 16 BAMs...
+Sun Jun  7 02:07:35 UTC 2026
+100% [############################################] Time:  0:02:37  55.5 MiB/s
+100% [############################################] Time:  0:02:37  55.4 MiB/s
+100% [############################################] Time:  0:02:41  55.6 MiB/s
+100% [############################################] Time:  0:00:53  53.1 MiB/s
+100% [############################################] Time:  0:01:34  54.7 MiB/s
+100% [############################################] Time:  0:01:56  54.5 MiB/s
+100% [############################################] Time:  0:01:26  54.3 MiB/s
+100% [############################################] Time:  0:02:03  57.3 MiB/s
+100% [############################################] Time:  0:01:27  56.9 MiB/s
+100% [############################################] Time:  0:01:08  54.3 MiB/s
+100% [############################################] Time:  0:02:20  58.1 MiB/s
+100% [############################################] Time:  0:01:48  57.3 MiB/s
+100% [############################################] Time:  0:01:24  40.4 MiB/s
+100% [############################################] Time:  0:02:01  27.9 MiB/s
+100% [############################################] Time:  0:02:02  58.6 MiB/s
+[31mERROR: [0m890f9eb9-79f1-4d34-a9c7-4381107138b3: Unable to connect to API: (HTTPSConnectionPool(host='api.gdc.cancer.gov', port=443): Read timed out. (read timeout=60)). Is this url correct: 'https://api.gdc.cancer.gov/data/890f9eb9-79f1-4d34-a9c7-4381107138b3'? Is there a connection to the API? Is the server running?
+100% [############################################] Time:  0:02:04  58.3 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 13
+Sun Jun  7 02:45:16 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 13) ---
+Sun Jun  7 02:45:16 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-50-5049-01A starting 21.89028310775757
+TCGA-50-5049-01A collected 1176.6635689735413
+TCGA-50-5049-01A counted 2122.064754962921
+TCGA-50-5049-01A done 2162.0348258018494
+TCGA-75-6205-01A starting 2165.37029004097
+TCGA-75-6205-01A collected 2773.1437599658966
+TCGA-75-6205-01A counted 3615.6248202323914
+TCGA-75-6205-01A done 3656.3647973537445
+TCGA-91-6828-01A starting 18.58532428741455
+TCGA-91-6828-01A collected 654.1516406536102
+TCGA-91-6828-01A counted 1692.2923018932343
+TCGA-91-6828-01A done 1732.1668167114258
+TCGA-78-7150-01A starting 1735.5371191501617
+TCGA-78-7150-01A collected 2863.067529439926
+TCGA-78-7150-01A counted 4103.480489015579
+TCGA-78-7150-01A done 4146.093198060989
+TCGA-35-4122-01A starting 15.369596004486084
+TCGA-35-4122-01A collected 1565.0424208641052
+TCGA-35-4122-01A counted 2505.0697157382965
+TCGA-35-4122-01A done 2546.2743496894836
+TCGA-55-7910-01A starting 2549.69185256958
+TCGA-55-7910-01A collected 3341.8272778987885
+TCGA-55-7910-01A counted 4382.221123933792
+TCGA-55-7910-01A done 4420.181979179382
+TCGA-69-7760-01A starting 16.99895143508911
+TCGA-69-7760-01A collected 1131.0686838626862
+TCGA-69-7760-01A counted 2315.0531272888184
+TCGA-69-7760-01A done 2355.411328792572
+TCGA-95-A4VP-01A starting 2359.187272310257
+TCGA-95-A4VP-01A collected 3625.3504223823547
+TCGA-95-A4VP-01A counted 4496.905247211456
+TCGA-95-A4VP-01A done 4534.88152217865
+TCGA-50-5045-01A starting 23.54694938659668
+TCGA-50-5045-01A collected 1699.565526008606
+TCGA-50-5045-01A counted 2866.9371399879456
+TCGA-50-5045-01A done 2905.6977746486664
+TCGA-NJ-A55A-01A starting 2909.497629880905
+TCGA-NJ-A55A-01A collected 3518.6266016960144
+TCGA-NJ-A55A-01A counted 4497.311637163162
+TCGA-NJ-A55A-01A done 4535.585181474686
+TCGA-99-8028-01A starting 25.08616352081299
+TCGA-99-8028-01A collected 1810.9919128417969
+TCGA-99-8028-01A counted 3083.3203670978546
+TCGA-99-8028-01A done 3124.9613864421844
+TCGA-05-4433-01A starting 3129.036467075348
+TCGA-05-4433-01A collected 3912.5878262519836
+TCGA-05-4433-01A counted 4888.178677558899
+TCGA-05-4433-01A done 4925.559658050537
+TCGA-55-8510-01A starting 20.242530345916748
+TCGA-55-8510-01A collected 1062.8785576820374
+TCGA-55-8510-01A counted 2280.801945209503
+TCGA-55-8510-01A done 2322.0772144794464
+TCGA-93-A4JN-01A starting 2325.8794887065887
+TCGA-93-A4JN-01A collected 3662.9067199230194
+TCGA-93-A4JN-01A counted 5225.762765645981
+TCGA-93-A4JN-01A done 5262.97660946846
+Your runtime was 5498.878093957901 seconds.
+Sun Jun  7 04:17:09 UTC 2026
+intron_coverage done for batch 13
+
+--- cleaning up BAMs ---
+TCGA-55-8205-01A: output confirmed, deleting BAM
+TCGA-35-4122-01A: output confirmed, deleting BAM
+TCGA-69-7760-01A: output confirmed, deleting BAM
+TCGA-91-6828-01A: output confirmed, deleting BAM
+TCGA-55-8510-01A: output confirmed, deleting BAM
+TCGA-50-5049-01A: output confirmed, deleting BAM
+TCGA-50-5045-01A: output confirmed, deleting BAM
+TCGA-99-8028-01A: output confirmed, deleting BAM
+TCGA-78-7150-01A: output confirmed, deleting BAM
+TCGA-75-6205-01A: output confirmed, deleting BAM
+TCGA-93-A4JN-01A: output confirmed, deleting BAM
+TCGA-95-A4VP-01A: output confirmed, deleting BAM
+TCGA-55-7910-01A: output confirmed, deleting BAM
+TCGA-NJ-A55A-01A: output confirmed, deleting BAM
+TCGA-05-4433-01A: output confirmed, deleting BAM
+TCGA-78-7153-01A: output confirmed, deleting BAM
+
+batch 13 complete
+
+========================================================
+BATCH 14: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-44-A4SU-01A: queuing a7f06826-8282-4538-80a3-489557f6af02 for download
+TCGA-49-4514-01A: queuing 21e081b7-7d9c-4450-9c5f-37d7c6fd3b8a for download
+TCGA-86-8671-01A: queuing cb98f5ad-ce14-47f6-ab41-7fc704e4320c for download
+TCGA-05-4415-01A: queuing ba3d2868-fdcf-4c29-9fc6-5c2284ab27eb for download
+TCGA-44-6779-01A: queuing f471e8d7-9e62-45ad-a03e-412bc69a932c for download
+TCGA-38-4628-01A: queuing 14c60245-7d47-406b-b459-40042fc89a2c for download
+TCGA-49-AARE-01A: queuing 20742577-479a-4d1a-a3b0-16f5094aa667 for download
+TCGA-78-7536-01A: queuing 69129378-91dc-45ce-80ed-f8c2480f954b for download
+TCGA-44-2662-01A: queuing 21daa1d2-8766-46ee-a0cb-b51b361a5a8d for download
+TCGA-97-A4M0-01A: queuing 15a295ec-c4fa-4cda-8d74-4bc5fc6eb05d for download
+TCGA-95-7947-01A: queuing d596b2b1-0915-41c2-b35c-b343f59b8923 for download
+TCGA-97-8172-01A: queuing ba6057cc-61fd-4d2f-8599-ed0a6aaf80b6 for download
+TCGA-44-6146-01A: queuing 220f0f07-2691-4c14-af2d-0dfac14b3278 for download
+TCGA-38-4630-01A: queuing 9dc4d7c4-610f-4f64-a04b-85d95bafa25a for download
+TCGA-55-1594-01A: queuing 22efea62-586e-4e47-acf5-d5839a8ef7fc for download
+TCGA-91-6836-01A: queuing 09c0af14-a98f-4939-a132-9efcb4c2bc57 for download
+downloading 16 BAMs...
+Sun Jun  7 04:17:12 UTC 2026
+100% [############################################] Time:  0:01:29  56.9 MiB/s
+100% [############################################] Time:  0:02:56  56.7 MiB/s
+100% [############################################] Time:  0:03:24  57.0 MiB/s
+100% [############################################] Time:  0:03:31  57.2 MiB/s
+100% [############################################] Time:  0:02:22  57.3 MiB/s
+100% [############################################] Time:  0:02:12  57.2 MiB/s
+100% [############################################] Time:  0:01:05  54.8 MiB/s
+100% [############################################] Time:  0:02:22  50.1 MiB/s
+100% [############################################] Time:  0:01:37  51.3 MiB/s
+100% [############################################] Time:  0:02:11  57.1 MiB/s
+100% [############################################] Time:  0:01:55  56.5 MiB/s
+100% [############################################] Time:  0:01:30  55.8 MiB/s
+100% [############################################] Time:  0:03:59  57.6 MiB/s
+100% [############################################] Time:  0:01:45  55.3 MiB/s
+100% [############################################] Time:  0:02:47  57.3 MiB/s
+100% [############################################] Time:  0:01:57  55.5 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 14
+Sun Jun  7 05:02:23 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 14) ---
+Sun Jun  7 05:02:23 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-49-4514-01A starting 13.614606618881226
+TCGA-49-4514-01A collected 994.1122767925262
+TCGA-49-4514-01A counted 1662.5259974002838
+TCGA-49-4514-01A done 1697.8173987865448
+TCGA-97-A4M0-01A starting 1700.6196813583374
+TCGA-97-A4M0-01A collected 2951.4321608543396
+TCGA-97-A4M0-01A counted 4357.8838884830475
+TCGA-97-A4M0-01A done 4395.17841053009
+TCGA-44-6779-01A starting 18.562626361846924
+TCGA-44-6779-01A collected 682.075026512146
+TCGA-44-6779-01A counted 1411.3079452514648
+TCGA-44-6779-01A done 1447.008629322052
+TCGA-44-2662-01A starting 1449.8747384548187
+TCGA-44-2662-01A collected 3064.617467403412
+TCGA-44-2662-01A counted 4522.451183795929
+TCGA-44-2662-01A done 4559.722252130508
+TCGA-86-8671-01A starting 15.369222164154053
+TCGA-86-8671-01A collected 1029.7521567344666
+TCGA-86-8671-01A counted 2226.7723910808563
+TCGA-86-8671-01A done 2262.6895759105682
+TCGA-95-7947-01A starting 2266.648437976837
+TCGA-95-7947-01A collected 3720.2183747291565
+TCGA-95-7947-01A counted 5190.375885248184
+TCGA-95-7947-01A done 5225.260097026825
+TCGA-38-4628-01A starting 20.161267518997192
+TCGA-38-4628-01A collected 1894.4482762813568
+TCGA-38-4628-01A counted 2972.924836874008
+TCGA-38-4628-01A done 3009.3309321403503
+TCGA-55-1594-01A starting 3013.180736541748
+TCGA-55-1594-01A collected 4346.617973566055
+TCGA-55-1594-01A counted 5527.260976314545
+TCGA-55-1594-01A done 5561.1226716041565
+TCGA-78-7536-01A starting 23.261095762252808
+TCGA-78-7536-01A collected 1974.1034817695618
+TCGA-78-7536-01A counted 3633.488810300827
+TCGA-78-7536-01A done 3670.5515990257263
+TCGA-91-6836-01A starting 3675.880534887314
+TCGA-91-6836-01A collected 4756.8731026649475
+TCGA-91-6836-01A counted 5829.564703702927
+TCGA-91-6836-01A done 5863.400725841522
+TCGA-49-AARE-01A starting 21.831551551818848
+TCGA-49-AARE-01A collected 1374.461375951767
+TCGA-49-AARE-01A counted 2605.5269799232483
+TCGA-49-AARE-01A done 2642.850033760071
+TCGA-44-6146-01A starting 2647.0137379169464
+TCGA-44-6146-01A collected 5192.684517621994
+TCGA-44-6146-01A counted 6067.745359659195
+TCGA-44-6146-01A done 6100.204867362976
+TCGA-05-4415-01A starting 17.01877784729004
+TCGA-05-4415-01A collected 1173.4235832691193
+TCGA-05-4415-01A counted 2270.9099378585815
+TCGA-05-4415-01A done 2306.851400375366
+TCGA-97-8172-01A starting 2310.7309889793396
+TCGA-97-8172-01A collected 4539.858912706375
+TCGA-97-8172-01A counted 6585.92564702034
+TCGA-97-8172-01A done 6619.677206277847
+Your runtime was 7129.294418096542 seconds.
+Sun Jun  7 07:01:23 UTC 2026
+intron_coverage done for batch 14
+
+--- cleaning up BAMs ---
+TCGA-44-A4SU-01A: output confirmed, deleting BAM
+TCGA-49-4514-01A: output confirmed, deleting BAM
+TCGA-86-8671-01A: output confirmed, deleting BAM
+TCGA-05-4415-01A: output confirmed, deleting BAM
+TCGA-44-6779-01A: output confirmed, deleting BAM
+TCGA-38-4628-01A: output confirmed, deleting BAM
+TCGA-49-AARE-01A: output confirmed, deleting BAM
+TCGA-78-7536-01A: output confirmed, deleting BAM
+TCGA-44-2662-01A: output confirmed, deleting BAM
+TCGA-97-A4M0-01A: output confirmed, deleting BAM
+TCGA-95-7947-01A: output confirmed, deleting BAM
+TCGA-97-8172-01A: output confirmed, deleting BAM
+TCGA-44-6146-01A: output confirmed, deleting BAM
+TCGA-38-4630-01A: output confirmed, deleting BAM
+TCGA-55-1594-01A: output confirmed, deleting BAM
+TCGA-91-6836-01A: output confirmed, deleting BAM
+
+batch 14 complete
+
+========================================================
+BATCH 15: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-86-8076-01A: queuing d8d37032-63f4-4522-8d6a-538bc28d7f83 for download
+TCGA-55-7724-01A: queuing 01a38c32-c2e3-46c9-a108-e15456503b32 for download
+TCGA-91-7771-01A: queuing 8459ed46-071c-42f6-ab9d-1a16424c8921 for download
+TCGA-50-5939-01A: queuing 33c82dff-9f2f-47ec-9b6e-0dfd7e3c7a00 for download
+TCGA-64-1677-01A: queuing b1182c5c-410c-41c3-b454-0dfa28bcaa6a for download
+TCGA-38-6178-01A: queuing a0755929-e85a-4ea8-a7bd-3413bd734c75 for download
+TCGA-55-7573-01A: queuing 9b179934-f54d-4256-84bd-3e516685a119 for download
+TCGA-05-4405-01A: queuing 35b18dab-9047-431b-b01b-1888d995d5dd for download
+TCGA-J2-8194-01A: queuing f95eb346-3e9a-4467-b097-10e98b1924d2 for download
+TCGA-44-8119-01A: queuing 4735a470-cd74-4f16-9f06-31f4aeba6add for download
+TCGA-44-7670-01A: queuing 6e90fa77-c338-4e9a-a43b-fa702386db08 for download
+TCGA-05-4402-01A: queuing 2a73ab35-41bc-48ca-910c-b562f830aeb3 for download
+TCGA-64-5775-01A: queuing 039e9a74-2e83-4962-ae9b-23f11d5c5fba for download
+TCGA-05-4427-01A: queuing 5b88cd1f-f27b-4b67-9c96-40ce8b4b5fcb for download
+TCGA-50-5051-01A: queuing 2239f076-6a9e-4aa3-b716-adabbc55d3de for download
+TCGA-62-A471-01A: queuing ae528992-720c-4818-ac5e-8e1b0509f9d9 for download
+downloading 16 BAMs...
+Sun Jun  7 07:01:26 UTC 2026
+100% [############################################] Time:  0:02:24  57.7 MiB/s
+100% [############################################] Time:  0:01:35  56.0 MiB/s
+100% [############################################] Time:  0:00:04 873.2 KiB/s
+100% [############################################] Time:  0:01:47  56.8 MiB/s
+100% [############################################] Time:  0:01:40  55.8 MiB/s
+100% [############################################] Time:  0:01:20  55.7 MiB/s
+100% [############################################] Time:  0:01:07  54.8 MiB/s
+100% [############################################] Time:  0:00:47  52.0 MiB/s
+100% [############################################] Time:  0:01:06  55.5 MiB/s
+100% [############################################] Time:  0:03:36  57.4 MiB/s
+100% [############################################] Time:  0:03:13  56.9 MiB/s
+100% [############################################] Time:  0:01:23  55.2 MiB/s
+100% [############################################] Time:  0:02:52  54.0 MiB/s
+100% [############################################] Time:  0:02:37  57.5 MiB/s
+100% [############################################] Time:  0:01:58  46.2 MiB/s
+100% [############################################] Time:  0:01:04  54.5 MiB/s
+100% [############################################] Time:  0:00:55  52.8 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 15
+Sun Jun  7 07:37:33 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 15) ---
+Sun Jun  7 07:37:33 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-05-4405-01A starting 22.89137053489685
+TCGA-05-4405-01A collected 826.8272314071655
+TCGA-05-4405-01A counted 1945.8297226428986
+TCGA-05-4405-01A done 1987.2790751457214
+TCGA-64-5775-01A starting 1990.943027496338
+TCGA-64-5775-01A collected 3355.6804530620575
+TCGA-64-5775-01A counted 4409.697853088379
+TCGA-64-5775-01A done 4453.053845882416
+TCGA-91-7771-01A starting 15.125224113464355
+TCGA-91-7771-01A collected 1120.6434857845306
+TCGA-91-7771-01A counted 2446.3012471199036
+TCGA-91-7771-01A done 2487.5603654384613
+TCGA-50-5051-01A starting 2491.8774015903473
+TCGA-50-5051-01A collected 3566.6266601085663
+TCGA-50-5051-01A counted 4682.5751395225525
+TCGA-50-5051-01A done 4723.956390619278
+TCGA-55-7573-01A starting 21.57253384590149
+TCGA-55-7573-01A collected 904.2254302501678
+TCGA-55-7573-01A counted 2191.705257177353
+TCGA-55-7573-01A done 2232.787177801132
+TCGA-05-4427-01A starting 2236.7642221450806
+TCGA-05-4427-01A collected 3426.70556974411
+TCGA-05-4427-01A counted 4699.6909902095795
+TCGA-05-4427-01A done 4740.195808887482
+TCGA-38-6178-01A starting 19.78475522994995
+TCGA-38-6178-01A collected 670.3840219974518
+TCGA-38-6178-01A counted 1677.5841813087463
+TCGA-38-6178-01A done 1719.6267929077148
+TCGA-44-7670-01A starting 1723.016865491867
+TCGA-44-7670-01A collected 3375.162433862686
+TCGA-44-7670-01A counted 5020.109495401382
+TCGA-44-7670-01A done 5058.74093079567
+TCGA-55-7724-01A starting 13.6576406955719
+TCGA-55-7724-01A collected 615.4030468463898
+TCGA-55-7724-01A counted 1251.360836982727
+TCGA-55-7724-01A done 1291.530835866928
+TCGA-J2-8194-01A starting 1294.1439819335938
+TCGA-J2-8194-01A collected 3675.7744426727295
+TCGA-J2-8194-01A counted 5259.843014001846
+TCGA-J2-8194-01A done 5301.318251371384
+TCGA-64-1677-01A starting 18.283976078033447
+TCGA-64-1677-01A collected 711.7226469516754
+TCGA-64-1677-01A counted 1429.9254767894745
+TCGA-64-1677-01A done 1470.86692237854
+TCGA-44-8119-01A starting 1473.552663564682
+TCGA-44-8119-01A collected 4661.1810047626495
+TCGA-44-8119-01A counted 6543.571872472763
+TCGA-44-8119-01A done 6581.57653093338
+TCGA-50-5939-01A starting 16.643970489501953
+TCGA-50-5939-01A collected 868.6033358573914
+TCGA-50-5939-01A counted 1830.8638079166412
+TCGA-50-5939-01A done 1873.1322252750397
+TCGA-05-4402-01A starting 1876.4991779327393
+TCGA-05-4402-01A collected 4915.108169555664
+TCGA-05-4402-01A counted 6634.926697731018
+TCGA-05-4402-01A done 6674.950062513351
+Your runtime was 7089.577239751816 seconds.
+Sun Jun  7 09:35:55 UTC 2026
+intron_coverage done for batch 15
+
+--- cleaning up BAMs ---
+TCGA-86-8076-01A: output confirmed, deleting BAM
+TCGA-55-7724-01A: output confirmed, deleting BAM
+TCGA-91-7771-01A: output confirmed, deleting BAM
+TCGA-50-5939-01A: output confirmed, deleting BAM
+TCGA-64-1677-01A: output confirmed, deleting BAM
+TCGA-38-6178-01A: output confirmed, deleting BAM
+TCGA-55-7573-01A: output confirmed, deleting BAM
+TCGA-05-4405-01A: output confirmed, deleting BAM
+TCGA-J2-8194-01A: output confirmed, deleting BAM
+TCGA-44-8119-01A: output confirmed, deleting BAM
+TCGA-44-7670-01A: output confirmed, deleting BAM
+TCGA-05-4402-01A: output confirmed, deleting BAM
+TCGA-64-5775-01A: output confirmed, deleting BAM
+TCGA-05-4427-01A: output confirmed, deleting BAM
+TCGA-50-5051-01A: output confirmed, deleting BAM
+TCGA-62-A471-01A: output confirmed, deleting BAM
+
+batch 15 complete
+
+========================================================
+BATCH 16: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-67-3773-01A: queuing a7834ece-39e1-4d47-a316-ae285a473c86 for download
+TCGA-73-4677-01A: queuing b69fd32e-204e-4cd7-86a0-8ed9f718fdf7 for download
+TCGA-91-6848-01A: queuing 0ff32a41-532d-4fe0-bccb-020787041956 for download
+TCGA-78-7540-01A: queuing 63d7c243-d996-46f8-84eb-865786c7e785 for download
+TCGA-55-7576-01A: queuing 190ab37d-58fc-4f14-b02c-3eaac5a89260 for download
+TCGA-44-2661-01A: queuing 192318a1-c93d-4669-bb23-ca2e8aceb7da for download
+TCGA-55-8619-01A: queuing 8df71bad-7348-472d-b40c-acc25c9b69cf for download
+TCGA-86-8674-01A: queuing 839d3114-ec0d-47b7-8cb2-76642b0660d6 for download
+TCGA-78-7166-01A: queuing 49c80597-6cd3-4d54-9115-5776d1c44c3a for download
+TCGA-62-A46P-01A: queuing fda585d3-a881-4831-8dd4-e391fc9d6e7c for download
+TCGA-86-8054-01A: queuing 8bd1c6e6-6810-479c-a46f-f3a902296601 for download
+TCGA-55-A48Y-01A: queuing 9d190c84-7368-412f-a790-69b2afab246b for download
+TCGA-97-8176-01A: queuing 8031c488-856a-4e1e-93f1-57e672e34d8d for download
+TCGA-50-6590-01A: queuing 105ad832-c4e7-4622-8469-c558f5911bbf for download
+TCGA-MN-A4N5-01A: queuing c952cca9-ecf1-47fc-9739-dabe8a7fa08b for download
+TCGA-97-7552-01A: queuing 810ef019-2069-46ec-903a-a47a2a8211ad for download
+downloading 16 BAMs...
+Sun Jun  7 09:35:57 UTC 2026
+100% [############################################] Time:  0:01:07  54.1 MiB/s
+100% [############################################] Time:  0:01:22  54.9 MiB/s
+100% [############################################] Time:  0:01:38  54.7 MiB/s
+100% [############################################] Time:  0:01:03  54.3 MiB/s
+100% [############################################] Time:  0:02:23  56.8 MiB/s
+100% [############################################] Time:  0:02:43  55.0 MiB/s
+100% [############################################] Time:  0:02:15  56.0 MiB/s
+100% [############################################] Time:  0:03:04  57.0 MiB/s
+100% [############################################] Time:  0:02:35  56.7 MiB/s
+100% [############################################] Time:  0:02:23  55.6 MiB/s
+100% [############################################] Time:  0:01:24  54.2 MiB/s
+100% [############################################] Time:  0:02:29  56.9 MiB/s
+100% [############################################] Time:  0:01:06  55.3 MiB/s
+100% [############################################] Time:  0:03:16  57.4 MiB/s
+100% [############################################] Time:  0:01:44  55.5 MiB/s
+100% [############################################] Time:  0:01:34  56.3 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 16
+Sun Jun  7 10:16:31 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 16) ---
+Sun Jun  7 10:16:31 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-55-7576-01A starting 65.37713146209717
+TCGA-55-7576-01A collected 2602.5964453220367
+TCGA-55-7576-01A counted 4232.20777964592
+TCGA-55-7576-01A done 4269.373231172562
+TCGA-55-8619-01A starting 68.65146207809448
+TCGA-55-8619-01A collected 1347.465192079544
+TCGA-55-8619-01A counted 2552.690284013748
+TCGA-55-8619-01A done 2589.3094272613525
+TCGA-55-A48Y-01A starting 2593.276086330414
+TCGA-55-A48Y-01A collected 4149.1111080646515
+TCGA-55-A48Y-01A counted 4965.002624511719
+TCGA-55-A48Y-01A done 5002.624810218811
+TCGA-67-3773-01A starting 58.596105337142944
+TCGA-67-3773-01A collected 800.8048014640808
+TCGA-67-3773-01A counted 1520.5154111385345
+TCGA-67-3773-01A done 1557.3818295001984
+TCGA-78-7166-01A starting 1560.3214793205261
+TCGA-78-7166-01A collected 3895.6408421993256
+TCGA-78-7166-01A counted 4953.353572130203
+TCGA-78-7166-01A done 4991.014633655548
+TCGA-44-2661-01A starting 67.05824136734009
+TCGA-44-2661-01A collected 1975.4013698101044
+TCGA-44-2661-01A counted 3107.1976759433746
+TCGA-44-2661-01A done 3143.034502029419
+TCGA-97-8176-01A starting 3147.002585172653
+TCGA-97-8176-01A collected 4155.146182537079
+TCGA-97-8176-01A counted 5250.654970169067
+TCGA-97-8176-01A done 5286.3477647304535
+TCGA-86-8674-01A starting 70.0968554019928
+TCGA-86-8674-01A collected 1115.558482170105
+TCGA-86-8674-01A counted 2046.1624245643616
+TCGA-86-8674-01A done 2083.072100162506
+TCGA-86-8054-01A starting 2086.4916536808014
+TCGA-86-8054-01A collected 4215.69446516037
+TCGA-86-8054-01A counted 5667.634699344635
+TCGA-86-8054-01A done 5700.908770561218
+TCGA-78-7540-01A starting 63.666685819625854
+TCGA-78-7540-01A collected 2027.6753821372986
+TCGA-78-7540-01A counted 3247.8337037563324
+TCGA-78-7540-01A done 3284.8121292591095
+TCGA-50-6590-01A starting 3289.118327140808
+TCGA-50-6590-01A collected 4914.049173116684
+TCGA-50-6590-01A counted 5968.9055688381195
+TCGA-50-6590-01A done 6001.3849811553955
+TCGA-91-6848-01A starting 62.08375930786133
+TCGA-91-6848-01A collected 940.455221414566
+TCGA-91-6848-01A counted 1892.631897687912
+TCGA-91-6848-01A done 1928.802833557129
+TCGA-62-A46P-01A starting 1932.3132693767548
+TCGA-62-A46P-01A collected 2871.3282396793365
+TCGA-62-A46P-01A counted 3540.0660791397095
+TCGA-62-A46P-01A done 3577.583992958069
+TCGA-MN-A4N5-01A starting 3580.4247250556946
+TCGA-MN-A4N5-01A collected 5945.1291744709015
+TCGA-MN-A4N5-01A counted 7387.208580493927
+TCGA-MN-A4N5-01A done 7421.40341091156
+Your runtime was 7732.899740457535 seconds.
+Sun Jun  7 12:27:42 UTC 2026
+intron_coverage done for batch 16
+
+--- cleaning up BAMs ---
+TCGA-67-3773-01A: output confirmed, deleting BAM
+TCGA-73-4677-01A: output confirmed, deleting BAM
+TCGA-91-6848-01A: output confirmed, deleting BAM
+TCGA-78-7540-01A: output confirmed, deleting BAM
+TCGA-55-7576-01A: output confirmed, deleting BAM
+TCGA-44-2661-01A: output confirmed, deleting BAM
+TCGA-55-8619-01A: output confirmed, deleting BAM
+TCGA-86-8674-01A: output confirmed, deleting BAM
+TCGA-78-7166-01A: output confirmed, deleting BAM
+TCGA-62-A46P-01A: output confirmed, deleting BAM
+TCGA-86-8054-01A: output confirmed, deleting BAM
+TCGA-55-A48Y-01A: output confirmed, deleting BAM
+TCGA-97-8176-01A: output confirmed, deleting BAM
+TCGA-50-6590-01A: output confirmed, deleting BAM
+TCGA-MN-A4N5-01A: output confirmed, deleting BAM
+TCGA-97-7552-01A: output confirmed, deleting BAM
+
+batch 16 complete
+
+========================================================
+BATCH 17: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-69-7763-01A: queuing 4b9a61f4-5a9a-462a-ba94-7bc718abac56 for download
+TCGA-55-7911-01A: queuing a0eb61ec-37f7-4489-a119-7d30a8c8e498 for download
+TCGA-75-6212-01A: queuing 5b319617-99a9-4bde-b962-93cc3cac6b77 for download
+TCGA-44-2655-01A: queuing 52cffdce-261c-4c82-9b64-5f9e84a8c5ab for download
+TCGA-69-7764-01A: queuing 36e024c8-4f22-44e5-9467-708583a3b4eb for download
+TCGA-91-6835-01A: queuing 32d1c13c-f1eb-4351-94f4-a6b66ea66ff9 for download
+TCGA-50-5066-01A: queuing bbb6f3d1-ee72-41fa-bd2a-48bb2818f68a for download
+TCGA-55-6982-01A: queuing 116dabda-f4e2-40e0-a660-59333ef2e126 for download
+TCGA-MP-A4T4-01A: queuing 9eeae6b9-2031-47fa-80db-e04d53f0bfbd for download
+TCGA-50-5930-01A: queuing e263001e-5afb-422f-91d4-849879ed6073 for download
+TCGA-MP-A4TD-01A: queuing 7239640f-ccc9-41f3-9fd9-e81c26125c0f for download
+TCGA-L9-A443-01A: queuing 708d0f0f-0595-4e68-88fb-951920affffa for download
+TCGA-95-7567-01A: queuing fd97c225-cc46-47cf-9f5c-f92d14dc3fcf for download
+TCGA-44-3396-01A: queuing 84c88ecd-cfcc-46c1-bbf5-ae30a3a2b86c for download
+TCGA-69-7974-01A: queuing 35938c95-00cb-424b-a822-b3dadc8a033d for download
+TCGA-55-A492-01A: queuing 60595998-f42a-43f4-be43-d8cb398eaf3c for download
+downloading 16 BAMs...
+Sun Jun  7 12:27:46 UTC 2026
+100% [############################################] Time:  0:01:11  54.9 MiB/s
+100% [############################################] Time:  0:01:59  56.9 MiB/s
+100% [############################################] Time:  0:01:39  55.6 MiB/s
+100% [############################################] Time:  0:03:22  55.4 MiB/s
+100% [############################################] Time:  0:02:37  54.9 MiB/s
+100% [############################################] Time:  0:01:48  56.6 MiB/s
+100% [############################################] Time:  0:01:11  55.7 MiB/s
+100% [############################################] Time:  0:00:44  53.1 MiB/s
+100% [############################################] Time:  0:01:42  56.3 MiB/s
+100% [############################################] Time:  0:01:55  56.7 MiB/s
+100% [############################################] Time:  0:01:29  56.0 MiB/s
+100% [############################################] Time:  0:01:01  55.1 MiB/s
+100% [############################################] Time:  0:03:49  57.4 MiB/s
+100% [############################################] Time:  0:01:40  55.8 MiB/s
+100% [############################################] Time:  0:01:06  54.2 MiB/s
+100% [############################################] Time:  0:02:52  57.4 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 17
+Sun Jun  7 13:05:44 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 17) ---
+Sun Jun  7 13:05:44 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-44-2655-01A starting 66.96391105651855
+TCGA-44-2655-01A collected 3039.925543785095
+TCGA-44-2655-01A counted 4526.856544494629
+TCGA-44-2655-01A done 4564.637807846069
+TCGA-75-6212-01A starting 65.14783000946045
+TCGA-75-6212-01A collected 849.0066368579865
+TCGA-75-6212-01A counted 1652.6003620624542
+TCGA-75-6212-01A done 1690.7963199615479
+TCGA-MP-A4T4-01A starting 1693.9383244514465
+TCGA-MP-A4T4-01A collected 3193.2630445957184
+TCGA-MP-A4T4-01A counted 4557.337602138519
+TCGA-MP-A4T4-01A done 4594.321547985077
+TCGA-69-7763-01A starting 61.94560360908508
+TCGA-69-7763-01A collected 1228.3883669376373
+TCGA-69-7763-01A counted 2339.284199476242
+TCGA-69-7763-01A done 2376.687957763672
+TCGA-L9-A443-01A starting 2380.4983451366425
+TCGA-L9-A443-01A collected 3757.9431681632996
+TCGA-L9-A443-01A counted 4562.284831285477
+TCGA-L9-A443-01A done 4599.77473449707
+TCGA-50-5066-01A starting 71.87032413482666
+TCGA-50-5066-01A collected 1218.3097746372223
+TCGA-50-5066-01A counted 1888.0748794078827
+TCGA-50-5066-01A done 1926.058307170868
+TCGA-MP-A4TD-01A starting 1928.8510766029358
+TCGA-MP-A4TD-01A collected 3540.3422877788544
+TCGA-MP-A4TD-01A counted 4754.638401508331
+TCGA-MP-A4TD-01A done 4790.45207118988
+TCGA-55-6982-01A starting 73.34968495368958
+TCGA-55-6982-01A collected 841.2427265644073
+TCGA-55-6982-01A counted 1703.1777927875519
+TCGA-55-6982-01A done 1741.0998706817627
+TCGA-50-5930-01A starting 1744.255075454712
+TCGA-50-5930-01A collected 2558.899159193039
+TCGA-50-5930-01A counted 3163.213385105133
+TCGA-50-5930-01A done 3200.364863872528
+TCGA-55-A492-01A starting 3203.1075608730316
+TCGA-55-A492-01A collected 4686.542501926422
+TCGA-55-A492-01A counted 5424.8027102947235
+TCGA-55-A492-01A done 5461.286640405655
+TCGA-69-7764-01A starting 68.60804343223572
+TCGA-69-7764-01A collected 1247.3950808048248
+TCGA-69-7764-01A counted 2374.6613154411316
+TCGA-69-7764-01A done 2412.1546881198883
+TCGA-95-7567-01A starting 2415.9927122592926
+TCGA-95-7567-01A collected 4514.258869409561
+TCGA-95-7567-01A counted 5867.122801780701
+TCGA-95-7567-01A done 5901.929195404053
+TCGA-55-7911-01A starting 63.61385202407837
+TCGA-55-7911-01A collected 1599.5212514400482
+TCGA-55-7911-01A counted 3034.813400030136
+TCGA-55-7911-01A done 3072.821857690811
+TCGA-69-7974-01A starting 3077.5690960884094
+TCGA-69-7974-01A collected 6218.816432237625
+TCGA-69-7974-01A counted 7717.932145833969
+TCGA-69-7974-01A done 7754.862370729446
+Your runtime was 9705.974843740463 seconds.
+Sun Jun  7 15:49:38 UTC 2026
+intron_coverage done for batch 17
+
+--- cleaning up BAMs ---
+TCGA-69-7763-01A: output confirmed, deleting BAM
+TCGA-55-7911-01A: output confirmed, deleting BAM
+TCGA-75-6212-01A: output confirmed, deleting BAM
+TCGA-44-2655-01A: output confirmed, deleting BAM
+TCGA-69-7764-01A: output confirmed, deleting BAM
+TCGA-91-6835-01A: output confirmed, deleting BAM
+TCGA-50-5066-01A: output confirmed, deleting BAM
+TCGA-55-6982-01A: output confirmed, deleting BAM
+TCGA-MP-A4T4-01A: output confirmed, deleting BAM
+TCGA-50-5930-01A: output confirmed, deleting BAM
+TCGA-MP-A4TD-01A: output confirmed, deleting BAM
+TCGA-L9-A443-01A: output confirmed, deleting BAM
+TCGA-95-7567-01A: output confirmed, deleting BAM
+TCGA-44-3396-01A: output confirmed, deleting BAM
+TCGA-69-7974-01A: output confirmed, deleting BAM
+TCGA-55-A492-01A: output confirmed, deleting BAM
+
+batch 17 complete
+
+========================================================
+BATCH 18: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-44-2656-01A: queuing b2cf0b26-1f46-478d-b2e1-73115384ed57 for download
+TCGA-05-4422-01A: queuing 15ed0a75-7b07-4334-9f64-907d4a597123 for download
+TCGA-71-6725-01A: queuing 048cb462-0a42-480a-80da-e5f2035e6abf for download
+TCGA-J2-8192-01A: queuing ff6bb07a-a6d7-4784-8472-db50c5646be4 for download
+TCGA-78-7537-01A: queuing f0499aec-b57d-4818-a691-656b1bfac0cf for download
+TCGA-86-A4P8-01A: queuing 48a9f86c-daca-482e-9649-92969280844d for download
+TCGA-55-8514-01A: queuing 9702a272-3cf7-41ad-b43b-acb7c75b476d for download
+TCGA-35-4123-01A: queuing 5ac9189f-8764-4095-9313-e6a115b88720 for download
+TCGA-44-3919-01A: queuing 1d93cae2-d8e3-4e9d-a097-240d3c06e6a1 for download
+TCGA-62-8394-01A: queuing 168678cb-22de-4ac3-8610-3d1a110c2c3a for download
+TCGA-78-7539-01A: queuing 56ce812f-00dc-462f-9a1e-ea6ca3e6f2e5 for download
+TCGA-55-8204-01A: queuing aebbfe45-f4ba-4e22-a642-dc24dff06bf2 for download
+TCGA-05-4395-01A: queuing 4d85514e-171d-46e4-b6db-43b4f8ff2eb0 for download
+TCGA-55-6970-01A: queuing 6b1b3509-92ad-4c5c-8d47-45c0261772b8 for download
+TCGA-73-7499-01A: queuing 73580d43-b951-449f-9bf9-49c276374f25 for download
+TCGA-50-6595-01A: queuing 8be401e7-1fa3-4ae3-9f18-660941824671 for download
+downloading 16 BAMs...
+Sun Jun  7 15:49:40 UTC 2026
+100% [############################################] Time:  0:03:12  57.4 MiB/s
+100% [############################################] Time:  0:02:02  56.4 MiB/s
+100% [############################################] Time:  0:02:33  57.2 MiB/s
+100% [############################################] Time:  0:03:30  57.5 MiB/s
+100% [############################################] Time:  0:03:12  57.7 MiB/s
+100% [############################################] Time:  0:02:23  57.1 MiB/s
+100% [############################################] Time:  0:03:20  57.8 MiB/s
+100% [############################################] Time:  0:02:44  57.0 MiB/s
+100% [############################################] Time:  0:01:48  57.1 MiB/s
+100% [############################################] Time:  0:01:21  56.9 MiB/s
+100% [############################################] Time:  0:01:13  56.6 MiB/s
+100% [############################################] Time:  0:02:24  57.8 MiB/s
+100% [############################################] Time:  0:02:40  58.2 MiB/s
+100% [############################################] Time:  0:02:53  58.0 MiB/s
+100% [############################################] Time:  0:02:15  57.4 MiB/s
+100% [############################################] Time:  0:02:15  56.3 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 18
+Sun Jun  7 16:39:06 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 18) ---
+Sun Jun  7 16:39:06 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-35-4123-01A starting 62.100462436676025
+TCGA-35-4123-01A collected 1451.7627394199371
+TCGA-35-4123-01A counted 2516.384818315506
+TCGA-35-4123-01A done 2554.11270737648
+TCGA-62-8394-01A starting 2557.7832345962524
+TCGA-62-8394-01A collected 4168.1393048763275
+TCGA-62-8394-01A counted 5485.12637925148
+TCGA-62-8394-01A done 5522.075881242752
+TCGA-55-8514-01A starting 60.684879779815674
+TCGA-55-8514-01A collected 1318.601094007492
+TCGA-55-8514-01A counted 2428.364495277405
+TCGA-55-8514-01A done 2465.728329896927
+TCGA-44-3919-01A starting 2469.4967136383057
+TCGA-44-3919-01A collected 5242.032219648361
+TCGA-44-3919-01A counted 6809.857881784439
+TCGA-44-3919-01A done 6845.159118652344
+TCGA-05-4422-01A starting 52.26772904396057
+TCGA-05-4422-01A collected 3075.796168088913
+TCGA-05-4422-01A counted 4941.590183258057
+TCGA-05-4422-01A done 4978.783896923065
+TCGA-50-6595-01A starting 4984.287517786026
+TCGA-50-6595-01A collected 6069.804578781128
+TCGA-50-6595-01A counted 6900.019067287445
+TCGA-50-6595-01A done 6935.728737592697
+TCGA-86-A4P8-01A starting 59.038156509399414
+TCGA-86-A4P8-01A collected 1739.3457942008972
+TCGA-86-A4P8-01A counted 3300.0381121635437
+TCGA-86-A4P8-01A done 3338.01664352417
+TCGA-78-7539-01A starting 3342.9797933101654
+TCGA-78-7539-01A collected 5793.300199985504
+TCGA-78-7539-01A counted 7175.444410800934
+TCGA-78-7539-01A done 7211.329871892929
+TCGA-J2-8192-01A starting 55.540969133377075
+TCGA-J2-8192-01A collected 2972.6534094810486
+TCGA-J2-8192-01A counted 4775.604738712311
+TCGA-J2-8192-01A done 4812.382760047913
+TCGA-73-7499-01A starting 4818.47189450264
+TCGA-73-7499-01A collected 7174.9572167396545
+TCGA-73-7499-01A counted 8233.920570373535
+TCGA-73-7499-01A done 8268.65312075615
+TCGA-78-7537-01A starting 57.26540970802307
+TCGA-78-7537-01A collected 2604.714184522629
+TCGA-78-7537-01A counted 3872.149250984192
+TCGA-78-7537-01A done 3909.543103456497
+TCGA-05-4395-01A starting 3914.0260264873505
+TCGA-05-4395-01A collected 6955.54686164856
+TCGA-05-4395-01A counted 8247.666666030884
+TCGA-05-4395-01A done 8282.236298561096
+TCGA-71-6725-01A starting 53.9141788482666
+TCGA-71-6725-01A collected 2244.683222055435
+TCGA-71-6725-01A counted 3714.260543823242
+TCGA-71-6725-01A done 3751.7438695430756
+TCGA-55-8204-01A starting 3756.342151403427
+TCGA-55-8204-01A collected 6055.014000415802
+TCGA-55-8204-01A counted 7293.300994873047
+TCGA-55-8204-01A done 7327.21209692955
+Your runtime was 8596.137848854065 seconds.
+Sun Jun  7 19:04:02 UTC 2026
+intron_coverage done for batch 18
+
+--- cleaning up BAMs ---
+TCGA-44-2656-01A: output confirmed, deleting BAM
+TCGA-05-4422-01A: output confirmed, deleting BAM
+TCGA-71-6725-01A: output confirmed, deleting BAM
+TCGA-J2-8192-01A: output confirmed, deleting BAM
+TCGA-78-7537-01A: output confirmed, deleting BAM
+TCGA-86-A4P8-01A: output confirmed, deleting BAM
+TCGA-55-8514-01A: output confirmed, deleting BAM
+TCGA-35-4123-01A: output confirmed, deleting BAM
+TCGA-44-3919-01A: output confirmed, deleting BAM
+TCGA-62-8394-01A: output confirmed, deleting BAM
+TCGA-78-7539-01A: output confirmed, deleting BAM
+TCGA-55-8204-01A: output confirmed, deleting BAM
+TCGA-05-4395-01A: output confirmed, deleting BAM
+TCGA-55-6970-01A: output confirmed, deleting BAM
+TCGA-73-7499-01A: output confirmed, deleting BAM
+TCGA-50-6595-01A: output confirmed, deleting BAM
+
+batch 18 complete
+
+========================================================
+BATCH 19: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-44-6148-01A: queuing f65e11a3-1c3c-4ecc-83ad-318d0c195656 for download
+TCGA-55-6968-01A: queuing 40708d9c-1c51-4e7c-9ce2-185ea1480eb2 for download
+TCGA-50-6591-01A: queuing 4af96951-004a-41a0-a2c1-293fce0c8342 for download
+TCGA-49-AARN-01A: queuing c305888e-9034-4185-8c8f-a96dade09e5f for download
+TCGA-91-6849-01A: queuing f5b61758-7ddc-4ec1-a503-c6d7c0f05b34 for download
+TCGA-55-5899-01A: queuing d289975b-8b9c-43be-91ec-10ebd401937f for download
+TCGA-55-A491-01A: queuing 52103d63-0f85-49cf-8463-de2caaa4df4d for download
+TCGA-49-AARR-01A: queuing eb07b0f0-40dd-49d2-88ad-c87fbb843ffb for download
+TCGA-49-6743-01A: queuing d45b8f78-48e9-49ec-aa1f-df6d8eeda367 for download
+TCGA-86-7711-01A: queuing c31a33bb-f36f-44a5-ab8f-e951f6729247 for download
+TCGA-MP-A4TA-01A: queuing b66c410a-03c1-463a-997a-16d08a339a2f for download
+TCGA-50-8459-01A: queuing 1762cec9-b8f3-4fac-ad7a-d80c171637ef for download
+TCGA-86-7701-01A: queuing 475f1bf3-b892-4534-827c-d48382b0700f for download
+TCGA-44-7660-01A: queuing d6140094-7640-48e5-8d0b-1622593cbbd8 for download
+TCGA-L9-A50W-01A: queuing b0cc5938-c1e4-4a18-98fc-135ac89ef729 for download
+TCGA-95-7039-01A: queuing 7c1bff62-84a9-446d-b5dc-bf92cfe6c58e for download
+downloading 16 BAMs...
+Sun Jun  7 19:04:05 UTC 2026
+100% [############################################] Time:  0:01:39  56.8 MiB/s
+100% [############################################] Time:  0:01:43  56.5 MiB/s
+100% [############################################] Time:  0:01:41  56.4 MiB/s
+100% [############################################] Time:  0:02:05  56.9 MiB/s
+100% [############################################] Time:  0:01:19  56.1 MiB/s
+100% [############################################] Time:  0:00:58  53.5 MiB/s
+100% [############################################] Time:  0:02:40  57.6 MiB/s
+100% [############################################] Time:  0:01:11  57.6 MiB/s
+100% [############################################] Time:  0:01:29  57.1 MiB/s
+100% [############################################] Time:  0:00:55  55.2 MiB/s
+100% [############################################] Time:  0:01:05  57.1 MiB/s
+100% [############################################] Time:  0:01:10  56.5 MiB/s
+100% [############################################] Time:  0:01:58  57.5 MiB/s
+100% [############################################] Time:  0:01:17  56.1 MiB/s
+100% [############################################] Time:  0:02:14  58.2 MiB/s
+100% [############################################] Time:  0:01:20  57.2 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 19
+Sun Jun  7 19:35:45 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 19) ---
+Sun Jun  7 19:35:45 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-44-6148-01A starting 57.18275761604309
+TCGA-44-6148-01A collected 1052.8327853679657
+TCGA-44-6148-01A counted 2431.1100306510925
+TCGA-44-6148-01A done 2472.8181698322296
+TCGA-86-7701-01A starting 2476.735196352005
+TCGA-86-7701-01A collected 3456.4413430690765
+TCGA-86-7701-01A counted 4363.52325296402
+TCGA-86-7701-01A done 4405.272247552872
+TCGA-49-AARN-01A starting 62.09755516052246
+TCGA-49-AARN-01A collected 792.2835609912872
+TCGA-49-AARN-01A counted 1665.3274545669556
+TCGA-49-AARN-01A done 1706.9928867816925
+TCGA-49-6743-01A starting 1709.8562421798706
+TCGA-49-6743-01A collected 3358.0532376766205
+TCGA-49-6743-01A counted 4660.8756601810455
+TCGA-49-6743-01A done 4702.584741592407
+TCGA-50-6591-01A starting 60.54063630104065
+TCGA-50-6591-01A collected 955.3536071777344
+TCGA-50-6591-01A counted 2113.785189628601
+TCGA-50-6591-01A done 2153.8657133579254
+TCGA-50-8459-01A starting 2157.401225566864
+TCGA-50-8459-01A collected 3740.3258244991302
+TCGA-50-8459-01A counted 4973.229346990585
+TCGA-50-8459-01A done 5013.015987157822
+TCGA-55-A491-01A starting 66.91738700866699
+TCGA-55-A491-01A collected 2388.198887348175
+TCGA-55-A491-01A counted 3609.5447912216187
+TCGA-55-A491-01A done 3651.104766845703
+TCGA-95-7039-01A starting 3654.9670271873474
+TCGA-95-7039-01A collected 4686.2453808784485
+TCGA-95-7039-01A counted 5656.251882076263
+TCGA-95-7039-01A done 5695.994539260864
+TCGA-55-5899-01A starting 65.2802267074585
+TCGA-55-5899-01A collected 942.198249578476
+TCGA-55-5899-01A counted 2002.5262703895569
+TCGA-55-5899-01A done 2045.7406895160675
+TCGA-MP-A4TA-01A starting 2049.1353783607483
+TCGA-MP-A4TA-01A collected 3876.5656785964966
+TCGA-MP-A4TA-01A counted 5309.652911186218
+TCGA-MP-A4TA-01A done 5349.883473396301
+TCGA-91-6849-01A starting 63.76648688316345
+TCGA-91-6849-01A collected 1110.378778219223
+TCGA-91-6849-01A counted 1968.703345298767
+TCGA-91-6849-01A done 2011.0361251831055
+TCGA-86-7711-01A starting 2013.9540402889252
+TCGA-86-7711-01A collected 4690.225741624832
+TCGA-86-7711-01A counted 6185.061788320541
+TCGA-86-7711-01A done 6223.807649374008
+TCGA-55-6968-01A starting 58.7247588634491
+TCGA-55-6968-01A collected 1739.614419221878
+TCGA-55-6968-01A counted 2947.5196130275726
+TCGA-55-6968-01A done 2988.6200025081635
+TCGA-44-7660-01A starting 2992.4216351509094
+TCGA-44-7660-01A collected 5534.8078145980835
+TCGA-44-7660-01A counted 7151.67356967926
+TCGA-44-7660-01A done 7188.5931441783905
+Your runtime was 7684.265588998795 seconds.
+Sun Jun  7 21:46:28 UTC 2026
+intron_coverage done for batch 19
+
+--- cleaning up BAMs ---
+TCGA-44-6148-01A: output confirmed, deleting BAM
+TCGA-55-6968-01A: output confirmed, deleting BAM
+TCGA-50-6591-01A: output confirmed, deleting BAM
+TCGA-49-AARN-01A: output confirmed, deleting BAM
+TCGA-91-6849-01A: output confirmed, deleting BAM
+TCGA-55-5899-01A: output confirmed, deleting BAM
+TCGA-55-A491-01A: output confirmed, deleting BAM
+TCGA-49-AARR-01A: output confirmed, deleting BAM
+TCGA-49-6743-01A: output confirmed, deleting BAM
+TCGA-86-7711-01A: output confirmed, deleting BAM
+TCGA-MP-A4TA-01A: output confirmed, deleting BAM
+TCGA-50-8459-01A: output confirmed, deleting BAM
+TCGA-86-7701-01A: output confirmed, deleting BAM
+TCGA-44-7660-01A: output confirmed, deleting BAM
+TCGA-L9-A50W-01A: output confirmed, deleting BAM
+TCGA-95-7039-01A: output confirmed, deleting BAM
+
+batch 19 complete
+
+========================================================
+BATCH 20: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-69-7765-01A: queuing a03b2192-229f-4ead-8030-639617cb10cb for download
+TCGA-69-7980-01A: queuing b1bf2c29-5c13-4ca0-a755-1fdb8ccc835b for download
+TCGA-95-7944-01A: queuing f8566008-695a-4da1-aa9c-39d4f82f5ab4 for download
+TCGA-55-8097-01A: queuing c712e999-5bd8-4841-96e4-a99e3381f6d8 for download
+TCGA-MP-A4TE-01A: queuing 74184b07-5b46-4cf3-9c1a-305e656e8773 for download
+TCGA-97-7941-01A: queuing d816341b-dd8f-458a-b945-fd716c11c8c0 for download
+TCGA-62-A46R-01A: queuing 9b01b68a-51ca-4896-a22c-05882785826b for download
+TCGA-67-6216-01A: queuing d4c759b8-c9a0-4931-8a17-425c20fff142 for download
+TCGA-73-4659-01A: queuing 3c083f52-f548-4f1b-b08e-2275eeb31218 for download
+TCGA-95-A4VK-01A: queuing 008889e9-6aab-4a0a-9204-e19c159f7c22 for download
+TCGA-55-8507-01A: queuing e175b52a-4ae7-4f33-ac4b-1e328d6f531a for download
+TCGA-97-A4M7-01A: queuing 535b7200-1785-4740-9410-e3597ea0e9bd for download
+TCGA-50-8457-01A: queuing 7063636e-1c79-4f3f-bd91-7470b03f36d3 for download
+TCGA-49-4488-01A: queuing e161311b-eb34-42fd-b906-d0b4cfb7c15a for download
+TCGA-50-6592-01A: queuing 2528b21b-8145-4c2c-b946-dae173928f7c for download
+TCGA-49-4505-01A: queuing 0ebf5cc5-f242-45ef-821a-939b51dc95a2 for download
+downloading 16 BAMs...
+Sun Jun  7 21:46:30 UTC 2026
+100% [############################################] Time:  0:02:24  56.8 MiB/s
+100% [############################################] Time:  0:02:02  55.9 MiB/s
+100% [############################################] Time:  0:03:12  57.7 MiB/s
+100% [############################################] Time:  0:01:43  56.3 MiB/s
+100% [############################################] Time:  0:01:30  56.3 MiB/s
+100% [############################################] Time:  0:01:42  55.5 MiB/s
+100% [############################################] Time:  0:02:21  56.8 MiB/s
+100% [############################################] Time:  0:00:03   1.1 MiB/s
+100% [############################################] Time:  0:01:33  55.8 MiB/s
+100% [############################################] Time:  0:02:17  56.9 MiB/s
+100% [############################################] Time:  0:02:09  58.0 MiB/s
+100% [############################################] Time:  0:01:57  57.5 MiB/s
+100% [############################################] Time:  0:03:32  58.8 MiB/s
+100% [############################################] Time:  0:02:14  57.9 MiB/s
+100% [############################################] Time:  0:01:26  57.4 MiB/s
+100% [############################################] Time:  0:03:05  58.7 MiB/s
+100% [############################################] Time:  0:01:06  54.5 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 20
+Sun Jun  7 22:29:26 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 20) ---
+Sun Jun  7 22:29:26 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-97-7941-01A starting 68.41267991065979
+TCGA-97-7941-01A collected 2108.8457696437836
+TCGA-97-7941-01A counted 3676.1237378120422
+TCGA-97-7941-01A done 3713.2139728069305
+TCGA-49-4488-01A starting 3718.096030473709
+TCGA-49-4488-01A collected 4891.213587522507
+TCGA-49-4488-01A counted 5666.176054239273
+TCGA-49-4488-01A done 5702.092332363129
+TCGA-69-7765-01A starting 60.50000023841858
+TCGA-69-7765-01A collected 1711.4852697849274
+TCGA-69-7765-01A counted 2829.5443415641785
+TCGA-69-7765-01A done 2864.3658225536346
+TCGA-55-8507-01A starting 2868.384673833847
+TCGA-55-8507-01A collected 4681.4896557331085
+TCGA-55-8507-01A counted 5829.262706756592
+TCGA-55-8507-01A done 5864.743960857391
+TCGA-67-6216-01A starting 71.5944459438324
+TCGA-67-6216-01A collected 1629.5018513202667
+TCGA-67-6216-01A counted 2672.875620365143
+TCGA-67-6216-01A done 2711.4416460990906
+TCGA-95-A4VK-01A starting 2715.0131556987762
+TCGA-95-A4VK-01A collected 4869.92841053009
+TCGA-95-A4VK-01A counted 6282.957301616669
+TCGA-95-A4VK-01A done 6318.5055339336395
+TCGA-MP-A4TE-01A starting 66.91154336929321
+TCGA-MP-A4TE-01A collected 1949.299352645874
+TCGA-MP-A4TE-01A counted 3163.9080135822296
+TCGA-MP-A4TE-01A done 3199.67067193985
+TCGA-97-A4M7-01A starting 3203.5586683750153
+TCGA-97-A4M7-01A collected 5531.445841789246
+TCGA-97-A4M7-01A counted 7031.053833723068
+TCGA-97-A4M7-01A done 7067.399416685104
+TCGA-95-7944-01A starting 63.76779365539551
+TCGA-95-7944-01A collected 2192.8446629047394
+TCGA-95-7944-01A counted 3495.3618533611298
+TCGA-95-7944-01A done 3531.2845587730408
+TCGA-50-8457-01A starting 3535.5267724990845
+TCGA-50-8457-01A collected 6005.715060949326
+TCGA-50-8457-01A counted 7298.965529918671
+TCGA-50-8457-01A done 7334.278757572174
+TCGA-62-A46R-01A starting 70.13295650482178
+TCGA-62-A46R-01A collected 1623.0516078472137
+TCGA-62-A46R-01A counted 2542.5389852523804
+TCGA-62-A46R-01A done 2580.316067457199
+TCGA-73-4659-01A starting 2583.553861141205
+TCGA-73-4659-01A collected 7521.5241549015045
+TCGA-73-4659-01A counted 9137.197927236557
+TCGA-73-4659-01A done 9169.878639221191
+TCGA-69-7980-01A starting 62.10306453704834
+TCGA-69-7980-01A collected 2860.539247274399
+TCGA-69-7980-01A counted 4504.974578619003
+TCGA-69-7980-01A done 4540.893861055374
+TCGA-50-6592-01A starting 4545.969921350479
+TCGA-50-6592-01A collected 6936.488530635834
+TCGA-50-6592-01A counted 8122.014550209045
+TCGA-50-6592-01A done 8155.429562091827
+Your runtime was 13477.987759828568 seconds.
+Mon Jun  8 02:16:06 UTC 2026
+intron_coverage done for batch 20
+
+--- cleaning up BAMs ---
+TCGA-69-7765-01A: output confirmed, deleting BAM
+TCGA-69-7980-01A: output confirmed, deleting BAM
+TCGA-95-7944-01A: output confirmed, deleting BAM
+TCGA-55-8097-01A: output confirmed, deleting BAM
+TCGA-MP-A4TE-01A: output confirmed, deleting BAM
+TCGA-97-7941-01A: output confirmed, deleting BAM
+TCGA-62-A46R-01A: output confirmed, deleting BAM
+TCGA-67-6216-01A: output confirmed, deleting BAM
+TCGA-73-4659-01A: output confirmed, deleting BAM
+TCGA-95-A4VK-01A: output confirmed, deleting BAM
+TCGA-55-8507-01A: output confirmed, deleting BAM
+TCGA-97-A4M7-01A: output confirmed, deleting BAM
+TCGA-50-8457-01A: output confirmed, deleting BAM
+TCGA-49-4488-01A: output confirmed, deleting BAM
+TCGA-50-6592-01A: output confirmed, deleting BAM
+TCGA-49-4505-01A: output confirmed, deleting BAM
+
+batch 20 complete
+
+========================================================
+BATCH 21: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-97-8177-01A: queuing 39360ea0-c687-4856-bd05-bcde98012898 for download
+TCGA-55-6981-01A: queuing f48cbb38-ea5f-4ba8-afa1-fadca5e5f29a for download
+TCGA-86-7955-01A: queuing ff8f8a84-4294-477d-9744-cfde221acf51 for download
+TCGA-38-4631-01A: queuing 29e5c4a5-3659-44c1-8609-82af113494e0 for download
+TCGA-67-3771-01A: queuing 71bb6ca3-70cf-4d10-a19a-6464e4f890a3 for download
+TCGA-49-6742-01A: queuing 569cdcb4-9c4e-4dfb-8c24-506290f31ac5 for download
+TCGA-97-8179-01A: queuing af96ed22-dd83-44d7-8e4a-1c3f2a707af9 for download
+TCGA-50-5931-01A: queuing eda8a001-f7cc-44c7-9c27-8f058609b7f2 for download
+TCGA-55-A48Z-01A: queuing f9a5ba92-d9d1-409b-91ba-2bfb209c295d for download
+TCGA-78-8662-01A: queuing f8f19de4-93cd-449d-9759-351783ef05c7 for download
+TCGA-50-5944-01A: queuing 2fa16f27-77e7-4f08-8263-eef90f96483d for download
+TCGA-49-6744-01A: queuing 33c16d35-96da-4400-9f48-1fc7567e30a4 for download
+TCGA-75-5125-01A: queuing 2619993d-6b8b-4380-addd-0be8446e299a for download
+TCGA-97-7546-01A: queuing b04867b9-f339-45b0-a706-85e098baeca2 for download
+TCGA-55-6987-01A: queuing b70b10f9-633c-48b7-b806-b349e8e9b5f0 for download
+TCGA-55-6980-01A: queuing 8371c736-df69-4b1b-ba41-b578c902fae1 for download
+downloading 16 BAMs...
+Mon Jun  8 02:16:10 UTC 2026
+100% [############################################] Time:  0:01:11  56.1 MiB/s
+100% [############################################] Time:  0:01:23  55.7 MiB/s
+100% [############################################] Time:  0:01:06  55.8 MiB/s
+100% [############################################] Time:  0:01:16  56.5 MiB/s
+100% [############################################] Time:  0:01:01  55.6 MiB/s
+100% [############################################] Time:  0:02:41  56.8 MiB/s
+100% [############################################] Time:  0:02:02  56.8 MiB/s
+100% [############################################] Time:  0:02:08  55.7 MiB/s
+100% [############################################] Time:  0:01:20  53.4 MiB/s
+100% [############################################] Time:  0:01:18  55.7 MiB/s
+100% [############################################] Time:  0:01:46  57.5 MiB/s
+100% [############################################] Time:  0:01:59  57.8 MiB/s
+100% [############################################] Time:  0:03:24  41.8 MiB/s
+100% [############################################] Time:  0:00:50  53.7 MiB/s
+100% [############################################] Time:  0:00:50  54.6 MiB/s
+100% [############################################] Time:  0:03:31  59.0 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 21
+Mon Jun  8 02:50:11 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 21) ---
+Mon Jun  8 02:50:11 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-49-6742-01A starting 19.98333430290222
+TCGA-49-6742-01A collected 852.4987368583679
+TCGA-49-6742-01A counted 1785.779361486435
+TCGA-49-6742-01A done 1821.6245772838593
+TCGA-50-5944-01A starting 1825.1158537864685
+TCGA-50-5944-01A collected 2736.171907901764
+TCGA-50-5944-01A counted 3712.1065208911896
+TCGA-50-5944-01A done 3749.942934036255
+TCGA-67-3771-01A starting 18.354949474334717
+TCGA-67-3771-01A collected 926.8051102161407
+TCGA-67-3771-01A counted 1987.81321310997
+TCGA-67-3771-01A done 2024.9477062225342
+TCGA-75-5125-01A starting 2028.6018249988556
+TCGA-75-5125-01A collected 3007.073266506195
+TCGA-75-5125-01A counted 4072.9670448303223
+TCGA-75-5125-01A done 4108.081829071045
+TCGA-86-7955-01A starting 14.979022979736328
+TCGA-86-7955-01A collected 1765.2429027557373
+TCGA-86-7955-01A counted 3366.309178829193
+TCGA-86-7955-01A done 3403.9307959079742
+TCGA-55-6981-01A starting 13.452812194824219
+TCGA-55-6981-01A collected 654.570166349411
+TCGA-55-6981-01A counted 1500.5679092407227
+TCGA-55-6981-01A done 1536.47966837883
+TCGA-55-A48Z-01A starting 1539.8134377002716
+TCGA-55-A48Z-01A collected 2873.9215989112854
+TCGA-55-A48Z-01A counted 4109.601082801819
+TCGA-55-A48Z-01A done 4142.224784612656
+TCGA-50-5931-01A starting 23.091623306274414
+TCGA-50-5931-01A collected 855.0149524211884
+TCGA-50-5931-01A counted 1901.016435623169
+TCGA-50-5931-01A done 1936.6645262241364
+TCGA-49-6744-01A starting 1940.520468711853
+TCGA-49-6744-01A collected 3088.241963624954
+TCGA-49-6744-01A counted 4226.161611318588
+TCGA-49-6744-01A done 4261.377118110657
+TCGA-38-4631-01A starting 16.671554565429688
+TCGA-38-4631-01A collected 812.7530772686005
+TCGA-38-4631-01A counted 1568.4873580932617
+TCGA-38-4631-01A done 1605.1005380153656
+TCGA-78-8662-01A starting 1608.1864054203033
+TCGA-78-8662-01A collected 2440.647777080536
+TCGA-78-8662-01A counted 3302.4798340797424
+TCGA-78-8662-01A done 3338.6058588027954
+TCGA-55-6980-01A starting 3341.9026086330414
+TCGA-55-6980-01A collected 3949.8281054496765
+TCGA-55-6980-01A counted 4726.948932170868
+TCGA-55-6980-01A done 4760.562321901321
+TCGA-97-8179-01A starting 21.569550037384033
+TCGA-97-8179-01A collected 1384.1831545829773
+TCGA-97-8179-01A counted 2531.36004781723
+TCGA-97-8179-01A done 2568.400778770447
+TCGA-97-7546-01A starting 2572.9092230796814
+TCGA-97-7546-01A collected 3685.026422023773
+TCGA-97-7546-01A counted 4877.686567783356
+TCGA-97-7546-01A done 4912.222779750824
+Your runtime was 6881.609909772873 seconds.
+Mon Jun  8 04:45:03 UTC 2026
+intron_coverage done for batch 21
+
+--- cleaning up BAMs ---
+TCGA-97-8177-01A: output confirmed, deleting BAM
+TCGA-55-6981-01A: output confirmed, deleting BAM
+TCGA-86-7955-01A: output confirmed, deleting BAM
+TCGA-38-4631-01A: output confirmed, deleting BAM
+TCGA-67-3771-01A: output confirmed, deleting BAM
+TCGA-49-6742-01A: output confirmed, deleting BAM
+TCGA-97-8179-01A: output confirmed, deleting BAM
+TCGA-50-5931-01A: output confirmed, deleting BAM
+TCGA-55-A48Z-01A: output confirmed, deleting BAM
+TCGA-78-8662-01A: output confirmed, deleting BAM
+TCGA-50-5944-01A: output confirmed, deleting BAM
+TCGA-49-6744-01A: output confirmed, deleting BAM
+TCGA-75-5125-01A: output confirmed, deleting BAM
+TCGA-97-7546-01A: output confirmed, deleting BAM
+TCGA-55-6987-01A: output confirmed, deleting BAM
+TCGA-55-6980-01A: output confirmed, deleting BAM
+
+batch 21 complete
+
+========================================================
+BATCH 22: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-L4-A4E5-01A: queuing 86fb2618-964b-426b-98d2-d8a54fca7a24 for download
+TCGA-05-5423-01A: queuing e760343a-5fc3-4a79-8ad1-3a82cb93acd2 for download
+TCGA-55-A4DF-01A: queuing 4a5e9e8a-8c48-48cf-8bf0-eb564611d382 for download
+TCGA-55-8096-01A: queuing 5c12b86d-f504-4e59-a8f8-9aea43cf1b8d for download
+TCGA-75-6214-01A: queuing 64fd558c-0446-4194-bf00-e30d0e944ccd for download
+TCGA-86-8055-01A: queuing 3e68cee6-03c4-4d8c-a5b7-bd849a24ad19 for download
+TCGA-05-5428-01A: queuing 07e4741a-bc01-409d-9bbb-6f6e19a534d6 for download
+TCGA-69-8253-01A: queuing b61793ab-cf8a-496c-8306-76aa7d365be2 for download
+TCGA-49-AAR9-01A: queuing 2437e6c6-92ca-4bb9-ad5a-989aa17865ea for download
+TCGA-J2-A4AE-01A: queuing 1f12b7cb-c38e-4337-9c72-a0f7797b8aa4 for download
+TCGA-67-6215-01A: queuing 0a26152a-462f-4895-8fe8-15fcdcc56e16 for download
+TCGA-69-7973-01A: queuing ffe6c4a6-f9c9-4dd1-abbb-7aa11336dc15 for download
+TCGA-97-7938-01A: queuing 39845a3f-f8c7-4a00-bcf7-e63016981df9 for download
+TCGA-55-7815-01A: queuing 8767cb0f-42f8-460e-b545-6ed0638b88a5 for download
+TCGA-05-4432-01A: queuing 32932ffb-7413-42ec-aa3e-78221b5b55bf for download
+TCGA-55-6984-01A: queuing 6c067003-63d2-49e8-ade8-b5271dcfbd56 for download
+downloading 16 BAMs...
+Mon Jun  8 04:45:06 UTC 2026
+100% [############################################] Time:  0:02:31  58.6 MiB/s
+100% [############################################] Time:  0:00:42  53.9 MiB/s
+100% [############################################] Time:  0:01:56  58.2 MiB/s
+100% [############################################] Time:  0:01:29  55.0 MiB/s
+100% [############################################] Time:  0:03:09  58.0 MiB/s
+100% [############################################] Time:  0:01:07  55.5 MiB/s
+100% [############################################] Time:  0:02:46  58.4 MiB/s
+100% [############################################] Time:  0:01:36  58.5 MiB/s
+100% [############################################] Time:  0:01:12  53.1 MiB/s
+100% [############################################] Time:  0:02:53  58.9 MiB/s
+100% [############################################] Time:  0:00:04   1.1 MiB/s
+100% [############################################] Time:  0:01:46  55.3 MiB/s
+100% [############################################] Time:  0:02:40  57.5 MiB/s
+100% [############################################] Time:  0:01:57  44.5 MiB/s
+100% [############################################] Time:  0:01:13  56.2 MiB/s
+100% [############################################] Time:  0:03:07  57.4 MiB/s
+100% [############################################] Time:  0:03:14  57.5 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 22
+Mon Jun  8 05:25:52 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 22) ---
+Mon Jun  8 05:25:52 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-55-8096-01A starting 19.189560174942017
+TCGA-55-8096-01A collected 2010.0599281787872
+TCGA-55-8096-01A counted 3900.580663204193
+TCGA-55-8096-01A done 3938.0159475803375
+TCGA-75-6214-01A starting 20.738832473754883
+TCGA-75-6214-01A collected 1830.8902332782745
+TCGA-75-6214-01A counted 3367.196350336075
+TCGA-75-6214-01A done 3403.1016368865967
+TCGA-55-7815-01A starting 3407.957163333893
+TCGA-55-7815-01A collected 3953.1783752441406
+TCGA-55-7815-01A counted 4475.374738693237
+TCGA-55-7815-01A done 4511.57004904747
+TCGA-86-8055-01A starting 22.46269679069519
+TCGA-86-8055-01A collected 1761.9134290218353
+TCGA-86-8055-01A counted 3270.9549865722656
+TCGA-86-8055-01A done 3308.568290948868
+TCGA-97-7938-01A starting 3313.6178896427155
+TCGA-97-7938-01A collected 4256.090260267258
+TCGA-97-7938-01A counted 5420.417071580887
+TCGA-97-7938-01A done 5455.45975112915
+TCGA-05-5428-01A starting 24.103456735610962
+TCGA-05-5428-01A collected 869.8618862628937
+TCGA-05-5428-01A counted 1586.842013835907
+TCGA-05-5428-01A done 1624.0731871128082
+TCGA-49-AAR9-01A starting 1626.939058303833
+TCGA-49-AAR9-01A collected 2752.335300922394
+TCGA-49-AAR9-01A counted 3844.327924013138
+TCGA-49-AAR9-01A done 3882.6027371883392
+TCGA-55-6984-01A starting 3886.770792245865
+TCGA-55-6984-01A collected 4630.329413175583
+TCGA-55-6984-01A counted 5497.857029914856
+TCGA-55-6984-01A done 5533.64045214653
+TCGA-55-A4DF-01A starting 17.50256323814392
+TCGA-55-A4DF-01A collected 1206.594302892685
+TCGA-55-A4DF-01A counted 2704.799788236618
+TCGA-55-A4DF-01A done 2739.400958776474
+TCGA-67-6215-01A starting 2744.269336938858
+TCGA-67-6215-01A collected 4594.432495832443
+TCGA-67-6215-01A counted 6085.506594419479
+TCGA-67-6215-01A done 6120.474058151245
+TCGA-L4-A4E5-01A starting 14.200968027114868
+TCGA-L4-A4E5-01A collected 1358.7721238136292
+TCGA-L4-A4E5-01A counted 2795.0072736740112
+TCGA-L4-A4E5-01A done 2830.6694202423096
+TCGA-69-7973-01A starting 2835.2245984077454
+TCGA-69-7973-01A collected 4693.169956445694
+TCGA-69-7973-01A counted 6281.77968788147
+TCGA-69-7973-01A done 6314.764403820038
+TCGA-05-5423-01A starting 15.878915309906006
+TCGA-05-5423-01A collected 844.4899244308472
+TCGA-05-5423-01A counted 1696.678017616272
+TCGA-05-5423-01A done 1735.4118242263794
+TCGA-J2-A4AE-01A starting 1738.739329814911
+TCGA-J2-A4AE-01A collected 2768.166511297226
+TCGA-J2-A4AE-01A counted 4077.8928508758545
+TCGA-J2-A4AE-01A done 4114.965078115463
+Your runtime was 6967.035972595215 seconds.
+Mon Jun  8 07:22:10 UTC 2026
+intron_coverage done for batch 22
+
+--- cleaning up BAMs ---
+TCGA-L4-A4E5-01A: output confirmed, deleting BAM
+TCGA-05-5423-01A: output confirmed, deleting BAM
+TCGA-55-A4DF-01A: output confirmed, deleting BAM
+TCGA-55-8096-01A: output confirmed, deleting BAM
+TCGA-75-6214-01A: output confirmed, deleting BAM
+TCGA-86-8055-01A: output confirmed, deleting BAM
+TCGA-05-5428-01A: output confirmed, deleting BAM
+TCGA-69-8253-01A: output confirmed, deleting BAM
+TCGA-49-AAR9-01A: output confirmed, deleting BAM
+TCGA-J2-A4AE-01A: output confirmed, deleting BAM
+TCGA-67-6215-01A: output confirmed, deleting BAM
+TCGA-69-7973-01A: output confirmed, deleting BAM
+TCGA-97-7938-01A: output confirmed, deleting BAM
+TCGA-55-7815-01A: output confirmed, deleting BAM
+TCGA-05-4432-01A: output confirmed, deleting BAM
+TCGA-55-6984-01A: output confirmed, deleting BAM
+
+batch 22 complete
+
+========================================================
+BATCH 23: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-69-8254-01A: queuing eb7d37ec-dba8-40fc-ae8c-719b59b5883b for download
+TCGA-78-7148-01A: queuing a43a2403-a20e-4034-b8a8-b4fd63a72438 for download
+TCGA-86-8668-01A: queuing 53af895c-0ab2-46f6-ab0e-5157d357c1a3 for download
+TCGA-93-7347-01A: queuing e3a70d2b-e1da-4641-a7c7-9380d4b5be6a for download
+TCGA-50-5941-01A: queuing aa7245fd-7073-4ff9-88cc-648a2c9f1f60 for download
+TCGA-62-A46V-01A: queuing 2084ae71-c36c-4247-ad79-64a4f9be50b9 for download
+TCGA-50-5044-01A: queuing ffcd16af-be94-41bf-acd7-f571ec7e2d16 for download
+TCGA-49-4510-01A: queuing 38c15c9b-c28a-47df-b0ad-acb597b88fcd for download
+TCGA-64-1676-01A: queuing f1ec9467-2b01-46d5-8457-4b2c15cc9e8d for download
+TCGA-64-1678-01A: queuing 4fd0542b-30da-4820-bc4b-7344629f7859 for download
+TCGA-MP-A4TK-01A: queuing d24316e2-23a5-4a25-8563-9539a76dffe2 for download
+TCGA-44-2666-01A: queuing 187e65a9-5ac4-4251-9bc1-33a97123f5be for download
+TCGA-97-7937-01A: queuing c7868d2c-fc90-49f7-a748-187af5735d3b for download
+TCGA-J2-A4AG-01A: queuing bc44af8e-7a99-48f2-9dc1-a600c5f0622b for download
+TCGA-55-8087-01A: queuing dc5e59df-ba18-4b5a-a9b5-a951faeb6311 for download
+TCGA-97-A4LX-01A: queuing 214bfc0e-7c53-40a4-8944-ca4373165693 for download
+downloading 16 BAMs...
+Mon Jun  8 07:22:13 UTC 2026
+100% [############################################] Time:  0:01:18  57.3 MiB/s
+100% [############################################] Time:  0:01:58  56.6 MiB/s
+100% [############################################] Time:  0:01:03  54.8 MiB/s
+100% [############################################] Time:  0:03:18  57.4 MiB/s
+100% [############################################] Time:  0:01:04  56.2 MiB/s
+100% [############################################] Time:  0:02:12  56.4 MiB/s
+100% [############################################] Time:  0:04:32  29.5 MiB/s
+100% [############################################] Time:  0:01:26  56.5 MiB/s
+100% [############################################] Time:  0:02:04  57.0 MiB/s
+100% [############################################] Time:  0:01:36  56.7 MiB/s
+100% [############################################] Time:  0:01:18  56.0 MiB/s
+100% [############################################] Time:  0:01:48  56.0 MiB/s
+100% [############################################] Time:  0:01:12  56.6 MiB/s
+100% [############################################] Time:  0:00:03   1.1 MiB/s
+100% [############################################] Time:  0:01:58  57.8 MiB/s
+100% [############################################] Time:  0:03:08  57.9 MiB/s
+100% [############################################] Time:  0:03:43  57.1 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 23
+Mon Jun  8 08:02:49 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 23) ---
+Mon Jun  8 08:02:49 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-49-4510-01A starting 23.328156232833862
+TCGA-49-4510-01A collected 2222.6639127731323
+TCGA-49-4510-01A counted 3779.7461564540863
+TCGA-49-4510-01A done 3817.604923725128
+TCGA-69-8254-01A starting 12.132688999176025
+TCGA-69-8254-01A collected 2422.8141577243805
+TCGA-69-8254-01A counted 4275.084737062454
+TCGA-69-8254-01A done 4311.342603683472
+TCGA-50-5941-01A starting 18.55307912826538
+TCGA-50-5941-01A collected 930.447342634201
+TCGA-50-5941-01A counted 1849.589586019516
+TCGA-50-5941-01A done 1885.9131028652191
+TCGA-MP-A4TK-01A starting 1889.3241834640503
+TCGA-MP-A4TK-01A collected 3122.3519263267517
+TCGA-MP-A4TK-01A counted 4323.5226056575775
+TCGA-MP-A4TK-01A done 4358.845773220062
+TCGA-93-7347-01A starting 16.890301942825317
+TCGA-93-7347-01A collected 1464.284422159195
+TCGA-93-7347-01A counted 2781.196690559387
+TCGA-93-7347-01A done 2818.3296937942505
+TCGA-J2-A4AG-01A starting 2822.9086446762085
+TCGA-J2-A4AG-01A collected 3681.274866580963
+TCGA-J2-A4AG-01A counted 4530.984425067902
+TCGA-J2-A4AG-01A done 4564.339302778244
+TCGA-62-A46V-01A starting 20.253370761871338
+TCGA-62-A46V-01A collected 1141.5735421180725
+TCGA-62-A46V-01A counted 2333.065705060959
+TCGA-62-A46V-01A done 2369.484885931015
+TCGA-97-7937-01A starting 2373.56138420105
+TCGA-97-7937-01A collected 3808.263850212097
+TCGA-97-7937-01A counted 5298.629980802536
+TCGA-97-7937-01A done 5333.902173042297
+TCGA-86-8668-01A starting 15.314256191253662
+TCGA-86-8668-01A collected 787.2906806468964
+TCGA-86-8668-01A counted 1754.9518821239471
+TCGA-86-8668-01A done 1790.9457442760468
+TCGA-64-1678-01A starting 1794.4328150749207
+TCGA-64-1678-01A collected 2724.021965265274
+TCGA-64-1678-01A counted 3428.901648044586
+TCGA-64-1678-01A done 3466.661502599716
+TCGA-97-A4LX-01A starting 3469.4823598861694
+TCGA-97-A4LX-01A collected 4813.202137231827
+TCGA-97-A4LX-01A counted 6068.422866106033
+TCGA-97-A4LX-01A done 6102.738379240036
+TCGA-78-7148-01A starting 13.707646369934082
+TCGA-78-7148-01A collected 1214.943876028061
+TCGA-78-7148-01A counted 2289.4382045269012
+TCGA-78-7148-01A done 2326.901307106018
+TCGA-44-2666-01A starting 2330.7177896499634
+TCGA-44-2666-01A collected 3874.49627828598
+TCGA-44-2666-01A counted 5305.650831460953
+TCGA-44-2666-01A done 5340.238141775131
+Your runtime was 6891.253987073898 seconds.
+Mon Jun  8 09:57:51 UTC 2026
+intron_coverage done for batch 23
+
+--- cleaning up BAMs ---
+TCGA-69-8254-01A: output confirmed, deleting BAM
+TCGA-78-7148-01A: output confirmed, deleting BAM
+TCGA-86-8668-01A: output confirmed, deleting BAM
+TCGA-93-7347-01A: output confirmed, deleting BAM
+TCGA-50-5941-01A: output confirmed, deleting BAM
+TCGA-62-A46V-01A: output confirmed, deleting BAM
+TCGA-50-5044-01A: output confirmed, deleting BAM
+TCGA-49-4510-01A: output confirmed, deleting BAM
+TCGA-64-1676-01A: output confirmed, deleting BAM
+TCGA-64-1678-01A: output confirmed, deleting BAM
+TCGA-MP-A4TK-01A: output confirmed, deleting BAM
+TCGA-44-2666-01A: output confirmed, deleting BAM
+TCGA-97-7937-01A: output confirmed, deleting BAM
+TCGA-J2-A4AG-01A: output confirmed, deleting BAM
+TCGA-55-8087-01A: output confirmed, deleting BAM
+TCGA-97-A4LX-01A: output confirmed, deleting BAM
+
+batch 23 complete
+
+========================================================
+BATCH 24: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-78-7220-01A: queuing 2028c5cc-3285-4683-ade5-79a7c768678e for download
+TCGA-78-7167-01A: queuing 063096ed-9c17-4609-9246-eb3e5fa550a6 for download
+TCGA-55-A493-01A: queuing 35d8c3ca-0bff-457e-a6a3-4bd1ada93338 for download
+TCGA-55-8616-01A: queuing 7877006b-79db-4b9b-a77b-19925630a921 for download
+TCGA-44-5645-01A: queuing a507729c-05f1-4d90-bba5-58ec4cdd67fc for download
+TCGA-75-7030-01A: queuing d5a80216-48b2-4ac1-b1a0-c733a55df37c for download
+TCGA-62-A46S-01A: queuing 0d6aff01-c03e-44cd-9c79-47a265e41af9 for download
+TCGA-86-A4JF-01A: queuing da56e0a9-c8d9-4a8b-b383-a51ae898eb09 for download
+TCGA-05-5715-01A: queuing bfb30c6d-458c-4081-82ce-671322d43361 for download
+TCGA-62-A46O-01A: queuing 482d4898-2791-46e0-8a59-ec8ebcd10103 for download
+TCGA-86-8280-01A: queuing 4699cd8b-a11f-4151-a2ed-0618a476800b for download
+TCGA-62-A472-01A: queuing 49862d40-908a-40fa-b9e4-5a285db3dcbf for download
+TCGA-55-6985-01A: queuing 2a600a38-215c-4b2b-9b9d-ab5d3b9a0bbc for download
+TCGA-62-A470-01A: queuing 0a92e2c6-0646-42ae-b873-509bc9c3ca5b for download
+TCGA-78-7542-01A: queuing b3ebc890-4e31-4d50-a51b-1d8d13555d24 for download
+TCGA-86-6562-01A: queuing f776cc87-6731-4e7a-9b7b-01f6461cd50f for download
+downloading 16 BAMs...
+Mon Jun  8 09:57:54 UTC 2026
+100% [############################################] Time:  0:02:48  53.1 MiB/s
+100% [############################################] Time:  0:00:03   1.2 MiB/s
+100% [############################################] Time:  0:01:42  56.2 MiB/s
+100% [############################################] Time:  0:01:21  55.9 MiB/s
+100% [############################################] Time:  0:02:35  58.0 MiB/s
+100% [############################################] Time:  0:01:22  56.7 MiB/s
+100% [############################################] Time:  0:01:53  56.9 MiB/s
+100% [############################################] Time:  0:01:59  56.6 MiB/s
+100% [############################################] Time:  0:03:53  43.2 MiB/s
+100% [############################################] Time:  0:00:48  53.6 MiB/s
+100% [############################################] Time:  0:01:05  50.8 MiB/s
+100% [############################################] Time:  0:01:13  55.6 MiB/s
+100% [############################################] Time:  0:00:03   1.2 MiB/s
+100% [############################################] Time:  0:01:50  56.5 MiB/s
+100% [############################################] Time:  0:01:39  50.1 MiB/s
+100% [############################################] Time:  0:01:33  56.7 MiB/s
+100% [############################################] Time:  0:01:07  38.5 MiB/s
+100% [############################################] Time:  0:01:00  50.6 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 24
+Mon Jun  8 10:31:54 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 24) ---
+Mon Jun  8 10:31:54 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-86-A4JF-01A starting 23.735923767089844
+TCGA-86-A4JF-01A collected 1246.5540363788605
+TCGA-86-A4JF-01A counted 2303.7026138305664
+TCGA-86-A4JF-01A done 2340.4920361042023
+TCGA-62-A472-01A starting 2344.4069929122925
+TCGA-62-A472-01A collected 2905.619482755661
+TCGA-62-A472-01A counted 3628.4829087257385
+TCGA-62-A472-01A done 3664.9253289699554
+TCGA-62-A46S-01A starting 22.212610244750977
+TCGA-62-A46S-01A collected 1240.9061272144318
+TCGA-62-A46S-01A counted 2463.515136241913
+TCGA-62-A46S-01A done 2500.0763182640076
+TCGA-62-A470-01A starting 2504.3924145698547
+TCGA-62-A470-01A collected 2993.470663547516
+TCGA-62-A470-01A counted 3663.336635351181
+TCGA-62-A470-01A done 3700.759037733078
+TCGA-78-7167-01A starting 14.053868532180786
+TCGA-78-7167-01A collected 1997.954107284546
+TCGA-78-7167-01A counted 3818.29536986351
+TCGA-78-7167-01A done 3853.941594362259
+TCGA-44-5645-01A starting 18.95431613922119
+TCGA-44-5645-01A collected 898.7240614891052
+TCGA-44-5645-01A counted 1982.0586535930634
+TCGA-44-5645-01A done 2017.9302244186401
+TCGA-62-A46O-01A starting 2021.6468002796173
+TCGA-62-A46O-01A collected 2972.574742078781
+TCGA-62-A46O-01A counted 4010.220093011856
+TCGA-62-A46O-01A done 4044.3027942180634
+TCGA-78-7220-01A starting 12.416454553604126
+TCGA-78-7220-01A collected 1103.8631660938263
+TCGA-78-7220-01A counted 2327.976861000061
+TCGA-78-7220-01A done 2364.525161266327
+TCGA-55-6985-01A starting 2368.70743393898
+TCGA-55-6985-01A collected 3175.3211064338684
+TCGA-55-6985-01A counted 4139.240978240967
+TCGA-55-6985-01A done 4174.026449918747
+TCGA-75-7030-01A starting 20.55147433280945
+TCGA-75-7030-01A collected 646.8928592205048
+TCGA-75-7030-01A counted 1457.106826543808
+TCGA-75-7030-01A done 1492.0768263339996
+TCGA-05-5715-01A starting 1495.0362691879272
+TCGA-05-5715-01A collected 2188.419528722763
+TCGA-05-5715-01A counted 2943.0716319084167
+TCGA-05-5715-01A done 2979.8662419319153
+TCGA-86-6562-01A starting 2983.080598592758
+TCGA-86-6562-01A collected 3847.9097146987915
+TCGA-86-6562-01A counted 4773.526105642319
+TCGA-86-6562-01A done 4806.859126567841
+TCGA-55-8616-01A starting 17.41267418861389
+TCGA-55-8616-01A collected 1041.2225801944733
+TCGA-55-8616-01A counted 2149.3932962417603
+TCGA-55-8616-01A done 2184.968566417694
+TCGA-86-8280-01A starting 2188.9020879268646
+TCGA-86-8280-01A collected 3768.388309240341
+TCGA-86-8280-01A counted 5162.282478570938
+TCGA-86-8280-01A done 5194.408472537994
+Your runtime was 5670.115243434906 seconds.
+Mon Jun  8 12:06:36 UTC 2026
+intron_coverage done for batch 24
+
+--- cleaning up BAMs ---
+TCGA-78-7220-01A: output confirmed, deleting BAM
+TCGA-78-7167-01A: output confirmed, deleting BAM
+TCGA-55-A493-01A: output confirmed, deleting BAM
+TCGA-55-8616-01A: output confirmed, deleting BAM
+TCGA-44-5645-01A: output confirmed, deleting BAM
+TCGA-75-7030-01A: output confirmed, deleting BAM
+TCGA-62-A46S-01A: output confirmed, deleting BAM
+TCGA-86-A4JF-01A: output confirmed, deleting BAM
+TCGA-05-5715-01A: output confirmed, deleting BAM
+TCGA-62-A46O-01A: output confirmed, deleting BAM
+TCGA-86-8280-01A: output confirmed, deleting BAM
+TCGA-62-A472-01A: output confirmed, deleting BAM
+TCGA-55-6985-01A: output confirmed, deleting BAM
+TCGA-62-A470-01A: output confirmed, deleting BAM
+TCGA-78-7542-01A: output confirmed, deleting BAM
+TCGA-86-6562-01A: output confirmed, deleting BAM
+
+batch 24 complete
+
+========================================================
+BATCH 25: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-6543-01A: queuing 5fa0513c-3de7-4d3b-9df0-83f2df36b947 for download
+TCGA-93-7348-01A: queuing 61366adb-bf35-4f12-a12b-b69736994e74 for download
+TCGA-78-7147-01A: queuing 87dcc4ae-40bb-4a1b-b04b-265e8ebff3f4 for download
+TCGA-55-6712-01A: queuing 39d167f8-3e54-462e-ba6a-f1ca798390bf for download
+TCGA-35-3615-01A: queuing ce3af9d8-a66b-48ea-bb32-c3cd31341ced for download
+TCGA-4B-A93V-01A: queuing 82cff7f3-b017-4c73-a990-87b16b0a997e for download
+TCGA-91-A4BC-01A: queuing 66e98d41-1773-46f6-89bb-c4934808828d for download
+TCGA-MP-A4TI-01A: queuing 6967be90-16eb-4aad-9d47-425cd48ce1fb for download
+TCGA-50-5936-01A: queuing 83ea371a-c68a-4afc-9b33-8d8fc53f7173 for download
+TCGA-44-2657-01A: queuing 35a81dbe-bf1e-478c-8a95-d227b4195f34 for download
+TCGA-97-8175-01A: queuing fe75bde2-884e-43b3-a0db-2cacfbde1abe for download
+TCGA-44-A4SS-01A: queuing 75764f6a-cd79-47f5-acd0-e280cd56f551 for download
+TCGA-69-7978-01A: queuing c62f1c03-7843-42a6-bab6-847719d83162 for download
+TCGA-05-4250-01A: queuing ef6b6bf0-de01-405a-94b5-15157825b105 for download
+TCGA-55-8505-01A: queuing d24a81e6-fad6-46db-aee7-c84f39d01fd3 for download
+TCGA-44-2665-01A: queuing 73c368dd-99db-4e34-a02f-fdff478a491c for download
+downloading 16 BAMs...
+Mon Jun  8 12:06:38 UTC 2026
+100% [############################################] Time:  0:02:16  57.6 MiB/s
+100% [############################################] Time:  0:01:32  56.3 MiB/s
+100% [############################################] Time:  0:01:27  57.1 MiB/s
+100% [############################################] Time:  0:01:07  49.8 MiB/s
+100% [############################################] Time:  0:03:01  57.8 MiB/s
+100% [############################################] Time:  0:01:07  55.9 MiB/s
+100% [############################################] Time:  0:01:41  57.2 MiB/s
+100% [############################################] Time:  0:01:34  56.7 MiB/s
+100% [############################################] Time:  0:01:42  57.2 MiB/s
+100% [############################################] Time:  0:02:23  57.5 MiB/s
+100% [############################################] Time:  0:02:40  58.2 MiB/s
+100% [############################################] Time:  0:02:26  58.1 MiB/s
+100% [############################################] Time:  0:01:27  57.8 MiB/s
+100% [############################################] Time:  0:01:50  57.0 MiB/s
+100% [############################################] Time:  0:02:19  58.3 MiB/s
+100% [############################################] Time:  0:03:16  55.6 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 25
+Mon Jun  8 12:45:35 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 25) ---
+Mon Jun  8 12:45:35 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-35-3615-01A starting 19.55443286895752
+TCGA-35-3615-01A collected 2238.0868694782257
+TCGA-35-3615-01A counted 3589.7311024665833
+TCGA-35-3615-01A done 3633.4722118377686
+TCGA-55-6543-01A starting 12.86038613319397
+TCGA-55-6543-01A collected 1086.7304751873016
+TCGA-55-6543-01A counted 2142.140838623047
+TCGA-55-6543-01A done 2184.8531424999237
+TCGA-44-2657-01A starting 2188.3679535388947
+TCGA-44-2657-01A collected 3492.559872150421
+TCGA-44-2657-01A counted 4470.991755723953
+TCGA-44-2657-01A done 4512.49063038826
+TCGA-4B-A93V-01A starting 21.26844334602356
+TCGA-4B-A93V-01A collected 1734.4642851352692
+TCGA-4B-A93V-01A counted 3104.818202972412
+TCGA-4B-A93V-01A done 3147.605924844742
+TCGA-55-8505-01A starting 3151.9235455989838
+TCGA-55-8505-01A collected 4234.424104452133
+TCGA-55-8505-01A counted 5357.680696249008
+TCGA-55-8505-01A done 5398.580706834793
+TCGA-93-7348-01A starting 14.633034944534302
+TCGA-93-7348-01A collected 1123.2826416492462
+TCGA-93-7348-01A counted 2199.92436671257
+TCGA-93-7348-01A done 2243.7119975090027
+TCGA-97-8175-01A starting 2247.4337441921234
+TCGA-97-8175-01A collected 4074.0539739131927
+TCGA-97-8175-01A counted 5502.215638160706
+TCGA-97-8175-01A done 5543.018678426743
+TCGA-91-A4BC-01A starting 22.935513734817505
+TCGA-91-A4BC-01A collected 1384.2431194782257
+TCGA-91-A4BC-01A counted 2566.8715014457703
+TCGA-91-A4BC-01A done 2610.362741947174
+TCGA-69-7978-01A starting 2614.1742804050446
+TCGA-69-7978-01A collected 4473.83623790741
+TCGA-69-7978-01A counted 5989.280016183853
+TCGA-69-7978-01A done 6029.479403018951
+TCGA-78-7147-01A starting 16.218334197998047
+TCGA-78-7147-01A collected 1639.6687815189362
+TCGA-78-7147-01A counted 3089.264524459839
+TCGA-78-7147-01A done 3132.638879299164
+TCGA-05-4250-01A starting 3136.9616520404816
+TCGA-05-4250-01A collected 4838.052599191666
+TCGA-05-4250-01A counted 6084.141658306122
+TCGA-05-4250-01A done 6122.5280611515045
+Your runtime was 7324.476228952408 seconds.
+Mon Jun  8 14:47:55 UTC 2026
+intron_coverage done for batch 25
+
+--- cleaning up BAMs ---
+TCGA-55-6543-01A: output confirmed, deleting BAM
+TCGA-93-7348-01A: output confirmed, deleting BAM
+TCGA-78-7147-01A: output confirmed, deleting BAM
+TCGA-55-6712-01A: output confirmed, deleting BAM
+TCGA-35-3615-01A: output confirmed, deleting BAM
+TCGA-4B-A93V-01A: output confirmed, deleting BAM
+TCGA-91-A4BC-01A: output confirmed, deleting BAM
+TCGA-MP-A4TI-01A: output confirmed, deleting BAM
+TCGA-50-5936-01A: output confirmed, deleting BAM
+TCGA-44-2657-01A: output confirmed, deleting BAM
+TCGA-97-8175-01A: output confirmed, deleting BAM
+TCGA-44-A4SS-01A: output confirmed, deleting BAM
+TCGA-69-7978-01A: output confirmed, deleting BAM
+TCGA-05-4250-01A: output confirmed, deleting BAM
+TCGA-55-8505-01A: output confirmed, deleting BAM
+TCGA-44-2665-01A: output confirmed, deleting BAM
+
+batch 25 complete
+
+========================================================
+BATCH 26: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-50-6593-01A: queuing dca26258-6f29-4c20-8139-6d029680a377 for download
+TCGA-78-7146-01A: queuing 010a8fbf-0d4f-4c48-b405-63fe2e272d34 for download
+TCGA-78-7149-01A: queuing 593cca0d-6f1f-447e-be54-24c4a6ad73c0 for download
+TCGA-73-A9RS-01A: queuing c1ff9d7a-6531-41da-881e-70f889cf7416 for download
+TCGA-L9-A5IP-01A: queuing 5b32fe96-32c0-4d95-a75b-0fc454081ee7 for download
+TCGA-NJ-A4YI-01A: queuing a833d8f8-4d90-436c-8548-16bc02361b88 for download
+TCGA-55-A48X-01A: queuing efd28d99-fead-4f7f-a6b4-1ee2e027aab4 for download
+TCGA-86-8585-01A: queuing a3127d56-8b47-4fa7-954b-86929db5e982 for download
+TCGA-75-6211-01A: queuing 8f30956a-71d4-44ac-936d-2b74b6467f96 for download
+TCGA-05-4398-01A: queuing 035c43e6-c537-4d6e-b9e3-b263533afd5e for download
+TCGA-05-4244-01A: queuing e6be56ed-7a45-471e-9904-758096073e9d for download
+TCGA-97-A4M6-01A: queuing 4a92bf9e-4eee-4e3c-b022-db9355df8e23 for download
+TCGA-97-A4M2-01A: queuing afe6a6d1-000c-4f71-aabe-1bca0def2eae for download
+TCGA-97-7553-01A: queuing 5f3e279d-7f3b-4634-9d65-8e601f45f0f4 for download
+TCGA-44-6777-01A: queuing 76c75af3-4a0c-47a3-822c-deb4b69ce539 for download
+TCGA-95-A4VN-01A: queuing 768282c8-81db-432a-b41c-2b860479d4ca for download
+downloading 16 BAMs...
+Mon Jun  8 14:47:58 UTC 2026
+100% [############################################] Time:  0:03:41  58.7 MiB/s
+100% [############################################] Time:  0:01:10  56.9 MiB/s
+100% [############################################] Time:  0:01:47  57.2 MiB/s
+100% [############################################] Time:  0:01:45  57.7 MiB/s
+100% [############################################] Time:  0:01:56  57.3 MiB/s
+100% [############################################] Time:  0:01:40  56.7 MiB/s
+100% [############################################] Time:  0:01:21  57.3 MiB/s
+100% [############################################] Time:  0:02:13  56.2 MiB/s
+100% [############################################] Time:  0:01:56  57.0 MiB/s
+100% [############################################] Time:  0:00:46  55.2 MiB/s
+100% [############################################] Time:  0:02:41  58.1 MiB/s
+100% [############################################] Time:  0:02:05  57.2 MiB/s
+100% [############################################] Time:  0:01:16  56.6 MiB/s
+100% [############################################] Time:  0:01:30  56.9 MiB/s
+100% [############################################] Time:  0:01:23  57.2 MiB/s
+100% [############################################] Time:  0:02:12  57.6 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 26
+Mon Jun  8 15:23:59 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 26) ---
+Mon Jun  8 15:23:59 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-73-A9RS-01A starting 16.74504518508911
+TCGA-73-A9RS-01A collected 587.4293084144592
+TCGA-73-A9RS-01A counted 1356.3004748821259
+TCGA-73-A9RS-01A done 1391.3517401218414
+TCGA-75-6211-01A starting 1394.402224779129
+TCGA-75-6211-01A collected 2229.0195116996765
+TCGA-75-6211-01A counted 3168.5190398693085
+TCGA-75-6211-01A done 3206.732165813446
+TCGA-86-8585-01A starting 22.931168794631958
+TCGA-86-8585-01A collected 922.3701148033142
+TCGA-86-8585-01A counted 1908.8948786258698
+TCGA-86-8585-01A done 1945.072758436203
+TCGA-97-A4M6-01A starting 1948.5597774982452
+TCGA-97-A4M6-01A collected 3115.6029834747314
+TCGA-97-A4M6-01A counted 4339.068405151367
+TCGA-97-A4M6-01A done 4376.780187368393
+TCGA-55-A48X-01A starting 21.459344387054443
+TCGA-55-A48X-01A collected 1129.898648738861
+TCGA-55-A48X-01A counted 2471.01527428627
+TCGA-55-A48X-01A done 2506.477886199951
+TCGA-44-6777-01A starting 2511.117671251297
+TCGA-44-6777-01A collected 3626.3685109615326
+TCGA-44-6777-01A counted 4561.151397943497
+TCGA-44-6777-01A done 4594.540291786194
+TCGA-78-7149-01A starting 15.236923933029175
+TCGA-78-7149-01A collected 1264.374868631363
+TCGA-78-7149-01A counted 2237.09184551239
+TCGA-78-7149-01A done 2273.414104938507
+TCGA-97-A4M2-01A starting 2277.1079177856445
+TCGA-97-A4M2-01A collected 3562.1160151958466
+TCGA-97-A4M2-01A counted 4910.414726257324
+TCGA-97-A4M2-01A done 4943.108449459076
+TCGA-78-7146-01A starting 13.712565183639526
+TCGA-78-7146-01A collected 1230.8597609996796
+TCGA-78-7146-01A counted 2429.801108598709
+TCGA-78-7146-01A done 2467.522782802582
+TCGA-97-7553-01A starting 2471.8714079856873
+TCGA-97-7553-01A collected 3810.9766013622284
+TCGA-97-7553-01A counted 5050.812493085861
+TCGA-97-7553-01A done 5084.948673009872
+TCGA-NJ-A4YI-01A starting 19.879718542099
+TCGA-NJ-A4YI-01A collected 832.5506815910339
+TCGA-NJ-A4YI-01A counted 1864.8692698478699
+TCGA-NJ-A4YI-01A done 1900.5871322154999
+TCGA-05-4244-01A starting 1904.2487828731537
+TCGA-05-4244-01A collected 3535.3049976825714
+TCGA-05-4244-01A counted 5129.9861397743225
+TCGA-05-4244-01A done 5163.392702102661
+TCGA-L9-A5IP-01A starting 18.341960906982422
+TCGA-L9-A5IP-01A collected 1374.623110294342
+TCGA-L9-A5IP-01A counted 2717.8337473869324
+TCGA-L9-A5IP-01A done 2754.8299908638
+TCGA-95-A4VN-01A starting 2759.304961204529
+TCGA-95-A4VN-01A collected 3991.759220123291
+TCGA-95-A4VN-01A counted 5245.5696856975555
+TCGA-95-A4VN-01A done 5278.3239052295685
+Your runtime was 6422.013618707657 seconds.
+Mon Jun  8 17:11:32 UTC 2026
+intron_coverage done for batch 26
+
+--- cleaning up BAMs ---
+TCGA-50-6593-01A: output confirmed, deleting BAM
+TCGA-78-7146-01A: output confirmed, deleting BAM
+TCGA-78-7149-01A: output confirmed, deleting BAM
+TCGA-73-A9RS-01A: output confirmed, deleting BAM
+TCGA-L9-A5IP-01A: output confirmed, deleting BAM
+TCGA-NJ-A4YI-01A: output confirmed, deleting BAM
+TCGA-55-A48X-01A: output confirmed, deleting BAM
+TCGA-86-8585-01A: output confirmed, deleting BAM
+TCGA-75-6211-01A: output confirmed, deleting BAM
+TCGA-05-4398-01A: output confirmed, deleting BAM
+TCGA-05-4244-01A: output confirmed, deleting BAM
+TCGA-97-A4M6-01A: output confirmed, deleting BAM
+TCGA-97-A4M2-01A: output confirmed, deleting BAM
+TCGA-97-7553-01A: output confirmed, deleting BAM
+TCGA-44-6777-01A: output confirmed, deleting BAM
+TCGA-95-A4VN-01A: output confirmed, deleting BAM
+
+batch 26 complete
+
+========================================================
+BATCH 27: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-93-8067-01A: queuing ddede262-9d2b-40b9-ae70-bb4f6c61d2ea for download
+TCGA-93-A4JO-01A: queuing ab943d20-283c-4037-88f1-20fd9ef9443c for download
+TCGA-05-4418-01A: queuing 4cd04ea0-f23b-4f10-8018-e5e090e84388 for download
+TCGA-67-6217-01A: queuing 27731400-551e-4b9d-9ad3-eee2c209b3b2 for download
+TCGA-55-A4DG-01A: queuing 6979c494-8d2b-4279-bcdc-125001241a1f for download
+TCGA-O1-A52J-01A: queuing 2f9e6340-2c94-4ff4-a9ca-5bfdcec62dd6 for download
+TCGA-55-8506-01A: queuing f198b7e8-8927-4c8c-99cc-b4802b656324 for download
+TCGA-55-8091-01A: queuing f79d2215-8cdb-4765-9edc-1d9a2691f87e for download
+TCGA-44-6775-01A: queuing ac8491bd-069c-406c-be34-a88858c5f206 for download
+TCGA-05-4420-01A: queuing 407b7cef-a081-4af8-ac57-3de81d118a58 for download
+TCGA-78-7535-01A: queuing 9d211e37-9c7e-4773-b306-f08864bbc4d7 for download
+TCGA-86-A456-01A: queuing a626ad4b-579d-4f16-960e-588f780e809f for download
+TCGA-75-5126-01A: queuing 8569cac6-a521-4353-bc94-36b922dfab44 for download
+TCGA-05-4389-01A: queuing 976ac032-e4ca-4a9a-918b-722d0de6ecd7 for download
+TCGA-64-5815-01A: queuing 5fc71d41-3824-4649-9179-386bb566533c for download
+TCGA-55-8206-01A: queuing e87e6c78-12aa-4bda-8c7e-0c9c7b2cb774 for download
+downloading 16 BAMs...
+Mon Jun  8 17:11:34 UTC 2026
+100% [############################################] Time:  0:02:24  57.9 MiB/s
+100% [############################################] Time:  0:01:49  52.9 MiB/s
+100% [############################################] Time:  0:02:40  58.0 MiB/s
+100% [############################################] Time:  0:01:05  55.6 MiB/s
+100% [############################################] Time:  0:02:03  57.9 MiB/s
+100% [############################################] Time:  0:01:09  56.0 MiB/s
+100% [############################################] Time:  0:00:01   1.8 MiB/s
+100% [############################################] Time:  0:03:23  53.5 MiB/s
+100% [############################################] Time:  0:01:21  57.2 MiB/s
+100% [############################################] Time:  0:01:47  57.6 MiB/s
+100% [############################################] Time:  0:02:59  58.2 MiB/s
+100% [############################################] Time:  0:03:04  24.3 MiB/s
+100% [############################################] Time:  0:01:18  57.0 MiB/s
+100% [############################################] Time:  0:04:00  58.7 MiB/s
+100% [############################################] Time:  0:02:46  58.4 MiB/s
+100% [############################################] Time:  0:03:10  58.3 MiB/s
+100% [############################################] Time:  0:01:36  56.7 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 27
+Mon Jun  8 17:55:54 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 27) ---
+Mon Jun  8 17:55:54 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-O1-A52J-01A starting 20.66575312614441
+TCGA-O1-A52J-01A collected 1214.1842374801636
+TCGA-O1-A52J-01A counted 2569.322564601898
+TCGA-O1-A52J-01A done 2607.1221075057983
+TCGA-75-5126-01A starting 2611.611835002899
+TCGA-75-5126-01A collected 3337.63770198822
+TCGA-75-5126-01A counted 4163.350896596909
+TCGA-75-5126-01A done 4202.782530784607
+TCGA-55-A4DG-01A starting 18.9482524394989
+TCGA-55-A4DG-01A collected 1132.276769399643
+TCGA-55-A4DG-01A counted 2527.575047016144
+TCGA-55-A4DG-01A done 2564.8917009830475
+TCGA-86-A456-01A starting 2569.342934846878
+TCGA-86-A456-01A collected 3491.183298110962
+TCGA-86-A456-01A counted 4619.148625135422
+TCGA-86-A456-01A done 4656.224464178085
+TCGA-05-4418-01A starting 15.692688703536987
+TCGA-05-4418-01A collected 2187.54221367836
+TCGA-05-4418-01A counted 3537.386664867401
+TCGA-05-4418-01A done 3574.465000152588
+TCGA-64-5815-01A starting 3578.782757282257
+TCGA-64-5815-01A collected 4348.070256471634
+TCGA-64-5815-01A counted 5125.972229957581
+TCGA-64-5815-01A done 5161.590631723404
+TCGA-93-A4JO-01A starting 14.02496600151062
+TCGA-93-A4JO-01A collected 1150.2426159381866
+TCGA-93-A4JO-01A counted 2511.282478094101
+TCGA-93-A4JO-01A done 2547.4803614616394
+TCGA-78-7535-01A starting 2552.0153770446777
+TCGA-78-7535-01A collected 4418.747169971466
+TCGA-78-7535-01A counted 5515.357847929001
+TCGA-78-7535-01A done 5550.234386205673
+TCGA-55-8091-01A starting 23.769686698913574
+TCGA-55-8091-01A collected 1650.3431367874146
+TCGA-55-8091-01A counted 3066.5168735980988
+TCGA-55-8091-01A done 3102.46125125885
+TCGA-05-4389-01A starting 3107.288470029831
+TCGA-05-4389-01A collected 4645.219769954681
+TCGA-05-4389-01A counted 5844.703229427338
+TCGA-05-4389-01A done 5882.749368190765
+TCGA-55-8506-01A starting 22.281779050827026
+TCGA-55-8506-01A collected 988.2996828556061
+TCGA-55-8506-01A counted 2029.3234360218048
+TCGA-55-8506-01A done 2066.3043401241302
+TCGA-44-6775-01A starting 2070.000078678131
+TCGA-44-6775-01A collected 4588.855709075928
+TCGA-44-6775-01A counted 5953.781737327576
+TCGA-44-6775-01A done 5987.062524795532
+TCGA-67-6217-01A starting 17.37567162513733
+TCGA-67-6217-01A collected 1040.4529037475586
+TCGA-67-6217-01A counted 2239.5000166893005
+TCGA-67-6217-01A done 2275.847911119461
+TCGA-05-4420-01A starting 2279.908342599869
+TCGA-05-4420-01A collected 4509.422638654709
+TCGA-05-4420-01A counted 6012.5692048072815
+TCGA-05-4420-01A done 6047.342622518539
+Your runtime was 7195.5526304244995 seconds.
+Mon Jun  8 19:56:11 UTC 2026
+intron_coverage done for batch 27
+
+--- cleaning up BAMs ---
+TCGA-93-8067-01A: output confirmed, deleting BAM
+TCGA-93-A4JO-01A: output confirmed, deleting BAM
+TCGA-05-4418-01A: output confirmed, deleting BAM
+TCGA-67-6217-01A: output confirmed, deleting BAM
+TCGA-55-A4DG-01A: output confirmed, deleting BAM
+TCGA-O1-A52J-01A: output confirmed, deleting BAM
+TCGA-55-8506-01A: output confirmed, deleting BAM
+TCGA-55-8091-01A: output confirmed, deleting BAM
+TCGA-44-6775-01A: output confirmed, deleting BAM
+TCGA-05-4420-01A: output confirmed, deleting BAM
+TCGA-78-7535-01A: output confirmed, deleting BAM
+TCGA-86-A456-01A: output confirmed, deleting BAM
+TCGA-75-5126-01A: output confirmed, deleting BAM
+TCGA-05-4389-01A: output confirmed, deleting BAM
+TCGA-64-5815-01A: output confirmed, deleting BAM
+TCGA-55-8206-01A: output confirmed, deleting BAM
+
+batch 27 complete
+
+========================================================
+BATCH 28: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-55-A494-01A: queuing 31809095-b3ff-4ffb-9641-9fb561e08101 for download
+TCGA-73-4675-01A: queuing 257fde63-4725-42e6-ba36-ee5d0cb83d60 for download
+TCGA-55-8301-01A: queuing dda15125-b920-4567-9648-51a7bef1a383 for download
+TCGA-86-8278-01A: queuing f15b9320-6a1c-4207-99ce-c68d579582a9 for download
+TCGA-78-7152-01A: queuing 4c97e518-bfed-4b8a-8793-a78481c33e15 for download
+TCGA-55-8508-01A: queuing e8f9fa2e-76cc-464c-8f74-adf5d4a8cd8f for download
+TCGA-55-7995-01A: queuing 885b29e1-c858-41c6-8282-0b4d0c6fbe6b for download
+TCGA-05-4390-01A: queuing d506d948-b35a-478e-b21c-23d35ab5f72e for download
+TCGA-44-7659-01A: queuing 20592e25-4b12-4cd3-b1b1-b8e8d6352960 for download
+TCGA-50-5946-01A: queuing 832227fd-b159-475f-a787-bd5661406164 for download
+TCGA-75-5147-01A: queuing 4fc71e83-8aab-449f-807a-db5d6eb21ab9 for download
+TCGA-78-7154-01A: queuing e3a7f754-fc76-4f6a-a4e2-8dd0f7592efc for download
+TCGA-86-8672-01A: queuing 95a7b088-bb5e-4eb7-a09d-2be656b761ef for download
+TCGA-86-7713-01A: queuing 12edfe44-c7bf-4ffb-8270-8f23bddcc42a for download
+TCGA-05-4403-01A: queuing 29e3cf8c-a07e-47a4-82f0-d824636ccb96 for download
+TCGA-38-4627-01A: queuing 9454ef92-c151-42c4-9b09-e50ed418483c for download
+downloading 16 BAMs...
+Mon Jun  8 19:56:14 UTC 2026
+100% [############################################] Time:  0:02:43  57.6 MiB/s
+100% [############################################] Time:  0:02:03  55.2 MiB/s
+100% [############################################] Time:  0:03:11  58.3 MiB/s
+100% [############################################] Time:  0:03:16  56.3 MiB/s
+100% [############################################] Time:  0:02:29  58.2 MiB/s
+100% [############################################] Time:  0:02:51  57.6 MiB/s
+100% [############################################] Time:  0:01:20  57.5 MiB/s
+100% [############################################] Time:  0:03:32  58.3 MiB/s
+100% [############################################] Time:  0:01:04  56.4 MiB/s
+100% [############################################] Time:  0:01:10  55.6 MiB/s
+100% [############################################] Time:  0:02:35  58.2 MiB/s
+100% [############################################] Time:  0:01:58  57.5 MiB/s
+100% [############################################] Time:  0:02:03  57.6 MiB/s
+100% [############################################] Time:  0:01:11  56.3 MiB/s
+100% [############################################] Time:  0:02:30  58.3 MiB/s
+100% [############################################] Time:  0:00:50  53.8 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 28
+Mon Jun  8 20:38:43 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 28) ---
+Mon Jun  8 20:38:43 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-86-8278-01A starting 16.966288328170776
+TCGA-86-8278-01A collected 2228.301838874817
+TCGA-86-8278-01A counted 4302.647382974625
+TCGA-86-8278-01A done 4343.232372999191
+TCGA-55-8301-01A starting 15.363430976867676
+TCGA-55-8301-01A collected 1700.5149838924408
+TCGA-55-8301-01A counted 3093.3370826244354
+TCGA-55-8301-01A done 3135.0439550876617
+TCGA-86-8672-01A starting 3139.2832005023956
+TCGA-86-8672-01A collected 3969.7190911769867
+TCGA-86-8672-01A counted 4913.77806353569
+TCGA-86-8672-01A done 4954.83669090271
+TCGA-55-A494-01A starting 12.214579820632935
+TCGA-55-A494-01A collected 1262.7957439422607
+TCGA-55-A494-01A counted 2954.782252073288
+TCGA-55-A494-01A done 2995.9898064136505
+TCGA-78-7154-01A starting 3000.8809304237366
+TCGA-78-7154-01A collected 4093.911596059799
+TCGA-78-7154-01A counted 5250.786124229431
+TCGA-78-7154-01A done 5290.698391199112
+TCGA-55-8508-01A starting 20.159292697906494
+TCGA-55-8508-01A collected 973.3758301734924
+TCGA-55-8508-01A counted 1957.8342559337616
+TCGA-55-8508-01A done 1997.1586933135986
+TCGA-75-5147-01A starting 2000.3649628162384
+TCGA-75-5147-01A collected 3821.800194978714
+TCGA-75-5147-01A counted 5382.701431512833
+TCGA-75-5147-01A done 5421.898681640625
+TCGA-05-4390-01A starting 23.389474868774414
+TCGA-05-4390-01A collected 872.5181183815002
+TCGA-05-4390-01A counted 1900.3539123535156
+TCGA-05-4390-01A done 1941.3425161838531
+TCGA-50-5946-01A starting 1944.6566090583801
+TCGA-50-5946-01A collected 3676.640004634857
+TCGA-50-5946-01A counted 5793.827277421951
+TCGA-50-5946-01A done 5836.392738342285
+TCGA-55-7995-01A starting 21.797330141067505
+TCGA-55-7995-01A collected 1820.937134027481
+TCGA-55-7995-01A counted 3910.5221934318542
+TCGA-55-7995-01A done 3952.9182784557343
+TCGA-38-4627-01A starting 3958.9336144924164
+TCGA-38-4627-01A collected 5441.135872602463
+TCGA-38-4627-01A counted 6598.914788722992
+TCGA-38-4627-01A done 6639.11390542984
+TCGA-78-7152-01A starting 18.631856679916382
+TCGA-78-7152-01A collected 624.9468204975128
+TCGA-78-7152-01A counted 1434.7514464855194
+TCGA-78-7152-01A done 1476.6161003112793
+TCGA-44-7659-01A starting 1479.4439406394958
+TCGA-44-7659-01A collected 2255.7930123806
+TCGA-44-7659-01A counted 3412.6833736896515
+TCGA-44-7659-01A done 3452.4968354701996
+TCGA-86-7713-01A starting 3456.2544317245483
+TCGA-86-7713-01A collected 5377.73167848587
+TCGA-86-7713-01A counted 7242.563853263855
+TCGA-86-7713-01A done 7278.840190649033
+Your runtime was 7468.514198303223 seconds.
+Mon Jun  8 22:43:25 UTC 2026
+intron_coverage done for batch 28
+
+--- cleaning up BAMs ---
+TCGA-55-A494-01A: output confirmed, deleting BAM
+TCGA-73-4675-01A: output confirmed, deleting BAM
+TCGA-55-8301-01A: output confirmed, deleting BAM
+TCGA-86-8278-01A: output confirmed, deleting BAM
+TCGA-78-7152-01A: output confirmed, deleting BAM
+TCGA-55-8508-01A: output confirmed, deleting BAM
+TCGA-55-7995-01A: output confirmed, deleting BAM
+TCGA-05-4390-01A: output confirmed, deleting BAM
+TCGA-44-7659-01A: output confirmed, deleting BAM
+TCGA-50-5946-01A: output confirmed, deleting BAM
+TCGA-75-5147-01A: output confirmed, deleting BAM
+TCGA-78-7154-01A: output confirmed, deleting BAM
+TCGA-86-8672-01A: output confirmed, deleting BAM
+TCGA-86-7713-01A: output confirmed, deleting BAM
+TCGA-05-4403-01A: output confirmed, deleting BAM
+TCGA-38-4627-01A: output confirmed, deleting BAM
+
+batch 28 complete
+
+========================================================
+BATCH 29: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-38-A44F-01A: queuing dd1d7a21-1235-4934-b0b2-d4d3a5bf35f8 for download
+TCGA-93-A4JP-01A: queuing cb267187-4eaa-4670-8a03-ec3c6c8c82b5 for download
+TCGA-S2-AA1A-01A: queuing ea802294-a5d3-40c2-8a15-fb9e038cb7db for download
+TCGA-55-8299-01A: queuing e1d97633-39a2-4b63-aa06-fb3ffc941c3e for download
+TCGA-05-4426-01A: queuing de346e7e-e806-4cb9-89e1-e68315b55021 for download
+TCGA-44-7672-01A: queuing b38575e2-47b8-41dc-851a-bb1726d2b9ce for download
+TCGA-97-8171-01A: queuing 3246816d-2008-4930-ad33-8f108ad011d1 for download
+TCGA-NJ-A4YP-01A: queuing c4334889-91a2-421a-8e17-c834fc6f62de for download
+TCGA-64-5781-01A: queuing 61005b7e-d7ad-4573-af9b-d9f33ce3c300 for download
+TCGA-86-8673-01A: queuing 252105c8-298b-40ff-869b-c3390fd67fab for download
+TCGA-75-6206-01A: queuing 10fcbc8f-ca09-4175-abe3-64276a78e492 for download
+TCGA-55-7907-01A: queuing ec343407-2a9c-42fc-800f-26f9e0d94c7c for download
+TCGA-55-6972-01A: queuing f591cea3-f2ba-42b1-8372-74bcd834fbef for download
+TCGA-55-7283-01A: queuing c421afac-04ec-4285-ae1b-2187c4eb6a67 for download
+TCGA-97-A4M1-01A: queuing e3ace32f-865a-47d5-b397-b9a96bc83519 for download
+TCGA-78-7160-01A: queuing 8cadcbf6-1b87-4147-8c6c-989a4493b5e8 for download
+downloading 16 BAMs...
+Mon Jun  8 22:43:28 UTC 2026
+100% [############################################] Time:  0:01:42  57.2 MiB/s
+100% [############################################] Time:  0:01:37  57.3 MiB/s
+100% [############################################] Time:  0:01:16  56.6 MiB/s
+100% [############################################] Time:  0:01:44  57.1 MiB/s
+100% [############################################] Time:  0:02:00  57.3 MiB/s
+100% [############################################] Time:  0:00:53  55.1 MiB/s
+100% [############################################] Time:  0:01:16  56.6 MiB/s
+100% [############################################] Time:  0:01:17  57.0 MiB/s
+100% [############################################] Time:  0:01:49  57.9 MiB/s
+100% [############################################] Time:  0:02:35  57.1 MiB/s
+100% [############################################] Time:  0:04:18  58.5 MiB/s
+100% [############################################] Time:  0:01:26  57.0 MiB/s
+100% [############################################] Time:  0:03:31  58.1 MiB/s
+100% [############################################] Time:  0:03:06  58.7 MiB/s
+100% [############################################] Time:  0:02:04  28.4 MiB/s
+[31mERROR: [0mcb267187-4eaa-4670-8a03-ec3c6c8c82b5: Unable to connect to API: (HTTPSConnectionPool(host='api.gdc.cancer.gov', port=443): Read timed out. (read timeout=60)). Is this url correct: 'https://api.gdc.cancer.gov/data/cb267187-4eaa-4670-8a03-ec3c6c8c82b5'? Is there a connection to the API? Is the server running?
+100% [############################################] Time:  0:01:59  57.5 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 29
+Mon Jun  8 23:24:13 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 29) ---
+Mon Jun  8 23:24:13 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-55-8299-01A starting 16.89375877380371
+TCGA-55-8299-01A collected 1363.7071080207825
+TCGA-55-8299-01A counted 2506.234386920929
+TCGA-55-8299-01A done 2541.3063201904297
+TCGA-75-6206-01A starting 2545.513284444809
+TCGA-75-6206-01A collected 3329.7174079418182
+TCGA-75-6206-01A counted 4245.137802362442
+TCGA-75-6206-01A done 4280.8929007053375
+TCGA-97-8171-01A starting 21.819409370422363
+TCGA-97-8171-01A collected 2343.858156681061
+TCGA-97-8171-01A counted 4247.202179670334
+TCGA-97-8171-01A done 4283.838248252869
+TCGA-44-7672-01A starting 20.121286869049072
+TCGA-44-7672-01A collected 1842.0789158344269
+TCGA-44-7672-01A counted 3045.551829814911
+TCGA-44-7672-01A done 3082.12003159523
+TCGA-55-6972-01A starting 3086.361693382263
+TCGA-55-6972-01A collected 3685.879288673401
+TCGA-55-6972-01A counted 4372.259852647781
+TCGA-55-6972-01A done 4407.076062679291
+TCGA-38-A44F-01A starting 12.26179313659668
+TCGA-38-A44F-01A collected 1009.5957350730896
+TCGA-38-A44F-01A counted 1991.819248199463
+TCGA-38-A44F-01A done 2029.010367155075
+TCGA-64-5781-01A starting 2032.4918110370636
+TCGA-64-5781-01A collected 3036.440726518631
+TCGA-64-5781-01A counted 3798.093454360962
+TCGA-64-5781-01A done 3832.968334913254
+TCGA-55-7283-01A starting 3835.950933456421
+TCGA-55-7283-01A collected 4905.1937255859375
+TCGA-55-7283-01A counted 5925.492699623108
+TCGA-55-7283-01A done 5958.75505900383
+TCGA-S2-AA1A-01A starting 15.281144142150879
+TCGA-S2-AA1A-01A collected 1151.461525440216
+TCGA-S2-AA1A-01A counted 2337.9900488853455
+TCGA-S2-AA1A-01A done 2373.7137615680695
+TCGA-86-8673-01A starting 2377.7904522418976
+TCGA-86-8673-01A collected 3272.0582661628723
+TCGA-86-8673-01A counted 4130.719741106033
+TCGA-86-8673-01A done 4166.290245771408
+TCGA-78-7160-01A starting 4169.620395898819
+TCGA-78-7160-01A collected 5019.520169019699
+TCGA-78-7160-01A counted 5975.256836414337
+TCGA-78-7160-01A done 6007.470089435577
+Your runtime was 6080.129355192184 seconds.
+Tue Jun  9 01:06:07 UTC 2026
+intron_coverage done for batch 29
+
+--- cleaning up BAMs ---
+TCGA-38-A44F-01A: output confirmed, deleting BAM
+TCGA-93-A4JP-01A: output confirmed, deleting BAM
+TCGA-S2-AA1A-01A: output confirmed, deleting BAM
+TCGA-55-8299-01A: output confirmed, deleting BAM
+TCGA-05-4426-01A: output confirmed, deleting BAM
+TCGA-44-7672-01A: output confirmed, deleting BAM
+TCGA-97-8171-01A: output confirmed, deleting BAM
+TCGA-NJ-A4YP-01A: output confirmed, deleting BAM
+TCGA-64-5781-01A: output confirmed, deleting BAM
+TCGA-86-8673-01A: output confirmed, deleting BAM
+TCGA-75-6206-01A: output confirmed, deleting BAM
+TCGA-55-7907-01A: output confirmed, deleting BAM
+TCGA-55-6972-01A: output confirmed, deleting BAM
+TCGA-55-7283-01A: output confirmed, deleting BAM
+TCGA-97-A4M1-01A: output confirmed, deleting BAM
+TCGA-78-7160-01A: output confirmed, deleting BAM
+
+batch 29 complete
+
+========================================================
+BATCH 30: 6 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-49-4494-01A: queuing b814b1c8-0539-4247-91c4-cfc5916eedbb for download
+TCGA-44-A47G-01A: queuing 7c8cde36-afef-49e3-a389-6aa07fdf0d88 for download
+TCGA-55-7570-01A: queuing cc47fcb4-905b-48b6-b89b-eecbac7f7f8f for download
+TCGA-78-7155-01A: queuing d0d763a9-856c-452b-9989-a72894b32326 for download
+TCGA-44-3398-01A: queuing 347924ac-b049-4a8b-a298-ba3a246f58e9 for download
+TCGA-64-5774-01A: queuing 033ec523-89f1-42db-ae8c-ea2608302d19 for download
+downloading 6 BAMs...
+Tue Jun  9 01:06:10 UTC 2026
+100% [############################################] Time:  0:01:30  57.3 MiB/s
+100% [############################################] Time:  0:02:03  58.4 MiB/s
+100% [############################################] Time:  0:01:34  57.1 MiB/s
+100% [############################################] Time:  0:00:04   1.0 MiB/s
+100% [############################################] Time:  0:02:48  53.2 MiB/s
+100% [############################################] Time:  0:02:44  58.6 MiB/s
+100% [############################################] Time:  0:01:36  57.0 MiB/s
+[32mSuccessfully downloaded[0m: 6
+all downloads complete for batch 30
+Tue Jun  9 01:21:15 UTC 2026
+
+--- running intron_coverage on 6 samples with 6 threads (batch 30) ---
+Tue Jun  9 01:21:15 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-78-7155-01A starting 17.40980887413025
+TCGA-78-7155-01A collected 840.7187440395355
+TCGA-78-7155-01A counted 1816.3991692066193
+TCGA-78-7155-01A done 1849.8595457077026
+TCGA-64-5774-01A starting 20.36974334716797
+TCGA-64-5774-01A collected 1068.256626367569
+TCGA-64-5774-01A counted 2100.5452518463135
+TCGA-64-5774-01A done 2134.077455997467
+TCGA-55-7570-01A starting 15.832906484603882
+TCGA-55-7570-01A collected 1167.9194588661194
+TCGA-55-7570-01A counted 2396.9210510253906
+TCGA-55-7570-01A done 2429.100233078003
+TCGA-44-3398-01A starting 18.94766092300415
+TCGA-44-3398-01A collected 1415.124624490738
+TCGA-44-3398-01A counted 2480.518887281418
+TCGA-44-3398-01A done 2512.9280054569244
+TCGA-44-A47G-01A starting 14.086933612823486
+TCGA-44-A47G-01A collected 1038.833262205124
+TCGA-44-A47G-01A counted 2089.982218027115
+TCGA-44-A47G-01A done 2124.046237230301
+Your runtime was 2920.7337250709534 seconds.
+Tue Jun  9 02:10:12 UTC 2026
+intron_coverage done for batch 30
+
+--- cleaning up BAMs ---
+TCGA-49-4494-01A: output confirmed, deleting BAM
+TCGA-44-A47G-01A: output confirmed, deleting BAM
+TCGA-55-7570-01A: output confirmed, deleting BAM
+TCGA-78-7155-01A: output confirmed, deleting BAM
+TCGA-44-3398-01A: output confirmed, deleting BAM
+TCGA-64-5774-01A: output confirmed, deleting BAM
+
+batch 30 complete
+
+========================================================
+All batches complete.
+========================================================

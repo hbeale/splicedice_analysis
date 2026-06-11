@@ -1,0 +1,247 @@
+skipping TCGA-86-8074-01A (output already exists)
+skipping TCGA-62-8402-01A (output already exists)
+skipping TCGA-86-8358-01A (output already exists)
+skipping TCGA-86-8056-01A (output already exists)
+skipping TCGA-78-7158-01A (output already exists)
+skipping TCGA-49-4507-01A (output already exists)
+skipping TCGA-49-AARO-01A (output already exists)
+skipping TCGA-91-8499-01A (output already exists)
+skipping TCGA-55-6983-01A (output already exists)
+
+=== 486 samples still need intron_coverage ===
+
+========================================================
+BATCH 1: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-62-A46Y-01A: queuing 0fd61331-8363-402b-8d87-88bb39f467d0 for download
+TCGA-53-7624-01A: queuing 888e7914-72dc-46ab-b34f-84e30cf4ede8 for download
+TCGA-L9-A7SV-01A: queuing 0bd949c3-479b-4fec-a3e3-83a0e0f437a0 for download
+TCGA-62-8395-01A: queuing 7bd81e9a-6853-4c8e-ba87-849957a8f015 for download
+TCGA-73-4662-01A: queuing 1c0c1b78-5622-4da2-a6ce-d00c37c51915 for download
+TCGA-97-7547-01A: queuing 93c69bd1-3426-4475-a59a-b5f6c25222b1 for download
+TCGA-35-5375-01A: queuing a5b878f4-5fe7-4f53-a61f-d653d435b24c for download
+TCGA-78-8660-01A: queuing 4ee7ff21-a0ae-4885-92d2-a088d6f87cf0 for download
+TCGA-49-4486-01A: queuing b3d9124b-689b-475d-aa48-0c8428f51c77 for download
+TCGA-91-8497-01A: queuing a0318562-280f-4b8a-8ef9-39857547f3e4 for download
+TCGA-44-6778-01A: queuing 0bc34939-5be8-4e8c-87ae-3af7933af31a for download
+TCGA-05-4249-01A: queuing 72bb7f41-e2fe-4dd0-bf97-d3b652911e52 for download
+TCGA-86-8281-01A: queuing 4ea72757-c15b-4c9d-9279-35fe484ad03d for download
+TCGA-91-8496-01A: queuing 18f16ad8-57a8-42be-bf7d-335a8b5e5026 for download
+TCGA-55-7281-01A: queuing bd243552-7513-412b-b236-545b402b200c for download
+TCGA-44-4112-01A: queuing 06a7cb83-03c8-4ac4-b7c1-a037951c289c for download
+downloading 16 BAMs...
+Thu Jun  4 21:27:23 UTC 2026
+100% [############################################] Time:  0:01:45  52.6 MiB/s
+100% [############################################] Time:  0:01:20  51.1 MiB/s
+100% [############################################] Time:  0:01:56  52.0 MiB/s
+100% [############################################] Time:  0:03:49  53.2 MiB/s
+100% [############################################] Time:  0:01:11  50.4 MiB/s
+100% [############################################] Time:  0:01:43  51.0 MiB/s
+100% [############################################] Time:  0:01:59  52.3 MiB/s
+100% [############################################] Time:  0:01:32  49.9 MiB/s
+100% [############################################] Time:  0:02:48  53.1 MiB/s
+100% [############################################] Time:  0:02:43  53.1 MiB/s
+100% [############################################] Time:  0:02:37  52.6 MiB/s
+100% [############################################] Time:  0:01:56  52.0 MiB/s
+100% [############################################] Time:  0:01:28  50.4 MiB/s
+100% [############################################] Time:  0:03:07  51.4 MiB/s
+100% [############################################] Time:  0:02:35  51.5 MiB/s
+100% [############################################] Time:  0:02:59  52.6 MiB/s
+[32mSuccessfully downloaded[0m: 16
+all downloads complete for batch 1
+Thu Jun  4 22:10:15 UTC 2026
+
+--- running intron_coverage on 16 samples with 8 threads (batch 1) ---
+Thu Jun  4 22:10:15 UTC 2026
+getting paths for bam files
+creating junction percentiles
+TCGA-78-8660-01A starting 23.645540714263916
+TCGA-78-8660-01A collected 1103.3784663677216
+TCGA-78-8660-01A counted 2229.3009989261627
+TCGA-78-8660-01A done 2266.201313972473
+TCGA-91-8497-01A starting 2270.2314801216125
+TCGA-91-8497-01A collected 3195.0740687847137
+TCGA-91-8497-01A counted 4290.926056146622
+TCGA-91-8497-01A done 4326.562939405441
+TCGA-35-5375-01A starting 22.200149059295654
+TCGA-35-5375-01A collected 708.0235939025879
+TCGA-35-5375-01A counted 1284.9584403038025
+TCGA-35-5375-01A done 1320.251669883728
+TCGA-49-4486-01A starting 1322.8447637557983
+TCGA-49-4486-01A collected 3380.3361043930054
+TCGA-49-4486-01A counted 4468.147670984268
+TCGA-49-4486-01A done 4504.511563301086
+TCGA-97-7547-01A starting 20.513625383377075
+TCGA-97-7547-01A collected 1644.9790239334106
+TCGA-97-7547-01A counted 2993.020644903183
+TCGA-97-7547-01A done 3030.1428213119507
+TCGA-91-8496-01A starting 3034.640474796295
+TCGA-91-8496-01A collected 3928.2173085212708
+TCGA-91-8496-01A counted 4594.23340344429
+TCGA-91-8496-01A done 4628.36750125885
+TCGA-62-A46Y-01A starting 12.329993486404419
+TCGA-62-A46Y-01A collected 1191.9034559726715
+TCGA-62-A46Y-01A counted 2284.245768070221
+TCGA-62-A46Y-01A done 2320.674294948578
+TCGA-44-6778-01A starting 2324.662267446518
+TCGA-44-6778-01A collected 3256.3368005752563
+TCGA-44-6778-01A counted 4372.330488920212
+TCGA-44-6778-01A done 4407.783883810043
+TCGA-62-8395-01A starting 17.353612422943115
+TCGA-62-8395-01A collected 1107.179646730423
+TCGA-62-8395-01A counted 2423.3097443580627
+TCGA-62-8395-01A done 2461.097240924835
+TCGA-86-8281-01A starting 2465.627598762512
+TCGA-86-8281-01A collected 4058.4629938602448
+TCGA-86-8281-01A counted 5457.378114700317
+TCGA-86-8281-01A done 5492.898642301559
+TCGA-53-7624-01A starting 14.029977560043335
+TCGA-53-7624-01A collected 1191.047353029251
+TCGA-53-7624-01A counted 2397.5999829769135
+TCGA-53-7624-01A done 2433.9131996631622
+TCGA-05-4249-01A starting 2438.293154001236
+TCGA-05-4249-01A collected 4037.5640647411346
+TCGA-05-4249-01A counted 5485.101824522018
+TCGA-05-4249-01A done 5520.981764316559
+Your runtime was 6694.841159820557 seconds.
+Fri Jun  5 00:02:00 UTC 2026
+intron_coverage done for batch 1
+
+--- cleaning up BAMs ---
+TCGA-62-A46Y-01A: output confirmed, deleting BAM
+TCGA-53-7624-01A: output confirmed, deleting BAM
+TCGA-L9-A7SV-01A: output confirmed, deleting BAM
+TCGA-62-8395-01A: output confirmed, deleting BAM
+TCGA-73-4662-01A: output confirmed, deleting BAM
+TCGA-97-7547-01A: output confirmed, deleting BAM
+TCGA-35-5375-01A: output confirmed, deleting BAM
+TCGA-78-8660-01A: output confirmed, deleting BAM
+TCGA-49-4486-01A: output confirmed, deleting BAM
+TCGA-91-8497-01A: output confirmed, deleting BAM
+TCGA-44-6778-01A: output confirmed, deleting BAM
+TCGA-05-4249-01A: output confirmed, deleting BAM
+TCGA-86-8281-01A: output confirmed, deleting BAM
+TCGA-91-8496-01A: output confirmed, deleting BAM
+TCGA-55-7281-01A: output confirmed, deleting BAM
+TCGA-44-4112-01A: output confirmed, deleting BAM
+
+batch 1 complete
+
+========================================================
+BATCH 2: 16 samples
+========================================================
+
+--- downloading missing BAMs ---
+TCGA-49-6767-01A: queuing e42d956e-d8fc-489f-adc7-de9dd6e069c3 for download
+TCGA-95-8494-01A: queuing d1969524-4d30-4a50-ba38-3ce50303b6e3 for download
+TCGA-MP-A4T9-01A: queuing 995183b8-de28-4e1b-a06e-d5e0e448d851 for download
+TCGA-67-3772-01A: queuing 674b9bdd-c5e2-4539-802c-734f69b58097 for download
+TCGA-55-8208-01A: queuing 58602df8-a37a-4fe4-9c80-7b79ac0c3e18 for download
+TCGA-50-5942-01A: queuing 83e3257c-bc18-488a-8a49-867c9c939cec for download
+TCGA-53-A4EZ-01A: queuing b2926c07-53fd-43ca-a2e3-70c4d6f62bb0 for download
+TCGA-69-7761-01A: queuing 14214c45-8108-41cd-b07d-e020e8436f7b for download
+TCGA-78-7156-01A: queuing 54839351-9668-45b4-baf5-6497550f35a1 for download
+TCGA-44-A47A-01A: queuing dcde3fba-f8c6-4c0b-8540-5abd036db6c8 for download
+TCGA-MP-A4TJ-01A: queuing 65e3ebf4-fd52-4b03-8c00-6b4ff514f135 for download
+TCGA-78-7161-01A: queuing 41c72749-b512-4930-9ad1-9fd59c8f90c5 for download
+TCGA-38-4632-01A: queuing 55acf78f-4a64-44c0-a276-510c279cf861 for download
+TCGA-55-6971-01A: queuing 02ad5c84-dbd7-4b21-bcae-2a0ad84edf66 for download
+TCGA-L9-A8F4-01A: queuing 73898db7-1015-4a90-a6b8-3fb68d9a9287 for download
+TCGA-99-8033-01A: queuing dad25a07-fb2a-42d0-95b6-b072afbdaa7c for download
+downloading 16 BAMs...
+Fri Jun  5 00:02:03 UTC 2026
+100% [############################################] Time:  0:02:05  55.1 MiB/s
+[33mWARNING: [0mUnable to download related files for 14214c45-8108-41cd-b07d-e020e8436f7b: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/57d0f0fc-5067-4af7-8bc9-52b2e50425b8: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mMax retries exceeded.
+[31mERROR: [0mMax retries exceeded.
+[31mERROR: [0mMax retries exceeded.
+100% [############################################] Time:  0:01:41  57.8 MiB/s
+[33mWARNING: [0mUnable to download related files for dcde3fba-f8c6-4c0b-8540-5abd036db6c8: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/49081d00-3028-4af1-8af5-d96b24ca70f0: {"message":"Internal server error: Failed to get user projects."}
+
+100% [############################################] Time:  0:02:31  58.7 MiB/s
+[33mWARNING: [0mUnable to download related files for 41c72749-b512-4930-9ad1-9fd59c8f90c5: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/04bfc152-08ed-441e-ab36-cc22b07a9a63: {"error":"Auth service unavailable."}
+
+[31mERROR: [0mMax retries exceeded.
+100% [############################################] Time:  0:03:13  59.5 MiB/s
+[33mWARNING: [0mUnable to download related files for dad25a07-fb2a-42d0-95b6-b072afbdaa7c: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/2c1c3b2b-0184-49eb-bea3-38f4165429a5: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mMax retries exceeded.
+[31mERROR: [0mMax retries exceeded.
+[31mERROR: [0mMax retries exceeded.
+100% [############################################] Time:  0:02:32  58.8 MiB/s
+[33mWARNING: [0mUnable to download related files for 58602df8-a37a-4fe4-9c80-7b79ac0c3e18: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/40b6474d-0e84-4334-a98d-5af5389a02de: {"error":"Auth service unavailable."}
+
+[31mERROR: [0mMax retries exceeded.
+[31mERROR: [0mMax retries exceeded.
+100% [############################################] Time:  0:01:31  56.9 MiB/s
+[31mERROR: [0m83e3257c-bc18-488a-8a49-867c9c939cec: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/83e3257c-bc18-488a-8a49-867c9c939cec: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0m54839351-9668-45b4-baf5-6497550f35a1: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/54839351-9668-45b4-baf5-6497550f35a1: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0me42d956e-d8fc-489f-adc7-de9dd6e069c3: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/e42d956e-d8fc-489f-adc7-de9dd6e069c3: {"error":"Auth service unavailable."}
+
+[31mERROR: [0m995183b8-de28-4e1b-a06e-d5e0e448d851: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/995183b8-de28-4e1b-a06e-d5e0e448d851: {"error":"Auth service unavailable."}
+
+[31mERROR: [0md1969524-4d30-4a50-ba38-3ce50303b6e3: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/d1969524-4d30-4a50-ba38-3ce50303b6e3: {"error":"Auth service unavailable."}
+
+[31mERROR: [0mdcde3fba-f8c6-4c0b-8540-5abd036db6c8: File checksum is invalid
+[31mERROR: [0m02ad5c84-dbd7-4b21-bcae-2a0ad84edf66: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/02ad5c84-dbd7-4b21-bcae-2a0ad84edf66: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0m73898db7-1015-4a90-a6b8-3fb68d9a9287: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/73898db7-1015-4a90-a6b8-3fb68d9a9287: {"error":"Auth service unavailable."}
+
+[31mERROR: [0mdad25a07-fb2a-42d0-95b6-b072afbdaa7c: File checksum is invalid
+[31mERROR: [0m58602df8-a37a-4fe4-9c80-7b79ac0c3e18: File checksum is invalid
+[31mERROR: [0m55acf78f-4a64-44c0-a276-510c279cf861: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/55acf78f-4a64-44c0-a276-510c279cf861: {"error":"Auth service unavailable."}
+
+[31mERROR: [0m65e3ebf4-fd52-4b03-8c00-6b4ff514f135: File checksum is invalid
+[31mERROR: [0mb2926c07-53fd-43ca-a2e3-70c4d6f62bb0: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/b2926c07-53fd-43ca-a2e3-70c4d6f62bb0: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0m674b9bdd-c5e2-4539-802c-734f69b58097: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/674b9bdd-c5e2-4539-802c-734f69b58097: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0m83e3257c-bc18-488a-8a49-867c9c939cec: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/83e3257c-bc18-488a-8a49-867c9c939cec: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/83e3257c-bc18-488a-8a49-867c9c939cec
+[31mERROR: [0m54839351-9668-45b4-baf5-6497550f35a1: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/54839351-9668-45b4-baf5-6497550f35a1: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/54839351-9668-45b4-baf5-6497550f35a1
+[31mERROR: [0me42d956e-d8fc-489f-adc7-de9dd6e069c3: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/e42d956e-d8fc-489f-adc7-de9dd6e069c3: {"error":"Auth service unavailable."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/e42d956e-d8fc-489f-adc7-de9dd6e069c3
+[31mERROR: [0m995183b8-de28-4e1b-a06e-d5e0e448d851: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/995183b8-de28-4e1b-a06e-d5e0e448d851: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/995183b8-de28-4e1b-a06e-d5e0e448d851
+[31mERROR: [0md1969524-4d30-4a50-ba38-3ce50303b6e3: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/d1969524-4d30-4a50-ba38-3ce50303b6e3: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/d1969524-4d30-4a50-ba38-3ce50303b6e3
+[31mERROR: [0mdcde3fba-f8c6-4c0b-8540-5abd036db6c8: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/dcde3fba-f8c6-4c0b-8540-5abd036db6c8: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/dcde3fba-f8c6-4c0b-8540-5abd036db6c8
+[31mERROR: [0m02ad5c84-dbd7-4b21-bcae-2a0ad84edf66: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/02ad5c84-dbd7-4b21-bcae-2a0ad84edf66: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/02ad5c84-dbd7-4b21-bcae-2a0ad84edf66
+[31mERROR: [0m73898db7-1015-4a90-a6b8-3fb68d9a9287: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/73898db7-1015-4a90-a6b8-3fb68d9a9287: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/73898db7-1015-4a90-a6b8-3fb68d9a9287
+[31mERROR: [0mdad25a07-fb2a-42d0-95b6-b072afbdaa7c: 503 Server Error: SERVICE UNAVAILABLE for url: https://api.gdc.cancer.gov/data/dad25a07-fb2a-42d0-95b6-b072afbdaa7c: {"error":"Auth service unavailable."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/dad25a07-fb2a-42d0-95b6-b072afbdaa7c
+[31mERROR: [0m58602df8-a37a-4fe4-9c80-7b79ac0c3e18: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/58602df8-a37a-4fe4-9c80-7b79ac0c3e18: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/58602df8-a37a-4fe4-9c80-7b79ac0c3e18
+[31mERROR: [0m55acf78f-4a64-44c0-a276-510c279cf861: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/55acf78f-4a64-44c0-a276-510c279cf861: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/55acf78f-4a64-44c0-a276-510c279cf861
+[31mERROR: [0m65e3ebf4-fd52-4b03-8c00-6b4ff514f135: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/65e3ebf4-fd52-4b03-8c00-6b4ff514f135: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/65e3ebf4-fd52-4b03-8c00-6b4ff514f135
+[31mERROR: [0mb2926c07-53fd-43ca-a2e3-70c4d6f62bb0: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/b2926c07-53fd-43ca-a2e3-70c4d6f62bb0: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/b2926c07-53fd-43ca-a2e3-70c4d6f62bb0
+[31mERROR: [0m674b9bdd-c5e2-4539-802c-734f69b58097: 500 Server Error: INTERNAL SERVER ERROR for url: https://api.gdc.cancer.gov/data/674b9bdd-c5e2-4539-802c-734f69b58097: {"message":"Internal server error: Failed to get user projects."}
+
+[31mERROR: [0mUnable to download file https://api.gdc.cancer.gov/data/674b9bdd-c5e2-4539-802c-734f69b58097
+[32mSuccessfully downloaded[0m: -180
+[31mFailed downloads[0m: 196
