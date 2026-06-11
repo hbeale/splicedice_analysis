@@ -3,10 +3,12 @@ FROM python:3.8-slim
 WORKDIR /opt
 
 RUN apt-get update && apt-get install -y \
-    git build-essential pkg-config libhts-dev samtools=1.16.1-1\
+    git build-essential pkg-config libhts-dev samtools=1.16.1-1 \
+    less curl nano \
     && rm -rf /var/lib/apt/lists/*
 
 ARG CACHE_BUST=1
+
 RUN git clone --depth 1 --branch ir_table_for_high_sample_number \
       https://github.com/BrooksLabUCSC/splicedice.git splicedice \
  && cd splicedice \
@@ -25,4 +27,3 @@ RUN git clone --depth 2 \
 RUN apt-get purge -y git build-essential pkg-config \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
-
