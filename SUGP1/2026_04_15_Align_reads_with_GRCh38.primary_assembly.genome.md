@@ -368,8 +368,28 @@ scp /mnt/scratch/SRP286876_bams.tgz hcbeale@courtyard.gi.ucsc.edu:/public/groups
 ```
 tar -tf SRP286876_bams.tgz
 tar -tf SRP286876_bams.tgz --strip-components 4 --show-transformed
-tar -t --strip-components 4 -xf SRP286876_bams.tgz
+tar --strip-components 4 -xf SRP286876_bams.tgz
 
 ```
 
- # 
+ # put them on local so I can look at junctions
+
+### copying from open stack -- to slow, abandoned
+
+```
+cd /Users/hbeale/bigData
+scp ubuntu@10.50.100.135:/mnt/scratch/SRP286876_bams.tgz .
+```
+
+### copy from courtyard
+
+ open stack was going to take hours, so i checked if I still had the bam files tarred on courtyard ; I did, so i'm downloading them from there. it should take about 1.25 hours. 
+
+
+
+```
+cd /Users/hbeale/bigData/SRP286876
+wget https://public.gi.ucsc.edu/~hcbeale/treehouse_files/SRP286876/SRP286876_bams.tgz
+
+```
+
