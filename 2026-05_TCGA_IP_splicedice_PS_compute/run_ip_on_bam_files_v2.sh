@@ -25,7 +25,8 @@ cat $ip_manifest | grep -v ^id | while read ugly_id bam_file nice_id; do
 bed_file=$ip_run_dir/${nice_id}.bed 
 bam_file=/mnt/data/tcga/$ugly_id/$bam_file
 
-if [[ -f "$bam_file" && $(find "$bam_file" -mmin +60) ]]; then
+# if [[ -f "$bam_file" && $(find "$bam_file" -mmin +60) ]]; then
+if [[ -f "$bam_file" ]]; then
 echo "$bam_file for $nice_id exists and not modified in the last hour"
 if [[ ! -f "$bed_file" ]]; then
 echo "bed file $bed_file for $nice_id does not exist"
