@@ -3,21 +3,26 @@ set -euo pipefail
 
 # ── usage ─────────────────────────────────────────────────────────────────────
 usage() {
-    echo "Usage: $(basename "$0") <batch_size>"
-    echo "  batch_size  Number of samples to process per batch (e.g. 16)"
+    echo "Usage: $(basename "$0") <batch_size> <bam_manifest>"
+    echo "  batch_size    Number of samples to process per batch (e.g. 16)"
+    echo "  bam_manifest  Path to the BAM manifest TSV file"
     exit 1
 }
 
-if [[ $# -ne 1 || ! "$1" =~ ^[0-9]+$ ]]; then
+if [[ $# -ne 2 || ! "$1" =~ ^[0-9]+$ ]]; then
     usage
 fi
 
 BATCH_SIZE="$1"
+bam_manifest="$2"
+
+if [[ ! -f "$bam_manifest" ]]; then
+    echo "Error: bam_manifest not found: $bam_manifest"
+    exit 1
+fi
 
 # ── paths ────────────────────────────────────────────────────────────────────
-repo_base=/mnt/splicedice_ir_example/git_code/splicedice_analysis/
 analysis_base=/mnt/splicedice_ir_example/analysis/
-bam_manifest=${repo_base}/2026-05_TCGA_IP_splicedice_PS_compute/splicedice_manifests/bam_manifest_2026.06.03_15.06.58.tsv
 
 coverage_dir=${analysis_base}/coverage_output
 tmp_dir=/mnt/scratch/tmp
