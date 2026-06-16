@@ -86,13 +86,13 @@ while [[ $i -lt $total ]]; do
     # ── step 1: download BAMs for this batch ──────────────────────────────
     echo ""
     echo "--- downloading BAMs for batch ${batch_num} ---"
-    "${SCRIPT_DIR}/download_batch.sh" \
+    bash "${SCRIPT_DIR}/download_batch.sh" \
         --manifest "$batch_manifest"
 
     # ── step 2: run intron_coverage for this batch ────────────────────────
     echo ""
     echo "--- running intron_coverage for batch ${batch_num} ---"
-    "${SCRIPT_DIR}/run_intron_coverage.sh" \
+    bash "${SCRIPT_DIR}/run_intron_coverage.sh" \
         --manifest      "$batch_manifest" \
         --coverage-dir  "$coverage_dir" \
         --analysis-base "$analysis_base"
