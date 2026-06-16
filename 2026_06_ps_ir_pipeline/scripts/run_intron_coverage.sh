@@ -1,108 +1,83 @@
 #!/usr/bin/env bash
-# run_intron_coverage_pipeline.sh
-# Wrapper: reads primary manifest, finds pending samples, processes in batches.
-# Calls download_batch.sh and run_intron_coverage.sh for each batch.
+# run_intron_coverage.sh
+# Runs splicedice intron_coverage on a batch manifest, then removes BAMs for
+# samples that produced output successfully.
 #
-# Usage: run_intron_coverage_pipeline.sh --manifest PATH --analysis-base PATH
-#                                        [--coverage-dir PATH] [--batch-size N]
+# Usage: run_intron_coverage.sh --manifest PATH --coverage-dir PATH --analysis-base PATH
 set -euo pipefail
 
-# ── defaults ─────────────────────────────────────────────────────────────────
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# ── defaults ──────────────────────────────────────────────────────────────────
 manifest=""
-analysis_base=""
 coverage_dir=""
-BATCH_SIZE=16
+analysis_base=""
+max_threads=8
 
 # ── argument parsing ──────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --manifest)      manifest="$2";      shift 2 ;;
-        --analysis-base) analysis_base="$2"; shift 2 ;;
-        --coverage-dir)  coverage_dir="$2";  shift 2 ;;
-        --batch-size)    BATCH_SIZE="$2";    shift 2 ;;
+        --manifest)      manifest="$2";       shift 2 ;;
+        --coverage-dir)  coverage_dir="$2";   shift 2 ;;
+        --analysis-base) analysis_base="$2";  shift 2 ;;
+        --max-threads)   max_threads="$2";    shift 2 ;;
         *) echo "Unknown argument: $1"; exit 1 ;;
     esac
 done
 
-if [[ -z "$manifest" || -z "$analysis_base" ]]; then
-    echo "ERROR: --manifest and --analysis-base are required"
-    echo "Usage: $0 --manifest PATH --analysis-base PATH [--coverage-dir PATH] [--batch-size N]"
+if [[ -z "$manifest" || -z "$coverage_dir" || -z "$analysis_base" ]]; then
+    echo "ERROR: --manifest, --coverage-dir, and --analysis-base are required"
+    echo "Usage: $0 --manifest PATH --coverage-dir PATH --analysis-base PATH [--max-threads N]"
     exit 1
 fi
 
-# ── derived paths ─────────────────────────────────────────────────────────────
-tmp_dir="${analysis_base}/tmp"
-: "${coverage_dir:=${analysis_base}/coverage_output}"
+mkdir -p "$coverage_dir"
 
-mkdir -p "$coverage_dir" "$tmp_dir"
-
-# ── collect pending samples ───────────────────────────────────────────────────
+# ── check BAMs are actually present before running ────────────────────────────
 # Primary manifest columns: dataset_id  bam_location  bed_location  phenotype  download_id
-mapfile -t all_samples < <(tail -n +2 "$manifest")
+available_manifest="${manifest%.tsv}_available.tsv"
+head -n 1 "$manifest" > "$available_manifest"
 
-pending=()
-for row in "${all_samples[@]}"; do
-    id=$(echo "$row" | cut -f1)
-    expected_output="${coverage_dir}/${id}_intron_coverage.txt"
-    if [[ ! -f "$expected_output" ]]; then
-        pending+=("$row")
+while IFS=$'\t' read -r id bam_location rest; do
+    if [[ -f "$bam_location" ]]; then
+        printf '%s\t%s\t%s\n' "$id" "$bam_location" "$rest" >> "$available_manifest"
     else
-        echo "skipping $id (output already exists)"
+        echo "WARNING: $id: BAM not found at $bam_location — skipping"
     fi
-done
+done < <(tail -n +2 "$manifest")
 
-total=${#pending[@]}
-echo ""
-echo "=== ${total} samples still need intron_coverage ==="
-echo ""
+n_samples=$(( $(wc -l < "$available_manifest") - 1 ))
 
-if [[ $total -eq 0 ]]; then
-    echo "Nothing to do."
+if [[ $n_samples -eq 0 ]]; then
+    echo "No BAMs available; skipping intron_coverage."
     exit 0
 fi
 
-# ── process in batches ────────────────────────────────────────────────────────
-batch_num=0
-i=0
+n_threads=$(( n_samples < max_threads ? n_samples : max_threads ))
+echo "Running intron_coverage on ${n_samples} samples with ${n_threads} threads..."
+date
 
-while [[ $i -lt $total ]]; do
+time docker run --rm \
+    -v /mnt/:/mnt \
+    splicedice_analysis:latest \
+    splicedice intron_coverage \
+    -b "$available_manifest" \
+    -m "${analysis_base}/_allPS.tsv" \
+    -j "${analysis_base}/_junctions.bed" \
+    -n "${n_threads}" \
+    -o "${coverage_dir}"
 
-    batch_num=$(( batch_num + 1 ))
-    batch=("${pending[@]:$i:$BATCH_SIZE}")
-    i=$(( i + BATCH_SIZE ))
+date
+echo "intron_coverage complete."
 
-    echo "========================================================"
-    echo "BATCH ${batch_num}: ${#batch[@]} samples"
-    echo "========================================================"
+# ── clean up BAMs for samples with confirmed output ───────────────────────────
+echo ""
+echo "--- cleaning up BAMs ---"
 
-    # Build a per-batch slice of the primary manifest (header + batch rows)
-    batch_manifest="${tmp_dir}/batch_${batch_num}_manifest.tsv"
-    head -n 1 "$manifest" > "$batch_manifest"
-    for row in "${batch[@]}"; do
-        echo "$row" >> "$batch_manifest"
-    done
-
-    # ── step 1: download BAMs for this batch ──────────────────────────────
-    echo ""
-    echo "--- downloading BAMs for batch ${batch_num} ---"
-    "${SCRIPT_DIR}/download_batch.sh" \
-        --manifest "$batch_manifest"
-
-    # ── step 2: run intron_coverage for this batch ────────────────────────
-    echo ""
-    echo "--- running intron_coverage for batch ${batch_num} ---"
-    "${SCRIPT_DIR}/run_intron_coverage.sh" \
-        --manifest      "$batch_manifest" \
-        --coverage-dir  "$coverage_dir" \
-        --analysis-base "$analysis_base"
-
-    echo ""
-    echo "batch ${batch_num} complete"
-    echo ""
-
-done
-
-echo "========================================================"
-echo "All batches complete."
-echo "========================================================"
+while IFS=$'\t' read -r id bam_location _rest; do
+    expected_output="${coverage_dir}/${id}_intron_coverage.txt"
+    if [[ -f "$bam_location" && -f "$expected_output" ]]; then
+        echo "$id: output confirmed, deleting BAM"
+        rm "$bam_location"
+    elif [[ -f "$bam_location" && ! -f "$expected_output" ]]; then
+        echo "WARNING: $id: BAM present but no output found — keeping BAM for investigation"
+    fi
+done < <(tail -n +2 "$available_manifest")
