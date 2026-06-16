@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+set -x
+trap 'echo "ERROR: script failed at line $LINENO with exit code $?" >&2' ERR
 
 if [[ $# -lt 3 ]]; then
     echo "Usage: $(basename $0) <manifest> <genome> <disk_constraint>" >&2
