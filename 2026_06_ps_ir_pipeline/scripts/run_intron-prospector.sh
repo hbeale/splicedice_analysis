@@ -14,7 +14,8 @@ manifest=$1
 genome=$2
 disk_constraint=$3
 
-cat $manifest | grep -v ^id | while read dataset_id bam_location bed_location phenotype download_id; do
+# cat $manifest | grep -v ^id | while read dataset_id bam_location bed_location phenotype download_id; do
+while read dataset_id bam_location bed_location phenotype download_id; do
 echo
 echo processing $dataset_id
 
@@ -45,4 +46,5 @@ if [[ $disk_constraint == "yes" && -f "$bam_location" && -f "$bed_location" ]]; 
     rm $bam_location 
 fi
 
-done
+# done
+done < <(grep -v ^id $manifest)
