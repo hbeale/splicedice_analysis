@@ -154,12 +154,13 @@ id=567c5d5f-2b27-4070-86c3-3905d06ed02b
 
 this worked
 
-### try 4 - continue remaining files
+# try 4 - continue remaining files
 
 resume with remaining files
 
 ```
 token_file=/mnt/gitCode/gdc-user-token.2026-05-28T20_33_35.481Z.txt
+manifest=/mnt/gitCode/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_manifest.2026.05.28.tsv
 
 cat $manifest | grep -v filename | while read id filename other; do 
 
@@ -171,7 +172,7 @@ echo $id $filename
 if ! [ -f   $f  ]; then
 echo "File  $f  does not exist. Downloading"
 
-/mnt/scratch/gdc-client download --dir  /mnt/data/tcga --token-file $token_file $id
+echo /mnt/scratch/gdc-client download --dir  /mnt/data/tcga --token-file $token_file $id
 
 else
 echo "File  $f is already present. Moving along"
@@ -183,6 +184,40 @@ done
 
 
 ```
+
+# try 5 - after overnight server crash
+
+use different manifest so i can exclude samples if they have a IP bed file
+
+```
+ip_manifest=/mnt/splicedice_ir_example/git_code/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_intron_prospector_manifest.2026.05.28.tsv 
+bed_base=/mnt/data/intron_prospector_runs/common/
+bam_base=/mnt/data/tcga
+
+cat $ip_manifest | grep -v ^id | while read ugly_id bam_file nice_id; do
+
+bed_file=$bed_base/${nice_id}.bed 
+bam_file=${bam_base}/$ugly_id/$bam_file
+
+echo
+echo checking $nice_id
+if [[ ! -f "$bed_file" && ! -f "$bam_file" ]]; then 
+echo "neither bed or bam file exists; downloading..."
+echo /mnt/scratch/gdc-client download --dir  /mnt/data/tcga --token-file $token_file $ugly_id
+else
+if [[ -f "$bed_file" ]]; then echo "bed file $bed_file exists"; fi
+if [[ -f "$bam_file" ]]; then echo "bam file $bam_file exists"; fi
+fi
+
+done
+
+
+```
+# Abandoned
+
+I started wrapping the download into the IP run so I didn't have to keep the bam file locally
+
+see "2026-05-28_process_TCGA_LUAD_with_splicedice_pipeline.md"
 
 
 
@@ -236,5 +271,103 @@ date
 ```
 3.1T
 Thu May 28 21:21:12 UTC 2026
+```
+
+
+
+```
+recent_id=dad25a07-fb2a-42d0-95b6-b072afbdaa7c
+cat $manifest | sed -e "1,/$recent_id/ d" | cut -f4 | grep -v size | awk '{ sum += $1 } END { print sum }' | numfmt --to=iec
+date
+df -h | grep /mnt
+3.0T
+Thu May 28 22:14:23 UTC 2026
+/dev/vdb1       2.0T  1.2T  824G  60% /mnt
+```
+
+when it gets to 2.5T, stop
+
+
+
+```
+recent_id=98754b25-9c39-4830-b260-2d92b28f2e7a
+manifest=/mnt/gitCode/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_manifest.2026.05.28.tsv
+cat $manifest | sed -e "1,/$recent_id/ d" | cut -f4 | grep -v size | awk '{ sum += $1 } END { print sum }' | numfmt --to=iec
+date
+df -h | grep /mnt
+
+```
+
+
+
+```
+recent_id=16b44441-90d4-4289-8248-d31251f49f2b
+manifest=/mnt/gitCode/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_manifest.2026.05.28.tsv
+cat $manifest | sed -e "1,/$recent_id/ d" | cut -f4 | grep -v size | awk '{ sum += $1 } END { print sum }' | numfmt --to=iec
+date
+df -h | grep /mnt
+
+```
+
+```
+2.5T
+Fri May 29 00:59:15 UTC 2026
+/dev/vdb1       2.0T  1.7T  378G  82% /mnt
+
+```
+
+### interrupted
+
+```
+16b44441-90d4-4289-8248-d31251f49f2b 8b3aec43-4c75-4598-bf0a-168f7ffb9f3b.rna_seq.genomic.gdc_realn.bam
+File  /mnt/data/tcga/16b44441-90d4-4289-8248-d31251f49f2b/8b3aec43-4c75-4598-bf0a-168f7ffb9f3b.rna_seq.genomic.gdc_realn.bam  does not exist. Downloading
+100% [###########################################################################################################################] Time:  0:01:09  59.4 MiB/s
+Successfully downloaded: 1
+
+fea8014a-be97-4a25-b588-d5e39e007c30 25ef25f6-9982-41ad-9823-62763c6c29eb.rna_seq.genomic.gdc_realn.bam
+File  /mnt/data/tcga/fea8014a-be97-4a25-b588-d5e39e007c30/25ef25f6-9982-41ad-9823-62763c6c29eb.rna_seq.genomic.gdc_realn.bam  does not exist. Downloading
+^CTraceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 908, in _find_spec
+
+```
+
+i did not find any partial files
+
+`/mnt/data/tcga/16b44441-90d4-4289-8248-d31251f49f2b/8b3aec43-4c75-4598-bf0a-168f7ffb9f3b.rna_seq.genomic.gdc_realn.bam` exists, is a reasonable size and appears to be intact (i can view it with samtools view without error) . there is also a bai file in the directory, and it seems functional too ( i can run a command like `samtools view $b chr2 | less` without error)
+
+`/mnt/data/tcga/fea8014a-be97-4a25-b588-d5e39e007c30/25ef25f6-9982-41ad-9823-62763c6c29eb.rna_seq.genomic.gdc_realn.bam` does not exist; 
+
+
+
+check available file sizes
+
+
+
+```
+recent_id=fea8014a-be97-4a25-b588-d5e39e007c30
+manifest=/mnt/gitCode/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_manifest.2026.05.28.tsv
+cat $manifest | sed -e "1,/$recent_id/ d" | cut -f4 | grep -v size | awk '{ sum += $1 } END { print sum }' | numfmt --to=iec
+date
+df -h | grep /mnt
+
+```
+
+2.5 TB
+
+1.1 available
+
+
+
+TCGA-75-5146-01A
+
+
+
+```
+recent_id=fea8014a-be97-4a25-b588-d5e39e007c30
+manifest=/mnt/gitCode/splicedice_analysis/2026-05_TCGA_IP_splicedice_PS_compute/dataset_selection/soulette_equivalent_manifest.2026.05.28.tsv
+cat $manifest | sed -e "1,/$recent_id/ d" | cut -f4 | grep -v size | awk '{ sum += $1 } END { print sum }' | numfmt --to=iec
+date
+df -h | grep /mnt
+
 ```
 
