@@ -60,7 +60,7 @@ fi
 echo "Downloading ${#uuids_to_download[@]} BAM(s)..."
 date
 
-gdc_client download \
+gdc-client download \
     --dir "$bam_upstream_base_dir" \
     --token-file "$token_file" \
     -n "$n_threads" \
