@@ -32,7 +32,7 @@ fi
 if [[ ! -f "$bed_location" && -f "$bam_location" ]]; then 
     echo "bam file exists but bed file does not"
     echo "running intron-prospector..."
-    mkdir -p ${dirname $bed_location)
+    mkdir -p $(dirname $bed_location)
     docker run --rm \
     -v /mnt/:/mnt \
     splicedice_analysis:latest \
