@@ -996,3 +996,10 @@ cat $f | grep $pos | cut -f1,3
 
 
 
+# Conclusion
+
+now, with commit c1048af, results from ir_table are identical. 
+
+
+
+I need to rerun ir_table for the big TCGA run
