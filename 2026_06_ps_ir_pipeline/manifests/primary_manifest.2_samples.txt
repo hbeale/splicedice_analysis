@@ -1,0 +1,3 @@
+dataset_id	bam_location	bed_location	phenotype	download_id
+TCGA-86-8074-01A	/mnt/data/tcga/567c5d5f-2b27-4070-86c3-3905d06ed02b/f6f15b7f-1af0-4da5-8ca5-a4b488d8f412.rna_seq.genomic.gdc_realn.bam	/mnt/data/intron_prospector_runs/common/TCGA-86-8074-01A.bed	other	567c5d5f-2b27-4070-86c3-3905d06ed02b
+TCGA-62-8402-01A	/mnt/data/tcga/cae0680e-f7bf-4742-aeca-8fac6d4f4934/2a48ffd2-9212-48f4-a836-7572eb2feffe.rna_seq.genomic.gdc_realn.bam	/mnt/data/intron_prospector_runs/common/TCGA-62-8402-01A.bed	other	cae0680e-f7bf-4742-aeca-8fac6d4f4934
