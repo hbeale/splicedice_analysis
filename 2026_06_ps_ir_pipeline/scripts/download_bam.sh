@@ -21,6 +21,7 @@ fi
 echo "using token: $token_file"
 
 # mkdir -p ${bam_base}/$tcga_id
+mkdir -p $bam_base_dir
 gdc-client download \
     --dir $bam_base_dir \
     --token-file $token_file \
