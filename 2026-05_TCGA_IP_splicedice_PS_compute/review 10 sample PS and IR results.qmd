@@ -1,0 +1,141 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    toc: true
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+
+```
+
+# Import some data
+```{r}
+ps <- read_tsv("~/downloads/single_sample_df3c36.10TCGA.allPS.tsv.gz")
+
+
+```
+
+```{r}
+#ir <- read_tsv("~/downloads/TCGA_LUAD_intron_retention.tsv.gz")
+ir <- read_tsv("~/downloads/single_sample_df3c36.10TCGA.intron_retention.tsv.gz")
+```
+
+
+# Analyze ps values for 10k clusters
+```{r}
+ps_long  <- pivot_longer(ps, -cluster)
+head(ps_long)
+
+per_cluster_vals <- ps_long %>%
+group_by(cluster) %>%
+summarize(n_Nan = sum(is.na(value)),
+n_0 = sum(value == 0, na.rm = TRUE),
+n_1 = sum(value == 1, na.rm = TRUE))
+
+summary(per_cluster_vals$n_Nan)
+summary(per_cluster_vals$n_0)
+summary(per_cluster_vals$n_1)
+
+
+
+
+```
+
+
+```{r}
+
+ggplot(per_cluster_vals) +
+  geom_histogram(aes(x=n_Nan))
+
+ggplot(per_cluster_vals) +
+  geom_histogram(aes(x=n_0))
+
+ggplot(per_cluster_vals) +
+  geom_histogram(aes(x=n_1))
+
+per_cluster_vals %>%
+  pivot_longer(-cluster) %>%
+  filter(value != 0) %>%
+  ggplot() +
+  geom_histogram(aes(x = value,
+                     fill = name)) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~name)
+                    
+
+per_cluster_vals %>%
+  pivot_longer(-cluster) %>%
+  filter(value != 0) %>%
+  ggplot() +
+  geom_density(aes(x = value,
+                     fill = name)) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~name)
+                    
+    
+
+```
+
+```{r}
+ggplot(ps_long) +
+  geom_histogram(aes(x=value))
+```
+
+
+# Analyze ps values for 10k junctions
+```{r}
+ir[1:6,1:6]
+ir_long <- pivot_longer(ir, -Junction)
+head(ir_long)
+
+per_jnx_vals <- ir_long %>%
+group_by(Junction) %>%
+summarize(n_Nan = sum(is.na(value)),
+n_0 = sum(value == 0, na.rm = TRUE),
+n_1 = sum(value == 1, na.rm = TRUE))
+
+summary(per_jnx_vals$n_Nan)
+summary(per_jnx_vals$n_0)
+summary(per_jnx_vals$n_1)
+
+```
+
+```{r}
+
+ggplot(per_jnx_vals) +
+  geom_histogram(aes(x=n_Nan))
+
+ggplot(per_jnx_vals) +
+  geom_histogram(aes(x=n_0))
+
+ggplot(per_jnx_vals) +
+  geom_histogram(aes(x=n_1))
+
+per_jnx_vals %>%
+  pivot_longer(-Junction) %>%
+  filter(value != 0) %>%
+  ggplot() +
+  geom_histogram(aes(x = value,
+                     fill = name)) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~name)
+                    
+
+per_jnx_vals %>%
+  pivot_longer(-Junction) %>%
+  filter(value != 0) %>%
+  ggplot() +
+  geom_density(aes(x = value,
+                     fill = name)) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~name)
+                    
+    
+```
+
