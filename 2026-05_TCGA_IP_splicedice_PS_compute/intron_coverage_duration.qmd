@@ -1,0 +1,33 @@
+---
+title: "`r gsub('.rmarkdown', ' ', gsub('_', ' ', knitr::current_input()))`"
+author: "Holly Beale"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  gfm:
+    toc: true
+    df-print: kable
+---
+
+```{r setup}
+
+library(tidyverse)
+
+```
+
+
+
+```{r}
+
+intron_coverage_duration <- tribble(
+  ~n, 	~seconds,
+  1,	3311,
+8,	3584,
+16,	6695,
+16, 6490) %>%
+  mutate(seconds_per_sample = seconds/n,
+         min_per_sample = seconds_per_sample/60)
+
+intron_coverage_duration
+
+```
+
