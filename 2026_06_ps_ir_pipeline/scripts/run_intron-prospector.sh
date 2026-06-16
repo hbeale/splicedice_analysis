@@ -47,4 +47,4 @@ if [[ $disk_constraint == "yes" && -f "$bam_location" && -f "$bed_location" ]]; 
 fi
 
 # done
-done < <(grep -v ^id $manifest)
+done < <(grep -v ^dataset_id $manifest)
