@@ -23,7 +23,7 @@ if [[ ! -f "$bed_location" && ! -f "$bam_location" ]]; then
     echo "downloading bam file..."
     # replace this with whatever download is relevant to your data
     bam_upstream_base_dir=$(dirname $(dirname $bam_location))
-    bash $(dirname $0)/scripts/download_bam.sh $download_id $bam_upstream_base_dir
+    bash $(dirname $0)/download_bam.sh $download_id $bam_upstream_base_dir
 fi
 
 if [[ ! -f "$bed_location" && -f "$bam_location" ]]; then 
