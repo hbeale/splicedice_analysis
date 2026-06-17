@@ -4,6 +4,7 @@
 # Calls download_batch.sh and run_intron_coverage.sh for each batch.
 #
 # Usage: run_intron_coverage_pipeline.sh --manifest PATH --analysis-base PATH
+#                                        --disk-constraint [yes|no]
 #                                        [--coverage-dir PATH] [--batch-size N]
 set -euo pipefail
 
@@ -12,22 +13,29 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 manifest=""
 analysis_base=""
 coverage_dir=""
+disk_constraint=""
 BATCH_SIZE=16
 
 # ── argument parsing ──────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --manifest)      manifest="$2";      shift 2 ;;
-        --analysis-base) analysis_base="$2"; shift 2 ;;
-        --coverage-dir)  coverage_dir="$2";  shift 2 ;;
-        --batch-size)    BATCH_SIZE="$2";    shift 2 ;;
+        --manifest)        manifest="$2";        shift 2 ;;
+        --analysis-base)   analysis_base="$2";   shift 2 ;;
+        --coverage-dir)    coverage_dir="$2";    shift 2 ;;
+        --disk-constraint) disk_constraint="$2"; shift 2 ;;
+        --batch-size)      BATCH_SIZE="$2";      shift 2 ;;
         *) echo "Unknown argument: $1"; exit 1 ;;
     esac
 done
 
-if [[ -z "$manifest" || -z "$analysis_base" ]]; then
-    echo "ERROR: --manifest and --analysis-base are required"
-    echo "Usage: $0 --manifest PATH --analysis-base PATH [--coverage-dir PATH] [--batch-size N]"
+if [[ -z "$manifest" || -z "$analysis_base" || -z "$disk_constraint" ]]; then
+    echo "ERROR: --manifest, --analysis-base, and --disk-constraint are required"
+    echo "Usage: $0 --manifest PATH --analysis-base PATH --disk-constraint [yes|no] [--coverage-dir PATH] [--batch-size N]"
+    exit 1
+fi
+
+if [[ "$disk_constraint" != "yes" && "$disk_constraint" != "no" ]]; then
+    echo "ERROR: --disk-constraint must be 'yes' or 'no'"
     exit 1
 fi
 
@@ -86,16 +94,17 @@ while [[ $i -lt $total ]]; do
     # ── step 1: download BAMs for this batch ──────────────────────────────
     echo ""
     echo "--- downloading BAMs for batch ${batch_num} ---"
-    bash "${SCRIPT_DIR}/download_batch.sh" \
+    "${SCRIPT_DIR}/download_batch.sh" \
         --manifest "$batch_manifest"
 
     # ── step 2: run intron_coverage for this batch ────────────────────────
     echo ""
     echo "--- running intron_coverage for batch ${batch_num} ---"
-    bash "${SCRIPT_DIR}/run_intron_coverage.sh" \
-        --manifest      "$batch_manifest" \
-        --coverage-dir  "$coverage_dir" \
-        --analysis-base "$analysis_base"
+    "${SCRIPT_DIR}/run_intron_coverage.sh" \
+        --manifest         "$batch_manifest" \
+        --coverage-dir     "$coverage_dir" \
+        --analysis-base    "$analysis_base" \
+        --disk-constraint  "$disk_constraint"
 
     echo ""
     echo "batch ${batch_num} complete"
