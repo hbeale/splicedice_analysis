@@ -2,21 +2,41 @@
 set -euo pipefail
 set -x
 trap 'echo "ERROR: script failed at line $LINENO with exit code $?" >&2' ERR
-
-if [[ $# -lt 3 ]]; then
-    echo "Usage: $(basename $0) <manifest> <genome> <disk_constraint>" >&2
+ 
+# Usage: run_intron-prospector.sh --manifest PATH --genome PATH --disk-constraint [yes|no]
+ 
+# ── defaults ──────────────────────────────────────────────────────────────────
+manifest=""
+genome=""
+disk_constraint=""
+ 
+# ── argument parsing ──────────────────────────────────────────────────────────
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --manifest)        manifest="$2";        shift 2 ;;
+        --genome)          genome="$2";          shift 2 ;;
+        --disk-constraint) disk_constraint="$2"; shift 2 ;;
+        *) echo "Unknown argument: $1"; exit 1 ;;
+    esac
+done
+ 
+if [[ -z "$manifest" || -z "$genome" || -z "$disk_constraint" ]]; then
+    echo "ERROR: --manifest, --genome, and --disk-constraint are required" >&2
+    echo "Usage: $(basename $0) --manifest PATH --genome PATH --disk-constraint [yes|no]" >&2
     echo >&2
-    echo "  manifest:         TSV with columns: dataset_id, bam_location, bed_location, phenotype, download_id" >&2
-    echo "  genome:           path to reference genome FASTA" >&2
-    echo "  disk_constraint:  delete BAM files after processing? [yes or no]" >&2
+    echo "  --manifest:         TSV with columns: dataset_id, bam_location, bed_location, phenotype, download_id" >&2
+    echo "  --genome:           path to reference genome FASTA" >&2
+    echo "  --disk-constraint:  delete BAM files after processing? [yes or no]" >&2
     exit 1
 fi
+ 
+if [[ "$disk_constraint" != "yes" && "$disk_constraint" != "no" ]]; then
+    echo "ERROR: --disk-constraint must be 'yes' or 'no'" >&2
+    exit 1
+fi
+ 
+# ── process samples ───────────────────────────────────────────────────────────
 
-manifest=$1
-genome=$2
-disk_constraint=$3
-
-# cat $manifest | grep -v ^id | while read dataset_id bam_location bed_location phenotype download_id; do
 while read dataset_id bam_location bed_location phenotype download_id; do
 echo
 echo processing $dataset_id
