@@ -46,7 +46,8 @@ available_manifest="${manifest%.tsv}_available.tsv"
 
 while IFS=$'\t' read -r id bam_location rest; do
     if [[ -f "$bam_location" ]]; then
-        printf '%s\t%s\t%s\n' "$id" "$bam_location" "$rest" >> "$available_manifest"    else
+        printf '%s\t%s\t%s\n' "$id" "$bam_location" "$rest" >> "$available_manifest"    
+    else
         echo "WARNING: $id: BAM not found at $bam_location — skipping"
     fi
 done < <(tail -n +2 "$manifest")
