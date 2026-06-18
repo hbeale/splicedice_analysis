@@ -68,7 +68,6 @@ time docker run --rm \
     splicedice_analysis:latest \
     splicedice intron_coverage \
     -b "$available_manifest" \
-    -m "${analysis_base}/_allPS.tsv" \
     -j "${analysis_base}/_junctions.bed" \
     -n "${n_threads}" \
     -o "${coverage_dir}"
