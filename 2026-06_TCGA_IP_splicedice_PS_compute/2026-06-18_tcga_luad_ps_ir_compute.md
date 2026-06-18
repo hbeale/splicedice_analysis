@@ -39,10 +39,8 @@ timestamp=2026.06.18_10.26.39
 this_base_dir=/mnt/sd/${this_description}_${this_commit}_${timestamp}/
 code_base=${this_base_dir}/git_code/splicedice_analysis/2026_06_ps_ir_pipeline
 working_files=${this_base_dir}/git_code/splicedice_analysis/2026-06_TCGA_IP_splicedice_PS_compute
-mkdir -p ${this_base_dir}/git_code/ ${this_base_dir}/analysis/
+mkdir -p ${this_base_dir}/git_code/ ${this_base_dir}/analysis/ ${this_base_dir}/intron_beds ${this_base_dir}/bams
 ```
-
-
 
 ## get code
 
@@ -52,6 +50,8 @@ git clone https://github.com/hbeale/splicedice_analysis.git
 ```
 
 ## build docker
+
+a few minutes
 
 ```bash
 this_dockerfile=${working_files}/Dockerfile_$this_commit
@@ -65,12 +65,12 @@ bash ~/alert_msg.sh "docker build complete"
 ## make manifests
 
 ```bash
-n_samples_to_keep=2
+this_manifest=${working_files}/manifests/primary_manifest.txt
+mkdir -p `dirname $this_manifest`
 cat ${code_base}/manifests/primary_manifest.txt | sed "s|/mnt/data/tcga|${this_base_dir}/bams|" | \
-sed "s|/mnt/data/intron_prospector_runs/common|${this_base_dir}/intron_beds|" | \
-head -$(( n_samples_to_keep + 1 )) > ${this_base_dir}/analysis/primary_manifest.txt
+sed "s|/mnt/data/intron_prospector_runs/common|${this_base_dir}/intron_beds|" > $this_manifest
 
-cat ${this_base_dir}/analysis/primary_manifest.txt | grep -v dataset_id | cut -f1,3,4 > ${this_base_dir}/analysis/quant_manifest.txt
+cat $this_manifest | grep -v dataset_id | cut -f1,3,4 > ${this_base_dir}/analysis/quant_manifest.txt
 
 ```
 
@@ -80,37 +80,45 @@ cat ${this_base_dir}/analysis/primary_manifest.txt | grep -v dataset_id | cut -f
 
 ## run intron-prospector
 
-see below for next time
-
 ```bash
-disk_constraint="yes"
-
-bash ${code_base}/scripts/run_intron-prospector.sh \
-${this_base_dir}/analysis/primary_manifest.txt \
-/mnt/ref/GRCh38.primary_assembly.genome.fa \
-$disk_constraint
-~/alert_msg.sh "ip_done"
-
-```
-
-
-
-in future run it like this:
-
-```bash
-bash ${code_base}/scripts/run_intron-prospector.sh \
-    --manifest ${this_base_dir}/analysis/primary_manifest.txt \
+date
+time bash ${code_base}/scripts/run_intron-prospector.sh \
+    --manifest $this_manifest \
     --genome /mnt/ref/GRCh38.primary_assembly.genome.fa \
     --disk-constraint yes
+date
 ~/alert_msg.sh "ip_done"
 
 ```
 
+std out
 
+```bash
+Thu Jun 18 17:48:58 UTC 2026
+
+processing TCGA-86-8074-01A
+neither bed or bam file exists
+downloading bam file...
+using token: /home/ubuntu/gdc-user-token.2026-05-28T20_33_35.481Z.txt
+...
+processing TCGA-78-8660-01A
+neither bed or bam file exists
+downloading bam file...
+using token: /home/ubuntu/gdc-user-token.2026-05-28T20_33_35.481Z.txt
+100% [#######################################################################################################################] Time:  0:01:38  53.7 MiB/s
+100% [#######################################################################################################################] Time:  0:00:04   1.0 MiB/s 
+ERROR: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+WARNING: Unable to download annotations for 4ee7ff21-a0ae-4885-92d2-a088d6f87cf0: 'NoneType' object has no attribute 'raise_for_status'
+Successfully downloaded: 1
+bam file exists but bed file does not
+running intron-prospector...
+
+
+```
+
+i don't know if the error was temporary or not. probably a good reason to check that all the bed files exist and have the expected chromosomes present. 
 
 ## run quant
-
-for two samples, less than 1 minute
 
 ```bash
 date
