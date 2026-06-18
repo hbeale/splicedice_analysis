@@ -3796,6 +3796,7 @@ I copied this to courtyard and my downloads dir as TCGA_LUAD_intron_retention.ts
 copy to mustard
 
 ```bash
+cd /private/groups/brookslab/hbeale/tcga_luad_ps_and_ir
 scp ubuntu@10.50.100.135://mnt/splicedice_ir_example_A12/analysis/TCGA_LUAD_allPS.tsv.gz .
 scp ubuntu@10.50.100.135://mnt/splicedice_ir_example_A12/analysis/TCGA_LUAD_intron_retention.tsv.gz .
 
