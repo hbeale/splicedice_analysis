@@ -181,9 +181,7 @@ docker run --rm -it \
 $this_docker
 ```
 
-### run ir_table in new dir - 
-
-note: next time add -u so it's not buffering
+### run ir_table
 
 ```
 new_dir=splicedice_ir_example5

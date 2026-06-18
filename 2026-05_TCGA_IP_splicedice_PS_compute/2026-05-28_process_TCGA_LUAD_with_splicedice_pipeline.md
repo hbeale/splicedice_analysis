@@ -3673,6 +3673,138 @@ Tue Jun 16 00:03:45 UTC 2026
 
 
 
+## Attempt 12 - run refactored updated ir_table on 495 samples 
+
+incorporates the strand fix that includes negative strand intron
+
+#### server ubuntu@hbeale-clin-validation
+
+define run-specific variables
+
+```
+echo 'export new_dir=splicedice_ir_example_A12
+export old_dir=splicedice_ir_example5' > /mnt/scratch/env.sh
+```
+
+
+
+run this in each new gnu screen window used for the analysis
+
+```
+source /mnt/scratch/env.sh
+```
+
+
+
+create parallel dir; keep all coverage files
+
+```
+cp -r /mnt/${old_dir} /mnt/${new_dir}
+cd /mnt/${new_dir}/analysis/coverage_output
+ls /mnt/${new_dir}/analysis/coverage_output/* | wc -l
+rm /mnt/${new_dir}/analysis/_intron_retention.tsv
+rm /mnt/${new_dir}/analysis/_intron_retention.sorted.tsv
+
+```
+
+
+
+### Download repo
+
+
+```
+cd /mnt/${new_dir}/git_code/splicedice_analysis
+git pull
+
+```
+
+
+
+### Build docker
+
+```
+cd /mnt/${new_dir}/git_code/splicedice_analysis/code
+dockerfile=Dockerfile_master_branch
+docker build --build-arg CACHE_BUST=$(date +%s) -t splicedice_analysis:latest -f ${dockerfile} .
+bash ~/alert_msg.sh "docker build complete"
+
+```
+
+completed without error
+
+### run ir_table
+
+```
+source /mnt/scratch/env.sh
+base_dir=/mnt/${new_dir}/analysis
+genes=/mnt/ref/gencode.v47.primary_assembly.annotation.gtf
+log_file=${base_dir}/run_ir_table_with_edit.`date "+%Y.%m.%d_%H.%M.%S"`.log
+echo $log_file
+
+this_docker=splicedice_analysis:latest
+
+date
+time docker run --rm -it \
+-v /mnt/:/mnt/ \
+$this_docker \
+python -u /usr/local/bin/splicedice ir_table \
+--annotation $genes \
+-i ${base_dir}/_inclusionCounts.tsv \
+-c ${base_dir}/_allClusters.tsv \
+-d ${base_dir}/coverage_output \
+-n 8 \
+-o ${base_dir}/ 2>&1 | tee $log_file
+date
+/mnt/bin/alert_msg.sh "ir_table complete"
+
+
+```
+
+
+
+```
+/mnt/splicedice_ir_example_A12/analysis/run_ir_table_with_edit.2026.06.17_18.02.29.log
+Wed Jun 17 18:02:29 UTC 2026
+Starting ir_table with 495 samples
+Loading annotation...
+Annotation loaded: 528735 annotated junctions. 54.2s
+Gathering inclusion counts and clusters...
+Loaded 495 samples and 800411 clusters. 781.5s
+Collecting junctions across all samples...
+getJunctions complete: 328064 junctions. 610.5s
+RSD filtering complete: 251921 junctions retained. 2141.5s
+Junction collection and RSD filtering complete: 251921 junctions retained. 2923.9s
+Writing IR table...
+IR calculated for 50/495 samples
+IR calculated for 100/495 samples
+IR calculated for 150/495 samples
+IR calculated for 200/495 samples
+IR calculated for 250/495 samples
+IR calculated for 300/495 samples
+```
+
+```
+
+```
+
+
+
+this file is 57MB compressed; the other one (with only plus strand introns) was about 29 MB compressed. 
+
+I copied this to courtyard and my downloads dir as TCGA_LUAD_intron_retention.tsv.gz
+
+copy to mustard
+
+```bash
+scp ubuntu@10.50.100.135://mnt/splicedice_ir_example_A12/analysis/TCGA_LUAD_allPS.tsv.gz .
+scp ubuntu@10.50.100.135://mnt/splicedice_ir_example_A12/analysis/TCGA_LUAD_intron_retention.tsv.gz .
+
+```
+
+
+
+# RESUME HERE
+
 ## Characterize completeness of data
 
 data from attempt 8; 495 samples 
