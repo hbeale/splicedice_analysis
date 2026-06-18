@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
-set -x
-trap 'echo "ERROR: script failed at line $LINENO with exit code $?" >&2' ERR
+# set -x # uncomment for troubleshooting
+# trap 'echo "ERROR: script failed at line $LINENO with exit code $?" >&2' ERR # uncomment for troubleshooting
 
 if [[ $# -lt 2 ]]; then
     echo "Usage: $(basename $0) <gdc_identifier> <bam_base_dir>" >&2

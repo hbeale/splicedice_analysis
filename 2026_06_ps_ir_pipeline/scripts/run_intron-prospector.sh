@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
-set -x
-trap 'echo "ERROR: script failed at line $LINENO with exit code $?" >&2' ERR
+# set -x # uncomment for troubleshooting
+# trap 'echo "ERROR: script failed at line $LINENO with exit code $?" >&2' ERR # uncomment for troubleshooting
  
 # Usage: run_intron-prospector.sh --manifest PATH --genome PATH --disk-constraint [yes|no]
  
